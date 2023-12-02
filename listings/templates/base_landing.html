@@ -1,0 +1,12 @@
+{% extends "base_lcd.html" %}
+{% load static %}
+
+{% block css %}{% endblock css %}
+{% block content %}{% endblock content %}
+{% block footer %}
+<div class="row">
+	<div class="col text-center">
+		<a href="{% url 'legal' %}" class="text-white fs-5">Mentions légales</a>
+	</div>
+</div>
+{% endblock footer %}

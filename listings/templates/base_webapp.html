@@ -1,0 +1,40 @@
+{% extends "base_lcd.html" %}
+{% load static %}
+{% load l10n %}
+
+{% block navbar %}
+<div class="container-fluid py-2 mb-0 bg-blue">
+	<div class="container">
+		<!-- row LOGO -->
+		<div class="row">
+			<div class="col">
+				<a class="text-decoration-none fs-2 logo-white" href="{% url 'landing' %}">PRO PHONE MANAGER</a>
+			</div>
+			<div class="col text-end">
+				<a class="text-decoration-none fs-1 logo-white" href="{% url 'landing' %}">⚙</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock navbar %}
+
+{% block content %}
+<!-- HEADER -->
+<div class="container-lg mt-4 mb-3">
+	<!-- row page title -->
+	<div class="row fs-2 logo-blue">
+		<div class="col-12">{% block page_title %}{% endblock page_title %}</div>
+		<div class="col-12"><hr></div>
+	</div>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="container-lg mb-5 ps-md-4">
+	{% block page_content %}{% endblock page_content %}
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+<div class="text-white fs-6 fw-bold text-center">PRO PHONE MANAGER 2023</div>
+{% endblock footer %}

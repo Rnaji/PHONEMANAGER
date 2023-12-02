@@ -1,0 +1,48 @@
+{% extends "base_webapp.html" %}
+{% load static %}
+
+{% block title %}Mon profil{% endblock title %}
+
+{% block page_title %}👨‍💻 Mon profil{% endblock page_title %}
+
+{% block page_content %}
+<div class="row">
+    <div class="col-12 mb-5 fs-2 text-blue">Bienvenue sur <span class="logo-blue">PRO PHONE MANAGER</span> ! <br>Merci de remplir votre profil pour utiliser le service.</div>
+	<div class="col-10 offset-1 p-3 col-md-8 offset-md-2 px-md-5 py-md-4 col-lg-6 offset-lg-3 bg-white rounded" style="border:2px solid navy;">
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-4 col-md-8">
+                <label for="company_field" class="form-label fs-5">Société</label>
+                <input type="text" class="form-control" name="company_field" id="company_field" value="{{ user.profile.company|default_if_none:''|upper }}" required>
+            </div>
+            <div class="mb-4 col-md-8">
+                <label for="first_name_field" class="form-label fs-5">Prénom</label>
+                <input type="text" class="form-control" name="first_name_field" id="first_name_field" value="{{ user.profile.first_name|default_if_none:''|title }}" required>
+            </div>
+            <div class="mb-4 col-md-8">
+                <label for="last_name_field" class="form-label fs-5">Nom</label>
+                <input type="text" class="form-control" name="last_name_field" id="last_name_field" value="{{ user.profile.last_name|default_if_none:''|title }}" required>
+            </div>
+            <div class="mb-4 col-md-8">
+                <label for="address_field" class="form-label fs-5">Adresse</label>
+                <textarea class="form-control" name="address_field" id="address_field" rows="3" required>{{ user.profile.address|default_if_none:'' }}</textarea>
+            </div>
+            <div class="mb-4 col-md-8">
+                <label for="zip_field" class="form-label fs-5">Code Postal</label>
+                <input type="text" class="form-control" name="zip_field" id="zip_field" value="{{ user.profile.zip|default_if_none:'' }}" required>
+            </div>
+            <div class="mb-4 col-md-8">
+                <label for="city_field" class="form-label fs-5">Ville</label>
+                <input type="text" class="form-control" name="city_field" id="city_field" value="{{ user.profile.city|default_if_none:''|title }}" required>
+            </div>
+            <div class="mb-5 col-md-8">
+                <label for="phone_1_field" class="form-label fs-5">Téléphone</label>
+                <input type="text" class="form-control" name="phone_1_field" id="phone_1_field" value="{{ user.profile.phone_1|default_if_none:'' }}" required>
+            </div>
+            <div class="mb-3 col-12 text-end">
+                <button type="submit" class="btn btn-outline-blue">Enregistrer mon profil</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock page_content %}

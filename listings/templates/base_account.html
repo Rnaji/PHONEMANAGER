@@ -1,0 +1,60 @@
+{% extends "base_lcd.html" %}
+{% load static %}
+
+{% block css %}
+<style type="text/css">
+	Html, body {
+		background-color:navy;
+		height:100%;
+	}
+
+	.grandParentContainer {
+		display:table;
+		height:100%;
+	}
+
+	.parentContainer{
+		display:table-cell;
+		vertical-align:middle;
+	}
+</style>
+{% endblock css %}
+
+{% block content %}
+<div class="container-fluid grandParentContainer">
+	<div class="container parentContainer">
+		<!-- row logo -->
+		<div class="row pt-3 mb-4 text-center">
+			<div class="col-12">
+				<a href="{% url 'landing' %}" class="text-decoration-none logo-white display-1">PRO PHONE MANAGER</a>
+			</div>
+			<div class=" logo-white display-5">
+				<span>{% block card_header %}{% endblock card_header %}</span>
+			</div>
+		</div>
+		<!-- row card -->
+		<div class="row">
+			<div class="col-12 mx-auto col-md-8 col-lg-4">
+				<div class="card">
+					<div class="card-body bg-white">
+						<!-- row card form -->
+						<div class="row py-3 px-md-5">
+							<div class="col-12">
+							{% block card_form %}{% endblock card_form %}
+							</div>
+						</div>
+						<div class="row mb-2">
+							<div class="col-5"><hr></div>
+							<div class="col-2 fs-4 text-blue fw-bold text-center">ou</div>
+							<div class="col-5"><hr></div>
+						</div>
+						<div class="row p-1">
+							<div class="col-12 fs-6 text-center">{% block form_footer %}{% endblock form_footer %}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
