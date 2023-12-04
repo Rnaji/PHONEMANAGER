@@ -5,7 +5,7 @@
 {% block content %}
 <!-- Tagline container -->
 <div class="container-fluid mb-5 pb-5 pt-3 bg-gris shadow-sm">
-	<div class="container mb-4 text-end"><a href="{% url 'landing' %}" role="button" class="btn btn-sm btn-outline-blue">Accès client</a></div>
+	<div class="container mb-4 text-end"><a href="{% url 'login' %}" role="button" class="btn btn-sm btn-outline-blue">Accès client</a></div>
 	<div class="mb-4 mb-md-4 mb-lg-5 logo-blue display-1 text-center">PRO PHONE MANAGER</div>
 	<div class="mb-5 px-md-3 fs-1 text-blue text-center">L'outil <span class="fw-bold">gratuit</span> de gestion de stocks d'écrans cassés <br class="d-inline d-md-none d-lg-inline">incluant un comparateur<br class="d-none d-md-inline d-lg-none"> des offres de rachats</div>
 	<div class="text-center"><a href="{% url 'user_registration' %}" role="button" class="btn btn-lg btn-blue shadow-sm">Créez votre compte gratuit</a></div>	
@@ -55,7 +55,7 @@
 
 <!-- CTA button container -->
 <div class="container-lg mb-5 text-center">
-	<a href="{% url 'landing' %}" role="button" class="btn btn-lg btn-blue shadow-sm">Créez votre compte gratuit</a>
+	<a href="{% url 'user_registration' %}" role="button" class="btn btn-lg btn-blue shadow-sm">Créez votre compte gratuit</a>
 </div>
 
 <!-- Recycleur banner container -->
@@ -100,7 +100,7 @@
 
 <!-- CTA button container -->
 <div class="container-lg mb-5 text-center">
-	<a href="{% url 'landing' %}" role="button" class="btn btn-lg btn-blue shadow-sm">Créez votre compte gratuit</a>
+	<a href="{% url 'user_registration' %}" role="button" class="btn btn-lg btn-blue shadow-sm">Créez votre compte gratuit</a>
 </div>
 
 {% endblock content %}

@@ -126,3 +126,32 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# dans votre fichier settings.py
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',  # ou le niveau de logging souhaité
+    },
+}
+
+
+# Définissez le moteur de stockage de session approprié, par exemple :
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # ou 'django.contrib.sessions.backends.cache', etc.
+SESSION_COOKIE_AGE = 1209600  # Durée de vie de la session en secondes (par défaut : 2 semaines)
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'dashboard'
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]

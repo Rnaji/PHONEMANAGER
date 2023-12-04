@@ -12,7 +12,9 @@ class StoreConfiguration(models.Model):
     postal_code = models.CharField(max_length=10, verbose_name="Code postal")
     city = models.CharField(max_length=50, verbose_name="Ville")
     phone_number = models.CharField(max_length=15, verbose_name="Numéro de téléphone")
-    date_joined = models.DateTimeField(default=timezone.now)
+    date_joined = models.DateTimeField(default=timezone.now, blank=True, null=True)
+
 
     def __str__(self):
         return f"Configuration du magasin - {self.company_name}"
+
