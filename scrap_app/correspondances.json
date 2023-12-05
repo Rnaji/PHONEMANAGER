@@ -1,0 +1,1133 @@
+{
+  "oneplus": {
+    "8 Pro": [
+      "8 Pro",
+      "OnePlus 8 Pro"
+    ],
+    "8T": [
+      "OnePlus 8T",
+      "8T"
+    ],
+    "8": [
+      "OnePlus 8",
+      "8"
+    ],
+    "7T Pro": [
+      "OnePlus 7T Pro",
+      "7T Pro"
+    ],
+    "7 Pro": [
+      "OnePlus 7 Pro",
+      "7 Pro"
+    ],
+    "7T": [
+      "OnePlus 7T",
+      "7T"
+    ],
+    "Nord": [
+      "OnePlus Nord",
+      "Nord"
+    ]
+  },
+  "oppo": {
+    "Find X5 Pro": [
+      "Oppo Find X5 Pro",
+      "Find X5 Pro"
+    ],
+    "Find X3/X3 Pro": [
+      "Oppo Find X3/X3 Pro"
+    ],
+    "Find X2/X2 Pro": [
+      "Oppo Find X2/X2 Pro"
+    ],
+    "Reno 8 Pro": [
+      "Oppo Reno 8 Pro",
+      "Reno 8 Pro"
+    ],
+    "Reno 8": [
+      "Reno 8",
+      "Oppo Reno 8"
+    ],
+    "Reno 7": [
+      "Reno 7"
+    ],
+    "Reno 6": [
+      "Oppo Reno 6",
+      "Reno 6"
+    ],
+    "Reno 5 Pro": [
+      "Oppo Reno 5 Pro",
+      "Reno 5 Pro"
+    ],
+    "Reno 5": [
+      "Oppo Reno 5",
+      "Reno 5"
+    ],
+    "Reno 4": [
+      "Oppo Reno 4",
+      "Reno 4"
+    ],
+    "Reno 3 Pro": [
+      "Oppo Reno 3 Pro",
+      "Reno 3 Pro"
+    ],
+    "Reno 3": [
+      "Oppo Reno 3",
+      "Reno 3"
+    ],
+    "Reno 2": [
+      "Oppo Reno 2",
+      "Reno 2"
+    ],
+    "Reno": [
+      "Reno",
+      "Oppo Reno"
+    ]
+  },
+  "google": {
+    "Pixel 7 Pro": [
+      "Pixel 7 Pro",
+      "Google Pixel 7 Pro"
+    ],
+    "Pixel 7": [
+      "Google Pixel 7",
+      "Pixel 7"
+    ],
+    "Pixel 6 Pro": [
+      "Pixel 6 Pro",
+      "Google Pixel 6 Pro"
+    ],
+    "Pixel 6A": [
+      "Google Pixel 6A",
+      "Pixel 6A"
+    ],
+    "Pixel 6": [
+      "Google Pixel 6",
+      "Pixel 6"
+    ],
+    "Pixel 5A": [
+      "Google Pixel 5A",
+      "Pixel 5A"
+    ],
+    "Pixel 5": [
+      "Google Pixel 5",
+      "Pixel 5"
+    ],
+    "Pixel 4A 5G": [
+      "Google Pixel 4G",
+      "Pixel 4A 5G",
+      "Pixel 4A"
+    ],
+    "Pixel 4A 4G": [
+      "Google Pixel 4A 4G",
+      "Pixel 4A 4G",
+      "Pixel 4A"
+    ],
+    "Pixel 4A XL": [
+      "Pixel 4A XL"
+    ],
+    "Pixel 4XL": [
+      "Google Pixel 4XL",
+      "Pixel 4XL"
+    ],
+    "Pixel 3XL": [
+      "Google Pixel 3XL",
+      "Pixel 3 XL",
+      "Pixel 3XL"
+    ],
+    "Pixel 3A": [
+      "Google Pixel 3A",
+      "Pixel 3A"
+    ]
+  },
+  "samsung": {
+    "S23 Ultra 5G (G918)": [
+      "Samsung Galaxy S23 Ultra",
+      "S23 Ultra 5G (G918)"
+    ],
+    "S23 Plus 5G (G916)": [
+      "S23 Plus 5G (G916)",
+      "Samsung Galaxy S23+"
+    ],
+    "S23 5G (G911)": [
+      "S23 5G (G911)",
+      "Samsung Galaxy S23"
+    ],
+    "S22 Ultra 5G (G908)": [
+      "Samsung Galaxy S22 Ultra",
+      "S22 Ultra 5G (G908)"
+    ],
+    "S22 Plus 5G (G906)": [
+      "S22 Plus 5G (G906)",
+      "Samsung Galaxy S22+"
+    ],
+    "S22 5G (G901)": [
+      "Samsung Galaxy S22 (S901B)",
+      "S22 5G (G901)",
+      "Samsung Galaxy S22"
+    ],
+    "S21 Ultra 5G (G998)": [
+      "S21 Ultra 5G (G998)",
+      "Samsung Galaxy S21 Ultra (G998B)",
+      "SAMSUNG Galaxy S21 Ultra"
+    ],
+    "S21 Plus 5G (G996)": [
+      "S21 Plus 5G (G996)",
+      "Samsung Galaxy S21+",
+      "Samsung Galaxy S21 Plus (G996B)"
+    ],
+    "S21 FE 5G (G78)": [
+      "S21 FE 5G (G78)",
+      "Samsung Galaxy S21 FE"
+    ],
+    "S21 5G (G991)": [
+      "Samsung Galaxy S21",
+      "S21 5G (G991)"
+    ],
+    "S20 Ultra 5G (G988)": [
+      "Samsung Galaxy S20 Ultra (G988F)",
+      "Samsung Galaxy S20 Ultra",
+      "SAMSUNG Galaxy S20 Ultra G988F",
+      "S20 Ultra 5G (G988)"
+    ],
+    "S20 Plus (G985)": [
+      "S20 Plus (G985)",
+      "Samsung Galaxy S20 Plus (G985F)",
+      "Samsung Galaxy S20+",
+      "SAMSUNG Galaxy S20+ G985F"
+    ],
+    "S20 FE 5G (G781) R8": [
+      "S20 FE 5G (G781) R8",
+      "SAMSUNG Galaxy S20 FE 4G/5G",
+      "Samsung Galaxy S20 FE",
+      "S20 FE 5G R8",
+      "Samsung Galaxy S20 FE 4G/5G (G780F/G781B)"
+    ],
+    "S20 5G (G981)": [
+      "S20 5G (G981)",
+      "Samsung Galaxy S20",
+      "SAMSUNG Galaxy S20 G980F",
+      "Samsung Galaxy S20 (G980F)"
+    ],
+    "S10 Plus (G975)": [
+      "Samsung Galaxy S10 Plus (G975F)",
+      "S10 Plus (G975)",
+      "SAMSUNG Galaxy S10 Plus - G975F",
+      "Samsung Galaxy S10+"
+    ],
+    "S10 Lite (G770)": [
+      "SAMSUNG Galaxy S10 Lite",
+      "S10 Lite (G770)",
+      "Samsung Galaxy S10 lite (G770F)"
+    ],
+    "S10 5G (G977)": [
+      "S10 5G (G977)"
+    ],
+    "S10 (G973)": [
+      "Samsung Galaxy S10",
+      "Samsung Galaxy S10 (G973F)",
+      "S10 (G973)",
+      "SAMSUNG Galaxy S10 - G973F"
+    ],
+    "S10E (G970)": [
+      "S10E (G970)",
+      "SAMSUNG Galaxy S10E - G973F",
+      "Samsung Galaxy S10E",
+      "Samsung Galaxy S10e (G970F)"
+    ],
+    "S9 Edge+ (G965)": [
+      "SAMSUNG Galaxy S9 PLUS - G965F",
+      "S9 Edge+ (G965)",
+      "Samsung Galaxy S9+",
+      "Samsung Galaxy S9 Plus (G965F)"
+    ],
+    "S9 Edge (G960)": [
+      "SAMSUNG Galaxy S9 - G960F",
+      "S9 Edge (G960)",
+      "Samsung Galaxy S9",
+      "Samsung Galaxy S9 (G960F)"
+    ],
+    "S8 Edge+ (G955)": [
+      "SAMSUNG Galaxy S8 PLUS - G955F",
+      "Samsung Galaxy S8 Plus (G955F)",
+      "Samsung Galaxy S8+",
+      "S8 Edge+ (G955)"
+    ],
+    "S8 Edge (G950)": [
+      "Samsung Galaxy S8",
+      "S8 Edge (G950)",
+      "Samsung Galaxy S8 (G950F)",
+      "SAMSUNG Galaxy S8 - G950F"
+    ],
+    "S8 Active (G892)": [
+      "S8 Active (G892)"
+    ],
+    "S7 Edge (G935)": [
+      "Samsung Galaxy S7 Edge (G935F)",
+      "S7 Edge (G935)",
+      "Samsung Galaxy S7 Edge",
+      "SAMSUNG Galaxy S7 EDGE - G935F"
+    ],
+    "S7 (G930)": [
+      "S7 (G930)",
+      "Samsung Galaxy S7 (G930F)",
+      "SAMSUNG Galaxy S7 - G930F",
+      "Samsung Galaxy S7"
+    ],
+    "S6 Edge+ (G928)": [
+      "Samsung Galaxy S6 Edge+",
+      "Samsung Galaxy S6 Edge Plus (G928)",
+      "SAMSUNG Galaxy S6 Edge Plus - G928F",
+      "S6 Edge+ (G928)"
+    ],
+    "S6 Edge (G925)": [
+      "SAMSUNG Galaxy S6 Edge - G925F",
+      "Samsung Galaxy S6 Edge (G925F)",
+      "S6 Edge (G925)",
+      "Samsung Galaxy S6 Edge"
+    ],
+    "S6 (G920)": [
+      "Samsung Galaxy S6 (G920F)",
+      "S6 (G920)",
+      "SAMSUNG Galaxy S6 - G920F"
+    ],
+    "S5 (G900)": [
+      "S5 (G900)",
+      "Samsung Galaxy S5 (G900F)"
+    ],
+    "S4 (i9505)": [
+      "S4 (i9505)",
+      "Samsung Galaxy S4 (i9505)"
+    ],
+    "S4 mini (i9195)": [
+      "S4 mini (i9195)",
+      "Samsung Galaxy S4 mini (i9195)"
+    ],
+    "S3 4G (i9305)": [
+      "S3 4G (i9305)",
+      "Samsung Galaxy S3 4G (i9305)"
+    ],
+    "S3 (I9300)": [
+      "Samsung Galaxy S3 (I9300)",
+      "S3 (I9300)"
+    ],
+    "S3 mini (i8190)": [
+      "S3 mini (i8190)",
+      "Samsung Galaxy S3 mini (i8190)"
+    ],
+    "S2 (i9100)": [
+      "Samsung Galaxy S2 (i9100)",
+      "S2 (i9100)"
+    ],
+    "Note 20 Ultra 5G": [
+      "SAMSUNG Note 20 Ultra N986F",
+      "Note 20 Ultra 5G",
+      "Samsung Galaxy Note 20 Ultra",
+      "Samsung Galaxy Note 20 Ultra (N986F)"
+    ],
+    "Note 20 5G": [
+      "Note 20 5G",
+      "SAMSUNG Note 20 N980F / N981F",
+      "Samsung Galaxy note 20",
+      "Samsung Galaxy Note 20 (N980F/N981F)"
+    ],
+    "Note 10+": [
+      "SAMSUNG Note 10+ N975F",
+      "Note 10+",
+      "Samsung Galaxy Note 10+",
+      "Samsung Galaxy Note 10 Plus (N975F)"
+    ],
+    "Note 10": [
+      "Samsung Galaxy Note 10 (N970F)",
+      "Samsung Galaxy Note 10",
+      "Note 10",
+      "SAMSUNG Note 10 N970F"
+    ],
+    "Note 10 Lite": [
+      "Samsung Galaxy Note 10 Lite",
+      "Note 10 Lite",
+      "Samsung Galaxy Note 10 lite (N770F)",
+      "SAMSUNG Note 10 Lite N770F / Note 10 E"
+    ],
+    "Note 9": [
+      "Samsung Galaxy Note 9 (N960F)",
+      "Samsung Galaxy Note 9",
+      "SAMSUNG Note 9",
+      "Note 9"
+    ],
+    "Note 8": [
+      "Note 8",
+      "Samsung Galaxy Note8 (N950F)",
+      "Samsung Galaxy Note 8",
+      "SAMSUNG Note 8"
+    ],
+    "Note 5": [
+      "Note 5"
+    ],
+    "Note Edge (N915FY)": [
+      "Note Edge (N915FY)",
+      "Samsung Galaxy Note Edge (N915FY)"
+    ],
+    "Note 4": [
+      "Samsung Galaxy Note 4 (N910F)",
+      "Note 4"
+    ],
+    "Note 3 (N9005)": [
+      "Samsung Galaxy Note 3 (N9005)",
+      "Note 3 (N9005)"
+    ],
+    "Note 2 4G (N7105)": [
+      "Samsung Galaxy Note 2 4G (N7105)",
+      "Note 2 4G (N7105)"
+    ],
+    "Note 2 (N7100)": [
+      "Note 2 (N7100)",
+      "Samsung Galaxy Note 2 (N7100)"
+    ],
+    "Note (N7000)": [
+      "Note (N7000)",
+      "Samsung Galaxy Note (N7000)"
+    ],
+    "A9 2018 (A920)": [
+      "A920",
+      "A9 2018 (A920)",
+      "Samsung Galaxy A9 2018 (A920F)"
+    ],
+    "A90 5G (A908)": [
+      "A90/A905",
+      "A900 (A9 2016)",
+      "A90 5G (A908)"
+    ],
+    "A9 2016 (A900)": [
+      "Samsung Galaxy A8 / A9",
+      "A9 2016 (A900)"
+    ],
+    "A80 (A805)": [
+      "Samsung Galaxy A80",
+      "A805/A80",
+      "A80 (A805)"
+    ],
+    "A8 (A800)": [
+      "A8 (A8 2015)",
+      "A8 (A800)"
+    ],
+    "A7 2018 (A750)": [
+      "Samsung Galaxy A7 2018 (A750F)",
+      "A7 2018 (A750)"
+    ],
+    "A8+ 2018 (A730)": [
+      "A8+ 2018 (A730)",
+      "A730 (A8+)"
+    ],
+    "A7 2017 (A720)": [
+      "A7 2017 (A720)"
+    ],
+    "A7 2016 (A710)": [
+      "A7 2016 (A710)"
+    ],
+    "A7 2015 (A700)": [
+      "A7 2015 (A700)"
+    ],
+    "A72 (A725)": [
+      "Samsung Galaxy A52 / A72",
+      "Samsung Galaxy A72 (A725F)",
+      "A72 (A725)",
+      "A72/A725"
+    ],
+    "A71 5G (A716)": [
+      "A716",
+      "A71 5G (A716)"
+    ],
+    "A71 (A715)": [
+      "Samsung Galaxy A70 / A71",
+      "Samsung Galaxy A71 (A715F)",
+      "A715",
+      "A71 (A715)"
+    ],
+    "A70 (A705)": [
+      "Samsung Galaxy A70 (A705F)",
+      "A70 (A705)",
+      "A70/A705",
+      "Samsung Galaxy A70 / A71"
+    ],
+    "A6+ 2018 (A605)": [
+      "A605 (J805/J810 2018)",
+      "A6+ 2018 (A605)"
+    ],
+    "A6 (A600)": [
+      "A6 (A600)",
+      "A6 (J800 2018)"
+    ],
+    "A8 2018 (A530)": [
+      "A8 2018 (A530)",
+      "A530",
+      "Samsung Galaxy A8 2018 (A530F)",
+      "Samsung Galaxy A8 / A9"
+    ],
+    "A5 2017 (A520)": [
+      "A520",
+      "Samsung Galaxy A5 2017 (A520F)",
+      "A5 2017 (A520)"
+    ],
+    "A52S 5G (A528)": [
+      "A528",
+      "A52S 5G (A528)"
+    ],
+    "A33 5G (A336)": [
+      "A336",
+      "A33 5G (A336)"
+    ],
+    "A53 5G (A536)": [
+      "A536",
+      "A53 5G (A536)"
+    ],
+    "A52 5G (A526)": [
+      "A526",
+      "A52 5G (A526)"
+    ],
+    "A52 (A525)": [
+      "A52 (A525)",
+      "Samsung Galaxy A52 / A72"
+    ],
+    "A51 (A515)": [
+      "A51 (A515)",
+      "Samsung Galaxy A50 / A51",
+      "A515",
+      "Samsung Galaxy A51 (A515F)"
+    ],
+    "A5 2016 (A510)": [
+      "Samsung Galaxy A5 2016 (A510F)",
+      "A5 2016 (A510)",
+      "Samsung Galaxy A3 / A5",
+      "A510"
+    ],
+    "A5 (A500)": [
+      "A500",
+      "Samsung Galaxy A5 (A500F)",
+      "A5 (A500)"
+    ],
+    "A51 5G (A516)": [
+      "A51 5G (A516)",
+      "A516"
+    ],
+    "A50S (A507)": [
+      "A50S (A507)",
+      "A50S"
+    ],
+    "A50 (A505)": [
+      "Samsung Galaxy A50 / A51",
+      "A50 (A505)",
+      "A50/A505",
+      "Samsung Galaxy A50 (A505F)"
+    ],
+    "A41 (A415)": [
+      "Samsung Galaxy A41 (A415F)",
+      "Samsung Galaxy A40 / A41 / A42",
+      "A415",
+      "A41 (A415)"
+    ],
+    "A42 5G (A426)": [
+      "A42 5G (A426)",
+      "Samsung Galaxy A40 / A41 / A42",
+      "Samsung Galaxy A42 (A426B)",
+      "A42 5G"
+    ],
+    "A40 (A405)": [
+      "Samsung Galaxy A40 / A41 / A42",
+      "A40 (A405)",
+      "Samsung Galaxy A40 (A405F)",
+      "A40/A405"
+    ],
+    "A3 2017 (A320)": [
+      "A320",
+      "A3 2017 (A320)"
+    ],
+    "A31 (A315)": [
+      "Samsung Galaxy A31 (A315F)",
+      "A315",
+      "A31 (A315)"
+    ],
+    "A3 2016 (A310)": [
+      "A310",
+      "Samsung Galaxy A3 2016 (A310F)",
+      "A3 2016 (A310)",
+      "Samsung Galaxy A3 / A5"
+    ],
+    "A32 (A325)": [
+      "A32 (A325)",
+      "Samsung Galaxy A32 LITE",
+      "Samsung Galaxy A32 (A325F)",
+      "A32/A325"
+    ],
+    "A30S (A307)": [
+      "Samsung Galaxy A30s (A307F)",
+      "A30S (A307)",
+      "A30S/A307"
+    ],
+    "A30 (A305)": [
+      "A30 (A305)",
+      "A30/A305",
+      "Samsung Galaxy A30 (A305F)"
+    ],
+    "A3 2015 (A300)": [
+      "A3 2015 (A300)"
+    ],
+    "A20 (A205)": [
+      "Samsung Galaxy A20 (A205F)",
+      "A20 (A205)",
+      "A20"
+    ],
+    "A20E (A202F)": [
+      "A20E (A202F)",
+      "Samsung Galaxy A20E (A202F)"
+    ],
+    "A20s (A207F)": [
+      "Samsung Galaxy A20s (A207F)",
+      "A20s (A207F)"
+    ],
+    "A21s (A217F)": [
+      "Samsung Galaxy A21s (A217F)",
+      "A21s (A217F)"
+    ],
+    "A22 4G (A225)": [
+      "A22 4G/A225",
+      "A22 4G (A225)"
+    ],
+    "A10 (A105F)": [
+      "Samsung Galaxy A10 (A105F)",
+      "A10 (A105F)"
+    ],
+    "A10s (A107F)": [
+      "A10s (A107F)",
+      "Samsung Galaxy A10s (A107F)"
+    ],
+    "J8 (J810)": [
+      "J8 (J810)"
+    ],
+    "J8+ (J805)": [
+      "J8+ (J805)"
+    ],
+    "J800 2018": [
+      "J800 2018"
+    ],
+    "J7 2017 (J730)": [
+      "J7Pro",
+      "J730/J7Pro/J700 2017",
+      "J7 2017 (J730)",
+      "Samsung Galaxy J7 2017 (J730F)"
+    ],
+    "J7 Duo (J720)": [
+      "J7 Duo (J720)"
+    ],
+    "J7 2018 (J710)": [
+      "J7 2018 (J710)",
+      "J710 (J700 2016)"
+    ],
+    "J7 (J701)": [
+      "J7 (J701)",
+      "J701"
+    ],
+    "J7 (J700)": [
+      "J7 (J700)",
+      "J730/J7Pro/J700 2017"
+    ],
+    "J5 2017 (J530)": [
+      "J530 (J500 2017)",
+      "Samsung Galaxy J5 2017 (J530F)",
+      "J5 2017 (J530)"
+    ],
+    "J5 2016 (J510)": [
+      "J510 (J500 2016)",
+      "J5 2016 (J510)"
+    ],
+    "J5 (J500)": [
+      "J5 (J500)",
+      "J500 (J500 2015)",
+      "Samsung Galaxy J5 (J500F)"
+    ],
+    "J4 (J400)": [
+      "J400",
+      "J4 (J400)"
+    ],
+    "J3 Pro (J320)": [
+      "J320/J3 Pro",
+      "J3 Pro (J320)"
+    ],
+    "J2 Pro (J250)": [
+      "J2 Pro (J250)",
+      "J250"
+    ],
+    "J2 (J200)": [
+      "J200",
+      "J2 (J200)"
+    ],
+    "J1 Ace (J110)": [
+      "J110",
+      "J1 Ace (J110)"
+    ],
+    "C9 Pro (C900)": [
+      "C9",
+      "C9 Pro (C900)"
+    ],
+    "C7 (C700)": [
+      "C7",
+      "C7 (C700)"
+    ],
+    "M536": [
+      "M536"
+    ],
+    "M52 5G (M535)": [
+      "M535",
+      "M52 5G (M535)"
+    ],
+    "M52 (M526)": [
+      "M52",
+      "M52 (M526)"
+    ],
+    "M51 (M515)": [
+      "M515",
+      "M51 (M515)"
+    ],
+    "M32 (M325)": [
+      "M32 (M325)",
+      "M325"
+    ],
+    "M30S (M307)": [
+      "M30S",
+      "M30S (M307)"
+    ],
+    "M31 (M315)": [
+      "M31",
+      "M31 (M315)"
+    ],
+    "M31S (M317)": [
+      "M31S (M317)",
+      "M31s"
+    ],
+    "M22": [
+      "M22"
+    ],
+    "M21S (F415)": [
+      "M21S",
+      "M21S (F415)"
+    ],
+    "Flip (F700) Inner screen": [
+      "Flip (F700) Inner screen"
+    ],
+    "Flip 3 (F711) Inner screen": [
+      "Flip 3 (F711) Inner screen"
+    ],
+    "Flip 4 (F721) Inner screen": [
+      "Flip 4 (F721) Inner screen"
+    ],
+    "Flip 5 (F731) Inner screen": [
+      "Flip 5 (F731) Inner screen"
+    ],
+    "Fold C118 (F900) Inner screen": [
+      "Fold C118 (F900) Inner screen"
+    ],
+    "Fold (F900) Outer screen": [
+      "Fold (F900) Outer screen"
+    ],
+    "Fold 2 (F916) Inner screen": [
+      "Fold 2 (F916) Inner screen"
+    ],
+    "Fold 2 (F916) Outer screen": [
+      "Fold 2 (F916) Outer screen"
+    ],
+    "Fold 3 (F926) Inner screen": [
+      "Fold 3 (F926) Inner screen"
+    ],
+    "Fold 3 (F926) Outer screen": [
+      "Fold 3 (F926) Outer screen"
+    ],
+    "Fold 4 (F936) Inner screen": [
+      "Fold 4 (F936) Inner screen"
+    ],
+    "Fold 4 (F936) Outer screen": [
+      "Fold 4 (F936) Outer screen"
+    ],
+    "Fold 5 (F946) Inner screen": [
+      "Fold 5 (F946) Inner screen"
+    ],
+    "Fold 5 (F946) Outer screen": [
+      "Fold 5 (F946) Outer screen"
+    ]
+  },
+  "huawei": {
+    "Mate 40 Pro": [
+      "Huawei Mate 40 Pro",
+      "Mate 40 Pro"
+    ],
+    "Mate 40": [
+      "Huawei Mate 40",
+      "Huawei Mate 40 Pro",
+      "Mate 40"
+    ],
+    "Mate 30": [
+      "Mate 30",
+      "Huawei Mate 30 Pro",
+      "Huawei Mate 30"
+    ],
+    "Mate 30 Pro": [
+      "Mate 30 Pro",
+      "Huawei Mate 30 Pro"
+    ],
+    "Mate 20 X": [
+      "Huawei Mate 20 X",
+      "Mate 20 X"
+    ],
+    "Mate 20 Pro": [
+      "Huawei Mate 20 Pro",
+      "Mate 20 Pro"
+    ],
+    "Huawei Mate 20 RS": [
+      "Huawei Mate 20 RS"
+    ],
+    "Huawei Mate 20": [
+      "Huawei Mate 20"
+    ],
+    "Mate 10 Pro": [
+      "Huawei Mate 10 Pro",
+      "Mate 10 Pro"
+    ],
+    "Mate 9 Pro": [
+      "Mate 9 Pro",
+      "Huawei Mate 9 Pro"
+    ],
+    "Mate RS": [
+      "Huawei Mate RS",
+      "Mate RS"
+    ],
+    "P50 Pro": [
+      "P50 Pro",
+      "Huawei P50 Pro"
+    ],
+    "P50": [
+      "Huawei P50",
+      "P50"
+    ],
+    "P40 Pro Plus": [
+      "P40 Pro Plus",
+      "Huawei P40 Pro Plus"
+    ],
+    "P40 Pro": [
+      "Huawei P40 Pro",
+      "P40 Pro"
+    ],
+    "P40": [
+      "P40",
+      "Huawei P40"
+    ],
+    "P30 Pro": [
+      "P30 Pro",
+      "Huawei P30 pro"
+    ],
+    "P30": [
+      "Huawei P30",
+      "P30"
+    ],
+    "P20 Pro": [
+      "Huawei P20 Pro",
+      "P20 Pro"
+    ],
+    "P9 Plus": [
+      "P9 Plus",
+      "Huawei P9 Plus"
+    ],
+    "Honor Magic 2": [
+      "Huawei Honor Magic 2",
+      "Honor Magic 2"
+    ],
+    "Honor Note 10": [
+      "Honor Note 10",
+      "Huawei Honor Note 10"
+    ],
+    "Honor Note 8": [
+      "Honor Note 8",
+      "Huawei Honor Note 8"
+    ],
+    "Huawei Honor 20": [
+      "Huawei Honor 20"
+    ],
+    "Huawei Honor 20 Lite": [
+      "Huawei Honor 20 Lite"
+    ],
+    "Nova 8 Pro": [
+      "Huawei Nova 8 Pro",
+      "Nova 8 Pro"
+    ],
+    "Nova 8": [
+      "Nova 8",
+      "Huawei Nova 8"
+    ],
+    "Nova 5 Pro": [
+      "Nova 5 Pro",
+      "Huawei Nova 5 Pro"
+    ],
+    "Nova 5": [
+      "Nova 5",
+      "Huawei Nova 5"
+    ],
+    "Nova 7": [
+      "Huawei Nova 7",
+      "Nova 7"
+    ]
+  },
+  "xiaomi": {
+    "Mi 13": [
+      "MI 13",
+      "Xiaomi Mi 13",
+      "Mi 13"
+    ],
+    "Mi 12 Pro": [
+      "MI 12"
+    ],
+    "Mi 12": [
+      "MI 13",
+      "Xiaomi Mi 13",
+      "Mi 13"
+    ],
+    "Mi 11 Pro": [
+      "MI 11 Pro",
+      "Xiaomi Mi 11 Pro",
+      "Mi 11 Pro"
+    ],
+    "Mi 11": [
+      "MI 11",
+      "Mi 11",
+      "Xiaomi Mi 11"
+    ],
+    "K50": [
+      "K50",
+      "Xiaomi K50"
+    ],
+    "K40": [
+      "Xiaomi K40",
+      "K40"
+    ],
+    "K20": [
+      "K20",
+      "Xiaomi K20"
+    ],
+    "Redmi Note 12 Pro": [
+      "Xiaomi Redmi Note 12 Pro",
+      "Redmi Note 12 Pro"
+    ],
+    "Redmi Note 12": [
+      "Redmi Note 12",
+      "Xiaomi Redmi Note 12"
+    ],
+    "Redmi Note 11 Pro": [
+      "Xiaomi Redmi Note 11 Pro",
+      "Redmi Note 11 Pro"
+    ],
+    "Redmi Note 11": [
+      "Xiaomi Redmi Note 11",
+      "Redmi Note 11"
+    ],
+    "Redmi Note 10 Pro": [
+      "Redmi Note 10 Pro",
+      "Xiaomi Redmi Note 10 Pro"
+    ]
+  },
+  "apple": {
+    "iPhone 14 Pro Max": [
+      "iPhone 14 Pro Max"
+    ],
+    "iPhone 14 Pro": [
+      "iPhone 14 Pro"
+    ],
+    "iPhone 14 Plus": [
+      "iPhone 14 Plus"
+    ],
+    "iPhone 14": [
+      "iPhone 14"
+    ],
+    "iPhone 13 Pro Max": [
+      "iPhone 13 Pro Max"
+    ],
+    "iPhone 13 Pro": [
+      "iPhone 13 Pro"
+    ],
+    "iPhone 13": [
+      "iPhone 13"
+    ],
+    "iPhone 13 Mini": [
+      "iPhone 13 Mini"
+    ],
+    "iPhone 12 Pro Max": [
+      "iPhone 12 Pro Max"
+    ],
+    "iPhone 12 Pro": [
+      "iPhone 12 Pro"
+    ],
+    "iPhone 12 Mini": [
+      "iPhone 12 Mini"
+    ],
+    "iPhone 12": [
+      "iPhone 12"
+    ],
+    "iPhone 11 Pro Max": [
+      "iPhone 11 Pro Max"
+    ],
+    "iPhone 11 Pro": [
+      "iPhone 11 Pro"
+    ],
+    "iPhone 11": [
+      "iPhone 11"
+    ],
+    "iPhone XS Max": [
+      "iPhone Xs Max"
+    ],
+    "iPhone XS": [
+      "iPhone XS"
+    ],
+    "iPhone X": [
+      "iPhone X"
+    ],
+    "iPhone XR": [
+      "iPhone XR"
+    ],
+    "iPhone SE 2020": [
+      "iPhone SE 2020",
+      "iPhone 8 / SE 2020"
+    ],
+    "iPhone 8 Plus": [
+      "iPhone 8 Plus",
+      "iPhone 8+"
+    ],
+    "iPhone 8": [
+      "iPhone 8",
+      "iPhone 8 / SE 2020"
+    ],
+    "iPhone 7 Plus": [
+      "iPhone 7+",
+      "iPhone 7 Plus"
+    ],
+    "iPhone 7": [
+      "iPhone 7",
+      "casse iPhone 7"
+    ],
+    "iPhone 6S Plus": [
+      "iPhone 6S Plus",
+      "iPhone 6s+"
+    ],
+    "iPhone 6S": [
+      "iPhone 6S"
+    ],
+    "iPhone 6 Plus": [
+      "casse iPhone 6 Plus",
+      "iPhone 6+",
+      "iPhone 6 Plus"
+    ],
+    "iPhone 5": [
+      "iPhone 5"
+    ],
+    "iPhone 5C": [
+      "iPhone 5/5C/5S/SE",
+      "iPhone 5C"
+    ],
+    "iPhone 5S": [
+      "iPhone 5/5C/5S/SE",
+      "iPhone 5S"
+    ],
+    "iPhone SE": [
+      "iPhone 5/5C/5S/SE",
+      "iPhone SE"
+    ],
+    "iPhone 4 / 4s": [
+      "iPhone 4/4S",
+      "iPhone 4 / 4s"
+    ],
+    "iWatch Serie 1 / 2 / 3 / 4": [
+      "iWatch Serie 1 / 2 / 3 / 4"
+    ],
+    "iWatch Serie 5 / 6": [
+      "iWatch Serie 5 / 6"
+    ],
+    "iPad Pro 12.9 2022": [
+      "iPad Pro 12.9 2022",
+      "iPad Pro 12.9 2022 (6e Gen)"
+    ],
+    "iPad Pro 12.9 2021": [
+      "iPad Pro 12.9",
+      "iPad Pro 12.9 2021",
+      "iPad Pro 12.9 2021 (5e Gen)"
+    ],
+    "iPad Pro 12.9 2020": [
+      "iPad Pro 12.9 2020",
+      "iPad Pro 12.9 2020 (4e Gen)"
+    ],
+    "iPad Pro 12.9 2018": [
+      "iPad Pro 12.9 2018",
+      "iPad Pro 12.9 2018 (3e Gen)"
+    ],
+    "iPad Pro 12.9 2017": [
+      "iPad Pro 12.9 2017",
+      "iPad Pro 12.9 2017 (2e Gen)"
+    ],
+    "iPad Pro 12.9 2015": [
+      "iPad Pro 12.9 2015",
+      "iPad Pro 12.9 2015 (1e Gen)"
+    ],
+    "iPad Pro 11 - (2018/2019/2020)": [
+      "iPad Pro 11",
+      "iPad Pro 11/18/19/20",
+      "iPad Pro 11 (4e Gen)",
+      "iPad Pro 11 - (2018/2019/2020)"
+    ],
+    "iPad Pro 10.9 Air 4": [
+      "iPad Pro 10.9 Air 4",
+      "iPad Pro 10.9 Air4"
+    ],
+    "iPad Pro 10.5": [
+      "iPad Pro 10.5",
+      "iPad Pro 10.5 2017 (1e Gen)"
+    ],
+    "iPad 10.2 2022/ iPad 10": [
+      "iPad 10.2 2022/ iPad 10",
+      "iPad 2022 (10e Gen)"
+    ],
+    "iPad 10.2 2021/ iPad 9": [
+      "iPad 2021 (9e Gen)",
+      "iPad 10.2/7/8/9",
+      "iPad 10.2 2021/ iPad 9"
+    ],
+    "iPad 10.2 2020/ iPad 8": [
+      "iPad 10.2/7/8/9",
+      "iPad 2020 (8e Gen)",
+      "iPad 10.2 2020/ iPad 8"
+    ],
+    "iPad 10.2 2019/ iPad 7": [
+      "iPad 10.2 2019/ iPad 7",
+      "iPad 10.2/7/8/9",
+      "iPad 2019 (7e Gen)"
+    ],
+    "iPad Mini 4": [
+      "iPad Mini 4"
+    ],
+    "iPad Mini 2019": [
+      "iPad Mini 5",
+      "iPad Mini 2019"
+    ],
+    "iPad Mini 6": [
+      "iPad Mini 6"
+    ],
+    "iPad Air 2/ Air 6": [
+      "iPad Air2/6",
+      "iPad Air 2",
+      "iPad Air 2/ Air 6",
+      "iPad Air 4",
+      "iPad Air 2 / 3 / 4"
+    ],
+    "iPad Air/ Air 5": [
+      "iPad Air/5",
+      "iPad Air/ Air 5"
+    ],
+    "iPad Pro 9.7": [
+      "iPad Pro 9.7 2016 (1e Gen)",
+      "iPad Pro 9.7"
+    ]
+  }
+}

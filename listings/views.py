@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
+from django.views.decorators.http import require_http_methods
 
 # Landing views
 
@@ -48,30 +49,33 @@ def user_registration(request):
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .forms import StoreConfigurationForm
+from .forms import RepairStoreForm
 from django.contrib.auth.models import User
+from .models import UniqueReference
+from .signals import UniqueReference, create_new_unique_reference
+
 
 @login_required
 def complete_store_configuration(request):
-    # Récupérez le nom d'utilisateur depuis la session
     registered_username = request.session.get('registered_username', None)
 
     if request.method == 'POST':
-        form = StoreConfigurationForm(request.POST)
+        form = RepairStoreForm(request.POST)
         if form.is_valid():
-            # Enregistrez la configuration du magasin
             store_configuration = form.save(commit=False)
 
-            # Assurez-vous que l'utilisateur est bien enregistré
             if registered_username:
-                # Définissez le champ user en fonction de l'utilisateur connecté
                 store_configuration.user = User.objects.get(username=registered_username)
                 store_configuration.save()
 
-            # Redirigez vers le tableau de bord
-            return redirect('dashboard')
+                # Maintenant que le RepairStore est sauvegardé, générez les références uniques
+                for _ in range(65):  # Générez 65 références uniques par défaut
+                    create_new_unique_reference(store_configuration)
+
+                return redirect('dashboard')
+
     else:
-        form = StoreConfigurationForm()
+        form = RepairStoreForm()
 
     return render(request, 'complete_store_configuration.html', {'form': form})
 
@@ -110,3 +114,105 @@ from django.shortcuts import render
 def dashboard(request):
     # Vue pour le tableau de bord après la connexion
     return render(request, 'dashboard.html')
+
+
+def page_attente(request):
+    # Vue pour le tableau de bord après la connexion
+    return render(request, 'page_attente.html')
+
+
+
+
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from django.urls import reverse
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.views.decorators.http import require_http_methods
+from .models import ScreenBrand, UniqueReference, BrokenScreen, ScreenModel
+
+@method_decorator(login_required, name='dispatch')
+@method_decorator(require_http_methods(['GET', 'POST']), name='dispatch')
+class CreateBrokenScreenView(View):
+    template_name = 'create_brokenscreen.html'
+
+    def get(self, request, *args, **kwargs):
+        context = {
+            'brand_list': ScreenBrand.objects.all(),
+            'ref_unique_list': UniqueReference.objects.filter(repairstore=request.user.repairstore, is_used=False)
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        screenbrand_id = request.POST.get('screenbrand')
+        screenmodel_id = request.POST.get('screenmodel')
+        uniquereference_id = request.POST.get('uniquereference')
+
+        if screenbrand_id and screenmodel_id and uniquereference_id:
+            screenbrand = ScreenBrand.objects.get(pk=screenbrand_id)
+            screenmodel = ScreenModel.objects.get(pk=screenmodel_id)
+            uniquereference = UniqueReference.objects.get(pk=uniquereference_id)
+
+            broken_screen = BrokenScreen.objects.create(
+                repairstore=request.user.repairstore,
+                uniquereference=uniquereference,
+                screenbrand=screenbrand,
+                screenmodel=screenmodel,
+                is_used=False
+            )
+
+            # Marquer la référence unique comme utilisée
+            uniquereference.mark_as_used()
+
+            return HttpResponseRedirect(reverse('page_attente'))
+
+        # Si les données du formulaire ne sont pas valides, vous pouvez ajouter un code ici pour gérer cela.
+        # Par exemple, renvoyer un message d'erreur à l'utilisateur.
+
+        context = {
+            'brand_list': ScreenBrand.objects.all(),
+            'ref_unique_list': UniqueReference.objects.filter(repairstore=request.user.repairstore, is_attributed=False)
+        }
+        return render(request, self.template_name, context)
+
+
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import get_object_or_404
+from .models import ScreenBrand, ScreenModel  # Assurez-vous d'importer vos modèles
+
+import json
+import logging
+from django.http import HttpResponse, Http404
+from django.shortcuts import render
+
+logger = logging.getLogger(__name__)
+
+def htmx_get_modeles_from_brand(request):
+    if request.GET.get('brand_field'):
+        with open('/Users/rachidnaji/PythonProject/projets/PhoneManager/scrap_app/screen_modele_data.json') as json_file:
+            data = json.load(json_file)
+
+        brand_ref = request.GET.get('brand_field')
+        logger.debug(f"Brand reference: {brand_ref}")
+
+        modeles_list = data.get(brand_ref, [])
+        logger.debug(f"Modeles list: {modeles_list}")
+
+        if modeles_list:
+            modele_list_from_brand = '<option selected disabled>Choisir</option>'
+            
+            for model in modeles_list:
+                modele_list_from_brand += f'<option value="{model}">{model}</option>'
+
+            logger.debug(f"Model list from brand: {modele_list_from_brand}")
+
+            return HttpResponse(modele_list_from_brand)
+        else:
+            logger.warning("La marque n'a pas été trouvée dans le fichier JSON.")
+            raise Http404("La marque n'a pas été trouvée dans le fichier JSON.")
+
+    logger.debug("Aucune référence de marque n'a été fournie.")
+    return HttpResponse()
+
+

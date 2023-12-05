@@ -1,0 +1,89 @@
+{% extends "base_webapp.html" %}
+{% load static %}
+
+{% block title %}Ajouter écran{% endblock title %}
+
+{% block page_title %}📲 Ajouter un écran{% endblock page_title %}
+
+{% block page_content %}
+<div class="row px-3 mt-md-3">
+    <div class="col-12 col-md-8 col-lg-5">
+        <form class="bg-white border px-3 py-4 p-md-5 rounded" method="post" id="form-create-item">
+            {% csrf_token %}
+            <div class="row mb-4">
+                <div class="col-12">
+                    <label class="mb-3 fs-5">🏷 Référence unique</label>
+                    <input autocomplete="off" class="form-control mb-3" name="unique_ref_field" id="unique_ref_field" value="" required>
+                    <a class="btn btn-sm btn-outline-blue float-end" data-bs-toggle="modal" data-bs-target="#RefUniqueModal">Mes étiquettes</a>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <label class="mb-3 fs-5">📱 Marque</label>
+                    <select class="form-select" id="brand_field" name="brand_field" hx-get="{% url 'get_modeles_from_brand' %}" hx-target="#model_field" hx-indicator=".htmx-indicator" required>
+                        <option selected disabled>Choisir</option>
+                        {% for brand in brand_list %}
+                            <option value="{{ brand }}">{{ brand }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-12">
+                    <label class="mb-3 fs-5">📱 Modèle</label>
+                    <select class="form-select" id="model_field" name="model_field" aria-label="" required>
+                        <option selected disabled>Choisir</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-blue">Ajouter l'écran</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock page_content %}
+
+{% block modal %}
+<!-- Début RefUniqueModal -->
+<div class="modal fade" id="RefUniqueModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-bleu-fonce text-center">
+                <h5 class="modal-title" id="exampleModalLabel">Choisir une réference unique</h5>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    {% for ref_unique in ref_unique_list %}
+                        <div class="col-6">
+                            <div class="card border m-1">
+                                <div class="card-body text-center ref-unique" data-ref-unique="{{ ref_unique.ref_unique }}" style="cursor:pointer;">
+                                    <p class="mb-0">{{ ref_unique.ref_unique }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fin RefUniqueModal -->
+{% endblock modal %}
+
+{% block js %}
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        var refUniqueElements = document.querySelectorAll('.ref-unique');
+        refUniqueElements.forEach(function (element) {
+            element.addEventListener('click', function () {
+                document.getElementById('unique_ref_field').value = element.getAttribute('data-ref-unique');
+                $('#RefUniqueModal').modal('toggle');
+            });
+        });
+    });
+</script>
+{% endblock js %}

@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from .views import landing, legal, user_registration, complete_store_configuration, dashboard, login_view
+from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand
+
+
 from django.contrib.auth.views import LoginView
 
 app_name = 'listings'
@@ -25,4 +27,13 @@ urlpatterns = [
 
     # URL de connexion alternative en utilisant une vue personnalisée (login_view)
     # path('login/', login_view, name='login'),
+
+    # URL attente
+    path('page_attente/', page_attente, name='page_attente'),
+
+    path('create_brokenscreen/', CreateBrokenScreenView.as_view(), name='create_brokenscreen'),
+
+    path('get_modeles_from_brand/', htmx_get_modeles_from_brand, name='get_modeles_from_brand'),
+
+
 ]

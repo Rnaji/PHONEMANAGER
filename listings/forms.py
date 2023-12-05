@@ -1,7 +1,7 @@
 # dans votre_app/forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import StoreConfiguration
+from .models import RepairStore
 from django.contrib.auth.models import User
 
 class UserRegistrationForm(UserCreationForm):
@@ -13,9 +13,9 @@ class UserRegistrationForm(UserCreationForm):
         # Champs à inclure dans le formulaire et leur ordre
         fields = ['username', 'email', 'password1', 'password2']
 
-class StoreConfigurationForm(forms.ModelForm):
+class RepairStoreForm(forms.ModelForm):
     class Meta:
-        model = StoreConfiguration
+        model = RepairStore
         # Inclure tous les champs du modèle, sauf 'user'
         fields = '__all__' 
         exclude = ['user']
