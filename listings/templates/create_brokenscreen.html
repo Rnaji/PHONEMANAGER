@@ -44,15 +44,13 @@
         </form>
     </div>
 </div>
-{% endblock page_content %}
 
-{% block modal %}
 <!-- Début RefUniqueModal -->
 <div class="modal fade" id="RefUniqueModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-bleu-fonce text-center">
-                <h5 class="modal-title" id="exampleModalLabel">Choisir une réference unique</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Choisir une référence unique</h5>
                 <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -60,8 +58,8 @@
                     {% for ref_unique in ref_unique_list %}
                         <div class="col-6">
                             <div class="card border m-1">
-                                <div class="card-body text-center ref-unique" data-ref-unique="{{ ref_unique.ref_unique }}" style="cursor:pointer;">
-                                    <p class="mb-0">{{ ref_unique.ref_unique }}</p>
+                                <div class="card-body text-center ref-unique" data-ref-unique="{{ ref_unique.value }}" style="cursor:pointer;">
+                                    <p class="mb-0">{{ ref_unique.value }}</p>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +70,7 @@
     </div>
 </div>
 <!-- Fin RefUniqueModal -->
-{% endblock modal %}
+{% endblock page_content %}
 
 {% block js %}
 <script type="text/javascript">

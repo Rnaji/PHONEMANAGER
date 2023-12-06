@@ -1,7 +1,9 @@
-# dans votre_app/models.py
+# listings/models.py
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+import string
+import random
 
 class RepairStore(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -14,13 +16,25 @@ class RepairStore(models.Model):
     phone_number = models.CharField(max_length=15, verbose_name="Numéro de téléphone")
     date_joined = models.DateTimeField(default=timezone.now, blank=True, null=True)
 
-
     def __str__(self):
         return f"Configuration du magasin - {self.company_name}"
 
+    def get_unused_ref_unique_list(self):
+        current_references_count = UniqueReference.objects.filter(repairstore=self, is_used=False).count()
+        references_to_generate = 65 - current_references_count
 
-import string
-import random
+        for _ in range(references_to_generate):
+            self.create_new_unique_reference()
+
+        return UniqueReference.objects.filter(repairstore=self, is_used=False)
+
+    def create_new_unique_reference(self):
+        while True:
+            new_reference_value = UniqueReference.generate_unique_reference_value()
+
+            if not UniqueReference.objects.filter(value=new_reference_value).exists():
+                UniqueReference.objects.create(repairstore=self, value=new_reference_value)
+                break
 
 class UniqueReference(models.Model):
     repairstore = models.ForeignKey(RepairStore, on_delete=models.CASCADE)
@@ -43,6 +57,7 @@ class UniqueReference(models.Model):
         characters = string.ascii_letters + string.digits
         unique_value = ''.join(random.choice(characters) for _ in range(6))
         return unique_value
+
 
 
 
