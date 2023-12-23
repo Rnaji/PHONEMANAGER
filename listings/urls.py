@@ -33,7 +33,7 @@ urlpatterns = [
 
     path('create_brokenscreen/', CreateBrokenScreenView.as_view(), name='create_brokenscreen'),
 
-    path('get_modeles_from_brand/', htmx_get_modeles_from_brand, name='get_modeles_from_brand'),
+    path('htmx_get_modeles_from_brand/', htmx_get_modeles_from_brand, name='htmx_get_modeles_from_brand'),
 
     path('get_unused_ref_unique_list/', get_unused_ref_unique_list_view, name='get_unused_ref_unique_list'),
 ]

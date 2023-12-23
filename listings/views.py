@@ -10,14 +10,18 @@ from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
 from .models import ScreenBrand, UniqueReference, BrokenScreen, ScreenModel
-from .forms import UserRegistrationForm, RepairStoreForm
+from .forms import UserRegistrationForm, RepairStoreForm, CreateBrokenScreenForm
 from .signals import create_new_unique_reference
 import json
 import logging
+import requests
 
 
 # Configuration du système de journalisation
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
+
+
 
 # Landing views
 
@@ -95,54 +99,69 @@ def dashboard(request):
 def page_attente(request):
     return render(request, 'page_attente.html')
 
-# Create Broken Screen view
 
+
+# Create Broken Screen view
 @method_decorator(login_required, name='dispatch')
 @method_decorator(require_http_methods(['GET', 'POST']), name='dispatch')
-
 class CreateBrokenScreenView(View):
     template_name = 'create_brokenscreen.html'
 
     def get(self, request, *args, **kwargs):
+        form = CreateBrokenScreenForm()
+
         context = {
             'brand_list': ScreenBrand.objects.all(),
-            'ref_unique_list': UniqueReference.objects.filter(repairstore=request.user.repairstore, is_used=False)
+            'ref_unique_list': UniqueReference.objects.filter(repairstore=request.user.repairstore, is_used=False),
+            'form': form,
         }
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
         try:
-            screenbrand_id = request.POST.get('screenbrand')
-            screenmodel_id = request.POST.get('screenmodel')
-            uniquereference_id = request.POST.get('uniquereference')
+            form = CreateBrokenScreenForm(request.POST)
 
-            if screenbrand_id and screenmodel_id and uniquereference_id:
-                screenbrand = get_object_or_404(ScreenBrand, pk=screenbrand_id)
-                screenmodel = get_object_or_404(ScreenModel, pk=screenmodel_id)
-                uniquereference = get_object_or_404(UniqueReference, pk=uniquereference_id)
+            if form.is_valid():
+                cleaned_data = form.cleaned_data
+
+                # Obtenez les instances de modèles à partir des chaînes
+                screenbrand = ScreenBrand.objects.get(screenbrand=cleaned_data['brand_field'])
+                screenmodel = ScreenModel.objects.get(screenmodel=cleaned_data['model_field'])
+                uniquereference = UniqueReference.objects.get(pk=cleaned_data['unique_ref_field'])
 
                 broken_screen = BrokenScreen.objects.create(
                     repairstore=request.user.repairstore,
                     uniquereference=uniquereference,
                     screenbrand=screenbrand,
                     screenmodel=screenmodel,
-                    is_used=False
+                    # is_used n'est pas un argument lors de la création
                 )
 
-                # Marquer la référence unique comme utilisée
-                uniquereference.mark_as_used()
+                # Mettez à jour le champ is_used de la référence unique après la création de l'instance
+                uniquereference.is_used = True  # ou False, en fonction de la logique de votre application
+                uniquereference.save()
+
+                # Ajoutez des instructions print pour afficher les détails de l'écran cassé
+                print("Broken Screen Details:", broken_screen.__dict__)
+                logging.info("Broken Screen Details: %s", broken_screen.__dict__)
 
                 return HttpResponseRedirect(reverse('page_attente'))
 
             context = {
                 'brand_list': ScreenBrand.objects.all(),
-                'ref_unique_list': UniqueReference.objects.filter(repairstore=request.user.repairstore, is_used=False)
+                'ref_unique_list': UniqueReference.objects.filter(repairstore=request.user.repairstore, is_used=False),
+                'form': form,
             }
             return render(request, self.template_name, context)
 
         except Exception as e:
-            logger.error(f"Erreur dans la vue CreateBrokenScreenView: {e}")
+            print(f"Erreur dans la vue CreateBrokenScreenView: {e}")
+            logging.error("Erreur dans la vue CreateBrokenScreenView: %s", e)
             return JsonResponse({'error': 'Une erreur s\'est produite'}, status=500)
+
+
+
+
 
 # Autres vues (non modifiées)
 
@@ -160,19 +179,27 @@ def get_unused_ref_unique_list_view(request):
     return render(request, 'votre_template.html', context)
 
 # Vue pour obtenir les modèles à partir de la marque (HTMX)
+
+    
+@require_GET
 def htmx_get_modeles_from_brand(request):
     try:
+        logger.info("Vue Django appelée !")
+
         if not request.GET.get('brand_field'):
             raise ValueError("Aucune référence de marque n'a été fournie.")
 
+        logger.debug("Requête reçue pour récupérer les modèles.")
+
+        # Chargez les données depuis le fichier JSON ou votre source de données
         with open('/Users/rachidnaji/PythonProject/projets/PhoneManager/scrap_app/screen_modele_data.json') as json_file:
             data = json.load(json_file)
 
         brand_ref = request.GET.get('brand_field')
-        logger.debug(f"Brand reference: {brand_ref}")
+        logger.info(f"Brand reference: {brand_ref}")
 
         modeles_list = data.get(brand_ref, [])
-        logger.debug(f"Modeles list: {modeles_list}")
+        logger.info(f"Modeles list: {modeles_list}")
 
         if not modeles_list:
             raise ValueError("La marque n'a pas été trouvée dans le fichier JSON.")
@@ -181,7 +208,7 @@ def htmx_get_modeles_from_brand(request):
         for model in modeles_list:
             modele_list_from_brand += f'<option value="{model}">{model}</option>'
 
-        logger.debug(f"Model list from brand: {modele_list_from_brand}")
+        logger.info(f"Model list from brand: {modele_list_from_brand}")
 
         return HttpResponse(modele_list_from_brand)
 

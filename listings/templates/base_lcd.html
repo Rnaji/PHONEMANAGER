@@ -1,45 +1,44 @@
 {% load static %}
 <!doctype html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}"/>
-		<link rel="stylesheet" href="{% static 'bootstrap-5.2.3-dist/css/bootstrap.min.css' %}">
-		<link rel="stylesheet" href="{% static 'styles.css' %}">
-		{% block css %}{% endblock css %}
-		<title>PRO PHONE MANAGER - {% block title %}{% endblock title%}</title>
-	</head>
-	<body class="pb-5">
-		{% block navbar %}{% endblock navbar %}
-		
-		{% if messages %}
-		<div class="container-fluid mt-0 mb-3 p-0">
-			<div class="row m-0 p-0">
-				<div class="col-12 m-0 p-0">
-					{% for message in messages %}
-					<div class="alert {{ message.tags }} m-0 shadow-sm" role="alert">
-						<p class="fs-5 fw-bold text-center m-0">{{ message | safe }}</p>
-					</div>
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-		{% endif %}
-		
-		{% block content %}{% endblock content %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-5.2.3-dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    {% block css %}{% endblock css %}
+    <title>PRO PHONE MANAGER - {% block title %}{% endblock title%}</title>
+</head>
+<body class="pb-5">
+    {% block navbar %}{% endblock navbar %}
+    
+    {% if messages %}
+        <div class="container-fluid mt-0 mb-3 p-0">
+            <div class="row m-0 p-0">
+                <div class="col-12 m-0 p-0">
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }} m-0 shadow-sm" role="alert">
+                            <p class="fs-5 fw-bold text-center m-0">{{ message | safe }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    {% block content %}{% endblock content %}
 
-		<div class="container-fluid fixed-bottom bg-blue py-2">
-			<div class="container py-0 my-0">
-				{% block footer %}{% endblock footer %}
-			</div>
-		</div>
-		
-		{% block modal %}{% endblock modal %}
-		<script src="{% static 'popper.min.js' %}"></script>
-		<script src="{% static 'bootstrap-5.2.3-dist/js/bootstrap.min.js' %}"></script>
-		<script src="{% static 'htmx.min.js' %}"></script>
-		<script src="{% static 'jquery-3.6.3.min.js' %}"></script>
-		{% block js %}{% endblock js %}
-	</body>
+    <div class="container-fluid fixed-bottom bg-blue py-2">
+        <div class="container py-0 my-0">
+            {% block footer %}{% endblock footer %}
+        </div>
+    </div>
+    
+    {% block modal %}{% endblock modal %}
+    <script src="{% static 'jquery-3.6.3.min.js' %}"></script>
+    <script src="https://unpkg.com/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    {% block js %}{% endblock js %}
+</body>
 </html>

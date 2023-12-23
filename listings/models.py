@@ -80,7 +80,7 @@ class ScreenModel(models.Model):
         ordering = ['screenbrand', 'screenmodel']
 
     def __str__(self):
-        return f"{self.screenbrand} {self.screenmodel}"
+        return f"{self.screenbrand.screenbrand} {self.screenmodel}"
     
 
 class Recycler(models.Model):
@@ -130,6 +130,18 @@ class BrokenScreen(models.Model):
     screenbrand = models.ForeignKey(ScreenBrand, on_delete=models.CASCADE)
     screenmodel = models.ForeignKey(ScreenModel, on_delete=models.CASCADE)
     recycler_prices = models.ManyToManyField(RecyclerPricing, related_name='broken_screens')
+    is_diag_done = models.BooleanField(default=False)
+    grade = models.CharField(max_length=20, choices=[
+        ('A', 'A'),
+        ('B', 'B'),
+        ('C', 'C'),
+        ('D', 'D'),
+        ('E', 'E'),
+        ('F', 'F'),
+        ('G', 'G'),
+        ('Fully Broken', 'Fully Broken'),
+        ('Aftermarket', 'Aftermarket')
+    ])
     is_attributed = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
 
