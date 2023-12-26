@@ -1,20 +1,20 @@
 {% extends "base_webapp.html" %}
 {% load static %}
 
-{% block title %}Diagnostic {{ item.ref_unique }}{% endblock title %}
+{% block title %}Diagnostic {{ broken_screen.ref_unique_list }}{% endblock title %}
 
-{% block page_title %}📱 Diagnostic écran <span class="badge rounded-pill float-end font-monospace fs-6 text-bg-{% if not item.is_diag_done %}danger{% elif item.is_diag_done and not item.quotation %}warning{% elif item.is_diag_done and item.quotation %}success{% else %}danger{% endif %}">{{ item.ref_unique }}</span>
+{% block page_title %}📱 Diagnostic écran <span class="badge rounded-pill float-end font-monospace fs-6 text-bg-{% if not broken_screen.is_diag_done %}danger{% elif broken_screen.is_diag_done and not broken_screen.quotation %}warning{% elif broken_screen.is_diag_done and broken_screen.quotation %}success{% else %}danger{% endif %}">{{ broken_screen.ref_unique_list }}</span>
 {% endblock page_title %}
 
 {% block page_content %}
 <div class="row mb-4 md-mb-5 mb-lg-5">
 	<div class="col-12 col-md-9 col-lg-8 mx-auto">
 		<ul class="list-group shadow-sm">
-			<li class="list-group-item fs-5 fw-bold bg-blue py-3">{{ question|default:"L’écran est il original ?"|safe }}</li>
-			<li class="list-group-item fs-5 fw-bold py-5">
+			<li class="list-group-broken_screen fs-5 fw-bold bg-blue py-3">{{ question|default:"L’écran est il original ?"|safe }}</li>
+			<li class="list-group-broken_screen fs-5 fw-bold py-5">
                 <form method="post">
                     {% csrf_token %}
-                    <input type="hidden" name="item" id="item" value="{{ item.ref_unique }}">
+                    <input type="hidden" name="broken_screen" id="broken_screen" value="{{ broken_screen.ref_unique_list }}">
                     <input type="hidden" name="qid" id="qid" value="{{ qid|default:1 }}">
                     <div class="d-grid gap-2 col-10 col-lg-6 mx-auto">
                         <div class="btn-group btn-group-lg" role="group" aria-label="Basic radio toggle button group">
