@@ -1,0 +1,108 @@
+{% extends "base_webapp.html" %}
+{% load static %}
+
+{% block title %}Stock {% if brand %}{{ brand.screenmodel|title }}{% elif recycler %}{{ recycler.company_name}}{% else %}Total{% endif %}{% endblock title %}
+
+{% block page_title %}
+<span>📦 Stock</span>
+<span>
+    <a class="btn btn-sm btn-outline-blue float-end" href="{% url 'create_brokenscreen' %}">
+        <span class="me-2">📲</span>
+        <span>Ajouter un écran</span>
+    </a>
+</span>
+{% endblock page_title %}
+
+{% block page_content %}
+    <!-- DEBUT Stock & Opportunités -->
+    <div class="row mb-4">
+        <!-- DEBUT  Stock -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <ul class="list-group font-monospace shadow-sm">
+                <li class="list-group-item logo-blue fs-5">📦 Stock {% if brand %}{{ brand.screenmodel|title }}{% elif recycler %}{{ recycler|title }}{% else %}total{% endif %}</li>
+                <li class="list-group-item fs-6">
+                    <span>Nombre d'écran</span>
+                    <span class="float-end">{{ items_count }}</span>
+                </li>
+                <li class="list-group-item fs-6">
+                    <span>Valeur estimée</span>
+                    <span class="float-end">{{ items_value }} €</span>
+                </li>
+                {% if request.resolver_match.url_name == 'dashboard' %}
+                    <li class="list-group-item text-end">
+                        <a href="{% url 'stock_all' %}" class="btn btn-sm btn-outline-blue{% if items_count == 0 %} disabled{% endif %}">Voir en détail</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <!-- Item table -->
+    <div class="row mb-4 md-mb-5 mb-lg-5">
+        <div class="mb-1 mb-md-3 fs-6 text-blue">Cliquez sur une référence pour voir le détail</div>
+        <!-- smartphone -->
+        <div class="col-12 d-block d-md-none mb-4">
+            {% for broken_screen in broken_screens %}
+            <ul class="list-group mb-2 font-monospace">
+                <li class="list-group-item p-2 p-md-2 p-lg-3">
+                    <div class="row mb-1">
+                        <div class="col-9">
+                            <span>📆</span>
+                            <span class="fs-6">{{ broken_screen.date_joined|date:'d/m/Y' }}</span>
+                        </div>
+                        <div class="col-3 text-end">
+                            <span class="badge rounded-pill float-end text-bg-{% if not broken_screen.is_diag_done %}danger{% elif broken_screen.is_diag_done and not broken_screen.price %}warning{% elif broken_screen.is_diag_done and broken_screen.price %}success{% else %}danger{% endif %}">{{ broken_screen.uniquereference }}</span>
+                        </div>
+                    </div>
+                    <div class="row mb-1">
+                        <div class="col-8">
+                            <span>{{ broken_screen.screenmodel.screenbrand.screenbrand|title }} {{ broken_screen.screenmodel.screenmodel }}</span>
+                        </div>
+                        <div class="col-4 text-end">
+                            <span>{% if broken_screen.grade %}Grade {{ broken_screen.grade }}{% else %}<span>🔎</span> ❓{% endif %}</span>	
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <span>{% if broken_screen.price %}{{ broken_screen.price.recycler.company_name }}{% else %}<span>👨‍🔧</span> ❓{% endif %}</span>	
+                        </div>
+                        <div class="col-4 text-end">
+                            <span>{% if broken_screen.price %}{{ broken_screen.price.price }} € {% else %}<span>💰</span> ❓{% endif %}</span>	
+                        </div>
+                    </div>
+                    <a href="{% url 'page_attente' %}" class="stretched-link"></a>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+        <!-- laptop -->
+        <div class="col-12 d-none d-md-block col-lg-10 mb-4">
+            {% for broken_screen in broken_screens %}
+            <ul class="list-group mb-2 fs-6 font-monospace">
+                <li class="list-group-item px-md-1 px-lg-2">
+                    <div class="row">
+                        <div class="col-md-1 text-start">
+                            <span>{{ broken_screen.date_joined|date:'d/m' }}</span>
+                        </div>
+                        <div class="col-md-1 text-start">
+                            <span class="badge rounded-pill font-monospace bg-success">{{ broken_screen.uniquereference }}</span>
+                        </div>
+                        <div class="col-md-3 text-start">
+                            <span>{{ broken_screen.screenmodel.screenbrand.screenbrand|title }} {{ broken_screen.screenmodel.screenmodel }}</span>
+                        </div>
+                        <div class="col-md-2 text-start">
+                            <span>{% if broken_screen.grade %}{{ broken_screen.grade }}{% else %}<span>🔎</span> ❓{% endif %}</span>	
+                        </div>
+                        <div class="col-md-3 text-start">
+                            <span>{% if broken_screen.price %}{{ broken_screen.recycler }}{% else %}👨‍🔧 ❓{% endif %}</span>
+                        </div>
+                        <div class="col-md-2 text-end">
+                            <span>{% if broken_screen.price %}{{ broken_screen.price}} € {% else %}<span>💰</span> ❓{% endif %}</span>	
+                        </div>
+                    </div>
+                    <a href="{% url 'page_attente' %}" class="stretched-link"></a>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock page_content %}

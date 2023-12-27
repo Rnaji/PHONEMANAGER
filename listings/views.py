@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http40
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
-from .models import ScreenBrand, UniqueReference, BrokenScreen, ScreenModel
+from .models import ScreenBrand, UniqueReference, BrokenScreen, ScreenModel, RecyclerPricing, Recycler
 from .forms import UserRegistrationForm, RepairStoreForm, CreateBrokenScreenForm
 from .signals import create_new_unique_reference
 import json
@@ -92,15 +92,6 @@ def login_view(request):
         form = AuthenticationForm()
 
     return render(request, 'login.html', {'form': form})
-
-# Dashboard view
-
-def dashboard(request):
-    return render(request, 'dashboard.html')
-
-def page_attente(request):
-    return render(request, 'page_attente.html')
-
 
 
 # Create Broken Screen view
@@ -194,12 +185,11 @@ def diagnostic(request, ref_unique_list):
     # Assurez-vous d'obtenir l'instance BrokenScreen correcte
     broken_screen = BrokenScreen.objects.get(uniquereference__value=ref_unique_list)
 
-
-    # Si le diagnostic est déjà effectué, renvoyez à la page détail
+    # Si le diagnostic est déjà effectué, renvoyez à la page quotation
     if broken_screen.is_diag_done:
         message_text = 'Le diagnostic a déjà été effectué'
         messages.add_message(request, messages.ERROR, message_text)
-        return redirect('page_attente', ref_unique_list=broken_screen.uniquereference.value)
+        return redirect('quotation', ref_unique_list=broken_screen.uniquereference.value)
 
     # Définir le jeu de question oled ou non oled
     if broken_screen.screenmodel.is_oled:
@@ -225,56 +215,216 @@ def diagnostic(request, ref_unique_list):
     elif request.method == "POST":
         qid = int(request.POST['qid'])
         la_reponse = request.POST['la_reponse']
-    if la_reponse == 'oui':
-        diag_response = True
-        la_suite = questions_set[qid][2]
-    elif la_reponse == 'non':
-        diag_response = False
-        la_suite = questions_set[qid][3]
-    else:
-        raise Http404()
-
-    # Enregistrer question et réponse
-    if qid not in range(1, 11):
-        raise Http404()
-    else:
-        setattr(broken_screen, f'diag_question_{qid}', questions_set[qid][1])
-        setattr(broken_screen, f'diag_response_{qid}', diag_response)
-
-    broken_screen.save()
-
-    # Redirection vers la question suivante
-    if isinstance(la_suite, int):
-        print("La suite est de type int.")
-        template = 'diagnostic.html'
-        context = {
-            'qid': la_suite,
-            'item': broken_screen,
-            'question_number': questions_set[la_suite][0],
-            'question': questions_set[la_suite][1],
-        }
-        return render(request, template, context)
-
-    elif isinstance(la_suite, str):
-        if la_suite in ["fin du diag"]:
-            # Déterminez le jeu de questions en fonction du type d'écran
-            if broken_screen.screenmodel.is_oled:
-                grade = broken_screen.attribuer_grade_oled()
-            else:
-                grade = broken_screen.attribuer_grade_non_oled()
-
-            print(f"Grade attribué : {grade}")
-            broken_screen.grade = grade
-
-            broken_screen.is_diag_done = True
-            broken_screen.save()
-            messages.add_message(request, messages.SUCCESS, "Diagnostic terminé avec succès !")
-            return redirect('page_attente')
+        if la_reponse == 'oui':
+            diag_response = True
+            la_suite = questions_set[qid][2]
+        elif la_reponse == 'non':
+            diag_response = False
+            la_suite = questions_set[qid][3]
         else:
             raise Http404()
 
+        # Enregistrer question et réponse
+        if qid not in range(1, 11):
+            raise Http404()
+        else:
+            setattr(broken_screen, f'diag_question_{qid}', questions_set[qid][1])
+            setattr(broken_screen, f'diag_response_{qid}', diag_response)
+
+        broken_screen.save()
+
+        # Redirection vers la question suivante
+        if isinstance(la_suite, int):
+            print("La suite est de type int.")
+            template = 'diagnostic.html'
+            context = {
+                'qid': la_suite,
+                'item': broken_screen,
+                'question_number': questions_set[la_suite][0],
+                'question': questions_set[la_suite][1],
+            }
+            return render(request, template, context)
+
+        elif isinstance(la_suite, str):
+            if la_suite in ["fin du diag"]:
+                # Déterminez le jeu de questions en fonction du type d'écran
+                if broken_screen.screenmodel.is_oled:
+                    grade = broken_screen.attribuer_grade_oled()
+                else:
+                    grade = broken_screen.attribuer_grade_non_oled()
+
+                print(f"Grade attribué : {grade}")
+                broken_screen.grade = grade
+
+                broken_screen.is_diag_done = True
+                broken_screen.save()
+                messages.add_message(request, messages.SUCCESS, "Diagnostic terminé avec succès !")
+                return redirect('quotation', ref_unique_list=broken_screen.uniquereference.value)
+
+    else:
+        raise Http404()
 
         
+@login_required
+def quotation(request, ref_unique_list):
+    broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=ref_unique_list)
+
+    # Obtenez les prix des recycleurs liés au modèle et à la marque de l'écran cassé
+    recycler_prices = RecyclerPricing.objects.filter(
+        screenbrand=broken_screen.screenbrand,
+        screenmodel=broken_screen.screenmodel,
+        grade=broken_screen.grade
+    )
+
+    # Ajoutez les offres de rachat à la relation quotations de BrokenScreen
+    broken_screen.quotations.add(*recycler_prices)
+
+    context = {
+        'recycler_prices': recycler_prices,
+        'broken_screen': broken_screen,
+    }
+    return render(request, 'quotation.html', context)
+
+
+
+def screen_offre(request, ref_unique_list, recycler_price_id):
+    broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=ref_unique_list)
+    recycler_price = get_object_or_404(RecyclerPricing, id=recycler_price_id)
+
+    context = {
+        'broken_screen': broken_screen,
+        'recycler_price': recycler_price,
+    }
+
+    # Mettez à jour is_attributed et enregistrez le prix lorsqu'un utilisateur choisit une offre de rachat
+    if not broken_screen.is_attributed:
+        broken_screen.is_attributed = True
+        broken_screen.price = recycler_price.price  # Enregistrez le prix choisi
+
+        # Assurez-vous que le champ recycler est instancié avec la valeur du recycler choisi
+        broken_screen.recycler = recycler_price.recycler
+
+        broken_screen.save()
+
+    return render(request, 'screen_offre.html', context)
+
+
+@login_required
+def stock_all(request):
+    # Récupérer toutes les instances de BrokenScreen créées par l'utilisateur actuel
+    broken_screens = BrokenScreen.objects.filter(repairstore__user=request.user)
+
+    context = {
+        'broken_screens': broken_screens,
+        'items_count': broken_screens.count(),  # Vous pouvez ajuster cela en fonction de vos besoins
+        'items_value': sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price),
+    }
+
+    return render(request, 'stock.html', context)
+
+
+
+import logging
+from django.shortcuts import get_object_or_404
+
+logger = logging.getLogger(__name__)
+
+def stock_brand(request, brand_ref):
+    # Récupérer la marque spécifique en fonction de la référence
+    brand = get_object_or_404(ScreenBrand, screenbrand=brand_ref)
+    logger.debug(f"Brand: {brand}")
+
+    # Récupérer toutes les instances de BrokenScreen liées à cette marque, triées par modèle
+    broken_screens = BrokenScreen.objects.filter(screenbrand=brand).order_by('screenmodel__screenmodel')
+    logger.debug(f"Broken screens: {broken_screens}")
+
+    context = {
+        'brand': brand,
+        'broken_screens': broken_screens,
+        'items_count': broken_screens.count(),
+        'items_value': sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price),
+    }
+
+    return render(request, 'stock.html', context)
+
+
+def stock_recycler(request, recycler_ref):
+    # Récupérer le recycleur spécifique en fonction de la référence
+    recycler = get_object_or_404(Recycler, company_name=recycler_ref)
+    logger.debug(f"Recycler: {recycler}")
+
+    # Récupérer toutes les instances de BrokenScreen liées à ce recycleur, triées par modèle
+    broken_screens = BrokenScreen.objects.filter(recycler=recycler).order_by('screenmodel__screenmodel')
+    logger.debug(f"Broken screens: {broken_screens}")
+
+    context = {
+        'recycler': recycler,
+        'broken_screens': broken_screens,
+        'items_count': broken_screens.count(),
+        'items_value': sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price),
+    }
+
+    return render(request, 'stock.html', context)
+
+
+
+
+
+# Dashboard view
+
+from django.db.models import Count, Sum
+from django.shortcuts import render
+from django.db.models import Count, Sum
+from .models import BrokenScreen  # Assurez-vous d'importer votre modèle BrokenScreen
+
+
+def dashboard(request):
+    # Récupérer toutes les instances de BrokenScreen pour l'utilisateur actuel
+    broken_screens = BrokenScreen.objects.filter(repairstore__user=request.user)
+
+    # Récupérer les statistiques par marque
+    brand_statistics = (
+        broken_screens
+        .values('screenmodel__screenbrand')
+        .annotate(
+            items_count_brand=Count('screenmodel__screenbrand'),
+            total_value=Sum('price')
+        )
+    )
+
+    # Récupérer les statistiques par recycleur
+    recycler_statistics = (
+        broken_screens
+        .values('recycler__company_name')
+        .annotate(
+            items_count_recycler=Count('recycler__company_name'),
+            items_count_brand=Count('screenmodel__screenbrand'),
+            total_value_recycler=Sum('price')
+        )
+    )
+
+    context = {
+        'items_count': broken_screens.count(),
+        'items_value': sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price),
+        'recap_brand_table': brand_statistics,
+        'recap_recycler_table': recycler_statistics,
+    }
+
+    return render(request, 'dashboard.html', context)
+
+
+
+
+
+
+def page_attente(request):
+    return render(request, 'page_attente.html')
+
+
+
+
+
+
 
 
 
@@ -361,3 +511,5 @@ def htmx_get_modeles_from_brand(request):
     except Exception as e:
         logger.error(f"Erreur dans la vue htmx_get_modeles_from_brand: {e}")
         return JsonResponse({'error': 'Une erreur s\'est produite'}, status=500)
+    
+

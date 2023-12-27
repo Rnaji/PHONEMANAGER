@@ -1,0 +1,32 @@
+{% extends "base_webapp.html" %}
+{% load static %}
+
+{% block title %}Offres de rachat {{ broken_screen.uniquereference.value }}{% endblock title %}
+
+{% block page_title %}
+    💰 Offres de rachat<span class="badge rounded-pill float-end font-monospace fs-6 text-bg-{% if broken_screen.quotation %}success{% else %}danger{% endif %}">{{ broken_screen.uniquereference.value }}</span>
+{% endblock page_title %}
+
+{% block page_content %}
+    {% if recycler_prices.count > 0 %}
+        <div class="row mb-4 md-mb-5 mb-lg-5">
+            <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">Il existe {{ recycler_prices.count }} offres de rachat !</div>
+            <div class="col-12 fs-6 text-dark">Veuillez faire votre choix,<br>vous pourrez le modifier plus tard si une meilleure opportunité se présente.</div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <ul class="list-group shadow-sm">
+                    {% for recycler_price in recycler_prices %}
+                        {% if recycler_price.recycler.display_name != "WMxMxK Configuration du magasin - RACHIDO" %}
+                            <a href="{% url 'screen_offre' ref_unique_list=broken_screen.uniquereference.value recycler_price_id=recycler_price.id %}" class="list-group-item fs-6 font-monospace">
+                                {{ recycler_price.recycler.company_name|title }}
+                                <span class="float-end text-dark">{{ recycler_price.price }} €</span>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

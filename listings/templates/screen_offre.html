@@ -1,0 +1,31 @@
+<!-- screen_offre.html -->
+
+{% extends "base_webapp.html" %}
+{% load static %}
+
+{% block title %}Détail de l'écran {{ broken_screen.uniquereference.value }}{% endblock title %}
+
+{% block page_title %}
+    ⚙ L'écran a été attribué à {{ recycler_price.recycler.company_name }}
+{% endblock page_title %}
+
+{% block page_content %}
+    <!-- Ajoutez ici les détails de l'écran, le modèle, le diagnostic, etc. -->
+
+    <h2>💰 Offres de rachat</h2>
+    <ul class="list-group shadow-sm">
+        <li class="list-group-item fs-6 font-monospace">
+            ✅ {{ recycler_price.recycler.company_name|title }} {{ recycler_price.price }} €
+            <a class="stretched-link" href="{% url 'dashboard' %}"> <!-- Remplacez 'dashboard' par l'URL réelle du tableau de bord -->
+            </a>
+        </li>
+    </ul>
+
+    <!-- Ajoutez d'autres détails nécessaires -->
+
+    <!-- Ajoutez un bouton pour retourner au tableau de bord -->
+    <div class="d-flex justify-content-center mt-4">
+        <a class="btn btn-primary" href="{% url 'dashboard' %}">Retour au tableau de bord</a>
+    </div>
+
+{% endblock page_content %}

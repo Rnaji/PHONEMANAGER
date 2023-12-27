@@ -58,6 +58,8 @@ class UniqueReference(models.Model):
         unique_value = ''.join(random.choice(characters) for _ in range(6))
         return unique_value
 
+    def __str__(self):
+        return self.value
 
 
 
@@ -80,12 +82,12 @@ class ScreenModel(models.Model):
         ordering = ['screenbrand', 'screenmodel']
 
     def __str__(self):
-        return f"{self.screenbrand.screenbrand} {self.screenmodel}"
+        return f"{self.screenmodel}"
     
 
 class Recycler(models.Model):
 
-    company_name = models.CharField(max_length=100, verbose_name="Dénomination sociale de l'entreprise")
+    company_name = models.CharField(max_length=100, verbose_name="Dénomination sociale de l'entreprise", blank=True)
     address = models.TextField(verbose_name="Adresse")
     postal_code = models.CharField(max_length=10, verbose_name="Code postal")
     city = models.CharField(max_length=50, verbose_name="Ville")
@@ -142,7 +144,7 @@ class BrokenScreen(models.Model):
     grade = models.CharField(
         max_length=20,
         choices=[
-            ('', 'Select Grade'),  # Valeur par défaut vide
+            ('', 'Select Grade'),
             ('A', 'A'),
             ('B', 'B'),
             ('C', 'C'),
@@ -153,17 +155,27 @@ class BrokenScreen(models.Model):
             ('Fully Broken', 'Fully Broken'),
             ('Aftermarket', 'Aftermarket')
         ],
-        default='EN ATTENTE',  # Définir la valeur par défaut sur une chaîne vide
+        default='EN ATTENTE',
     )
-    recycler_prices = models.ManyToManyField(RecyclerPricing, related_name='broken_screens')
+    quotations = models.ManyToManyField('RecyclerPricing', related_name='broken_screens')
+    recycler = models.ForeignKey(Recycler, on_delete=models.SET_NULL, null=True, blank=True)
     is_attributed = models.BooleanField(default=False)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
     class Meta:
         ordering = ['-date_joined']
 
+    def get_matching_recycler_prices(self):
+        matching_recycler_prices = self.recycler_prices.filter(
+            screenbrand=self.screenbrand,
+            screenmodel=self.screenmodel,
+            grade=self.grade
+        )
+        return matching_recycler_prices
+
     def __str__(self):
-        return f"Écran cassé - {self.screenbrand} {self.screenmodel} - {self.repairstore}"
+        return f"{self.screenbrand} {self.screenmodel} - {self.grade}"
 
     def get_sorted_recycler_prices(self):
         return self.recycler_prices.all().order_by('price')
@@ -281,13 +293,6 @@ class BrokenScreen(models.Model):
 
         return "EN ATTENTE"
 
-    def save(self, *args, **kwargs):
-        if not self.grade:
-            # Si le grade n'est pas défini, attribuez-le en utilisant la fonction
-            self.grade = self.attribuer_grade_non_oled()
-        super().save(*args, **kwargs)
-
-
     def attribuer_grade_oled(self):
         # Extracting responses from the BrokenScreen instance
         question1 = self.diag_response_1
@@ -383,6 +388,8 @@ class BrokenScreen(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.grade:
-            # Si le grade n'est pas défini, attribuez-le en utilisant la fonction
-            self.grade = self.attribuer_grade_non_oled()
+            if self.some_condition:  # Ajoutez votre propre condition ici si nécessaire
+                self.grade = self.attribuer_grade_non_oled()
+            else:
+                self.grade = self.attribuer_grade_oled()
         super().save(*args, **kwargs)

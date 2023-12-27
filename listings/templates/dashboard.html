@@ -4,118 +4,125 @@
 {% block title %}Home{% endblock title %}
 
 {% block page_title %}
-<span>🏠 Home</span>
-<span>
-    <a class="btn btn-sm btn-outline-blue float-end" href="{% url 'create_brokenscreen' %}">
-        <span class="me-2">📲</span>
-        <span>Ajouter un écran</span>
-    </a>
-</span>
+    <span>🏠 Home</span>
+    <span>
+        <a class="btn btn-sm btn-outline-blue float-end" href="{% url 'create_brokenscreen' %}">
+            <span class="me-2">📲</span>
+            <span>Ajouter un écran</span>
+        </a>
+    </span>
 {% endblock page_title %}
 
 {% block page_content %}
-<!-- DEBUT Stock & Opportunités -->
-<div class="row mb-4">
-    <!-- DEBUT  Stock -->
-    <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <ul class="list-group font-monospace shadow-sm">
-            <li class="list-group-item logo-blue fs-5">📦 Stock {% if brand %}{{ brand.display_name|title }}{% elif recycler %}{{ recycler|title }}{% else %}total{% endif %}</li>
-            <li class="list-group-item fs-6">
-                <span>Nombre d'écran</span>
-                <span class="float-end">{{ items_count }}</span>
-            </li>
-            <li class="list-group-item fs-6">
-                <span>Valeur estimée</span>
-                <span class="float-end">{{ items_value }} €</span>
-            </li>
-            {% if request.resolver_match.url_name == 'dashboard' %}
-            <li class="list-group-item text-end">
-                <a href="{% url 'page_attente' %}" class="btn btn-sm btn-outline-blue{% if items_count == 0 %} disabled{% endif %}">Voir en détail</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-    <!-- DEBUT Opportunités -->
-    <div class="col-12 col-md-6 col-lg-4 mb-4 fs-5 text-blue">
-        <ul class="list-group font-monospace shadow-sm">
-            <li class="list-group-item logo-blue fs-5">🌟 Opportunités</li>
-            <li class="list-group-item fs-6">
-                <span>Nombre d'opportunités</span>
-                <span class="float-end">{{ opportunities_count }}</span>
-            </li>
-            <li class="list-group-item fs-6">
-                <span>Gain potentiel estimé</span>
-                <span class="fw-bold text-success float-end">+ {{ opportunities_value }} €</span>
-            </li>
-            <li class="list-group-item text-end">
-                <a href="{% url 'page_attente' %}" class="btn btn-sm btn-outline-blue{% if opportunities_count == 0 %} disabled{% endif %}">Voir en détail</a>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="row mb-4">
-    <!-- Stock Marque -->
-    <div class="mb-3 fs-5 text-blue">📱 Stock par marque</div>
-    {% for brand in recap_brand_table %}
-    <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <ul class="list-group font-monospace shadow-sm">
-            <li class="list-group-item logo-blue fs-5">
-                <img src="{% static '/img/brand_logos/' %}{{ brand.model__brand }}.svg" class="me-2" width="20px" height="20px">{{ brand.model__brand__display_name|title }}
-            </li>
-            <li class="list-group-item fs-6">
-                <span>Nombre d'écran</span>
-                <span class="float-end">{{ brand.nb_item }}</span>
-            </li>
-            <li class="list-group-item fs-6">
-                <span>Valeur estimée</span>
-                <span class="float-end">{{ brand.total_value|default_if_none:'0'|floatformat:2 }} €</span>
-            </li>
-            <li class="list-group-item text-end"><a href="{% url 'page_attente' brand.model__brand__ref_brand %}" class="btn btn-sm btn-outline-blue">Voir en détail</a></li>
-        </ul>
-    </div>
-    {% empty %}
-    <div class="col-12 col-md-6 col-lg-4">
-        <ul class="list-group font-monospace shadow-sm">
-            <li class="list-group-item fs-6 fst-italic text-center">Aucun écran en stock</li>
-            <li class="list-group-item text-end"><a href="{% url 'page_attente' %}" class="btn btn-sm btn-outline-blue">Ajouter un écran</a></li>
-        </ul>
-    </div>
-    {% endfor %}
-</div>
-
-<div class="row mb-4">
-    <!-- Stock Recycleur -->
-    <div class="mb-3 fs-5 text-blue">👨‍🔧 Stock par recycleur</div>
-    {% for recycler in recap_recycler_table %}
-    <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <ul class="list-group font-monospace shadow-sm">
-            <li class="list-group-item logo-blue fs-5">
-                {% if recycler.quotation__recycler__display_name is None %}
-                <span class="me-2">❓</span>
-                {% else %}
-                <span class="me-2">👨‍🔧</span>
+    <!-- DEBUT Stock & Opportunités -->
+    <div class="row mb-4">
+        <!-- DEBUT Stock -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <ul class="list-group font-monospace shadow-sm">
+                <li class="list-group-item logo-blue fs-5">📦 Stock {% if brand %}{{ brand.screenmodel|title }}{% elif recycler %}{{ recycler|title }}{% else %}total{% endif %}</li>
+                <li class="list-group-item fs-6">
+                    <span>Nombre d'écrans</span>
+                    <span class="float-end">{{ items_count }}</span>
+                </li>
+                <li class="list-group-item fs-6">
+                    <span>Valeur estimée</span>
+                    <span class="float-end">{{ items_value }} €</span>
+                </li>
+                {% if request.resolver_match.url_name == 'dashboard' %}
+                    <li class="list-group-item text-end">
+                        <a href="{% url 'stock_all' %}" class="btn btn-sm btn-outline-blue{% if items_count == 0 %} disabled{% endif %}">Voir en détail</a>
+                    </li>
                 {% endif %}
-                <span>{{ recycler.quotation__recycler__display_name|default_if_none:"Non attribué"|title }}</span>
-            </li>
-            <li class="list-group-item fs-6">
-                <span>Nombre d'écran</span>
-                <span class="float-end">{{ recycler.nb_item }}</span>
-            </li>
-            <li class="list-group-item fs-6">
-                <span>Valeur estimée</span>
-                <span class="float-end">{{ recycler.total_value|default_if_none:'0'|floatformat:2 }} €</span>
-            </li>
-            <li class="list-group-item text-end"><a href="{% url 'wpage_attente' recycler.quotation__recycler__ref_recycler %}" class="btn btn-sm btn-outline-blue">Voir en détail</a></li>
-        </ul>
+            </ul>
+        </div>
+        <!-- DEBUT Opportunités -->
+        <div class="col-12 col-md-6 col-lg-4 mb-4 fs-5 text-blue">
+            <ul class="list-group font-monospace shadow-sm">
+                <li class="list-group-item logo-blue fs-5">🌟 Opportunités</li>
+                <li class="list-group-item fs-6">
+                    <span>Nombre d'opportunités</span>
+                    <span class="float-end">{{ opportunities_count }}</span>
+                </li>
+                <li class="list-group-item fs-6">
+                    <span>Gain potentiel estimé</span>
+                    <span class="fw-bold text-success float-end">+ {{ opportunities_value }} €</span>
+                </li>
+                <li class="list-group-item text-end">
+                    <a href="{% url 'page_attente' %}" class="btn btn-sm btn-outline-blue{% if opportunities_count == 0 %} disabled{% endif %}">Voir en détail</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    {% empty %}
-    <div class="col-12 col-md-6 col-lg-4">
-        <ul class="list-group font-monospace shadow-sm">
-            <li class="list-group-item fs-6 fst-italic text-center">Aucun écran en stock</li>
-            <li class="list-group-item text-end"><a href="{% url 'page_attente' %}" class="btn btn-sm btn-outline-blue">Ajouter un écran</a></li>
-        </ul>
+
+    <div class="row mb-4">
+        <!-- Stock Marque -->
+        <div class="mb-3 fs-5 text-blue">📱 Stock par marque</div>
+        
+        {% for brand_info in recap_brand_table %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <ul class="list-group font-monospace shadow-sm">
+                    <li class="list-group-item logo-blue fs-5">
+                        <img src="{% static 'img/brand_logos/' %}{{ brand_info.screenmodel__screenbrand }}.svg" class="me-2" width="20px" height="20px">{{ brand_info.screenmodel__screenbrand|title }}
+                    </li>
+                    <li class="list-group-item fs-6">
+                        <span>Nombre d'écrans</span>
+                        <span class="float-end">{{ brand_info.items_count_brand }}</span>
+                    </li>
+                    <li class="list-group-item fs-6">
+                        <span>Valeur totale</span>
+                        <span class="float-end">{{ brand_info.total_value }} €</span>
+                    </li>
+                    <li class="list-group-item text-end">
+                        <a href="{% url 'stock_brand' brand_ref=brand_info.screenmodel__screenbrand %}" class="btn btn-sm btn-outline-blue">Voir en détail</a>
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
+
+    <div class="row mb-4">
+        <!-- Stock Recycleur -->
+        <div class="mb-3 fs-5 text-blue">👨‍🔧 Stock par recycleur</div>
+        {% for recycler_info in recap_recycler_table %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <ul class="list-group font-monospace shadow-sm">
+                    <li class="list-group-item logo-blue fs-5">
+                        {% if recycler_info.recycler__company_name is None %}
+                            <span class="me-2">❓</span>
+                        {% else %}
+                            <span class="me-2">👨‍🔧</span>
+                        {% endif %}
+                        <span>{{ recycler_info.recycler__company_name|default_if_none:"Non attribué"|title }}</span>
+                    </li>
+                    <li class="list-group-item fs-6">
+                        <span>Nombre d'écrans</span>
+                        <span class="float-end">{{ recycler_info.items_count_brand }}</span>
+                    </li>
+                    <li class="list-group-item fs-6">
+                        <span>Valeur estimée</span>
+                        <span class="float-end">{{ recycler_info.total_value_recycler|default_if_none:'0'|floatformat:2 }} €</span>
+                    </li>
+                    <li class="list-group-item text-end">
+                        {% if recycler_info.company_name %}
+                            <a href="{% url 'stock_recycler' recycler_ref=recycler_info.company_name %}" class="btn btn-sm btn-outline-blue">Voir en détail</a>
+                        {% else %}
+                            <span class="btn btn-sm btn-outline-blue disabled">Voir en détail</span>
+                        {% endif %}
+                    </li>
+                    
+                </ul>
+            </div>
+        {% endfor %}
+
+        {% if recap_recycler_table|length == 0 %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <ul class="list-group font-monospace shadow-sm">
+                    <li class="list-group-item fs-6 fst-italic text-center">Aucun écran en stock</li>
+                    <li class="list-group-item text-end">
+                        <a href="{% url 'create_brokenscreen' %}" class="btn btn-sm btn-outline-blue">Ajouter un écran</a>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
+    </div>
 {% endblock page_content %}
