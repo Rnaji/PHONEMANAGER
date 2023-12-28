@@ -1,6 +1,6 @@
 # dans votre_app/signals.py
 
-from django.db.models.signals import post_delete, pre_save
+from django.db.models.signals import post_delete, pre_save, post_save
 from django.dispatch import receiver
 from .models import UniqueReference, RepairStore
 
@@ -35,11 +35,11 @@ def create_new_unique_reference(repairstore):
             UniqueReference.objects.create(repairstore=repairstore, value=new_reference_value)
             break
 
-@receiver(pre_save, sender=RepairStore)
-def ensure_user_has_65_unique_references(sender, instance, **kwargs):
-    current_references_count = UniqueReference.objects.filter(repairstore=instance, is_used=False).count()
+@receiver(post_save, sender=RepairStore)
+def ensure_user_has_65_unique_references(sender, instance, created, **kwargs):
+    if created:  # Vérifier si l'instance est nouvellement créée
+        current_references_count = UniqueReference.objects.filter(repairstore=instance, is_used=False).count()
 
-    if current_references_count < 65:
-        for _ in range(65 - current_references_count):
-            if instance.pk is not None:  # Assurez-vous que l'instance est déjà sauvegardée
+        if current_references_count < 65:
+            for _ in range(65 - current_references_count):
                 create_new_unique_reference(instance)

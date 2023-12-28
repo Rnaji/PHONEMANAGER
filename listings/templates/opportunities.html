@@ -1,0 +1,95 @@
+{% extends "base_webapp.html" %}
+{% load static %}
+
+{% block title %}Opportunités{% endblock title %}
+
+{% block page_title %}🌟 Opportunités{% endblock page_title %}
+
+{% block page_content %}
+<div class="row mb-4">
+    <div class="col-12 col-md-6 col-lg-4 mb-4 fs-5 text-blue">
+        <ul class="list-group font-monospace shadow-sm">
+            <li class="list-group-item logo-blue fs-5">🌟 Opportunités</li>
+            <li class="list-group-item fs-6">
+                <span>Nombre d'opportunités</span>
+                <span class="float-end">{{ opportunities_count }}</span>
+            </li>
+            <li class="list-group-item fs-6">
+                <span>Gain potentiel estimé</span>
+                <span class="float-end">{{ opportunities_value }} €</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <!-- smartphone -->
+    <div class="col-12 d-block d-md-none mb-4">
+        {% for item in item_list %}
+        <ul class="list-group mb-2 font-monospace">
+            <li class="list-group-item p-2 p-md-2 p-lg-3">
+                <div class="row mb-1">
+                    <div class="col-9">
+                        <span>📆</span>
+                        <span class="fs-6">{{ item.created|date:'d/m/Y' }}</span>
+                    </div>
+                    <div class="col-3 text-end">
+                        <span class="badge rounded-pill float-end text-bg-{% if not item.is_diag_done %}danger{% elif item.is_diag_done and not item.quotation %}warning{% elif item.is_diag_done and item.quotation %}success{% else %}danger{% endif %}">{{ item.ref_unique }}</span>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-8">
+                        <span>{{ item.model.brand.display_name|title }} {{ item.model.display_name }}</span>
+                    </div>
+                    <div class="col-4 text-end">
+                        <span>{% if item.grade %}Grade {{ item.grade }}{% else %}<span>🔎</span> ❓{% endif %}</span>	
+                    </div>
+                </div>
+                <div class="row mt-2 text-center">
+                    <div class="col-12">
+                        <span class="text-danger">{{ item.quotation.recycler.display_name }} {{ item.quotation.value }} €</span>
+                    </div>
+                    <div class="col-12 text-center">
+                        <span class"text-success">⬇</span>	
+                    </div>
+                    <div class="col-12">
+                        <span class="text-success fw-bold">{{ item.best_offer.recycler.display_name }} {{ item.best_offer.value }} €</span>	
+                    </div>
+                </div>
+                <a href="{% url 'webapp:quotation' item.ref_unique %}" class="stretched-link"></a>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+    <!-- laptop -->
+    <div class="col-12 d-none d-md-block col-lg-10 mb-4">
+        {% for item in item_list %}
+        <ul class="list-group mb-2 fs-6 font-monospace">
+            <li class="list-group-item px-md-1 px-lg-2">
+                <div class="row">
+                    <div class="col-md-1 text-start">
+                        <span class="badge rounded-pill font-monospace text-bg-{{ item.badge_color }}">{{ item.ref_unique }}</span>
+                    </div>
+                    <div class="col-md-2 text-start">
+                        <span>{{ item.model.brand.display_name|title }} {{ item.model.display_name }}</span>
+                    </div>
+                    <div class="col-md-3 text-start">
+                        <span>{{ item.quotation.recycler.display_name }} <span class="text-danger">{{ item.quotation.value }} €</span></span>	
+                    </div>
+                    <div class="col-md-1 text-start">
+                        <span class="fw-bold text-success"> >>> </span>	
+                    </div>
+                    <div class="col-md-3 text-start">
+                        <span>{{ item.best_offer.recycler.display_name }} {{ item.best_offer.value }} €</span>	
+                    </div>
+                    <div class="col-md-2 text-end">
+                        <span class="fw-bold text-success">+{{ item.offer_delta }} € </span>	
+                    </div>
+                </div>
+                <a href="{% url 'webapp:quotation' item.ref_unique %}" class="stretched-link"></a>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+</div>
+{% endblock page_content %}

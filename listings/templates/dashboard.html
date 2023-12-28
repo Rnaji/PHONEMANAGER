@@ -70,7 +70,7 @@
                     </li>
                     <li class="list-group-item fs-6">
                         <span>Valeur totale</span>
-                        <span class="float-end">{{ brand_info.total_value }} €</span>
+                        <span class="float-end">{{ brand_info.total_value |floatformat:2}} €</span>
                     </li>
                     <li class="list-group-item text-end">
                         <a href="{% url 'stock_brand' brand_ref=brand_info.screenmodel__screenbrand %}" class="btn btn-sm btn-outline-blue">Voir en détail</a>
@@ -103,8 +103,8 @@
                         <span class="float-end">{{ recycler_info.total_value_recycler|default_if_none:'0'|floatformat:2 }} €</span>
                     </li>
                     <li class="list-group-item text-end">
-                        {% if recycler_info.company_name %}
-                            <a href="{% url 'stock_recycler' recycler_ref=recycler_info.company_name %}" class="btn btn-sm btn-outline-blue">Voir en détail</a>
+                        {% if recycler_info.recycler__company_name %}
+                            <a href="{% url 'stock_recycler' recycler_ref=recycler_info.recycler__company_name %}" class="btn btn-sm btn-outline-blue">Voir en détail</a>
                         {% else %}
                             <span class="btn btn-sm btn-outline-blue disabled">Voir en détail</span>
                         {% endif %}
