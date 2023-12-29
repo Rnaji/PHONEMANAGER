@@ -26,7 +26,7 @@
                 </li>
                 <li class="list-group-item fs-6">
                     <span>Valeur estimée</span>
-                    <span class="float-end">{{ items_value }} €</span>
+                    <span class="float-end">{{ items_value |floatformat:2}} €</span>
                 </li>
                 {% if request.resolver_match.url_name == 'dashboard' %}
                     <li class="list-group-item text-end">
@@ -45,7 +45,7 @@
                 </li>
                 <li class="list-group-item fs-6">
                     <span>Gain potentiel estimé</span>
-                    <span class="fw-bold text-success float-end">+ {{ opportunities_value }} €</span>
+                    <span class="fw-bold text-success float-end">+ {{ opportunities_value |floatformat:2 }} €</span>
                 </li>
                 <li class="list-group-item text-end">
                     <a href="{% url 'opportunities' %}" class="btn btn-sm btn-outline-blue{% if opportunities_count == 0 %} disabled{% endif %}">Voir en détail</a>

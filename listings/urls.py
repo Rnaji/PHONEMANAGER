@@ -53,5 +53,6 @@ urlpatterns = [
 	path('stock/recycler/<recycler_ref>/', stock_recycler, name='stock_recycler'),
 
     path('opportunities/', opportunities, name='opportunities'),
+    
 ]
 

@@ -296,13 +296,14 @@ def screen_offre(request, ref_unique_list, recycler_price_id):
         'recycler_price': recycler_price,
     }
 
-    # Mettez à jour is_attributed et enregistrez le prix lorsqu'un utilisateur choisit une offre de rachat
-    if not broken_screen.is_attributed:
+    # Mettez à jour is_attributed et enregistrez le prix et le recycler lorsqu'un utilisateur choisit une offre de rachat
+    if not broken_screen.is_attributed or (
+        broken_screen.price != recycler_price.price or
+        broken_screen.recycler != recycler_price.recycler
+    ):
         broken_screen.is_attributed = True
-        broken_screen.price = recycler_price.price  # Enregistrez le prix choisi
-
-        # Assurez-vous que le champ recycler est instancié avec la valeur du recycler choisi
-        broken_screen.recycler = recycler_price.recycler
+        broken_screen.price = recycler_price.price  # Enregistrez le nouveau prix choisi
+        broken_screen.recycler = recycler_price.recycler  # Enregistrez le nouveau recycler choisi
 
         broken_screen.save()
 
@@ -375,8 +376,7 @@ def stock_recycler(request, recycler_ref):
 
 from django.db.models import Count, Sum
 from django.shortcuts import render
-from django.db.models import Count, Sum
-from .models import BrokenScreen  # Assurez-vous d'importer votre modèle BrokenScreen
+
 
 
 def dashboard(request):
@@ -384,31 +384,58 @@ def dashboard(request):
     broken_screens = BrokenScreen.objects.filter(repairstore__user=request.user)
 
     # Récupérer les statistiques par marque
-    brand_statistics = (
-        broken_screens
-        .values('screenmodel__screenbrand')
-        .annotate(
-            items_count_brand=Count('screenmodel__screenbrand'),
-            total_value=Sum('price')
-        )
+    brand_statistics = broken_screens.values('screenmodel__screenbrand').annotate(
+        items_count_brand=Count('screenmodel__screenbrand'),
+        total_value=Sum('price')
     )
 
     # Récupérer les statistiques par recycleur
-    recycler_statistics = (
-        broken_screens
-        .values('recycler__company_name')
-        .annotate(
-            items_count_recycler=Count('recycler__company_name'),
-            items_count_brand=Count('screenmodel__screenbrand'),
-            total_value_recycler=Sum('price')
-        )
+    recycler_statistics = broken_screens.values('recycler__company_name').annotate(
+        items_count_recycler=Count('recycler__company_name'),
+        items_count_brand=Count('screenmodel__screenbrand'),
+        total_value_recycler=Sum('price')
     )
 
+    # Calculer le nombre total d'articles et la valeur totale
+    items_count = broken_screens.count()
+    items_value = broken_screens.aggregate(total_value=Sum('price'))['total_value'] or 0
+
+    # Opportunités
+    opportunities_count = 0
+    opportunities_value = 0
+    broken_screen_op_list = []
+
+    for broken_screen in broken_screens:
+        if broken_screen.price is not None:
+            current_value = broken_screen.price
+            recycler_prices = RecyclerPricing.objects.filter(
+                screenmodel=broken_screen.screenmodel,
+                grade=broken_screen.grade
+            ).order_by('-price')
+
+            if recycler_prices.exists() and recycler_prices.first().price > current_value:
+                quotation_count = recycler_prices.count()
+                best_offer = recycler_prices.first()
+
+                broken_screen.quotation_count = quotation_count
+                broken_screen.best_offer = best_offer
+                broken_screen.offer_delta = best_offer.price - current_value
+                opportunities_count += 1
+                opportunities_value += broken_screen.offer_delta
+                broken_screen_op_list.append([
+                    broken_screen.uniquereference.value,
+                    broken_screen.best_offer,
+                    broken_screen.offer_delta,
+                    broken_screen.quotation_count
+                ])
+
     context = {
-        'items_count': broken_screens.count(),
-        'items_value': sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price),
+        'items_count': items_count,
+        'items_value': items_value,
         'recap_brand_table': brand_statistics,
         'recap_recycler_table': recycler_statistics,
+        'opportunities_count': opportunities_count,
+        'opportunities_value': opportunities_value,
     }
 
     return render(request, 'dashboard.html', context)
