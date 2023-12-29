@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler
+from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities
 
 
 from django.contrib.auth.views import LoginView
@@ -51,5 +51,7 @@ urlpatterns = [
 	path('stock/brand/<brand_ref>/', stock_brand, name='stock_brand'),
 
 	path('stock/recycler/<recycler_ref>/', stock_recycler, name='stock_recycler'),
+
+    path('opportunities/', opportunities, name='opportunities'),
 ]
 

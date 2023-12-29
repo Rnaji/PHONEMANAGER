@@ -309,6 +309,7 @@ def screen_offre(request, ref_unique_list, recycler_price_id):
     return render(request, 'screen_offre.html', context)
 
 
+
 @login_required
 def stock_all(request):
     # Récupérer toutes les instances de BrokenScreen créées par l'utilisateur actuel
@@ -421,6 +422,62 @@ def page_attente(request):
     return render(request, 'page_attente.html')
 
 
+
+
+
+@login_required
+@require_GET
+def opportunities(request):
+    all_broken_screens = BrokenScreen.objects.all()
+
+    # Opportunités
+    opportunities_count = 0
+    opportunities_value = 0
+    broken_screen_op_list = []
+
+    for broken_screen in all_broken_screens:
+        if broken_screen.price is not None:
+            current_value = broken_screen.price
+            recycler_prices = RecyclerPricing.objects.filter(
+                screenmodel=broken_screen.screenmodel,
+                grade=broken_screen.grade
+            ).order_by('-price')
+
+            if recycler_prices.exists() and recycler_prices.first().price > current_value:
+                quotation_count = recycler_prices.count()
+                best_offer = recycler_prices.first()
+
+                broken_screen.quotation_count = quotation_count
+                broken_screen.best_offer = best_offer
+                broken_screen.offer_delta = best_offer.price - current_value
+                opportunities_count += 1
+                opportunities_value += broken_screen.offer_delta
+                broken_screen_op_list.append([
+                    broken_screen.uniquereference.value,
+                    broken_screen.best_offer,
+                    broken_screen.offer_delta,
+                    broken_screen.quotation_count
+                ])
+
+    ref_op_list = [broken_screen[0] for broken_screen in broken_screen_op_list]
+    op_all_broken_screens = all_broken_screens.filter(uniquereference__value__in=ref_op_list)
+    i = 0
+
+    for broken_screen in op_all_broken_screens:
+        # add badge_color on broken_screen
+        broken_screen.quotation_count = broken_screen_op_list[i][3]
+        # opportunities
+        broken_screen.best_offer = broken_screen_op_list[i][1]
+        broken_screen.offer_delta = broken_screen_op_list[i][2]
+        i += 1
+
+    template = 'opportunities.html'
+    context = {
+        'all_broken_screens': op_all_broken_screens,
+        'opportunities_count': opportunities_count,
+        'opportunities_value': opportunities_value,
+    }
+    return render(request, template, context)
 
 
 
