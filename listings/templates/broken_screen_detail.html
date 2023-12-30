@@ -1,0 +1,139 @@
+{% extends "base_webapp.html" %}
+{% load static %}
+
+{% block title %}{{ broken_screen.uniquereference.value }}{% endblock title %}
+
+{% block page_title %}
+    📱 Détail de l'écran
+    <span class="badge rounded-pill float-end font-monospace fs-6 text-bg-{{ broken_screen.uniquereference.value }}">
+        {{ broken_screen.uniquereference.value }}
+    </span>
+{% endblock page_title %}
+
+{% block page_content %}
+
+<!-- DEBUT Modèle -->
+<div class="row mb-4 md-mb-5 mb-lg-4">
+    <div class="col-12 col-md-8 col-lg-7 mb-2 fs-5 text-blue">📱 Modèle</div>
+    <div class="col-12 col-md-8 col-lg-7">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <img src="{% static 'img/brand_logos/' %}{{ broken_screen.screenbrand }}.svg" width="20px" height="20px">
+            </li>
+            <li class="list-group-item fs-6">{{ broken_screen.screenbrand|title }}</li>
+            <li class="list-group-item fs-6">
+                {{ broken_screen.screenmodel}}
+                <span class="fs-6 logo-blue fw-bold float-end">
+                    {% if broken_screen.is_oled %}OLED{% else %}LCD{% endif %}
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- DEBUT Grade -->
+<div class="row mb-4 md-mb-5 mb-lg-4">
+    <div class="col-12 col-md-8 col-lg-7 mb-2 fs-5 text-blue">🔎 Diagnostic</div>
+    <div class="col-12 col-md-8 col-lg-7">
+        <ul class="list-group">
+            <li class="list-group-item fs-6">
+                <div class="d-flex justify-content-between">
+                    <span>GRADE {{ broken_screen.grade }}</span>
+                </div>
+            </li>
+            <li class="list-group-item fs-6">
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-blue btn-sm" data-bs-toggle="modal" data-bs-target="#refaireDiagnosticModal">
+                        Refaire le diagnostic
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Modal Refaire Diagnostic -->
+<div class="modal fade" id="refaireDiagnosticModal" tabindex="-1" aria-labelledby="refaireDiagnosticModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="refaireDiagnosticModalLabel">Refaire le diagnostic</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir refaire le diagnostic ? Cela réinitialisera les réponses existantes.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <a href="{% url 'diagnostic' ref_unique_list=broken_screen.uniquereference.value %}" class="btn btn-sm btn-outline-blue">Refaire le diagnostic</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- DEBUT Offres de rachat -->
+<div class="row mb-4 md-mb-5 mb-lg-4">
+    <div class="col-12 col-md-8 col-lg-7 mb-2 fs-5 text-blue">💰 Offres de rachat</div>
+    <div class="col-12 col-md-8 col-lg-7">
+        <ul class="list-group">
+            {% for quotation in quotations %}
+                <li class="list-group-item fs-6">
+                    <span class="me-3">{% if broken_screen.price == quotation.price %} ✅{% else %}❌{% endif %}</span>
+                    <span>{{ quotation.recycler.company_name }}</span>
+                    <span class="float-end">{{ quotation.price }} €</span>
+                </li>
+            {% endfor %}
+            <li class="list-group-item fs-6">
+                <a href="{% url 'quotation' broken_screen.uniquereference %}" class="btn btn-sm btn-outline-blue">Choisir une autre offre de rachat</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- DEBUT Supprimer -->
+<div class="row mb-4 md-mb-5 mb-lg-4">
+    <div class="col-12 col-md-8 col-lg-7 mb-2 fs-5 text-blue">🗑 Supprimer</div>
+    <div class="col-12 col-md-8 col-lg-7">
+        <ul class="list-group">
+            <li class="list-group-item fs-6">
+                <a class="btn btn-sm btn-danger" id="delete-tab" data-bs-toggle="modal" data-bs-target="#deleteModal" style="cursor:pointer;">Supprimer l'écran</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{% endblock page_content %}
+
+{% block modal %}
+<!-- Début deleteModal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title" id="exampleModalLabel">Supprimer l'écran</h5>
+      </div>
+      <div class="modal-body">
+        <p class="lead fw-bold">Êtes-vous sûr(e) de vouloir supprimer cet écran ?</p>
+        <table class="table table-borderless">
+            <tr>
+                <td class="fw-bold">Référence</td>
+                <td><span class="badge rounded-pill text-bg-danger">{{ broken_screen.uniquereference.value }}</span></td>
+            </tr>
+            <tr>
+                <td class="fw-bold">Modèle</td>
+                <td>{{ broken_screen.screenbrand|title }} {{ broken_screen.screenmodel }}</td>
+            </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-blue" data-bs-dismiss="modal">Annuler</button>
+        <form method="post" action="{% url 'delete_brokenscreen' uniquereference_value=broken_screen.uniquereference.value %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Oui, supprimer l'écran</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin deleteModal -->
+{% endblock modal %}

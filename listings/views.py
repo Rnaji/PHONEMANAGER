@@ -441,6 +441,38 @@ def dashboard(request):
     return render(request, 'dashboard.html', context)
 
 
+class BrokenScreenDetail(View):
+    template_name = 'broken_screen_detail.html'
+
+    def get(self, request, uniquereference_value):
+        broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=uniquereference_value)
+
+        # Récupérez les objets RecyclerPricing associés à ce BrokenScreen
+        quotations = broken_screen.quotations.all()
+
+        context = {
+            'broken_screen': broken_screen,
+            'quotations': quotations,
+            'recycler': broken_screen.recycler,  # Ajoutez le recycler au contexte
+        }
+
+        return render(request, self.template_name, context)
+
+
+
+
+class DeleteBrokenScreen(View):
+    template_name = 'delete_brokenscreen.html'
+
+    def get(self, request, uniquereference_value):
+        broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=uniquereference_value)
+        return render(request, self.template_name, {'broken_screen': broken_screen})
+
+    def post(self, request, uniquereference_value):
+        broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=uniquereference_value)
+        broken_screen.delete()
+        return redirect('dashboard')
+
 
 
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities
+from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities, BrokenScreenDetail, DeleteBrokenScreen
 
 
 from django.contrib.auth.views import LoginView
@@ -45,7 +45,6 @@ urlpatterns = [
 
     path('screen/<ref_unique_list>/offre/<recycler_price_id>/', screen_offre, name='screen_offre'),
 
-
     path('stock/all/', stock_all, name='stock_all'),
 
 	path('stock/brand/<brand_ref>/', stock_brand, name='stock_brand'),
@@ -53,6 +52,10 @@ urlpatterns = [
 	path('stock/recycler/<recycler_ref>/', stock_recycler, name='stock_recycler'),
 
     path('opportunities/', opportunities, name='opportunities'),
-    
+
+    path('brokenscreen/detail/<uniquereference_value>/', BrokenScreenDetail.as_view(), name='broken_screen_detail'),
+
+    path('brokenscreen/delete/<uniquereference_value>/', DeleteBrokenScreen.as_view(), name='delete_brokenscreen'),
+
 ]
 
