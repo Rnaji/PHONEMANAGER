@@ -5,12 +5,19 @@
 
 {% block page_title %}
     <span>🏠 Home</span>
-    <span>
-        <a class="btn btn-sm btn-outline-blue float-end" href="{% url 'create_brokenscreen' %}">
-            <span class="me-2">📲</span>
-            <span>Ajouter un écran</span>
-        </a>
-    </span>
+<span>
+    <a class="btn btn-sm btn-outline-blue float-end" href="{% url 'vendre_mes_ecrans' %}">
+        <span class="me-2">📲</span>
+        <span>Vendre mes écrans</span>
+    </a>
+</span>
+<span>
+    <a class="btn btn-sm btn-outline-blue float-end" href="{% url 'create_brokenscreen' %}">
+        <span class="me-2">📲</span>
+        <span>Ajouter un écran</span>
+    </a>
+</span>
+
 {% endblock page_title %}
 
 {% block page_content %}

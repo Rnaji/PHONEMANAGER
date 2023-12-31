@@ -1,0 +1,47 @@
+{% extends "base_webapp.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block paylcd_content %}
+<!-- Contenu spécifique à PayLCD -->
+<div class="mb-3 fs-5 text-green">🌐 Contenu spécifique à PayLCD :</div>
+<p>
+    Vous pouvez ajouter ici du contenu spécifique à PayLCD. Par exemple, des informations, des liens ou tout autre élément.
+</p>
+{% endblock paylcd_content %}
+
+{% block page_title %}
+<div class="mb-3 fs-5 text-blue">👨‍🔧 Écrans à expédier à {{ recycler_ref }} :</div>
+
+<!-- laptop -->
+<div class="col-12 d-none d-md-block col-lg-10 mb-4">
+    {% for broken_screen in broken_screens %}
+        <ul class="list-group mb-2 fs-6 font-monospace">
+            <li class="list-group-item px-md-1 px-lg-2">
+                <div class="row">
+                    <div class="col-md-1 text-start">
+                        <span>{{ broken_screen.date_joined|date:'d/m' }}</span>
+                    </div>
+                    <div class="col-md-1 text-start">
+                        <span class="badge rounded-pill font-monospace bg-success">{{ broken_screen.uniquereference }}</span>
+                    </div>
+                    <div class="col-md-3 text-start">
+                        <span>{{ broken_screen.screenmodel.screenbrand.screenbrand|title }} {{ broken_screen.screenmodel.screenmodel }}</span>
+                    </div>
+                    <div class="col-md-2 text-start">
+                        <span>{% if broken_screen.grade %}{{ broken_screen.grade }}{% else %}<span>🔎</span> ❓{% endif %}</span>	
+                    </div>
+                    <div class="col-md-3 text-start">
+                        <span>{% if broken_screen.price %}{{ broken_screen.recycler }}{% else %}👨‍🔧 ❓{% endif %}</span>
+                    </div>
+                    <div class="col-md-2 text-end">
+                        <span>{% if broken_screen.price %}{{ broken_screen.price}} € {% else %}<span>💰</span> ❓{% endif %}</span>	
+                    </div>
+                </div>
+                <a href="{% url 'broken_screen_detail' uniquereference_value=broken_screen.uniquereference.value %}" class="stretched-link"></a>
+            </li>
+        </ul>
+    {% endfor %}
+</div>
+{% endblock page_title %}

@@ -16,6 +16,7 @@ import json
 import logging
 import requests
 from django.contrib import messages
+from django.views.generic import ListView
 
 
 
@@ -23,7 +24,8 @@ from django.contrib import messages
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-
+def page_attente(request):
+    return render(request, 'page_attente.html')
 
 # Landing views
 
@@ -474,14 +476,53 @@ class DeleteBrokenScreen(View):
         return redirect('dashboard')
 
 
+class VendreMesEcransView(ListView):
+    model = BrokenScreen
+    template_name = 'vendre_mes_ecrans.html'
+    context_object_name = 'broken_screens'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Récupérer les statistiques par recycleur
+        recycler_statistics = self.model.objects.filter(repairstore__user=self.request.user) \
+            .values('recycler__company_name') \
+            .annotate(
+                items_count_recycler=Count('recycler__company_name'),
+                items_count_brand=Count('screenmodel__screenbrand'),
+                total_value_recycler=Sum('price')
+            )
+
+        context.update({
+            'recap_recycler_table': recycler_statistics,
+        })
+
+        return context
 
 
 
-def page_attente(request):
-    return render(request, 'page_attente.html')
 
+class VendreMesEcransRecycler(View):
+    template_name = 'vendre_mes_ecrans_recycler.html'
 
+    def get(self, request, *args, **kwargs):
+        recycler_ref = kwargs.get('recycler_ref')
 
+        # Récupérer le recycleur spécifique en fonction de la référence
+        recycler = get_object_or_404(Recycler, company_name=recycler_ref)
+
+        # Récupérer toutes les instances de BrokenScreen liées à ce recycleur, triées par modèle
+        broken_screens = BrokenScreen.objects.filter(recycler=recycler).order_by('screenmodel__screenmodel')
+
+        context = {
+            'recycler_ref': recycler_ref,
+            'recycler': recycler,
+            'broken_screens': broken_screens,
+            'items_count': broken_screens.count(),
+            'items_value': sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price),
+        }
+
+        return render(request, self.template_name, context)
 
 
 @login_required

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities, BrokenScreenDetail, DeleteBrokenScreen
+from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities, BrokenScreenDetail, DeleteBrokenScreen, VendreMesEcransView, VendreMesEcransRecycler
 
 
 from django.contrib.auth.views import LoginView
@@ -56,6 +56,10 @@ urlpatterns = [
     path('brokenscreen/detail/<uniquereference_value>/', BrokenScreenDetail.as_view(), name='broken_screen_detail'),
 
     path('brokenscreen/delete/<uniquereference_value>/', DeleteBrokenScreen.as_view(), name='delete_brokenscreen'),
+
+    path('vendre_mes_ecrans/', VendreMesEcransView.as_view(), name='vendre_mes_ecrans'),
+
+    path('vendre_mes_ecrans/recycler/<recycler_ref>/', VendreMesEcransRecycler.as_view(), name='vendre_mes_ecrans_recycler'),
 
 ]
 

@@ -88,10 +88,16 @@ class ScreenModel(models.Model):
 class Recycler(models.Model):
 
     company_name = models.CharField(max_length=100, verbose_name="Dénomination sociale de l'entreprise", blank=True)
+    company_raison_social = models.CharField(max_length=100, verbose_name="Raison sociale", blank=True)
+    siren = models.CharField(max_length=15, verbose_name="Numéro siren")
     address = models.TextField(verbose_name="Adresse")
     postal_code = models.CharField(max_length=10, verbose_name="Code postal")
     city = models.CharField(max_length=50, verbose_name="Ville")
     phone_number = models.CharField(max_length=15, verbose_name="Numéro de téléphone")
+    url = models.URLField()
+    payment_method = models.CharField(max_length=50)
+    payment_delay = models.TextField(blank=True, null=True)
+    shipping_fee = models.CharField(max_length=50)
     date_joined = models.DateTimeField(default=timezone.now, blank=True, null=True)
     is_us = models.BooleanField(default=False)
 
