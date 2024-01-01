@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities, BrokenScreenDetail, DeleteBrokenScreen, VendreMesEcransView, VendreMesEcransRecycler
+from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities, BrokenScreenDetail, DeleteBrokenScreen, ExpedierMesEcransView, ExpedierMesEcransRecycler
 
 
 from django.contrib.auth.views import LoginView
@@ -57,9 +57,9 @@ urlpatterns = [
 
     path('brokenscreen/delete/<uniquereference_value>/', DeleteBrokenScreen.as_view(), name='delete_brokenscreen'),
 
-    path('vendre_mes_ecrans/', VendreMesEcransView.as_view(), name='vendre_mes_ecrans'),
+    path('expedier_mes_ecrans/', ExpedierMesEcransView.as_view(), name='expedier_mes_ecrans'),
 
-    path('vendre_mes_ecrans/recycler/<recycler_ref>/', VendreMesEcransRecycler.as_view(), name='vendre_mes_ecrans_recycler'),
+    path('expedier_mes_ecrans/recycler/<recycler_ref>/', ExpedierMesEcransRecycler.as_view(), name='expedier_mes_ecrans_recycler'),
 
 ]
 

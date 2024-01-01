@@ -476,9 +476,9 @@ class DeleteBrokenScreen(View):
         return redirect('dashboard')
 
 
-class VendreMesEcransView(ListView):
+class ExpedierMesEcransView(ListView):
     model = BrokenScreen
-    template_name = 'vendre_mes_ecrans.html'
+    template_name = 'expedier_mes_ecrans.html'
     context_object_name = 'broken_screens'
 
     def get_context_data(self, **kwargs):
@@ -502,8 +502,8 @@ class VendreMesEcransView(ListView):
 
 
 
-class VendreMesEcransRecycler(View):
-    template_name = 'vendre_mes_ecrans_recycler.html'
+class ExpedierMesEcransRecycler(View):
+    template_name = 'expedier_mes_ecrans_recycler.html'
 
     def get(self, request, *args, **kwargs):
         recycler_ref = kwargs.get('recycler_ref')

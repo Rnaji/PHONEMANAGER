@@ -18,11 +18,13 @@
       <div class="mb-3">
         <label for="id_brand_field" class="form-label">Marque</label>
         <select class="form-select" name="brand_field" id="id_brand_field" required>
-          {% for brand in brand_list %}
-          <option value="{{ brand.screenbrand }}">{{ brand.screenbrand }}</option>
-          {% endfor %}
+            <option value="" disabled selected>Sélectionnez une marque</option>  <!-- Option par défaut -->
+            {% for brand in brand_list %}
+            <option value="{{ brand.screenbrand }}">{{ brand.screenbrand }}</option>
+            {% endfor %}
         </select>
       </div>
+    
 
       <div class="mb-3">
         <label for="id_model_field" class="form-label">Modèle</label>

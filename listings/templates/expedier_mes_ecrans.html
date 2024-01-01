@@ -26,7 +26,7 @@
             </li>
             <li class="list-group-item text-end">
                 {% if recycler_info.recycler__company_name %}
-                    <a href="{% url 'vendre_mes_ecrans_recycler' recycler_ref=recycler_info.recycler__company_name %}" class="btn btn-sm btn-outline-blue">Expédier</a>
+                    <a href="{% url 'expedier_mes_ecrans_recycler' recycler_ref=recycler_info.recycler__company_name %}" class="btn btn-sm btn-outline-blue">Expédier</a>
                 {% else %}
                     <span class="btn btn-sm btn-outline-blue disabled">Expédier</span>
                 {% endif %}
