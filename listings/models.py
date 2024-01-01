@@ -131,7 +131,15 @@ class RecyclerPricing(models.Model):
     def __str__(self):
         return f"Prix de {self.recycler.company_name} pour {self.screenbrand} {self.screenmodel} - {self.grade}"
 
+class Package(models.Model):
+    reference = models.CharField(max_length=20, unique=True)
+    date_shipped = models.DateTimeField(auto_now_add=True)
+    is_received = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"Colis - {self.reference}"
+    
+    
 class BrokenScreen(models.Model):
     repairstore = models.ForeignKey(RepairStore, on_delete=models.CASCADE)
     uniquereference = models.OneToOneField(UniqueReference, on_delete=models.CASCADE)
@@ -167,6 +175,8 @@ class BrokenScreen(models.Model):
     recycler = models.ForeignKey(Recycler, on_delete=models.SET_NULL, null=True, blank=True)
     is_attributed = models.BooleanField(default=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    is_shipped = models.BooleanField(default=False)
+    package = models.ForeignKey(Package, on_delete=models.SET_NULL, null=True, blank=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
     class Meta:
@@ -179,6 +189,14 @@ class BrokenScreen(models.Model):
             grade=self.grade
         )
         return matching_recycler_prices
+    
+    def mark_as_attributed(self):
+        self.is_attributed = True
+        self.save()
+
+    def mark_as_shipped(self):
+        self.is_shipped = True
+        self.save()
 
     def __str__(self):
         return f"{self.screenbrand} {self.screenmodel} - {self.grade}"
@@ -394,7 +412,7 @@ class BrokenScreen(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.grade:
-            if self.some_condition:  # Ajoutez votre propre condition ici si nécessaire
+            if self.some_condition:
                 self.grade = self.attribuer_grade_non_oled()
             else:
                 self.grade = self.attribuer_grade_oled()

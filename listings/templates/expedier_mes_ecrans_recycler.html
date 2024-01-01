@@ -3,45 +3,66 @@
 
 {% block title %}Home{% endblock title %}
 
-{% block paylcd_content %}
-<!-- Contenu spécifique à PayLCD -->
-<div class="mb-3 fs-5 text-green">🌐 Contenu spécifique à PayLCD :</div>
-<p>
-    Vous pouvez ajouter ici du contenu spécifique à PayLCD. Par exemple, des informations, des liens ou tout autre élément.
-</p>
-{% endblock paylcd_content %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+{% endblock extra_css %}
 
 {% block page_title %}
-<div class="mb-3 fs-5 text-blue">👨‍🔧 Écrans à expédier à {{ recycler_ref }} :</div>
+<div class="container mb-3 fs-5 text-blue">
+    <div class="mb-3 fs-5 text-blue">👨‍🔧 Écrans à expédier à {{ recycler_ref }} :</div>
 
-<!-- laptop -->
-<div class="col-12 d-none d-md-block col-lg-10 mb-4">
-    {% for broken_screen in broken_screens %}
-        <ul class="list-group mb-2 fs-6 font-monospace">
-            <li class="list-group-item px-md-1 px-lg-2">
-                <div class="row">
-                    <div class="col-md-1 text-start">
-                        <span>{{ broken_screen.date_joined|date:'d/m' }}</span>
-                    </div>
-                    <div class="col-md-1 text-start">
-                        <span class="badge rounded-pill font-monospace bg-success">{{ broken_screen.uniquereference }}</span>
-                    </div>
-                    <div class="col-md-3 text-start">
-                        <span>{{ broken_screen.screenmodel.screenbrand.screenbrand|title }} {{ broken_screen.screenmodel.screenmodel }}</span>
-                    </div>
-                    <div class="col-md-2 text-start">
-                        <span>{% if broken_screen.grade %}{{ broken_screen.grade }}{% else %}<span>🔎</span> ❓{% endif %}</span>	
-                    </div>
-                    <div class="col-md-3 text-start">
-                        <span>{% if broken_screen.price %}{{ broken_screen.recycler }}{% else %}👨‍🔧 ❓{% endif %}</span>
-                    </div>
-                    <div class="col-md-2 text-end">
-                        <span>{% if broken_screen.price %}{{ broken_screen.price}} € {% else %}<span>💰</span> ❓{% endif %}</span>	
-                    </div>
+    <div class="row">
+        <!-- Carte de visite du Recycler -->
+        <div class="col-md-4 mb-4 custom-card">
+            <div class="card">
+                <div class="card-body fs-6">
+                    <h5 class="card-title">Carte de visite de {{ recycler.company_name }}</h5>
+                    <p class="card-text small">
+                        <strong>Raison sociale :</strong> {{ recycler.company_raison_social }} <br>
+                        <strong>Siren :</strong> {{ recycler.siren }} <br>
+                        <strong>Adresse :</strong> {{ recycler.address }} <br>
+                        <strong>Code postal :</strong> {{ recycler.postal_code }} <br>
+                        <strong>Ville :</strong> {{ recycler.city }} <br>
+                        <strong>Numéro de téléphone :</strong> {{ recycler.phone_number }} <br>
+                        <strong>URL :</strong> <a href="{{ recycler.url }}" target="_blank">{{ recycler.url }}</a> <br>
+                        <strong>Méthode de paiement :</strong> {{ recycler.payment_method }} <br>
+                        <strong>Délai de paiement :</strong> {{ recycler.payment_delay }} <br>
+                        <strong>Frais d'expédition :</strong> {{ recycler.shipping_fee }} <br>
+                    </p>
                 </div>
-                <a href="{% url 'broken_screen_detail' uniquereference_value=broken_screen.uniquereference.value %}" class="stretched-link"></a>
-            </li>
-        </ul>
-    {% endfor %}
+            </div>
+        </div>
+
+        <!-- Liste des écrans cassés -->
+        <div class="col-md-8 mb-4">
+            {% for broken_screen in broken_screens %}
+                <ul class="list-group mb-2 fs-6 font-monospace">
+                    <li class="list-group-item px-md-1 px-lg-2">
+                        <div class="row">
+                            <div class="col-md-1 text-start">
+                                <span>{{ broken_screen.date_joined|date:'d/m' }}</span>
+                            </div>
+                            <div class="col-md-1 text-start">
+                                <span class="badge rounded-pill font-monospace bg-success">{{ broken_screen.uniquereference }}</span>
+                            </div>
+                            <div class="col-md-3 text-start">
+                                <span>{{ broken_screen.screenmodel.screenbrand.screenbrand|title }} {{ broken_screen.screenmodel.screenmodel }}</span>
+                            </div>
+                            <div class="col-md-2 text-start">
+                                <span>{% if broken_screen.grade %}{{ broken_screen.grade }}{% else %}<span>🔎</span> ❓{% endif %}</span>
+                            </div>
+                            <div class="col-md-3 text-start">
+                                <span>{% if broken_screen.price %}{{ broken_screen.recycler }}{% else %}👨‍🔧 ❓{% endif %}</span>
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <span>{% if broken_screen.price %}{{ broken_screen.price}} € {% else %}<span>💰</span> ❓{% endif %}</span>
+                            </div>
+                        </div>
+                        <a href="{% url 'broken_screen_detail' uniquereference_value=broken_screen.uniquereference.value %}" class="stretched-link"></a>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock page_title %}

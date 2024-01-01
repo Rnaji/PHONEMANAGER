@@ -8,8 +8,8 @@ from django.views import View
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import authenticate, login
-from .models import ScreenBrand, UniqueReference, BrokenScreen, ScreenModel, RecyclerPricing, Recycler
+from django.contrib.auth import authenticate, login, logout
+from .models import ScreenBrand, UniqueReference, BrokenScreen, ScreenModel, RecyclerPricing, Recycler, RepairStore
 from .forms import UserRegistrationForm, RepairStoreForm, CreateBrokenScreenForm
 from .signals import create_new_unique_reference
 import json
@@ -670,3 +670,49 @@ def htmx_get_modeles_from_brand(request):
         return JsonResponse({'error': 'Une erreur s\'est produite'}, status=500)
     
 
+@login_required
+def settings_view(request):
+    repair_store = RepairStore.objects.get(user=request.user)
+    return render(request, 'settings_view.html', {'repair_store': repair_store})
+
+@login_required
+def settings_edit_view(request):
+    repair_store = RepairStore.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        form = RepairStoreForm(request.POST, instance=repair_store)
+        if form.is_valid():
+            form.save()
+            return redirect('settings_view')  # Rediriger vers la vue d'affichage après la modification
+    else:
+        form = RepairStoreForm(instance=repair_store)
+
+    return render(request, 'settings_edit_view.html', {'form': form})
+
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('landing') 
+
+
+
+@login_required
+@require_http_methods(['GET'])
+def stickers(request):
+    try:
+        # Récupérer le magasin de réparation associé à l'utilisateur connecté
+        repairstore = RepairStore.objects.get(user=request.user)
+        
+        # Récupérer les références uniques non utilisées spécifiques au magasin de réparation
+        stickers = UniqueReference.objects.filter(repairstore=repairstore, is_used=False)
+        
+        template = 'stickers.html'
+        context = {
+            'stickers': stickers,
+        }
+
+        return render(request, template, context)
+    except RepairStore.DoesNotExist:
+        # Gérer le cas où l'utilisateur n'a pas de magasin de réparation associé
+        return render(request, 'error_page.html', {'error_message': 'User has no associated RepairStore'})

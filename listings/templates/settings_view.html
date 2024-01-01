@@ -1,0 +1,73 @@
+{% extends "base_webapp.html" %}
+{% load static %}
+
+{% block title %}Mon compte{% endblock title %}
+
+{% block page_title %}
+<span>⚙ Mon compte</span>
+<span>
+    <a class="btn btn-sm btn-danger float-end" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#logoutModal">Déconnection</a>
+</span>
+{% endblock page_title %}
+
+{% block page_content %}
+<!-- DEBUT  Mon Profile -->
+<div class="row mb-4 md-mb-5 mb-lg-5">
+	<div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">👨‍🚀 Mon Profile</div>
+	<div class="col-12 col-md-8 col-lg-7">
+		<ul class="list-group shadow-sm">
+			<li class="list-group-item fs-6">
+				<span>{{ user.username }}</span>
+				<span class="float-end font-monospace text-blue fs-6 dropdown-toggle">détails</span>
+				<a class="stretched-link" data-bs-toggle="collapse" href="#collapseProfile" role="button" aria-expanded="false" aria-controls="collapseExample"></a>
+			</li>
+		</ul>
+		<ul class="list-group collapse shadow-sm" id="collapseProfile">
+            <li class="list-group-item fs-6"><span class="me-2">🏢</span>{{ user.repairstore.company_name|upper }}</li>
+            <li class="list-group-item fs-6"><span class="me-2">👨‍🚀</span>{{ user.repairstore.first_name|title }}</li>
+			<li class="list-group-item fs-6"><span class="me-2">👨‍🚀</span>{{ user.repairstore.last_name|title }}</li>
+			<li class="list-group-item fs-6"><span class="me-2">📫</span>{{ user.repairstore.address }}</li>
+            <li class="list-group-item fs-6"><span class="me-2">🏙</span>{{ user.repairstore.postal_code }}</li>
+			<li class="list-group-item fs-6"><span class="me-2">🏙</span>{{ user.repairstore.city|title }}</li>
+			<li class="list-group-item fs-6"><span class="me-2">☎</span>{{ user.repairstore.phone_number }}</li>
+            <li class="list-group-item fs-6">
+                <span class="float-end">
+                    <a href="{% url 'settings_edit_view' %}" class="btn btn-sm btn-outline-blue">Modifier mon profile</a>
+                </span>
+            </li>
+        </ul>
+	</div>
+</div>
+
+<!-- DEBUT  Etiquettes -->
+<div class="row mb-5">
+	<div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">🖨 Imprimer étiquettes</div>
+	<div class="col-12 col-md-8 col-lg-7">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<a href="{% url 'stickers' %}" class="btn btn-sm btn-outline-blue" target="blank">🏷 planche 48 étiquettes</a>
+            </li>
+			<li class="list-group-item">
+				<a href="{% url 'stickers' %}" class="btn btn-sm btn-outline-blue" target="blank">🏷 planche 65 étiquettes</a>
+            </li>
+		</ul>
+	</div>
+</div>
+
+<!-- LOGOUT MODAL -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header text-bg-danger">
+				<h5 class="modal-title" id="exampleModalLabel">Déconnection</h5>
+			</div>
+			<div class="modal-body fs-6">Voulez-vous vraiment vous déconnecter ?</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-blue" data-bs-dismiss="modal">Annuler</button>
+				<a href="{% url 'logout_view' %}" type="button" class="btn btn-danger">Me déconnecter</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock page_content %}
