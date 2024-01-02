@@ -131,13 +131,7 @@ class RecyclerPricing(models.Model):
     def __str__(self):
         return f"Prix de {self.recycler.company_name} pour {self.screenbrand} {self.screenmodel} - {self.grade}"
 
-class Package(models.Model):
-    reference = models.CharField(max_length=20, unique=True)
-    date_shipped = models.DateTimeField(auto_now_add=True)
-    is_received = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f"Colis - {self.reference}"
     
     
 class BrokenScreen(models.Model):
@@ -175,8 +169,7 @@ class BrokenScreen(models.Model):
     recycler = models.ForeignKey(Recycler, on_delete=models.SET_NULL, null=True, blank=True)
     is_attributed = models.BooleanField(default=False)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    is_shipped = models.BooleanField(default=False)
-    package = models.ForeignKey(Package, on_delete=models.SET_NULL, null=True, blank=True)
+    is_packed = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=timezone.now)
 
     class Meta:
@@ -417,3 +410,14 @@ class BrokenScreen(models.Model):
             else:
                 self.grade = self.attribuer_grade_oled()
         super().save(*args, **kwargs)
+
+
+class Package(models.Model):
+    reference = models.CharField(max_length=20, unique=True)
+    brokenscreens = models.ManyToManyField('BrokenScreen', related_name='packages')
+    date_shipped = models.DateTimeField(auto_now_add=True)
+    is_shipped = models.BooleanField(default=False)
+    is_paid = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Colis - {self.reference}"

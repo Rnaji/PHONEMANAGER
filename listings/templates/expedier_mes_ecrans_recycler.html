@@ -61,8 +61,24 @@
                         <a href="{% url 'broken_screen_detail' uniquereference_value=broken_screen.uniquereference.value %}" class="stretched-link"></a>
                     </li>
                 </ul>
-            {% endfor %}
+                {% endfor %}
+            
+                <!-- Bouton "Confirmer l'envoi" avec confirmation -->
+                <form method="post" action="{% url 'valider_expedition' recycler_ref=recycler_ref %}">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-sm btn-outline-blue float-end" id="confirmButton">Confirmer l'envoi</button>
+                    <button type="submit" class="btn btn-danger d-none" id="submitButton">Envoyer</button>
+                </form>
+    
+                <!-- Script pour la confirmation -->
+                <script>
+                    document.getElementById('confirmButton').addEventListener('click', function() {
+                        if (confirm('Confirmez-vous l\'envoi des écrans?')) {
+                            document.getElementById('submitButton').click();
+                        }
+                    });
+                </script>
+            </div>
         </div>
     </div>
-</div>
-{% endblock page_title %}
+    {% endblock page_title %}

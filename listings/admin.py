@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import RepairStore, UniqueReference, ScreenBrand, ScreenModel, Recycler, RecyclerPricing, BrokenScreen
+from .models import RepairStore, UniqueReference, ScreenBrand, ScreenModel, Recycler, RecyclerPricing, BrokenScreen, Package
 
 @admin.register(RepairStore)
 class RepairStoreAdmin(admin.ModelAdmin):
@@ -33,5 +33,12 @@ class RecyclerPricingAdmin(admin.ModelAdmin):
 
 @admin.register(BrokenScreen)
 class BrokenScreenAdmin(admin.ModelAdmin):
-    list_display = ['repairstore', 'uniquereference', 'screenbrand', 'screenmodel', 'is_attributed', 'date_joined']
+    list_display = ['repairstore', 'uniquereference', 'screenbrand', 'screenmodel', 'is_attributed', 'date_joined','is_packed']
     search_fields = ['repairstore__company_name', 'screenbrand__screenbrand', 'screenmodel__screenmodel']
+    list_editable = ['is_packed']
+
+@admin.register(Package)
+class PackageAdmin(admin.ModelAdmin):
+    list_display = ['reference', 'date_shipped', 'is_shipped', 'is_paid']
+    list_filter = ['is_shipped', 'is_paid']
+    search_fields = ['reference']

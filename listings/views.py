@@ -67,10 +67,6 @@ def complete_store_configuration(request):
                 store_configuration.user = get_object_or_404(User, username=registered_username)
                 store_configuration.save()
 
-                # Maintenant que le RepairStore est sauvegardé, générez les références uniques
-                for _ in range(65):  # Générez 65 références uniques par défaut
-                    create_new_unique_reference(store_configuration)
-
                 return redirect('dashboard')
 
     else:
@@ -316,7 +312,7 @@ def screen_offre(request, ref_unique_list, recycler_price_id):
 @login_required
 def stock_all(request):
     # Récupérer toutes les instances de BrokenScreen créées par l'utilisateur actuel
-    broken_screens = BrokenScreen.objects.filter(repairstore__user=request.user)
+    broken_screens = BrokenScreen.objects.filter(repairstore__user=request.user, is_packed=False)
 
     context = {
         'broken_screens': broken_screens,
@@ -339,7 +335,7 @@ def stock_brand(request, brand_ref):
     logger.debug(f"Brand: {brand}")
 
     # Récupérer toutes les instances de BrokenScreen liées à cette marque, triées par modèle
-    broken_screens = BrokenScreen.objects.filter(screenbrand=brand).order_by('screenmodel__screenmodel')
+    broken_screens = BrokenScreen.objects.filter(screenbrand=brand, is_packed=False).order_by('screenmodel__screenmodel')
     logger.debug(f"Broken screens: {broken_screens}")
 
     context = {
@@ -358,7 +354,7 @@ def stock_recycler(request, recycler_ref):
     logger.debug(f"Recycler: {recycler}")
 
     # Récupérer toutes les instances de BrokenScreen liées à ce recycleur, triées par modèle
-    broken_screens = BrokenScreen.objects.filter(recycler=recycler).order_by('screenmodel__screenmodel')
+    broken_screens = BrokenScreen.objects.filter(recycler=recycler, is_packed=False).order_by('screenmodel__screenmodel')
     logger.debug(f"Broken screens: {broken_screens}")
 
     context = {
@@ -383,7 +379,7 @@ from django.shortcuts import render
 
 def dashboard(request):
     # Récupérer toutes les instances de BrokenScreen pour l'utilisateur actuel
-    broken_screens = BrokenScreen.objects.filter(repairstore__user=request.user)
+    broken_screens = BrokenScreen.objects.filter(repairstore__user=request.user, is_packed=False)
 
     # Récupérer les statistiques par marque
     brand_statistics = broken_screens.values('screenmodel__screenbrand').annotate(
@@ -446,8 +442,10 @@ def dashboard(request):
 class BrokenScreenDetail(View):
     template_name = 'broken_screen_detail.html'
 
-    def get(self, request, uniquereference_value):
-        broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=uniquereference_value)
+    def get(self, request, *args, **kwargs):
+        # Récupérer l'instance de BrokenScreen avec is_packed=False
+        broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=kwargs['uniquereference_value'], is_packed=False)
+        
 
         # Récupérez les objets RecyclerPricing associés à ce BrokenScreen
         quotations = broken_screen.quotations.all()
@@ -481,11 +479,16 @@ class ExpedierMesEcransView(ListView):
     template_name = 'expedier_mes_ecrans.html'
     context_object_name = 'broken_screens'
 
+    def get_queryset(self):
+        # Récupérer les instances de BrokenScreen avec is_packed=False
+        queryset = BrokenScreen.objects.filter(is_packed=False, repairstore__user=self.request.user)
+        return queryset
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         # Récupérer les statistiques par recycleur
-        recycler_statistics = self.model.objects.filter(repairstore__user=self.request.user) \
+        recycler_statistics = self.model.objects.filter(repairstore__user=self.request.user, is_packed=False) \
             .values('recycler__company_name') \
             .annotate(
                 items_count_recycler=Count('recycler__company_name'),
@@ -511,8 +514,8 @@ class ExpedierMesEcransRecycler(View):
         # Récupérer le recycleur spécifique en fonction de la référence
         recycler = get_object_or_404(Recycler, company_name=recycler_ref)
 
-        # Récupérer toutes les instances de BrokenScreen liées à ce recycleur, triées par modèle
-        broken_screens = BrokenScreen.objects.filter(recycler=recycler).order_by('screenmodel__screenmodel')
+        # Récupérer toutes les instances de BrokenScreen liées à ce recycleur avec is_packed=False, triées par modèle
+        broken_screens = BrokenScreen.objects.filter(recycler=recycler, is_packed=False).order_by('screenmodel__screenmodel')
 
         context = {
             'recycler_ref': recycler_ref,
@@ -525,10 +528,52 @@ class ExpedierMesEcransRecycler(View):
         return render(request, self.template_name, context)
 
 
+
+class ValiderExpedition(View):
+    template_name = 'valider_expedition.html'
+
+    def get(self, request, *args, **kwargs):
+        recycler_ref = kwargs.get('recycler_ref')
+
+        # Récupérer le recycleur spécifique en fonction de la référence
+        recycler = get_object_or_404(Recycler, company_name=recycler_ref)
+
+        # Récupérer toutes les instances de BrokenScreen liées à ce recycleur avec is_packed=False, triées par modèle
+        broken_screens = BrokenScreen.objects.filter(recycler=recycler, is_packed=False).order_by('screenmodel__screenmodel')
+
+        context = {
+            'recycler_ref': recycler_ref,
+            'recycler': recycler,
+            'broken_screens': broken_screens,
+            'items_count': broken_screens.count(),
+            'items_value': sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price),
+        }
+
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        recycler_ref = kwargs.get('recycler_ref')
+
+        # Récupérer le recycleur spécifique en fonction de la référence
+        recycler = get_object_or_404(Recycler, company_name=recycler_ref)
+
+        # Récupérer toutes les instances de BrokenScreen liées à ce recycleur avec is_packed=False, triées par modèle
+        broken_screens = BrokenScreen.objects.filter(recycler=recycler, is_packed=False).order_by('screenmodel__screenmodel')
+
+        # Modifier le champ is_packed de ces instances à True
+        for broken_screen in broken_screens:
+            broken_screen.is_packed = True
+            broken_screen.save()
+
+        # Rediriger vers une page de confirmation ou une autre vue
+        return redirect('dashboard')
+
+
+
 @login_required
 @require_GET
 def opportunities(request):
-    all_broken_screens = BrokenScreen.objects.all()
+    all_broken_screens = BrokenScreen.objects.filter(is_packed=False)
 
     # Opportunités
     opportunities_count = 0
@@ -716,3 +761,5 @@ def stickers(request):
     except RepairStore.DoesNotExist:
         # Gérer le cas où l'utilisateur n'a pas de magasin de réparation associé
         return render(request, 'error_page.html', {'error_message': 'User has no associated RepairStore'})
+    
+
