@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http40
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from .models import ScreenBrand, UniqueReference, BrokenScreen, ScreenModel, RecyclerPricing, Recycler, RepairStore
+from .models import ScreenBrand, UniqueReference, BrokenScreen, ScreenModel, RecyclerPricing, Recycler, RepairStore, Package
 from .forms import UserRegistrationForm, RepairStoreForm, CreateBrokenScreenForm
 from .signals import create_new_unique_reference
 import json
@@ -17,6 +17,9 @@ import logging
 import requests
 from django.contrib import messages
 from django.views.generic import ListView
+from django.utils import timezone
+from django.db import transaction
+
 
 
 
@@ -560,10 +563,25 @@ class ValiderExpedition(View):
         # Récupérer toutes les instances de BrokenScreen liées à ce recycleur avec is_packed=False, triées par modèle
         broken_screens = BrokenScreen.objects.filter(recycler=recycler, is_packed=False).order_by('screenmodel__screenmodel')
 
-        # Modifier le champ is_packed de ces instances à True
-        for broken_screen in broken_screens:
-            broken_screen.is_packed = True
-            broken_screen.save()
+        # Utiliser une transaction pour garantir que toutes les opérations se font ensemble ou aucune
+        with transaction.atomic():
+            # Marquer les écrans cassés comme emballés
+            for broken_screen in broken_screens:
+                broken_screen.is_packed = True
+                broken_screen.save()
+
+            package_reference = f"REF-{recycler_ref}-{timezone.now().strftime('%Y%m%d%H%M%S')}"
+            package = Package(reference=package_reference, is_shipped=False, is_paid=False)
+            package.is_shipped = True  # Mettre à jour is_shipped à True
+            package.save()
+
+
+
+            # Ajouter les écrans cassés au package
+            package.brokenscreens.set(broken_screens)
+
+            # Enregistrer le package pour calculer total_value
+            package.save()
 
         # Rediriger vers une page de confirmation ou une autre vue
         return redirect('dashboard')
@@ -719,6 +737,7 @@ def htmx_get_modeles_from_brand(request):
 def settings_view(request):
     repair_store = RepairStore.objects.get(user=request.user)
     return render(request, 'settings_view.html', {'repair_store': repair_store})
+
 
 @login_required
 def settings_edit_view(request):

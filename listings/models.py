@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 import string
 import random
+from django.db.models import Sum
+
 
 class RepairStore(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -418,6 +420,14 @@ class Package(models.Model):
     date_shipped = models.DateTimeField(auto_now_add=True)
     is_shipped = models.BooleanField(default=False)
     is_paid = models.BooleanField(default=False)
+    total_value = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
         return f"Colis - {self.reference}"
+
+    def save(self, *args, **kwargs):
+        # Enregistrer le Package pour obtenir un ID avant de calculer total_value
+        super().save(*args, **kwargs)
+        # Calculer total_value après l'enregistrement
+        self.total_value = self.brokenscreens.aggregate(total=Sum('price'))['total'] or 0
+        super().save(*args, **kwargs)
