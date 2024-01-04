@@ -39,6 +39,60 @@
 	</div>
 </div>
 
+
+<!-- DEBUT Mes Envois -->
+<div class="row mb-5">
+    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">📦 Mes envois</div>
+    <div class="col-12 col-md-8 col-lg-7">
+        <ul class="list-group shadow-sm">
+            {% for reference, package_info in packages_info.items %}
+                <li class="list-group-item fs-6">
+                    <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseShipments{{ reference }}" role="button" aria-expanded="false" aria-controls="collapseShipments{{ reference }}">détails</span>
+                    📦 Colis - {{ reference }}
+                </li>
+                <div class="collapse" id="collapseShipments{{ reference }}">
+                    <!-- Ajoutez ici les détails supplémentaires du package si nécessaire -->
+                    <ul class="list-group shadow-sm">
+                        {% for brokenscreen_field in package_info.brokenscreen_fields %}
+                            <li class="list-group-item fs-6">
+                                <div class="row">
+                                    <div class="col-md-2 text-start">
+                                        <span class="badge rounded-pill font-monospace bg-success">{{ brokenscreen_field.uniquereference }}</span>
+                                    </div>
+                                    <div class="col-md-2 text-start">
+                                        <span>{{ brokenscreen_field.screenbrand }}</span>
+                                    </div>  
+									<div class="col-md-3 text-start">
+                                        <span>{{ brokenscreen_field.screenmodel }}</span>
+                                    </div>  
+                                    <div class="col-md-2 text-start">
+                                        GRADE {{ brokenscreen_field.grade }}
+                                    </div>
+									<div class="col-md-2 text-start">
+                                        <span>{{ brokenscreen_field.price }} €</span>
+                                    </div>
+                                    <div class="col-md-2 text-end">
+                                        <!-- Ajoutez ici d'autres éléments si nécessaire -->
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<!-- FIN Mes Envois -->
+
+
+
+
+
+
+
+
+
 <!-- DEBUT  Etiquettes -->
 <div class="row mb-5">
 	<div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">🖨 Imprimer étiquettes</div>

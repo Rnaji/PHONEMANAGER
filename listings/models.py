@@ -414,6 +414,7 @@ class BrokenScreen(models.Model):
         super().save(*args, **kwargs)
 
 
+
 class Package(models.Model):
     reference = models.CharField(max_length=20, unique=True)
     brokenscreens = models.ManyToManyField('BrokenScreen', related_name='packages')
@@ -425,9 +426,32 @@ class Package(models.Model):
     def __str__(self):
         return f"Colis - {self.reference}"
 
+    def get_brokenscreen_fields(self):
+        brokenscreen_fields = []
+        unique_brokenscreens = set()
+
+        for brokenscreen_instance in self.brokenscreens.all():
+            brokenscreen_info = {
+                'uniquereference': brokenscreen_instance.uniquereference,
+                'screenbrand': brokenscreen_instance.screenbrand,
+                'screenmodel': brokenscreen_instance.screenmodel,
+                'grade': brokenscreen_instance.grade,
+                'recycler': brokenscreen_instance.recycler,
+                'price': brokenscreen_instance.price,
+            }
+
+            # Utiliser une clé unique pour vérifier la présence du brokenscreen
+            brokenscreen_key = brokenscreen_instance.uniquereference  # Utiliser uniquereference comme clé unique
+            if brokenscreen_key not in unique_brokenscreens:
+                unique_brokenscreens.add(brokenscreen_key)
+                brokenscreen_fields.append(brokenscreen_info)
+
+        return brokenscreen_fields
+
     def save(self, *args, **kwargs):
         # Enregistrer le Package pour obtenir un ID avant de calculer total_value
         super().save(*args, **kwargs)
         # Calculer total_value après l'enregistrement
         self.total_value = self.brokenscreens.aggregate(total=Sum('price'))['total'] or 0
+        # Appeler save une seule fois après le calcul de total_value
         super().save(*args, **kwargs)

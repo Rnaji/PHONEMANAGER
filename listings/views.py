@@ -736,7 +736,23 @@ def htmx_get_modeles_from_brand(request):
 @login_required
 def settings_view(request):
     repair_store = RepairStore.objects.get(user=request.user)
-    return render(request, 'settings_view.html', {'repair_store': repair_store})
+
+    # Récupérer les références distinctes des packages associés à la RepairStore,
+    # triées par ordre de création (du plus récent au plus ancien)
+    unique_references = Package.objects.filter(brokenscreens__repairstore=repair_store).values_list('reference', flat=True).distinct()
+
+    # Organiser les informations par référence
+    packages_info = {}
+    for reference in unique_references:
+        # Utiliser order_by('-date_shipped') pour trier par ordre décroissant de la date_shipped
+        package = Package.objects.filter(reference=reference).order_by('-date_shipped').first()
+        brokenscreen_fields = package.get_brokenscreen_fields()
+        packages_info[reference] = {
+            'package': package,
+            'brokenscreen_fields': brokenscreen_fields,
+        }
+
+    return render(request, 'settings_view.html', {'repair_store': repair_store, 'packages_info': packages_info})
 
 
 @login_required
