@@ -15,7 +15,12 @@
     <h2>💰 Offres de rachat</h2>
     <ul class="list-group shadow-sm">
         <li class="list-group-item fs-6 font-monospace">
-            ✅ {{ recycler_price.recycler.company_name|title }} {{ recycler_price.price }} €
+            ✅ {{ recycler_price.recycler.company_name|title }}
+            {% if recycler_price.price == 0 %}
+                <span class="text-danger">❓</span>
+            {% else %}
+                {{ recycler_price.price }} €
+            {% endif %}
             <a class="stretched-link" href="{% url 'dashboard' %}"> <!-- Remplacez 'dashboard' par l'URL réelle du tableau de bord -->
             </a>
         </li>

@@ -132,7 +132,11 @@
                         </li>
                         <li class="list-group-item fs-6">
                             <span>Valeur estimée</span>
-                            <span class="float-end">{{ recycler_info.total_value_recycler|default_if_none:'0'|floatformat:2 }} €</span>
+                            {% if recycler_info.total_value_recycler == 0 %}
+                                <span class="float-end">❓</span>
+                            {% else %}
+                                <span class="float-end">{{ recycler_info.total_value_recycler|default_if_none:'0'|floatformat:2 }} €</span>
+                            {% endif %}
                         </li>
                         <li class="list-group-item text-end">
                             {% if recycler_info.recycler__company_name %}

@@ -11,9 +11,36 @@ class Command(BaseCommand):
         file_path = '/Users/rachidnaji/PythonProject/projets/PhoneManager/scrap_app/recycler_updated_price.json'
 
         try:
+            # Récupérer le recycleur existant ou le créer s'il n'existe pas
+            recycleur, created = Recycler.objects.get_or_create(company_name="Votre Recycleur")
+
+            # Parcourir toutes les combinaisons possibles de screenbrand, screenmodel et grade
+            for modele_ecran in ScreenModel.objects.all():
+                for grade, _ in RecyclerPricing._meta.get_field('grade').choices:
+
+                    # Vérifier si le prix existe déjà, sinon le créer
+                    prix_recycleur, created = RecyclerPricing.objects.update_or_create(
+                        recycler=recycleur,
+                        screenbrand=modele_ecran.screenbrand,
+                        screenmodel=modele_ecran,
+                        grade=grade,
+                        defaults={'price': 0}
+                    )
+
+                    if created:
+                        self.stdout.write(self.style.SUCCESS(
+                            f"Prix créé pour {modele_ecran.screenbrand.screenbrand} {modele_ecran.screenmodel} ({grade}) chez {recycleur.company_name} : 0"
+                        ))
+                    else:
+                        self.stdout.write(self.style.SUCCESS(
+                            f"Prix mis à jour pour {modele_ecran.screenbrand.screenbrand} {modele_ecran.screenmodel} ({grade}) chez {recycleur.company_name} : 0"
+                        ))
+
+            # Lire les données JSON
             with open(file_path, 'r') as fichier:
                 donnees_prix = json.load(fichier)
 
+                # Traiter les données JSON
                 with transaction.atomic():
                     for item in donnees_prix:
                         nom_marque = item["Marque"]
@@ -29,8 +56,10 @@ class Command(BaseCommand):
                         )
                         self.stdout.write(self.style.SUCCESS(f"Modèle {nom_marque} {nom_modele} trouvé."))
 
+                        # Récupérer le recycleur existant ou le créer s'il n'existe pas
                         recycleur, created = Recycler.objects.get_or_create(company_name=recycleur_name)
 
+                        # Mettre à jour ou créer le prix de recyclage
                         prix_recycleur, created = RecyclerPricing.objects.update_or_create(
                             recycler=recycleur,
                             screenbrand=modele_ecran.screenbrand,
