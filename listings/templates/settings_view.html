@@ -42,50 +42,114 @@
 
 <!-- DEBUT Mes Envois -->
 <div class="row mb-5">
-    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">📦 Mes envois</div>
+    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">📦 Mes envois en cours</div>
     <div class="col-12 col-md-8 col-lg-7">
-        <ul class="list-group shadow-sm">
-            {% for reference, package_info in packages_info.items %}
-                <li class="list-group-item fs-6">
-                    <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseShipments{{ reference }}" role="button" aria-expanded="false" aria-controls="collapseShipments{{ reference }}">détails</span>
-                    📦 Colis - {{ reference }}
-                </li>
-                <div class="collapse" id="collapseShipments{{ reference }}">
-                    <!-- Ajoutez ici les détails supplémentaires du package si nécessaire -->
-                    <ul class="list-group shadow-sm">
-                        {% for brokenscreen_field in package_info.brokenscreen_fields %}
+        {% if non_paid_packages|length == 0 %}
+            <ul class="list-group shadow-sm">
+                <li class="list-group-item fs-6">Pas d'envoi en cours</li>
+            </ul>
+        {% else %}
+            <ul class="list-group shadow-sm">
+                {% for package in non_paid_packages %}
+                    <li class="list-group-item fs-6">
+                        <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseShipments{{ package.reference }}" role="button" aria-expanded="false" aria-controls="collapseShipments{{ package.reference }}">détails</span>
+                        📦 Colis - {{ package.reference }}
+                    </li>
+                    <div class="collapse" id="collapseShipments{{ package.reference }}">
+                        <!-- Ajoutez ici les détails supplémentaires du package si nécessaire -->
+                        <ul class="list-group shadow-sm">
+                            {% for brokenscreen_field in package.get_brokenscreen_fields %}
+                                <li class="list-group-item fs-6">
+                                    <div class="row">
+                                        <div class="col-md-2 text-start">
+                                            <span class="badge rounded-pill font-monospace bg-success">{{ brokenscreen_field.uniquereference }}</span>
+                                        </div>
+                                        <div class="col-md-2 text-start">
+                                            <span>{{ brokenscreen_field.screenbrand }}</span>
+                                        </div>  
+                                        <div class="col-md-3 text-start">
+                                            <span>{{ brokenscreen_field.screenmodel }}</span>
+                                        </div>  
+                                        <div class="col-md-2 text-start">
+                                            GRADE {{ brokenscreen_field.grade }}
+                                        </div>
+                                        <div class="col-md-2 text-start">
+                                            <span>{{ brokenscreen_field.price }} €</span>
+                                        </div>
+                                        <div class="col-md-2 text-end">
+                                            <!-- Ajoutez ici d'autres éléments si nécessaire -->
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                            <!-- Ajoutez ici le bouton "Marquer comme payé" -->
                             <li class="list-group-item fs-6">
-                                <div class="row">
-                                    <div class="col-md-2 text-start">
-                                        <span class="badge rounded-pill font-monospace bg-success">{{ brokenscreen_field.uniquereference }}</span>
-                                    </div>
-                                    <div class="col-md-2 text-start">
-                                        <span>{{ brokenscreen_field.screenbrand }}</span>
-                                    </div>  
-									<div class="col-md-3 text-start">
-                                        <span>{{ brokenscreen_field.screenmodel }}</span>
-                                    </div>  
-                                    <div class="col-md-2 text-start">
-                                        GRADE {{ brokenscreen_field.grade }}
-                                    </div>
-									<div class="col-md-2 text-start">
-                                        <span>{{ brokenscreen_field.price }} €</span>
-                                    </div>
-                                    <div class="col-md-2 text-end">
-                                        <!-- Ajoutez ici d'autres éléments si nécessaire -->
-                                    </div>
-                                </div>
+                                <a href="{% url 'mark_package_as_paid' reference=package.reference %}" class="btn btn-primary btn-sm float-end">Marquer ce package comme payé</a>
                             </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endfor %}
-        </ul>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <!-- Message toujours présent -->
+        <div class="alert alert-warning mt-2" role="alert">
+            Si votre recycler vous a proposé un prix différent ou un grade différent, vous pourrez le modifier dans l'onglet 📦 Mes envois payés.
+        </div>
     </div>
 </div>
 <!-- FIN Mes Envois -->
 
 
+
+
+<div class="row mb-5">
+    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">📦 Mes envois payés</div>
+    <div class="col-12 col-md-8 col-lg-7">
+        <ul class="list-group shadow-sm">
+            {% for reference, package_info in packages_info.items %}
+                {% if package_info.package.is_paid %}
+                    <li class="list-group-item fs-6">
+                        <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseShipments{{ reference }}" role="button" aria-expanded="false" aria-controls="collapseShipments{{ reference }}">détails</span>
+                        📦 Colis - {{ reference }}
+                    </li>
+                    <div class="collapse" id="collapseShipments{{ reference }}">
+                        <!-- Ajoutez ici les détails supplémentaires du package si nécessaire -->
+                        <ul class="list-group shadow-sm">
+                            {% for brokenscreen_field in package_info.brokenscreen_fields %}
+                                <li class="list-group-item fs-6">
+                                    <div class="row">
+                                        <div class="col-md-2 text-start">
+                                            <span class="badge rounded-pill font-monospace bg-success">{{ brokenscreen_field.uniquereference }}</span>
+                                        </div>
+                                        <div class="col-md-2 text-start">
+                                            <span>{{ brokenscreen_field.screenbrand }}</span>
+                                        </div>  
+                                        <div class="col-md-3 text-start">
+                                            <span>{{ brokenscreen_field.screenmodel }}</span>
+                                        </div>  
+                                        <div class="col-md-2 text-start">
+                                            GRADE {{ brokenscreen_field.grade }}
+                                        </div>
+                                        <div class="col-md-2 text-start">
+                                            <span>{{ brokenscreen_field.price }} €</span>
+                                        </div>
+                                        <div class="col-md-2 text-end">
+                                            <!-- Ajoutez ici d'autres éléments si nécessaire -->
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% if not has_paid_packages %}
+                <li class="list-group-item fs-6">Pas d'envoi payés actuellement</li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+<!-- FIN Mes Envois -->
 
 
 

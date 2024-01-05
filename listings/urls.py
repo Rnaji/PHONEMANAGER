@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities, BrokenScreenDetail, DeleteBrokenScreen, ExpedierMesEcransView, ExpedierMesEcransRecycler, settings_view, settings_edit_view, logout_view, stickers, ValiderExpedition
+from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities, BrokenScreenDetail, DeleteBrokenScreen, ExpedierMesEcransView, ExpedierMesEcransRecycler, settings_view, settings_edit_view, logout_view, stickers, ValiderExpedition, mark_package_as_paid, update_package
 
 
 from django.contrib.auth.views import LoginView
@@ -72,6 +72,9 @@ urlpatterns = [
         
     path('valider_expedition/recycler/<recycler_ref>/', ValiderExpedition.as_view(), name='valider_expedition'),
 
+    path('mark_package_as_paid/<str:reference>/', mark_package_as_paid, name='mark_package_as_paid'),
+
+    path('update_package/<str:reference>/', update_package, name='update_package'),
 
 ]
 

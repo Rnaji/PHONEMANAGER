@@ -19,6 +19,7 @@ from django.contrib import messages
 from django.views.generic import ListView
 from django.utils import timezone
 from django.db import transaction
+from django.db.models import Q
 
 
 
@@ -437,6 +438,7 @@ def dashboard(request):
         'recap_recycler_table': recycler_statistics,
         'opportunities_count': opportunities_count,
         'opportunities_value': opportunities_value,
+        'broken_screens': broken_screens,
     }
 
     return render(request, 'dashboard.html', context)
@@ -737,22 +739,40 @@ def htmx_get_modeles_from_brand(request):
 def settings_view(request):
     repair_store = RepairStore.objects.get(user=request.user)
 
-    # Récupérer les références distinctes des packages associés à la RepairStore,
-    # triées par ordre de création (du plus récent au plus ancien)
+    # Récupérer les références distinctes des packages associés à la RepairStore
     unique_references = Package.objects.filter(brokenscreens__repairstore=repair_store).values_list('reference', flat=True).distinct()
 
     # Organiser les informations par référence
     packages_info = {}
+    non_paid_packages = []  # Nouvelle variable pour stocker les packages non payés
+
     for reference in unique_references:
-        # Utiliser order_by('-date_shipped') pour trier par ordre décroissant de la date_shipped
-        package = Package.objects.filter(reference=reference).order_by('-date_shipped').first()
+        package = Package.objects.get(reference=reference)
         brokenscreen_fields = package.get_brokenscreen_fields()
         packages_info[reference] = {
             'package': package,
             'brokenscreen_fields': brokenscreen_fields,
         }
 
-    return render(request, 'settings_view.html', {'repair_store': repair_store, 'packages_info': packages_info})
+        if not package.is_paid:
+            non_paid_packages.append(package)
+
+    has_paid_packages = any(package_info['package'].is_paid for package_info in packages_info.values())
+
+    context = {
+        'repair_store': repair_store,
+        'packages_info': packages_info,
+        'has_paid_packages': has_paid_packages,
+        'non_paid_packages': non_paid_packages,
+    }
+
+    return render(request, 'settings_view.html', context)
+
+def mark_package_as_paid(request, reference):
+    package = get_object_or_404(Package, reference=reference)
+    package.is_paid = True
+    package.save()
+    return redirect('settings_view') 
 
 
 @login_required
@@ -798,3 +818,24 @@ def stickers(request):
         return render(request, 'error_page.html', {'error_message': 'User has no associated RepairStore'})
     
 
+def update_package(request, reference):
+    package = get_object_or_404(Package, reference=reference)
+    brokenscreen_fields = package.get_brokenscreen_fields()
+
+    if request.method == 'POST':
+        # Mettez à jour les prix et les grades ici en fonction des données du formulaire
+        for brokenscreen_field in brokenscreen_fields:
+            price_key = f'price_{brokenscreen_field.id}'
+            grade_key = f'grade_{brokenscreen_field.id}'
+            
+            if price_key in request.POST:
+                new_price = request.POST[price_key]
+                brokenscreen_field.price = new_price
+            
+            if grade_key in request.POST:
+                new_grade = request.POST[grade_key]
+                brokenscreen_field.grade = new_grade
+            
+            brokenscreen_field.save()
+
+    return render(request, 'update_package.html', {'package': package, 'brokenscreen_fields': brokenscreen_fields})

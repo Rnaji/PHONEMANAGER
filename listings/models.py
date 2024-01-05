@@ -56,9 +56,10 @@ class UniqueReference(models.Model):
 
     @classmethod
     def generate_unique_reference_value(cls):
-        characters = string.ascii_letters + string.digits
+        characters = string.ascii_uppercase.replace('O', '') + string.digits.replace('0', '')  # Exclure la lettre 'O'
         unique_value = ''.join(random.choice(characters) for _ in range(6))
         return unique_value
+
 
     def __str__(self):
         return self.value
@@ -416,7 +417,7 @@ class BrokenScreen(models.Model):
 
 
 class Package(models.Model):
-    reference = models.CharField(max_length=20, unique=True)
+    reference = models.CharField(max_length=40, unique=True)
     brokenscreens = models.ManyToManyField('BrokenScreen', related_name='packages')
     date_shipped = models.DateTimeField(auto_now_add=True)
     is_shipped = models.BooleanField(default=False)

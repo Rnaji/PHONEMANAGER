@@ -18,12 +18,10 @@
             <div class="col-12">
                 <ul class="list-group shadow-sm">
                     {% for recycler_price in recycler_prices %}
-                        {% if recycler_price.recycler.display_name != "WMxMxK Configuration du magasin - RACHIDO" %}
-                            <a href="{% url 'screen_offre' ref_unique_list=broken_screen.uniquereference.value recycler_price_id=recycler_price.id %}" class="list-group-item fs-6 font-monospace">
-                                {{ recycler_price.recycler.company_name|title }}
-                                <span class="float-end text-dark">{{ recycler_price.price }} €</span>
-                            </a>
-                        {% endif %}
+                        <a href="{% url 'screen_offre' ref_unique_list=broken_screen.uniquereference.value recycler_price_id=recycler_price.id %}" class="list-group-item fs-6 font-monospace">
+                            {{ recycler_price.recycler.company_name|title }}
+                            <span class="float-end text-dark">{{ recycler_price.price }} €</span>
+                        </a>
                     {% endfor %}
                 </ul>
             </div>
