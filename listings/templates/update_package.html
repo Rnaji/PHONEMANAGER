@@ -1,30 +1,67 @@
-<!-- update_package.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Package</title>
-</head>
-<body>
-    <h1>Update Package - {{ package.reference }}</h1>
+{% extends "base_webapp.html" %}
+{% load static %}
 
-    <form method="post">
-        {% csrf_token %}
-        <ul>
-            {% for brokenscreen_field in brokenscreen_fields %}
-                <li>
-                    <label for="price_{{ brokenscreen_field.id }}">Price for {{ brokenscreen_field.screenmodel }}:</label>
-                    <input type="text" name="price_{{ brokenscreen_field.id }}" value="{{ brokenscreen_field.price }}">
-                    
-                    <label for="grade_{{ brokenscreen_field.id }}">Grade for {{ brokenscreen_field.screenmodel }}:</label>
-                    <input type="text" name="grade_{{ brokenscreen_field.id }}" value="{{ brokenscreen_field.grade }}">
-                </li>
-            {% endfor %}
-        </ul>
+{% block title %}
+  Mon compte
+{% endblock title %}
 
-        <button type="submit">Update Package</button>
-    </form>
-</body>
-</html>
+{% block content %}
+  <style>
+    body {
+      font-size: 16px; /* Ajustez la taille de la police de base pour tout le corps du document */
+    }
+
+    h1 {
+      font-size: 1.5em; /* Ajustez la taille de la police pour les titres h1 */
+    }
+
+    label, select {
+      font-size: 0.8em; /* Ajustez la taille de la police pour les étiquettes et les menus déroulants */
+    }
+
+    input {
+      font-size: 1em; /* Ajustez la taille de la police pour les champs de saisie */
+      width: 12%; /* Ajustez la largeur du champ de saisie */
+    }
+
+    select {
+      width: 10%; /* Ajustez la largeur du menu déroulant */
+    }
+
+    /* Ajoutez d'autres styles CSS si nécessaire */
+  </style>
+
+  <h1 class="update-package-header">Mettre à jour le Package - {{ package.reference }}</h1>
+
+  <form method="post" action="{% url 'dashboard' %}">
+    {% csrf_token %}
+    <ul class="list-group">
+      {% for brokenscreen_instance in brokenscreen_instances %}
+        <li class="list-group-item">
+          <span class="badge rounded-pill font-monospace bg-success">{{ brokenscreen_instance.uniquereference }}</span>
+
+          <label for="price_{{ brokenscreen_instance.uniquereference }}">Nouveau prix pour le {{ brokenscreen_instance.screenmodel }}:</label>
+          <input type="text" name="price_{{ brokenscreen_instance.uniquereference }}" value="{{ brokenscreen_instance.price }}">
+
+          <label for="grade_{{ brokenscreen_instance.uniquereference }}">Nouveau Grade pour le {{ brokenscreen_instance.screenmodel }}:</label>
+          <select name="grade_{{ brokenscreen_instance.uniquereference }}">
+            <option value="" selected disabled>Select Grade</option>
+            <option value="A" {% if brokenscreen_instance.grade == 'A' %}selected{% endif %}>A</option>
+            <option value="B" {% if brokenscreen_instance.grade == 'B' %}selected{% endif %}>B</option>
+            <option value="C" {% if brokenscreen_instance.grade == 'C' %}selected{% endif %}>C</option>
+            <option value="D" {% if brokenscreen_instance.grade == 'D' %}selected{% endif %}>D</option>
+            <option value="E" {% if brokenscreen_instance.grade == 'E' %}selected{% endif %}>E</option>
+            <option value="F" {% if brokenscreen_instance.grade == 'F' %}selected{% endif %}>F</option>
+            <option value="G" {% if brokenscreen_instance.grade == 'G' %}selected{% endif %}>G</option>
+            <option value="Fully Broken" {% if brokenscreen_instance.grade == 'Fully Broken' %}selected{% endif %}>Fully Broken</option>
+            <option value="Aftermarket" {% if brokenscreen_instance.grade == 'Aftermarket' %}selected{% endif %}>Aftermarket</option>
+          </select>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="text-start">
+      <button type="submit" class="btn btn-primary btn-sm">Mettre à jour</button>
+    </div>
+  </form>
+{% endblock content %}

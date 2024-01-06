@@ -7,7 +7,7 @@
     <span>🏠 Home</span>
     <span>
         <a class="btn btn-sm btn-outline-blue float-end{% if broken_screens.count == 0 %} disabled{% endif %}" href="{% url 'expedier_mes_ecrans' %}">
-            <span class="me-2">📲</span>
+            <span class="me-2">📦</span>
             <span>Expédier mes écrans</span>
         </a>
     </span>
@@ -25,7 +25,7 @@
         <!-- DEBUT Stock -->
         <div class="col-12 col-md-6 col-lg-4 mb-4">
             <ul class="list-group font-monospace shadow-sm">
-                <li class="list-group-item logo-blue fs-5">📦 Stock {% if brand %}{{ brand.screenmodel|title }}{% elif recycler %}{{ recycler|title }}{% else %}total{% endif %}</li>
+                <li class="list-group-item logo-blue fs-5">💲 Stock {% if brand %}{{ brand.screenmodel|title }}{% elif recycler %}{{ recycler|title }}{% else %}total{% endif %}</li>
                 <li class="list-group-item fs-6">
                     <span>Nombre d'écrans</span>
                     <span class="float-end">{{ items_count }}</span>

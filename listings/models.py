@@ -5,6 +5,10 @@ from django.utils import timezone
 import string
 import random
 from django.db.models import Sum
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 
 class RepairStore(models.Model):
@@ -138,6 +142,7 @@ class RecyclerPricing(models.Model):
     
     
 class BrokenScreen(models.Model):
+    id = models.AutoField(primary_key=True)
     repairstore = models.ForeignKey(RepairStore, on_delete=models.CASCADE)
     uniquereference = models.OneToOneField(UniqueReference, on_delete=models.CASCADE)
     screenbrand = models.ForeignKey(ScreenBrand, on_delete=models.CASCADE)
@@ -428,26 +433,11 @@ class Package(models.Model):
         return f"Colis - {self.reference}"
 
     def get_brokenscreen_fields(self):
-        brokenscreen_fields = []
-        unique_brokenscreens = set()
+        brokenscreen_instances = list(self.brokenscreens.all())
+        logger.info(f"get_brokenscreen_fields() returned: {type(brokenscreen_instances)}")
+        return brokenscreen_instances
 
-        for brokenscreen_instance in self.brokenscreens.all():
-            brokenscreen_info = {
-                'uniquereference': brokenscreen_instance.uniquereference,
-                'screenbrand': brokenscreen_instance.screenbrand,
-                'screenmodel': brokenscreen_instance.screenmodel,
-                'grade': brokenscreen_instance.grade,
-                'recycler': brokenscreen_instance.recycler,
-                'price': brokenscreen_instance.price,
-            }
 
-            # Utiliser une clé unique pour vérifier la présence du brokenscreen
-            brokenscreen_key = brokenscreen_instance.uniquereference  # Utiliser uniquereference comme clé unique
-            if brokenscreen_key not in unique_brokenscreens:
-                unique_brokenscreens.add(brokenscreen_key)
-                brokenscreen_fields.append(brokenscreen_info)
-
-        return brokenscreen_fields
 
     def save(self, *args, **kwargs):
         # Enregistrer le Package pour obtenir un ID avant de calculer total_value

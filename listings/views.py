@@ -834,24 +834,37 @@ def stickers(request):
         return render(request, 'error_page.html', {'error_message': 'User has no associated RepairStore'})
     
 
+import logging
+
+logger = logging.getLogger(__name__)
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Package  # Assurez-vous d'importer correctement votre modèle
+
 def update_package(request, reference):
     package = get_object_or_404(Package, reference=reference)
-    brokenscreen_fields = package.get_brokenscreen_fields()
+    brokenscreen_instances = package.get_brokenscreen_fields()
 
     if request.method == 'POST':
-        # Mettez à jour les prix et les grades ici en fonction des données du formulaire
-        for brokenscreen_field in brokenscreen_fields:
-            price_key = f'price_{brokenscreen_field.id}'
-            grade_key = f'grade_{brokenscreen_field.id}'
-            
+        for brokenscreen_instance in brokenscreen_instances:
+            price_key = f'price_{brokenscreen_instance.uniquereference}'
+            grade_key = f'grade_{brokenscreen_instance.uniquereference}'
+
             if price_key in request.POST:
                 new_price = request.POST[price_key]
-                brokenscreen_field.price = new_price
-            
+                brokenscreen_instance.price = new_price
+
             if grade_key in request.POST:
                 new_grade = request.POST[grade_key]
-                brokenscreen_field.grade = new_grade
-            
-            brokenscreen_field.save()
+                brokenscreen_instance.grade = new_grade
 
-    return render(request, 'update_package.html', {'package': package, 'brokenscreen_fields': brokenscreen_fields})
+            brokenscreen_instance.save()
+
+        # Redirection vers le tableau de bord après le traitement du formulaire réussi
+        return redirect('dashboard')  # Assurez-vous de remplacer 'dashboard' par le nom réel de votre URL de tableau de bord
+
+    return render(request, 'update_package.html', {'package': package, 'brokenscreen_instances': brokenscreen_instances})
+
+
+
+

@@ -13,7 +13,7 @@
 {% block page_content %}
 <!-- DEBUT  Mon Profile -->
 <div class="row mb-4 md-mb-5 mb-lg-5">
-	<div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">👨‍🚀 Mon Profile</div>
+	<div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">👨🏻‍💻 Mon Profile</div>
 	<div class="col-12 col-md-8 col-lg-7">
 		<ul class="list-group shadow-sm">
 			<li class="list-group-item fs-6">
@@ -86,7 +86,7 @@
                             <li class="list-group-item fs-6">
                                 <a href="{% url 'mark_package_as_paid' reference=package.reference %}" class="btn btn-primary btn-sm float-end">Marquer ce package comme payé</a>
                                 <!-- Bouton "Modifier" -->
-                                <a href="{% url 'update_package' reference=package.reference %}" class="btn btn-warning btn-sm">Modifier</a>
+                                <a href="{% url 'update_package' reference=package.reference %}" class="btn btn-warning btn-sm">Modifier ce package</a>
                             </li>
                         </ul>
                     </div>
@@ -95,7 +95,7 @@
         {% endif %}
         <!-- Message toujours présent -->
         <div class="alert alert-warning mt-2" role="alert">
-            Si le recycler vous a proposé un prix ou un grade différent, vous pouvez le mettre à jour en cliquant sur "Modifier".
+            Si le recycler vous a proposé un prix ou un grade différent, vous pouvez les mettre à jour en cliquant sur "Modifier".
         </div>
     </div>
 </div>
@@ -104,7 +104,7 @@
 
 
 <div class="row mb-5">
-    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">📦 Mes envois payés</div>
+    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">📦 Mes envois payés 💵</div>
     <div class="col-12 col-md-8 col-lg-7">
         <ul class="list-group shadow-sm">
             {% for reference, package_info in packages_info.items %}

@@ -223,3 +223,8 @@ label {
 small-font {
     font-size: 0.8em !important; /* Ajustez la taille de la police selon vos besoins */
 }
+
+
+  .update-package-header {
+    font-size: 3em;
+    color: #3366cc;}
