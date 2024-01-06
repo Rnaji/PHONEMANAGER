@@ -58,6 +58,7 @@
                     <div class="collapse" id="collapseShipments{{ package.reference }}">
                         <!-- Ajoutez ici les détails supplémentaires du package si nécessaire -->
                         <ul class="list-group shadow-sm">
+                            <!-- Ajoutez ici le bouton "Marquer comme payé" -->
                             {% for brokenscreen_field in package.get_brokenscreen_fields %}
                                 <li class="list-group-item fs-6">
                                     <div class="row">
@@ -82,9 +83,10 @@
                                     </div>
                                 </li>
                             {% endfor %}
-                            <!-- Ajoutez ici le bouton "Marquer comme payé" -->
                             <li class="list-group-item fs-6">
                                 <a href="{% url 'mark_package_as_paid' reference=package.reference %}" class="btn btn-primary btn-sm float-end">Marquer ce package comme payé</a>
+                                <!-- Bouton "Modifier" -->
+                                <a href="{% url 'update_package' reference=package.reference %}" class="btn btn-warning btn-sm">Modifier</a>
                             </li>
                         </ul>
                     </div>
@@ -93,11 +95,10 @@
         {% endif %}
         <!-- Message toujours présent -->
         <div class="alert alert-warning mt-2" role="alert">
-            Si votre recycler vous a proposé un prix différent ou un grade différent, vous pourrez le modifier dans l'onglet 📦 Mes envois payés.
+            Si le recycler vous a proposé un prix ou un grade différent, vous pouvez le mettre à jour en cliquant sur "Modifier".
         </div>
     </div>
 </div>
-<!-- FIN Mes Envois -->
 
 
 
@@ -151,12 +152,6 @@
 </div>
 <!-- FIN Mes Envois -->
 
-
-
-
-
-
-
 <!-- DEBUT  Etiquettes -->
 <div class="row mb-5">
 	<div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">🖨 Imprimer étiquettes</div>
@@ -168,6 +163,20 @@
 		</ul>
 	</div>
 </div>
+
+
+<!-- DEBUT Factures -->
+<div class="row mb-5">
+    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">🧾Mes factures</div>
+    <div class="col-12 col-md-8 col-lg-7">
+        <ul class="list-group">
+            <li class="list-group-item">
+                Vous n'avez pas encore de factures
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- FIN Factures -->
 
 <!-- LOGOUT MODAL -->
 <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -184,5 +193,12 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+
 
 {% endblock page_content %}

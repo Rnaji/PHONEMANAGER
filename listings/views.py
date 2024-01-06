@@ -381,6 +381,9 @@ from django.shortcuts import render
 
 
 
+from django.db.models import Count, Sum
+from django.shortcuts import render
+
 def dashboard(request):
     # Récupérer toutes les instances de BrokenScreen pour l'utilisateur actuel
     broken_screens = BrokenScreen.objects.filter(repairstore__user=request.user, is_packed=False)
@@ -415,7 +418,12 @@ def dashboard(request):
                 grade=broken_screen.grade
             ).order_by('-price')
 
-            if recycler_prices.exists() and recycler_prices.first().price > current_value:
+            # Exclude opportunities with the recycler named "VotreRecycleur"
+            if (
+                recycler_prices.exists()
+                and recycler_prices.first().price > current_value
+                and broken_screen.recycler.company_name != "VotreRecycleur"
+            ):
                 quotation_count = recycler_prices.count()
                 best_offer = recycler_prices.first()
 
@@ -442,6 +450,7 @@ def dashboard(request):
     }
 
     return render(request, 'dashboard.html', context)
+
 
 
 class BrokenScreenDetail(View):
@@ -590,10 +599,16 @@ class ValiderExpedition(View):
 
 
 
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_GET
+
 @login_required
 @require_GET
 def opportunities(request):
     all_broken_screens = BrokenScreen.objects.filter(is_packed=False)
+
+    # Exclure les instances avec le recycleur "VotreRecycleur"
+    all_broken_screens = all_broken_screens.exclude(recycler__company_name="VotreRecycleur")
 
     # Opportunités
     opportunities_count = 0
@@ -643,6 +658,7 @@ def opportunities(request):
         'opportunities_value': opportunities_value,
     }
     return render(request, template, context)
+
 
 
 

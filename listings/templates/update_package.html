@@ -1,0 +1,30 @@
+<!-- update_package.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Package</title>
+</head>
+<body>
+    <h1>Update Package - {{ package.reference }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for brokenscreen_field in brokenscreen_fields %}
+                <li>
+                    <label for="price_{{ brokenscreen_field.id }}">Price for {{ brokenscreen_field.screenmodel }}:</label>
+                    <input type="text" name="price_{{ brokenscreen_field.id }}" value="{{ brokenscreen_field.price }}">
+                    
+                    <label for="grade_{{ brokenscreen_field.id }}">Grade for {{ brokenscreen_field.screenmodel }}:</label>
+                    <input type="text" name="grade_{{ brokenscreen_field.id }}" value="{{ brokenscreen_field.grade }}">
+                </li>
+            {% endfor %}
+        </ul>
+
+        <button type="submit">Update Package</button>
+    </form>
+</body>
+</html>
