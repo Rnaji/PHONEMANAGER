@@ -20,6 +20,8 @@ from django.views.generic import ListView
 from django.utils import timezone
 from django.db import transaction
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 
@@ -333,13 +335,19 @@ from django.shortcuts import get_object_or_404
 
 logger = logging.getLogger(__name__)
 
+@login_required
+@require_GET
 def stock_brand(request, brand_ref):
     # Récupérer la marque spécifique en fonction de la référence
     brand = get_object_or_404(ScreenBrand, screenbrand=brand_ref)
     logger.debug(f"Brand: {brand}")
 
-    # Récupérer toutes les instances de BrokenScreen liées à cette marque, triées par modèle
-    broken_screens = BrokenScreen.objects.filter(screenbrand=brand, is_packed=False).order_by('screenmodel__screenmodel')
+    # Filtrer les instances de BrokenScreen pour l'utilisateur connecté, la marque spécifiée, et non emballées
+    broken_screens = BrokenScreen.objects.filter(
+        repairstore=request.user.repairstore,
+        screenbrand=brand,
+        is_packed=False
+    ).order_by('screenmodel__screenmodel')
     logger.debug(f"Broken screens: {broken_screens}")
 
     context = {
@@ -352,13 +360,19 @@ def stock_brand(request, brand_ref):
     return render(request, 'stock.html', context)
 
 
+@login_required
+@require_GET
 def stock_recycler(request, recycler_ref):
     # Récupérer le recycleur spécifique en fonction de la référence
     recycler = get_object_or_404(Recycler, company_name=recycler_ref)
     logger.debug(f"Recycler: {recycler}")
 
-    # Récupérer toutes les instances de BrokenScreen liées à ce recycleur, triées par modèle
-    broken_screens = BrokenScreen.objects.filter(recycler=recycler, is_packed=False).order_by('screenmodel__screenmodel')
+    # Filtrer les instances de BrokenScreen pour l'utilisateur connecté, le recycleur spécifié, et non emballées
+    broken_screens = BrokenScreen.objects.filter(
+        repairstore=request.user.repairstore,
+        recycler=recycler,
+        is_packed=False
+    ).order_by('screenmodel__screenmodel')
     logger.debug(f"Broken screens: {broken_screens}")
 
     context = {
@@ -494,15 +508,15 @@ class ExpedierMesEcransView(ListView):
     context_object_name = 'broken_screens'
 
     def get_queryset(self):
-        # Récupérer les instances de BrokenScreen avec is_packed=False
-        queryset = BrokenScreen.objects.filter(is_packed=False, repairstore__user=self.request.user)
+        # Filtrer les instances de BrokenScreen pour l'utilisateur connecté et non emballées
+        queryset = BrokenScreen.objects.filter(is_packed=False, repairstore=self.request.user.repairstore)
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         # Récupérer les statistiques par recycleur
-        recycler_statistics = self.model.objects.filter(repairstore__user=self.request.user, is_packed=False) \
+        recycler_statistics = self.model.objects.filter(repairstore=self.request.user.repairstore, is_packed=False) \
             .values('recycler__company_name') \
             .annotate(
                 items_count_recycler=Count('recycler__company_name'),
@@ -518,7 +532,6 @@ class ExpedierMesEcransView(ListView):
 
 
 
-
 class ExpedierMesEcransRecycler(View):
     template_name = 'expedier_mes_ecrans_recycler.html'
 
@@ -528,8 +541,12 @@ class ExpedierMesEcransRecycler(View):
         # Récupérer le recycleur spécifique en fonction de la référence
         recycler = get_object_or_404(Recycler, company_name=recycler_ref)
 
-        # Récupérer toutes les instances de BrokenScreen liées à ce recycleur avec is_packed=False, triées par modèle
-        broken_screens = BrokenScreen.objects.filter(recycler=recycler, is_packed=False).order_by('screenmodel__screenmodel')
+        # Filtrer les instances de BrokenScreen pour l'utilisateur connecté, le recycleur spécifié, et non emballées
+        broken_screens = BrokenScreen.objects.filter(
+            repairstore=request.user.repairstore,
+            recycler=recycler,
+            is_packed=False
+        ).order_by('screenmodel__screenmodel')
 
         context = {
             'recycler_ref': recycler_ref,
@@ -552,8 +569,12 @@ class ValiderExpedition(View):
         # Récupérer le recycleur spécifique en fonction de la référence
         recycler = get_object_or_404(Recycler, company_name=recycler_ref)
 
-        # Récupérer toutes les instances de BrokenScreen liées à ce recycleur avec is_packed=False, triées par modèle
-        broken_screens = BrokenScreen.objects.filter(recycler=recycler, is_packed=False).order_by('screenmodel__screenmodel')
+        # Filtrer les instances de BrokenScreen pour l'utilisateur connecté, le recycleur spécifié, et non emballées
+        broken_screens = BrokenScreen.objects.filter(
+            repairstore=request.user.repairstore,
+            recycler=recycler,
+            is_packed=False
+        ).order_by('screenmodel__screenmodel')
 
         context = {
             'recycler_ref': recycler_ref,
@@ -571,8 +592,12 @@ class ValiderExpedition(View):
         # Récupérer le recycleur spécifique en fonction de la référence
         recycler = get_object_or_404(Recycler, company_name=recycler_ref)
 
-        # Récupérer toutes les instances de BrokenScreen liées à ce recycleur avec is_packed=False, triées par modèle
-        broken_screens = BrokenScreen.objects.filter(recycler=recycler, is_packed=False).order_by('screenmodel__screenmodel')
+        # Filtrer les instances de BrokenScreen pour l'utilisateur connecté, le recycleur spécifié, et non emballées
+        broken_screens = BrokenScreen.objects.filter(
+            repairstore=request.user.repairstore,
+            recycler=recycler,
+            is_packed=False
+        ).order_by('screenmodel__screenmodel')
 
         # Utiliser une transaction pour garantir que toutes les opérations se font ensemble ou aucune
         with transaction.atomic():
@@ -585,8 +610,6 @@ class ValiderExpedition(View):
             package = Package(reference=package_reference, is_shipped=False, is_paid=False)
             package.is_shipped = True  # Mettre à jour is_shipped à True
             package.save()
-
-
 
             # Ajouter les écrans cassés au package
             package.brokenscreens.set(broken_screens)
@@ -605,7 +628,8 @@ from django.views.decorators.http import require_GET
 @login_required
 @require_GET
 def opportunities(request):
-    all_broken_screens = BrokenScreen.objects.filter(is_packed=False)
+    # Filtrer les instances de BrokenScreen pour l'utilisateur connecté
+    all_broken_screens = BrokenScreen.objects.filter(is_packed=False, repairstore=request.user.repairstore)
 
     # Exclure les instances avec le recycleur "VotreRecycleur"
     all_broken_screens = all_broken_screens.exclude(recycler__company_name="VotreRecycleur")
@@ -644,9 +668,8 @@ def opportunities(request):
     i = 0
 
     for broken_screen in op_all_broken_screens:
-        # add badge_color on broken_screen
+        # Ajouter des informations sur l'opportunité à chaque instance de BrokenScreen
         broken_screen.quotation_count = broken_screen_op_list[i][3]
-        # opportunities
         broken_screen.best_offer = broken_screen_op_list[i][1]
         broken_screen.offer_delta = broken_screen_op_list[i][2]
         i += 1
@@ -755,7 +778,7 @@ def htmx_get_modeles_from_brand(request):
 def settings_view(request):
     repair_store = RepairStore.objects.get(user=request.user)
 
-    # Récupérer les références distinctes des packages associés à la RepairStore
+    # Filtrer les références distinctes des packages associés à la RepairStore
     unique_references = Package.objects.filter(brokenscreens__repairstore=repair_store).values_list('reference', flat=True).distinct()
 
     # Organiser les informations par référence
@@ -784,11 +807,23 @@ def settings_view(request):
 
     return render(request, 'settings_view.html', context)
 
+@login_required
 def mark_package_as_paid(request, reference):
-    package = get_object_or_404(Package, reference=reference)
-    package.is_paid = True
-    package.save()
-    return redirect('settings_view') 
+    # Filtrer les packages en fonction de la référence et du repairstore de l'utilisateur connecté
+    packages = Package.objects.filter(reference=reference, brokenscreens__repairstore=request.user.repairstore)
+
+    if packages.exists():
+        # Itérer sur tous les packages trouvés (peut y en avoir plusieurs)
+        for package in packages:
+            # Mettez ici le code pour marquer le package comme payé, par exemple :
+            package.is_paid = True
+            package.save()
+
+        # Redirection vers la vue des paramètres après le traitement réussi
+        return redirect('settings_view')  # Assurez-vous de remplacer 'settings_view' par le nom réel de votre vue des paramètres
+    else:
+        # Retourner une réponse appropriée si aucun package correspondant n'est trouvé
+        raise Http404("Package does not exist")
 
 
 @login_required
@@ -834,15 +869,21 @@ def stickers(request):
         return render(request, 'error_page.html', {'error_message': 'User has no associated RepairStore'})
     
 
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import Http404
+from .models import Package
+from django.db import transaction
 import logging
 
 logger = logging.getLogger(__name__)
 
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import Package  # Assurez-vous d'importer correctement votre modèle
-
+@login_required
+@transaction.atomic
 def update_package(request, reference):
+    # Récupérer le package en fonction de la référence
     package = get_object_or_404(Package, reference=reference)
+    
+    # Récupérer les instances d'écrans cassés associées au package
     brokenscreen_instances = package.get_brokenscreen_fields()
 
     if request.method == 'POST':
@@ -850,21 +891,22 @@ def update_package(request, reference):
             price_key = f'price_{brokenscreen_instance.uniquereference}'
             grade_key = f'grade_{brokenscreen_instance.uniquereference}'
 
+            print(f"Processing brokenscreen_instance with id={brokenscreen_instance.id}")
+
             if price_key in request.POST:
                 new_price = request.POST[price_key]
+                print(f"New price for brokenscreen_instance with id={brokenscreen_instance.id}: {new_price}")
                 brokenscreen_instance.price = new_price
 
             if grade_key in request.POST:
                 new_grade = request.POST[grade_key]
+                print(f"New grade for brokenscreen_instance with id={brokenscreen_instance.id}: {new_grade}")
                 brokenscreen_instance.grade = new_grade
 
             brokenscreen_instance.save()
+            print(f"Saved changes for brokenscreen_instance with id={brokenscreen_instance.id}")
 
-        # Redirection vers le tableau de bord après le traitement du formulaire réussi
-        return redirect('dashboard')  # Assurez-vous de remplacer 'dashboard' par le nom réel de votre URL de tableau de bord
+        print("Redirecting to settings view")
+        return redirect('settings_view')  # Assurez-vous de remplacer 'settings_view' par le nom réel de votre vue des paramètres
 
     return render(request, 'update_package.html', {'package': package, 'brokenscreen_instances': brokenscreen_instances})
-
-
-
-
