@@ -606,7 +606,7 @@ class ValiderExpedition(View):
                 broken_screen.is_packed = True
                 broken_screen.save()
 
-            package_reference = f"REF-{recycler_ref}-{timezone.now().strftime('%Y%m%d%H%M%S')}"
+            package_reference = f"{recycler_ref}-{recycler_ref}-{timezone.now().strftime('%Y%m%d%H%M%S')}"
             package = Package(reference=package_reference, is_shipped=False, is_paid=False)
             package.is_shipped = True  # Mettre à jour is_shipped à True
             package.save()
