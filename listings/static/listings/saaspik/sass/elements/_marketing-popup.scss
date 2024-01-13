@@ -1,0 +1,46 @@
+.marketing-logo-carousel {
+    background: #e1f1fe;
+    padding: 120px 0 90px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    @media(max-width: 991px) {
+        padding: 80px 0 50px;
+    }
+
+    .popup-videos-two {
+        margin-top: -300px;
+        margin-bottom: 87px;
+
+        @media(max-width: 991px) {
+            margin-top: 0;
+        }
+    }
+}
+
+.popup-videos-two {
+    position: relative;
+    border: 10px solid #fff;
+    border-radius: 50px;
+    box-shadow: 0px 40px 70px 0px rgba(14, 3, 52, 0.1);
+    overflow: hidden;
+
+    .play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        &.large i {
+            color: $color__theme-7;
+            text-shadow: none;
+        }
+    }
+}
+
+.logo-carousel-marketing {
+    margin-bottom: 90px;
+}
+
+

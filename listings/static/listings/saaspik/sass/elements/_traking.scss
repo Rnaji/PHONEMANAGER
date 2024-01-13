@@ -1,0 +1,64 @@
+.traking {
+    padding: 117px 0 80px;
+
+    @media(max-width: 991px) {
+        padding-top: 80px;
+    }
+
+    .button-container {
+        margin-top: 50px;
+    }
+}
+
+.traking__item {
+    padding: 0 15px;
+
+    img {
+        box-shadow: 0px 30px 70px 0px rgba(12, 8, 44, 0.1);
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+}
+
+.traking--images {
+    display: flex;
+    flex-wrap: wrap;
+
+    
+    .traking__item {
+        @media(max-width: 1200px) {
+            width: 25% !important;
+        }
+
+        @media(max-width: 767px) {
+            width: 50% !important;
+        }
+
+        @media(max-width: 380px) {
+            width: 100% !important;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.traking__item--width-one {
+    width: 300px;
+}
+
+.traking__item--width-two {
+    width: 230px;
+}
+
+.traking__item--width-three {
+    width: 270px;
+}
+
+.traking__item--width-four {
+    width: 200px;
+}
+
+
+

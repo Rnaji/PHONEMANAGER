@@ -1,107 +1,915 @@
-{% extends "base_landing.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
 {% load static %}
-{% block title %}Home{% endblock title %}
 
-{% block content %}
-<!-- Tagline container -->
-<div class="container-fluid mb-5 pb-5 pt-3 bg-gris shadow-sm">
-	<div class="container mb-4 text-end"><a href="{% url 'login' %}" role="button" class="btn btn-sm btn-outline-blue">Accès client</a></div>
-	<div class="mb-4 mb-md-4 mb-lg-5 logo-blue display-1 text-center">PRO PHONE MANAGER</div>
-	<div class="mb-5 px-md-3 fs-1 text-blue text-center">L'outil <span class="fw-bold">gratuit</span> de gestion de stocks d'écrans cassés <br class="d-inline d-md-none d-lg-inline">incluant un comparateur<br class="d-none d-md-inline d-lg-none"> des offres de rachats</div>
-	<div class="text-center"><a href="{% url 'user_registration' %}" role="button" class="btn btn-lg btn-blue shadow-sm">Créez votre compte gratuit</a></div>	
-</div>
+<head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    
+    {% block head %}
+    <title>{% block title %}ProPhoneManager — Facilitez vous la vie{% endblock title %}</title>
 
-<!-- Vidéo container -->
-<div class="container-lg mb-5">
-	<div class="mb-2 fs-4 text-blue"><span class="logo-blue">PRO PHONE MANAGER</span> en vidéo</div>
-	<div class="ratio ratio-16x9">
-		<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="PRO PHONE MANAGER video demo" frameborder="0" allowfullscreen></iframe>
-		{% comment %} <iframe class="embed-responsive-item" src="{% static 'lcd-demo.mp4' %}" style="max-width: 100%; height: 80%;" allowfullscreen></iframe> {% endcomment %}
-	</div>
-</div>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'listings/saaspik/assets/img/fav/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'listings/saaspik/assets/img/fav/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'listings/saaspik/assets/img/fav/favicon-16x16.png' %}">
+    <link rel="mask-icon" href="{% static 'listings/saaspik/assets/img/fav/safari-pinned-tab.svg' %}" color="#fa7070">
 
-<!-- Advantage banner container -->
-<div class="container-fluid advantage-banner mb-5 py-3 py-md-4 py-lg-5 fs-1 text-center fw-bold bg-gris border-start-0 border-end-0">Optimisez la revente de vos écrans cassés</div>
+    <meta name="msapplication-TileColor" content="#fa7070">
+    <meta name="theme-color" content="#fa7070">
 
-<!-- Advantage cards container -->
-<div class="container-lg mb-5 py-lg-4">
-	<div class="row row-cols-1 row-cols-md-2 g-4">
-		<div class="col">
-			<div class="card h-100">
-				<div class="card-header bg-blue fs-4">Comparez les recycleurs</div>
-				<div class="card-body bg-white fs-5">Trouvez de nouveaux partenaires vérifiés pour revendre vos écrans cassés.</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card h-100">
-				<div class="card-header bg-blue fs-4">Obtenez les prix de rachat</div>
-				<div class="card-body bg-white fs-5">Bénéficiez en temps réel de la meilleure offre de rachat pour vos écrans cassés.</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card h-100">
-				<div class="card-header bg-blue fs-4">Identifiez les grades</div>
-				<div class="card-body bg-white fs-5">Répondez à quelques questions sur l'état de l'écran pour définir automatiquement son grade par recycleur.</div>
-			</div>
-		</div>
-		<div class="col">
-			<div class="card h-100">
-				<div class="card-header bg-blue fs-4">Imprimez vos étiquettes</div>
-				<div class="card-body bg-white fs-5">Utilisez votre imprimante actuelle pour créer des références autocollantes uniques par écrans.</div>
-			</div>
-		</div>
-	</div>
-</div>
+    <!-- Dependency Styles -->
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/fontawesome/css/all.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/swiper/css/swiper.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/wow/css/animate.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/magnific-popup/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/components-elegant-icons/css/elegant-icons.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/simple-line-icons/css/simple-line-icons.css' %}" type="text/css">
 
-<!-- CTA button container -->
-<div class="container-lg mb-5 text-center">
-	<a href="{% url 'user_registration' %}" role="button" class="btn btn-lg btn-blue shadow-sm">Créez votre compte gratuit</a>
-</div>
+    <!-- Site Stylesheet -->
+    <link rel="stylesheet" href="{% static 'listings/saaspik/assets/css/app.css' %}" type="text/css">
 
-<!-- Recycleur banner container -->
-<div class="container-fluid advantage-banner mb-5 py-3 py-md-4 py-lg-5 fs-1 text-center fw-bold bg-gris border-start-0 border-end-0">Mise à jour des prix de rachat des recycleurs</div>
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+    
+    {% endblock head %}
+</head>
 
-<!-- Recycleur card container -->
-<div class="container-md mb-5 py-lg-4">
-	<div class="row mb-3 mb-md-5 text-center">
-		<div class="col-6 col-md-4 col-lg m-auto pb-4"><img class="img-thumbnail p-2 bg-gris-fonce" src="{% static 'img/recycler_logos/paylcd.png' %}"></div>
-		<div class="col-6 col-md-4 col-lg m-auto pb-4"><img class="img-thumbnail p-2 bg-gris-fonce" src="{% static 'img/recycler_logos/recycle-mon-lcd.png' %}"></div>
-		<div class="col-6 col-md-4 col-lg m-auto pb-4"><img class="img-thumbnail p-2 bg-white" src="{% static 'img/recycler_logos/lcd-phone.jpg' %}"></div>
-		<div class="col-6 col-md-4 col-lg m-auto pb-4"><img class="img-thumbnail p-2" src="{% static 'img/recycler_logos/smartgrade.png' %}"></div>
-		<div class="col-6 col-md-4 col-lg m-auto pb-4"><img class="img-thumbnail p-2 bg-black" src="{% static 'img/recycler_logos/agoratrade.png' %}"></div>
-	</div>
-	<div class="row">
-		<div class="col-11 mx-auto px-3 py-2 p-md-3 fs-3 text-blue text-center bg-white rounded" style="border:2px solid navy">Mais aussi des acheteurs indépendants et vérifiés qui se déplacent jusqu'à vous</div>
-	</div>
-</div>
 
-<!-- Resume banner container -->
-<div class="container-fluid advantage-banner mb-5 py-3 py-md-4 py-lg-5 fs-1 text-center fw-bold bg-gris border-start-0 border-end-0">Vous aussi, rejoignez <div class="logo-blue">PRO PHONE MANAGER</div></div>
+<body id="home-version-1" class="home-version-3" data-style="default">
 
-<!-- Resume list container -->
-<div class="container-lg mb-5 text-blue">
-	<ul class="list-group">
-		<li class="list-group-item py-3 text-white fs-4 bg-blue">Service entièrement gratuit</li>
-		<li class="list-group-item py-3 text-blue fs-4">Utilisation sans frais, ni CB pour les boutiques, ce sont les recycleurs qui payent.</li>
-		
-		<li class="list-group-item py-3 text-white fs-4 bg-blue">Disponible sur navigateur PC et mobile</li>
-		<li class="list-group-item py-3 text-blue fs-4">Aucune installation nécessaire. Fonctionne sur Edge, Chrome, Firefox...</li>
-		
-		<li class="list-group-item py-3 text-white fs-4 bg-blue">Gestion facile de votre stock d'écrans cassés</li>
-		<li class="list-group-item py-3 text-blue fs-4">Ajouter, archiver, rechercher, lister, imprimer...</li>
-		
-		<li class="list-group-item py-3 text-white fs-4 bg-blue">Prix de rachat automatiques par recycleur et par grade</li>
-		<li class="list-group-item py-3 text-blue fs-4">Le système définit le grade et les prix de rachat selon l'état de l'écran et les offres des recycleurs.</li>
-		
-		<li class="list-group-item py-3 text-white fs-4 bg-blue">Impression d'étiquettes à références uniques</li>
-		<li class="list-group-item py-3 text-blue fs-4">Utiliser votre imprimante de bureau et <a href="https://www.amazon.fr/AVERY-Pochette-%C3%89tiquettes-Adresses-Blanches/dp/B08494J431" class="text-decoration-none text-blue" target="blank"><u>des étiquettes autocollantes.</u></a></li>
-	</ul>
-</div>
+    <a href="#main_content" data-type="section-switch" class="return-to-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
 
-<!-- CTA button container -->
-<div class="container-lg mb-5 text-center">
-	<a href="{% url 'user_registration' %}" role="button" class="btn btn-lg btn-blue shadow-sm">Créez votre compte gratuit</a>
-</div>
+    <div class="page-loader">
+        <div class="loader">
+            <!-- Loader -->
+            <div class="blobs">
+                <div class="blob-center"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                        <feBlend in="SourceGraphic" in2="goo" />
+                    </filter>
+                </defs>
+            </svg>
 
-{% endblock content %}
+        </div>
+    </div><!-- /.page-loader -->
 
+    <div id="main_content">
+
+        <!--=========================-->
+        <!--=        Navbar         =-->
+        <!--=========================-->
+        <header class="site-header header_trans-fixed" data-top="992">
+            <div class="container">
+                <div class="header-inner">
+                    <div class="toggle-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <!-- /.toggle-menu -->
+
+                    <div class="site-mobile-logo">
+                        <a href="{% url 'page_attente' %}" class="logo">
+                            <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="main-logo">
+                            <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="sticky-logo">
+                        </a>
+                    </div>
+
+                    <nav class="site-nav">
+                        <div class="close-menu">
+                            <span>Close</span>
+                            <i class="ei ei-icon_close"></i>
+                        </div>
+
+                        <div class="site-logo">
+                            <a href="{% url 'page_attente' %}" class="logo">
+                                <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="main-logo">
+                                <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="sticky-logo">
+                            </a>
+                        </div>
+                        <!-- /.site-logo -->
+
+                        <div class="menu-wrapper" data-top="992">
+                            <ul class="site-main-menu">
+
+                                <li><a href="{% url 'page_attente' %}">About</a></li>
+
+                                <li class="menu-item-has-children">
+                                    <a href="#">Pages</a>
+                                    <!-- Add similar modifications for other pages -->
+                                </li>
+                                <li><a href="{% url 'page_attente' %}">Contact</a></li>
+                            </ul>
+
+                            <div class="nav-right">
+                                <a href="{% url 'page_attente' %}" class="nav-btn">Free Sign Up</a>
+                            </div>
+                        </div>
+                        <!-- /.menu-wrapper -->
+
+                    </nav><!-- /.site-nav -->
+                </div><!-- /.header-inner -->
+            </div><!-- /.container -->
+        </header><!-- /.site-header -->
+
+
+        <!--==========================-->
+        <!--=         Banner         =-->
+        <!--==========================-->
+        <section class="banner banner-one">
+            <div class="circle-shape" data-parallax='{"y" : 230}'><img src="{% static 'listings/saaspik/media/banner/circle-shape.png' %}" alt="circle"></div>
+<div class="container smaller-container">
+                <div class="banner-content-wrap">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="banner-content">
+                                <h1 class="banner-title wow pixFadeUp" data-wow-delay="0.3s">
+                                    La Solution Ultime
+                                    pour la Gestion de vos Écrans Cassés.
+                                </h1>
+                        
+                                <p class="description wow pixFadeUp" data-wow-delay="0.5s">
+                                    Gagner du Temps, de l'Argent et de l'Espace.
+                                </p>
+                        
+                                <a href="#" class="pxs-btn banner-btn wow pixFadeUp" data-wow-delay="0.6s">Get Started</a>
+                                <a href="https://www.youtube.com/watch?v=9No-FiEInLA" class="pxs-btn banner-btn wow pixFadeUp play-btn popup-video" data-wow-delay="0.6s">Watch Video</a>
+                                
+
+                            </div><!-- /.banner-content -->
+                        </div><!-- /.col-lg-6 -->
+                        
+                        
+
+                        <div class="col-lg-6">
+                            <div class="promo-mockup wow pixFadeLeft">
+                                <img src="{% static 'listings/saaspik/assets/img/macbook2.png' %}" alt="mockup">
+                            </div><!-- /.promo-mockup -->
+                        </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.banner-content-wrap -->
+            </div><!-- /.container -->
+
+            <div class="bg-shape">
+                <img src="{% static 'listings/saaspik/media/banner/shape-bg.png' %}" alt="">
+            </div>
+        </section><!-- /.banner banner-one -->
+
+
+ <!--==========================-->
+        <!--=         Feature        =-->
+        <!--==========================-->
+        <section class="featured-five">
+            <div class="container">
+                <div class="section-title style-three text-center">
+                    <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
+                        Pourquoi les réparateurs <br>
+                        ❤️ ProPhone<span>Manager</span>? <br>Parceque nous tenons nos promesses.
+                    </h2>
+                </div><!-- /.section-title -->
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.5s">
+                            <div class="saaspik-icon-box-icon">
+                                <img src="{% static 'listings/saaspik/media/feature/20.png' %}" alt="">
+                            </div>
+                            <div class="pixsass-icon-box-content">
+                                <h3 class="pixsass-icon-box-title">New sharing made for people</h3>
+                                <p>
+                                    The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
+                                </p>
+
+                                <a href="#" class="more-btn"><i class="ei ei-arrow_right"></i></a>
+
+                                <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                                    <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                                </svg>
+                            </div>
+                        </div><!-- /.pixsass-box style-four -->
+                    </div><!-- /.col-lg-4 col-md-6 -->
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.7s">
+                            <div class="saaspik-icon-box-icon">
+                                <img src="{% static 'listings/saaspik/media/feature/19.png' %}" alt="">
+                            </div>
+                            <div class="pixsass-icon-box-content">
+                                <h3 class="pixsass-icon-box-title">One integrated solution Manage</h3>
+
+                                <p>
+                                    The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
+                                </p>
+
+                                <a href="#" class="more-btn"><i class="ei ei-arrow_right"></i></a>
+                            </div>
+
+                            <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                                <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                            </svg>
+                        </div><!-- /.pixsass-box style-four -->
+                    </div><!-- /.col-lg-4 col-md-6 -->
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.9s">
+                            <div class="saaspik-icon-box-icon">
+                                <img src="{% static 'listings/saaspik/media/feature/18.png' %}" alt="">
+                            </div>
+                            <div class="pixsass-icon-box-content">
+                                <h3 class="pixsass-icon-box-title">Thousand of features and Custom option.</h3>
+                                <p>
+                                    The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
+                                </p>
+
+                                <a href="#" class="more-btn"><i class="ei ei-arrow_right"></i></a>
+                            </div>
+
+                            <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                                <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                            </svg>
+                        </div><!-- /.pixsass-box style-four -->
+                    </div><!-- /.col-lg-4 col-md-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.featured -->
+        <!--===============================-->
+        <!--=         Service Tab         =-->
+        <!--===============================-->
+        <div class="service-tabs">
+            <div class="container">
+                <div class="app-section-heading color-two text-center">
+                    <h5 class="sub-title wow fadeInUp" data-wow-delay="0.3s">
+                        Why Choose Us
+                    </h5>
+
+                    <h2 class="section-title wow fadeInUp" data-wow-delay="0.5s">
+                        Key features of our app
+                    </h2>
+                </div>
+
+                <div class="gp-tabs gp-tab-style-two">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <nav class="pix-tab-navs wow fadeInUp" data-wow-delay="0.7s">
+                                <ul class="gp-tabs-navigation style-two">
+                                    <li class="active tab-nav-item" data-content="mockup">
+                                        <img src="{% static 'listings/saaspik/media/tabs/icon.svg" alt="image">
+                                        <a href="#0" class="acc-btn">Optimal Choice</a>
+
+
+                                        <div class="content" style="display: none;">
+                                            <p>
+                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="tab-nav-item active-tab" data-content="mockup2">
+                                        <img src="{% static 'listings/saaspik/media/tabs/icon2.svg" alt="image">
+                                        <a href="#0" class="acc-btn">Instant Arrival Notifications</a>
+
+                                        <div class="content" style="display: block;">
+                                            <p>
+                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="tab-nav-item" data-content="mockup3">
+                                        <img src="{% static 'listings/saaspik/media/tabs/icon3.svg" alt="image">
+                                        <a href="#0" class="acc-btn">Photo Capture</a>
+
+                                        <div class="content" style="display: none;">
+                                            <p>
+                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="tab-nav-item" data-content="mockup4">
+                                        <img src="{% static 'listings/saaspik/media/tabs/icon4.svg" alt="image">
+                                        <a href="#0" class="acc-btn">Customize Branding</a>
+
+                                        <div class="content" style="display: none;">
+                                            <p>
+                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="tab-nav-item" data-content="mockup5">
+                                        <img src="{% static 'listings/saaspik/media/tabs/icon5.svg" alt="image">
+                                        <a href="#0" class="acc-btn">Wireframing Task</a>
+
+                                        <div class="content" style="display: none;">
+                                            <p>
+                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul> <!-- gp-tabs-navigation -->
+                            </nav>
+                        </div><!-- /.col-lg-5 -->
+                        <div class="col-lg-6">
+                            <div class="tab-content-inner text-center">
+                                <div class="gp-tabs-content" style="height: auto;">
+                                    <li data-content="mockup" class="pix-tab-item">
+                                        <div class="inspect-tab-image">
+                                            <div class="image-top">
+                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" alt="image">
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-content="mockup2" class="pix-tab-item active-tab">
+                                        <div class="inspect-tab-image">
+                                            <div class="image-top">
+                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" class="wow fadeInRight" data-wow-delay="0.9s" alt="image">
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-content="mockup3" class="pix-tab-item">
+                                        <div class="inspect-tab-image">
+                                            <div class="image-top">
+                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" alt="image">
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-content="mockup4" class="pix-tab-item">
+                                        <div class="inspect-tab-image">
+                                            <div class="image-top">
+                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" alt="image">
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li data-content="mockup5" class="pix-tab-item">
+                                        <div class="inspect-tab-image">
+                                            <div class="image-top">
+                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" alt="image">
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </div> <!-- gp-tabs-content -->
+                            </div><!-- /.tab-content-inner -->
+                            <div class="tabs-elemnt wow fadeInDown"></div>
+                            <div class="tabs-elemnt-small wow fadeInDown"></div>
+
+                        </div><!-- /.col-lg-7 -->
+                    </div><!-- /.row -->
+                </div>
+            </div>
+            <!-- /.container -->
+        </div>
+
+
+         <!--==========================-->
+        <!--=         Feature        =-->
+        <!--==========================-->
+        <section class="featured-six">
+            <div class="container">
+                <div class="section-title style-three text-center">
+                    <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
+                        Use your android or ios device<br>
+                        to manage everything.
+                    </h2>
+                </div><!-- /.section-title -->
+
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-5">
+                        <div class="feature-image-wrapper wow pixFadeLeft">
+                            <img src="{% static 'listings/saaspik/media/feature/tablet.png' %}" alt="">
+                        </div>
+                        <!-- /.feature-image-wrapper -->
+                    </div>
+                    <!-- /.col-lg-5 -->
+
+                    <div class="col-lg-7 col-md-7">
+                        <div class="saaspik-icon-box-wrapper style-six wow pixFadeRight" data-wow-delay="0.4s">
+                            <div class="saaspik-icon-box-icon">
+                                <img src="{% static 'listings/saaspik/media/feature/22.png' %}" alt="icon">
+                            </div>
+                            <div class="pixsass-icon-box-content">
+                                <h3 class="pixsass-icon-box-title">
+                                    <a href="#">Show off show off pick your nose and<br> blow off grub so I said pardon.</a>
+                                </h3>
+                            </div>
+                        </div><!-- /.pixsass-box style-six -->
+
+                        <div class="saaspik-icon-box-wrapper style-six wow pixFadeRight" data-wow-delay="0.5s">
+                            <div class="saaspik-icon-box-icon">
+                                <img src="{% static 'listings/saaspik/media/feature/23.png' %}" alt="icon">
+                            </div>
+                            <div class="pixsass-icon-box-content">
+                                <h3 class="pixsass-icon-box-title">
+                                    <a href="#">Daft blimey squiffy lemon squeezy<br> Richard bite your arm.</a>
+                                </h3>
+                            </div>
+                        </div><!-- /.pixsass-box style-six -->
+
+                        <div class="saaspik-icon-box-wrapper style-six wow pixFadeRight" data-wow-delay="0.6s">
+                            <div class="saaspik-icon-box-icon">
+                                <img src="{% static 'listings/saaspik/media/feature/24.png' %}" alt="icon">
+                            </div>
+                            <div class="pixsass-icon-box-content">
+                                <h3 class="pixsass-icon-box-title">
+                                    <a href="#">
+                                        Lost the plot don't get shirty with me<br> cheeky bugger.
+                                    </a>
+                                </h3>
+                            </div>
+                        </div><!-- /.pixsass-box style-six -->
+
+                        <div class="saaspik-icon-box-wrapper style-six wow pixFadeRight" data-wow-delay="0.7s">
+                            <div class="saaspik-icon-box-icon">
+                                <img src="{% static 'listings/saaspik/media/feature/25.png' %}" alt="icon">
+                            </div>
+                            <div class="pixsass-icon-box-content">
+                                <h3 class="pixsass-icon-box-title">
+                                    <a href="#">
+                                        Cup of char horse play excuse my<br> French sloshed butty.
+                                    </a>
+                                </h3>
+                            </div>
+                        </div><!-- /.pixsass-box style-six -->
+                    </div>
+                    <!-- /.col-lg-7 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+
+            <div class="down-bg">
+                <img src="{% static 'listings/saaspik/media/background/down-bg.png' %}" alt="down-bg">
+            </div>
+        </section><!-- /.featured -->
+
+        
+ 
+        <!--===========================-->
+        <!--=         Pricing         =-->
+        <!--===========================-->
+        <section class="pricing-two">
+            <div class="container">
+                <div class="section-title color-two text-center">
+                    <h3 class="sub-title wow pixFadeUp">Pricing Plan</h3>
+                    <h2 class="title wow pixFadeUp" data-wow-delay="0.3s">
+                        No Hidden Charges! Choose <br>
+                        your Plan.
+                    </h2>
+                </div>
+                <!-- /.section-title -->
+                <nav class="pricing-tab color-two wow pixFadeUp" data-wow-delay="0.4s">
+                    <span class="monthly_tab_title tab-btn">
+                        Monthly
+                    </span>
+                    <span class="pricing-tab-switcher"></span>
+                    <span class="annual_tab_title tab-btn">
+                        Annual
+                    </span>
+                </nav>
+
+                <div class="row advanced-pricing-table">
+                    <div class="col-lg-4">
+                        <div class="pricing-table style-two price-two wow pixFadeLeft" data-wow-delay="0.5s">
+                            <div class="pricing-header pricing-amount">
+                                <div class="annual_price">
+                                    <h2 class="price">$0.00</h2>
+                                </div>
+                                <!-- /.annual_price -->
+
+                                <div class="monthly_price">
+                                    <h2 class="price">$0.00</h2>
+                                </div>
+                                <!-- /.monthly_price -->
+
+                                <h3 class="price-title">Basic Account</h3>
+                                <p>Only for first month</p>
+                            </div>
+                            <!-- /.pricing-header -->
+
+                            <ul class="price-feture">
+                                <li class="have">Limited Acess Library</li>
+                                <li class="have">Single User</li>
+                                <li class="have">eCommerce Store</li>
+                                <li class="not">Hotline Support 24/7</li>
+                                <li class="not">No Updates</li>
+                            </ul>
+
+                            <div class="action text-left">
+                                <a href="#" class="pix-btn btn-outline-two">Get Started</a>
+                            </div>
+                        </div>
+                        <!-- /.pricing-table -->
+                    </div>
+                    <!-- /.col-lg-4 -->
+
+                    <div class="col-lg-4">
+                        <div class="pricing-table color-two style-two price-two featured wow pixFadeLeft" data-wow-delay="0.7s">
+                            <div class="trend">
+                                <p>Popular</p>
+                            </div>
+
+                            <div class="pricing-header pricing-amount">
+                                <div class="annual_price">
+                                    <h2 class="price">$80.50</h2>
+                                </div>
+                                <!-- /.annual_price -->
+
+                                <div class="monthly_price">
+                                    <h2 class="price">$16.97</h2>
+                                </div>
+                                <!-- /.monthly_price -->
+
+                                <h3 class="price-title">Standard Account</h3>
+                                <p>Only for first month</p>
+                            </div>
+                            <!-- /.pricing-header -->
+
+                            <ul class="price-feture">
+                                <li class="have">Limited Acess Library</li>
+                                <li class="have">Single User</li>
+                                <li class="have">eCommerce Store</li>
+                                <li class="have">Hotline Support 24/7</li>
+                                <li class="not">No Updates</li>
+                            </ul>
+
+                            <div class="action text-left">
+                                <a href="#" class="pix-btn btn-outline-two">Get Started</a>
+                            </div>
+                        </div>
+                        <!-- /.pricing-table -->
+                    </div>
+                    <!-- /.col-lg-4 -->
+
+                    <div class="col-lg-4">
+                        <div class="pricing-table color-three style-two price-two wow pixFadeLeft" data-wow-delay="0.9s">
+
+                            <div class="pricing-header pricing-amount">
+                                <div class="annual_price">
+                                    <h2 class="price">$180.70</h2>
+                                </div>
+                                <!-- /.annual_price -->
+
+                                <div class="monthly_price">
+                                    <h2 class="price">$29.45</h2>
+                                </div>
+                                <!-- /.monthly_price -->
+
+                                <h3 class="price-title">Premium Account</h3>
+                                <p>Only for first month</p>
+                            </div>
+                            <!-- /.pricing-header -->
+
+                            <ul class="price-feture">
+                                <li class="have">Limited Acess Library</li>
+                                <li class="have">Single User</li>
+                                <li class="have">eCommerce Store</li>
+                                <li class="have">Hotline Support 24/7</li>
+                                <li class="have">No Updates</li>
+                            </ul>
+
+                            <div class="action text-left"></div>
+                            <a href="#" class="pix-btn btn-outline-two">Get Started</a>
+                        </div>
+
+
+                        <!-- /.pricing-table -->
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+                <!-- /.advanced-pricing-table -->
+            </div>
+            <!-- /.container -->
+        </section>
+        <!-- /.pricing -->
+
+ <!--==================================-->
+        <!--=         Call To Action         =-->
+        <!--==================================-->
+        <section class="call-to-action action-padding">
+            <div class="overlay-bg"><img src="{% static 'listings/saaspik/media/background/ellipse.png' %}" alt="bg"></div>
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-7">
+                        <div class="action-content style-two wow pixFadeUp">
+                            <h2 class="title">
+                                Getting connected with us<br>
+                                & for the update.
+                            </h2>
+                        </div>
+                        <!-- /.action-content -->
+                    </div>
+                    <!-- /.col-lg-7 -->
+
+                    <div class="col-lg-5 text-right">
+                        <a href="#newsletter" class="pix-btn btn-light btn-big scroll-btn wow pixFadeUp">Subscribe Now!</a>
+                    </div>
+                    <!-- /.col-lg-5 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </section>
+        <!-- /.call-to-action -->
+
+
+        <!--===============================-->
+        <!--=         Testimonial         =-->
+        <!--===============================-->
+        <section class="testimonials-three">
+
+            <div class="container">
+                <div class="section-title text-center">
+                    <h3 class="sub-title wow pixFadeUp">Testimonial</h3>
+                    <h2 class="title-two wow pixFadeUp" data-wow-delay="0.3s">
+                        Mas de <span>3.400 asesorias</span> ya confian en pixsaas para mejorar la
+                        gestion de sus despachos profesionales.
+                    </h2>
+                </div><!-- /.section-title -->
+
+                <div id="testimonial-wrapper-three">
+                    <div class="swiper-container wow pixFadeUp" data-wow-delay="0.5s" id="testimonial-slider-three" data-speed="700" data-autoplay="5000" data-perpage="1" data-space="90" data-breakpoints='{"768": {"spaceBetween": 50}, "640": {"spaceBetween": 30}}'>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="testimonial-three">
+
+                                    <div class="avatar">
+                                        <img src="{% static 'listings/saaspik/media/testimonial/4.jpg' %}" alt="testimonial">
+                                    </div>
+                                    <!-- /.avatar -->
+
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-bio">
+                                            <div class="bio-info">
+                                                <h3 class="name">Desmond Eagle</h3>
+                                                <span class="job">Web designer</span>
+                                            </div>
+                                        </div>
+                                        <!-- /.testimonial-bio -->
+                                        <p>Horse play a blinding shot the little rotter nice one ummm I'm telling bits and bobs grub boot that bevvy, cockup matie.!</p>
+                                    </div>
+                                    <!-- /.testimonial-content -->
+
+
+                                </div>
+                                <!-- /.testimonial-three -->
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-three">
+
+                                    <div class="avatar">
+                                        <img src="{% static 'listings/saaspik/media/testimonial/4.jpg' %}" alt="testimonial">
+                                    </div>
+                                    <!-- /.avatar -->
+
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-bio">
+                                            <div class="bio-info">
+                                                <h3 class="name">Desmond Eagle</h3>
+                                                <span class="job">Web designer</span>
+                                            </div>
+                                        </div>
+                                        <!-- /.testimonial-bio -->
+                                        <p>Horse play a blinding shot the little rotter nice one ummm I'm telling bits and bobs grub boot that bevvy, cockup matie.!</p>
+                                    </div>
+                                    <!-- /.testimonial-content -->
+
+
+                                </div>
+                                <!-- /.testimonial-three -->
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="testimonial-three">
+
+                                    <div class="avatar">
+                                        <img src="{% static 'listings/saaspik/media/testimonial/4.jpg' %}" alt="testimonial">
+                                    </div>
+                                    <!-- /.avatar -->
+
+
+
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-bio">
+                                            <div class="bio-info">
+                                                <h3 class="name">Desmond Eagle</h3>
+                                                <span class="job">Web designer</span>
+                                            </div>
+                                        </div>
+                                        <!-- /.testimonial-bio -->
+                                        <p>Horse play a blinding shot the little rotter nice one ummm I'm telling bits and bobs grub boot that bevvy, cockup matie.!</p>
+                                    </div>
+                                    <!-- /.testimonial-content -->
+
+
+                                </div>
+                                <!-- /.testimonial-three -->
+                            </div>
+
+                        </div><!-- /.swiper-wrapper -->
+
+                        <div class="slider-nav">
+                            <div id="slide-prev" class="swiper-button-prev">
+                                <div class="arrow"></div>
+                            </div>
+                            <div id="slide-next" class=" swiper-button-next">
+                                <div class="arrow"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.swiper-containe -->
+
+                    <div class="quote">
+                        <img src="{% static 'listings/saaspik/media/testimonial/quote2.png' %}" alt="">
+                    </div>
+                </div>
+                <!-- /#testimonial-wrapper -->
+            </div>
+            <!-- /.container -->
+        </section><!-- /.testimonial -->
+
+        <!--=============================-->
+        <!--=         Newsletter        =-->
+        <!--=============================-->
+        <section class="newsletter-two" id="newsletter">
+            <div class="container">
+
+                <div class="newsletter-content-two text-center wow pixFadeUp">
+                    <h2 class="title">
+                        Comprueba ahora como<br> pixsaas trabaja para tu asesoria
+                    </h2>
+
+                    <p class="description">
+                        Solicita una demo personalizada para descubrir como pixsaas puede ayudarte a mejorar la<br>
+                        gestion de los clientes de tu despacho profesional.
+                    </p>
+                </div>
+                <!-- /.newsletter-content -->
+
+                <form action="php/subscribe.php" method="post" class="newsletter-form-two wow pixFadeUp" data-pixsaas="newsletter-subscribe">
+                    <div class="newsletter-inner">
+
+                        <input type="email" name="email" class="form-control" id="newsletter-form-email" placeholder="Enter your Email" required>
+                        <button type="submit" name="submit" id="newsletter-submit" class="newsletter-submit">
+                            <span class="btn-text">Subscribe Now!</span>
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </button>
+                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                    </div>
+                    <!-- /.newsletter-inner -->
+
+                    <div class="clearfix"></div>
+                    <div class="form-result alert">
+                        <div class="content"></div>
+                    </div>
+                    <!-- /.form-result-->
+                </form>
+
+            </div>
+            <!-- /.container -->
+
+            <div class="scroll-circle wow pixFadeUp">
+                <img src="{% static 'listings/saaspik/media/background/circle12.png' %}" data-parallax='{"y" : -230}' alt="circle6">
+            </div>
+        </section>
+        <!-- /.newsletter -->
+
+        <!--=========================-->
+        <!--=        Footer         =-->
+        <!--=========================-->
+        <footer id="footer" class="footer-three">
+            <div class="container">
+                <div class="footer-inner wow pixFadeUp">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget footer-widget">
+                                <h3 class="widget-title">Company</h3>
+
+                                <ul class="footer-menu">
+                                    <li><a href="#">Features</a></li>
+                                    <li><a href="#">Dashboard & Tool</a></li>
+                                    <li><a href="#">Our Portfolio</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Get In Touch</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.widget footer-widget -->
+                        </div>
+                        <!-- /.col-lg-3 col-md-6 -->
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget footer-widget">
+                                <h3 class="widget-title">Services</h3>
+
+                                <ul class="footer-menu">
+                                    <li><a href="#">Web Design</a></li>
+                                    <li><a href="#">Development</a></li>
+                                    <li><a href="#">Wordpress</a></li>
+                                    <li><a href="#">Online Marketing</a></li>
+                                    <li><a href="#">Content</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.widget footer-widget -->
+                        </div>
+                        <!-- /.col-lg-3 col-md-6 -->
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget footer-widget">
+                                <h3 class="widget-title">Digital Experience</h3>
+
+                                <ul class="footer-menu">
+                                    <li><a href="#">Web Design</a></li>
+                                    <li><a href="#">Mobile App Design</a></li>
+                                    <li><a href="#">UX / UI design</a></li>
+                                    <li><a href="#">Dashboard & Tool</a></li>
+                                    <li><a href="#">Logo & Identity</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.widget footer-widget -->
+                        </div>
+                        <!-- /.col-lg-3 col-md-6 -->
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget footer-widget">
+                                <h3 class="widget-title">Our Address</h3>
+
+                                <p>
+                                    Lavaca Street, Suite 24, Road Apt New York, USA
+                                </p>
+
+                                <ul class="footer-social-link">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                            <!-- /.widget footer-widget -->
+                        </div>
+                        <!-- /.col-lg-3 col-md-6 -->
+                    </div>
+                    <!-- /.row -->
+
+                </div><!-- /.footer-inner -->
+
+                <div class="site-info">
+                    <div class="copyright">
+                        <p>© 2023 All Rights Reserved Design by <a href="http://www.pixelsigns.art" target="_blank">PixelSigns</a></p>
+                    </div>
+
+                    <ul class="site-info-menu">
+                        <li><a href="#">Privacy & Policy.</a></li>
+                        <li><a href="#">Faq.</a></li>
+                        <li><a href="#">Terms.</a></li>
+                    </ul>
+                </div><!-- /.site-info -->
+            </div><!-- /.container -->
+
+            <div class="map-bg">
+                <img src="{% static 'listings/saaspik/media/background/map2.png' %}" alt="map-bg">
+            </div>
+        </footer><!-- /#footer -->
+
+
+    </div><!-- /#site -->
+
+<!-- Dependency Scripts -->
+<script src="{% static 'listings/saaspik/dependencies/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/swiper/js/swiper.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/jquery.appear/jquery.appear.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/wow/js/wow.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/countUp.js/countUp.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/jquery.parallax-scroll/js/jquery.parallax-scroll.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/magnific-popup/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/gmap3/js/gmap3.min.js' %}"></script>
+<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2HrmqE4sWSei0XdKGbOMOHN3Mm2Bf-M&#038;ver=2.1.6'></script>
+
+<!-- Site Scripts -->
+<script src="{% static 'listings/saaspik/assets/js/header.js' %}"></script>
+<script src="{% static 'listings/saaspik/assets/js/app.js' %}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Documentation For Pixsass - Software, App, SaaS landing HTML Template</title>
+	<!-- Stylesheets -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/jquery.highlight.css" />
+
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/scrollbar.css" rel="stylesheet">
+	<!-- Responsive -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+	<!--Page Wrapper-->
+	<div class="page-wrapper">
+
+		<!--Sidebar-->
+		<aside id="sidebar">
+
+			<!--Toggle Button-->
+			<div class="button-container clearfix">
+				<div class="menu-toggle flaticon-menu10"></div>
+			</div>
+
+			<!--Menu Box-->
+			<div class="menu-box">
+				<!--Logo-->
+				<br>
+				<div class="logo text-right"><a href="#"><img src="images/logo.png" alt=""></a></div>
+
+				<!--Sticky Menu-->
+				<nav class="sticky-menu">
+					<ul>
+						<li class="current"><a href="#introduction">Introduction <span class="fa fa-arrow-right"></span></a></li>
+						<li><a href="#html-structure">HTML Structure <span class="fa fa-arrow-right"></span></a></li>
+						<li><a href="#css-structure">CSS Files and Structure <span class="fa fa-arrow-right"></span></a></li>
+						<li><a href="#javascript">Javascript <span class="fa fa-arrow-right"></span></a></li>
+						<li><a href="#map-settings">Google Map Settings <span class="fa fa-arrow-right"></span></a></li>
+						<li><a href="#contact-form">Contact Form Settings<span class="fa fa-arrow-right"></span></a></li>
+						<li><a href="#mailchimp-settings">MailChimp Settings<span class="fa fa-arrow-right"></span></a></li>
+						<li><a href="#tutorial">Tutorial<span class="fa fa-arrow-right"></span></a></li>
+						<li><a href="#sources-credits">Sources and Credits <span class="fa fa-arrow-right"></span></a></li>
+						<li><a href="#support">Support <span class="fa fa-arrow-right"></span></a></li>
+					</ul>
+
+				</nav>
+
+			</div>
+
+			<div class="copyright">Copyright &copy; <a href="pixelomatic.com">pixelsigns</a> 2019</div>
+		</aside>
+
+		<div id="content-section">
+
+			<!--Introduction Section-->
+			<section class="section introduction" id="introduction">
+				<!-- <div class="sec-title">
+            	<span class="icon fa fa-windows"></span>
+                <h2>Intoduction</h2>
+            </div> -->
+
+				<br>
+				<div class="sec-content">
+					<h2>SaasPik</h2>
+                    <h3>SaaSpik - Software, App, SaaS landing HTML Template</h3>
+
+                    <div class="separator"></div>
+
+                    <p>
+                        SaasPik an excellent,  unique and modern HTML5 Template having multi-options for Startups, App Landing & SaaS based Companies. It has 3 unique landing pages with multi inner pages for various purpose.
+                    </p>
+
+					<strong>Created :</strong> 28/06/2019<br>
+					<strong>By :</strong> PixelSigns<br>
+					<strong>Email :</strong> <a href="mailto:info@pixelomatic.com">info@pixelomatic.com </a> <br>
+
+					<br>
+					<p>Thank you for purchasing <strong>SaaSpik </strong> - SaaSpik - Software, App, SaaS landing HTML Template. If you have any questions that are beyond the scope of this help file, please feel free to email, via my user page contact form or put a ticket at Support Center .<br>Thank you so much!</p>
+					<br />
+
+					<h3 class="content-title">Template Features</h3>
+					<br />
+					<ul class="checkbox">
+						<li>Clean & Simple Design</li>
+						<li>Advance Bootstrap 4 Framework </li>
+						<li>HTML5 & CSS3 </li>
+						<li>CSS3 Animations </li>
+						<li>Fully Responsive Design </li>
+						<li>All files are well commented </li>
+						<li>Crossbrowser Compatible with IE10+, Firefox, Safari, Opera, Chrome </li>
+						<li>Extensive Documentation</li>
+					</ul>
+
+				</div>
+
+			</section>
+
+			<!--HTML Structure-->
+			<section class="section html-structure" id="html-structure">
+				<div class="sec-title">
+					<span class="icon fa fa-th-large"></span>
+					<h2>HTML Structure</h2>
+				</div>
+
+				<br>
+				<div class="sec-content">
+
+					<h3>The html template uses Latest <strong>Bootstrap v4.3</strong> with valid HTML5 tags. This theme is a responisve layout with 4 column Support column. All of the information in content area is nested within a class and comes with predefined classes.</h3>
+
+					<h3 class="content-title">Basic Grid HTML</h3>
+					<p>For a simple two column layout, create a .container and add the appropriate number of .col-lg* columns. </p>
+					<p>Given this example, we have .col-lg-4 and .col-lg-8, making for 12 total columns and a complete row.</p>
+					<br />
+					<pre class="code" data-language="html">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">...</div>
+        <div class="col-lg-8">...</div>
+    </div>
+</div>
+                    </pre>
+					<br />
+					<h3 class="content-title">Nesting Columns</h3><!-- /.content-title -->
+					<p>To nest your content with the default grid, add a new .container and set of .col-md* columns within an existing .col-md* column. Nested rows should include a set of columns that add up to the number of columns of its parent.</p>
+					<br />
+					<pre class="code" data-language="html">
+<div class="container">
+    <div class="col-md-9">
+        Level 1 column
+        <div class="row">
+            <div class="col-md-8">Level 2</div>
+            <div class="col-md-4">Level 2</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        Level 2 column
+    </div>
+</div>
+</pre><!-- /.code -->
+				</div>
+
+			</section>
+
+			<!--CSS Structure-->
+			<section class="section css-structure" id="css-structure">
+				<div class="sec-title">
+					<span class="icon fa fa-at"></span>
+					<h2>CSS Files and Structure</h2>
+				</div>
+
+				<br>
+				<div class="sec-content">
+
+					<h3>Mainly three main CSS files are used in this theme. The first one <strong>bootstrap.css</strong>, second one is <strong>app.css</strong> which for this template. </h3>
+					<p>If you would like to edit a specific section of the site, simply find the appropriate label in the CSS file, and then scroll down until you find the appropriate style that needs to be edited.</p>
+					<br />
+					<p>These are the css files that are loaded into templates in top of app.css file labled as <b>imported css</b>.</p>
+					<br />
+					<pre class="code" data-language="css">
+<link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="dependencies/fontawesome/css/all.min.css" type="text/css">
+<link rel="stylesheet" href="dependencies/swiper/css/swiper.min.css" type="text/css">
+<link rel="stylesheet" href="dependencies/wow/css/animate.css" type="text/css">
+<link rel="stylesheet" href="dependencies/magnific-popup/css/magnific-popup.css" type="text/css">
+<link rel="stylesheet" href="dependencies/components-elegant-icons/css/elegant-icons.min.css" type="text/css">
+<!-- Site Stylesheet -->
+<link rel="stylesheet" href="assets/css/app.css" type="text/css"></pre><!-- /.code -->
+
+					<br />
+					<h3 class="content-title">Fonts</h3>
+
+					<p>By default, the template loads this font from Google Web Font Services, you can change the font with the one that suits you best.</p>
+					<br />
+					<pre class="code" data-language="css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet"></pre><!-- /.code -->
+				</div>
+
+			</section>
+
+			<!--Javascript-->
+			<section class="section javascript" id="javascript">
+				<div class="sec-title">
+					<span class="icon fa fa-code"></span>
+					<h2>Jquery and javascript</h2>
+				</div>
+
+				<br>
+				<div class="sec-content">
+
+					<h3>This theme imports three types of Javascript files.</h3>
+					<ul>
+						<li>jQuery</li>
+						<li>Custom scripts <strong>(app.js)</strong></li>
+						<li>Some plugins</li>
+						<br>
+						<li><strong>jQuery</strong> is a Javascript library that greatly reduces the amount of code that you must write.</li>
+						<li>Most of the animation in this site is carried out from the customs scripts. There are a few functions worth looking over.</li>
+					</ul>
+					<br>
+					<p>In addition to the custom scripts, I have implemented few "tried and true" plugins to create the effects. This plugin is packed, so you won't need to manually edit anything in the file. The only necessary thing to know is how to call the method</p>
+					<br />
+					<br />
+					<p>These are the JS files that are loaded into templates in end of the Body Section.</p>
+					<br />
+					<pre class="code" data-language="html">
+<!-- Dependency Scripts -->
+<script src="dependencies/popper.js/popper.min.js"></script>
+<script src="dependencies/jquery/jquery.min.js"></script>
+<script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
+<script src="dependencies/swiper/js/swiper.min.js"></script>
+<script src="dependencies/jquery.appear/jquery.appear.js"></script>
+<script src="dependencies/wow/js/wow.min.js"></script>
+<script src="dependencies/countUp.js/countUp.min.js"></script>
+<script src="dependencies/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="dependencies/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="dependencies/jquery.parallax-scroll/js/jquery.parallax-scroll.js"></script>
+<script src="dependencies/magnific-popup/js/jquery.magnific-popup.min.js"></script>
+<script src="dependencies/gmap3/js/gmap3.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB13ZAvCezMx5TETYIiGlzVIq65Mc2FG5g"></script>
+
+<!-- Site Scripts -->
+<script src="assets/js/app.js"></script></pre><!-- /.code -->
+
+				</div>
+
+			</section>
+
+			<!--Map Settings-->
+			<section class="section map-settings" id="map-settings">
+				<div class="sec-title">
+					<span class="icon fa fa-map-marker"></span>
+					<h2>Google Map Settings</h2>
+				</div>
+
+				<br>
+				<div class="sec-content">
+
+					<h3>For editing default contact map you have to edit it's data-attribute. See the screenshot below for more clarification </h3>
+
+					<figure class="image-box"><img src="images/map-settings.png" alt=""></figure>
+
+					<br>
+					<p><strong>Those are required attribute which is listed below: </strong></p>
+					<p><i class="fa fa-check-square-o"></i> &nbsp; data-lat</p>
+					<p><i class="fa fa-check-square-o"></i> &nbsp; data-lng</p>
+					<p><i class="fa fa-check-square-o"></i> &nbsp; data-mrkr</p>
+
+				</div>
+
+			</section>
+
+			<!--Mailchimp Settings-->
+			<section class="section mailchimp-settings" id="mailchimp-settings">
+				<div class="sec-title">
+					<span class="icon fa fa-envelope"></span>
+					<h2>Mailchimp Settings</h2>
+				</div>
+
+				<br>
+				<div class="sec-content">
+					<h3>We have added an attractive and fully functional Mailchimp form. You need to update the Mailchimp api and list id.</h3>
+					<br />
+					<p>You can change mailchimp api key and list id in <strong>subscribe.php</strong> You can locate this file in inc/mailchimp/ folder</p>
+
+					<figure class="image-box"><img src="images/mailchim-settings.png" alt=""></figure>
+
+				</div>
+
+			</section>
+
+			<!--Contact Form Settings-->
+			<section class="section contact-form" id="contact-form">
+				<div class="sec-title">
+					<span class="icon fa fa-th-list"></span>
+					<h2>Contact Form Settings</h2>
+				</div>
+
+				<br>
+				<div class="sec-content">
+					<h3>We have added an attractive and fully functional contact form. You need to update the recipient name and email address.</h3>
+					<p>You can change recipient name and email address in <strong>mailer.php</strong> You can locate this file in inc folder</p>
+
+					<figure class="image-box"><img src="images/mail-settings.jpg" alt=""></figure>
+
+				</div>
+
+			</section>
+
+			<!--Sources and Credits-->
+			<section class="section tutorial" id="tutorial">
+				<div class="sec-title">
+					<span class="icon fa fa-credit-card"></span>
+					<h2>Tutorial</h2>
+				</div>
+
+				<br>
+				<div class="sec-content">
+					<h3 class="content-title">LOGO</h3><!-- /.content-title -->
+					<br />
+					<p>Lets start updating the template. Open index.html file and follow the steps.</p>
+					<p>Most of the updates are same for all pages. So will explain once here.</p>
+					<br />
+					<pre class="code" data-language="html">
+<div class="site-logo">
+    <a href="index.html" class="logo">
+        <img src="assets/img/main-logo.png" alt="site logo" class="logo-main">
+        <img src="assets/img/sticky-logo.png" alt="site logo" class="logo-sticky">
+    </a>
+</div></pre><!-- /.code -->
+
+					<p>Replace "images/logo.png" with your logo image url source or website name .</p>
+					<br />
+
+					<h3 class="content-title">NAVMENU</h3><!-- /.content-title -->
+					<br />
+					<p>This is the basic structure.</p>
+
+					<pre class="code" data-language="html">
+<nav class="site-nav">
+    <div class="close-menu">
+        <i class="ei ei-icon_close"></i>
+    </div>
+    <ul class="site-main-menu">
+        <li class="menu-item-has-children">
+            <a href="#" class="current_page">Home</a>
+            <ul class="sub-menu">
+                <li><a href="index.html">Home One</a></li>
+                <li><a href="index-two.html">Home Two</a></li>
+                <li><a href="index-three.html">Home Three</a></li>
+            </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li class="menu-item-has-children">
+            <a href="#">Blog</a>
+            <ul class="sub-menu">
+                <li><a href="blog.html">Blog Standard</a></li>
+                <li><a href="blog-grid.html">Blog Grid</a></li>
+                <li><a href="blog-single.html">Blog Single</a></li>
+            </ul>
+        </li>
+        <li class="menu-item-has-children">
+            <a href="#">Pages</a>
+
+            <ul class="sub-menu">
+                <li><a href="about.html">About</a></li>
+                <li><a href="service.html">Service</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li class="menu-item-has-children">
+                    <a href="portfolio.html">Portfolio</a>
+                    <ul class="sub-menu">
+                        <li><a href="portfolio-one.html">Style One</a></li>
+                        <li><a href="portfolio-two.html">Style Two</a></li>
+                        <li><a href="portfolio-three.html">Style Three</a></li>
+                        <li><a href="portfolio-single.html">Portfolio Single</a></li>
+                    </ul>
+                </li>
+                <li><a href="faq.html">Faq's</a></li>
+                <li><a href="error.html">Error 404</a></li>
+                <li><a href="signin.html">Sing In</a></li>
+                <li><a href="signup.html">Sing Up</a></li>
+            </ul>
+        </li>
+
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+        <a href="signup.html" class="nav-btn">Free Sign Up</a>
+    </div>
+
+</nav><!-- /.site-nav -->
+</pre><!-- /.code -->
+
+					<br />
+					<p>Add your own menu item to that ul li item. and if you want to add dropdown menu just make a nesting ul li with class of <b>sub-menu</b></p>
+
+					<br />
+					<br />
+					<h3 class="content-title">FOOTER COPYRIGHT</h3><!-- /.content-title -->
+					<br />
+					<pre class="code" data-language="html">
+<div class="site-info">
+    <div class="copyright">
+        <p>© 2019 All Rights Reserved Design by <a href="http://www.pixelsigns.art">PixelSigns</a></p>
+    </div>
+
+    <ul class="site-info-menu">
+        <li><a href="#">Privacy & Policy.</a></li>
+        <li><a href="#">Faq.</a></li>
+        <li><a href="#">Terms.</a></li>
+    </ul>
+</div><!-- /.site-info --></pre><!-- /.code -->
+					<p>"© Copyright SaasPik 2019 . All right reserved." with the copyright info.</p>
+				</div>
+
+			</section>
+
+			<!--Sources and Credits-->
+			<section class="section sources-credits" id="sources-credits">
+				<div class="sec-title">
+					<span class="icon fa fa-credit-card"></span>
+					<h2>Sources and Credits</h2>
+				</div>
+
+				<br>
+				<div class="sec-content">
+
+					<h3>Fonts Used int the template are google fonts, you can find theme on Google Fonts API</h3>
+
+					<p><strong> Fonts Used are :</strong></p>
+					<p><a href="https://fonts.google.com/specimen/Poppins">Poppins</a></p>
+
+					<br>
+
+					<p><strong> File Used For Animation Effects :</strong></p>
+					<p><strong><a href="http://daneden.me/animate" target="_blank">animate.css</a></strong> (in css Folder)</p>
+
+					<br>
+
+					<p><strong> Sliders Used Are :</strong></p>
+					<p><a href="https://idangero.us/swiper/" target="_blank">Swiper Slider</a></p>
+
+					<br>
+
+					<p><strong> Plugins Used Are :</strong></p>
+
+					<p><a href="http://dimsemenov.com/plugins/magnific-popup/documentation.html" target="_blank">Magnific Popup</a> (can be located in dependencies folder)</p>
+					<p><a href="https://wowjs.uk/" target="_blank">Wow Js</a> (can be located in dependencies folder)</p>
+					<p><a href="https://inorganik.github.io/countUp.js/" target="_blank">CountUp Js</a> (can be located in dependencies folder)</p>
+					<p><a href="https://github.com/mominulbd/jquery.parallax-scroll/" target="_blank">Parallax Scroll</a> (can be located in dependencies folder)</p>
+					<p><a href="http://isotope.metafizzy.co" target="_blank">isotope</a> (can be located in dependencies folder)</p>
+					<p><a href="https://gmap3.net/" target="_blank">Gmap3.js</a> (can be located in dependencies folder)</p>
+					<p><a href="https://fontawesome.com/" target="_blank">FontAwesome Icons</a> (can be located in plugins folder)</p>
+					<p><a href="https://www.elegantthemes.com/blog/resources/elegant-icon-font" target="_blank">Eleganr Icons</a> (can be located in dependencies folder)</p>
+
+					Every Code is properly commented for Editing Ease.
+
+				</div>
+
+			</section>
+
+			<!--Support-->
+			<section class="section support" id="support">
+				<div class="sec-title">
+					<span class="icon fa fa-support"></span>
+					<h2>Support</h2>
+				</div>
+
+				<br>
+				<div class="sec-content">
+
+					<h3>Once again, thank you so much for purchasing this template. As I said at the beginning, I'd be glad to help you if you have any questions relating to this theme. No guarantees, but I'll do my best to assist. If you have any queries, please feel free to contact us at Support Center.</h3>
+
+					<p>Email Us at : <a href="mailto:support@pixelomatic.com ">support@pixelomatic.com </a> </p>
+
+				</div>
+
+			</section>
+
+
+		</div>
+
+
+	</div>
+	<!--End pagewrapper-->
+
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.nav.js"></script>
+	<script src="js/jquery.scrollTo.js"></script>
+	<script src="js/scrollbar.js"></script>
+	<script src="js/prism.js"></script>
+
+	<script src="js/jquery.highlight.js"></script>
+
+	<script src="js/script.js"></script>
+</body>
+
+</html>

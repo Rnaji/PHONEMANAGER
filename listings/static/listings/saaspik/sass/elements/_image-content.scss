@@ -1,0 +1,67 @@
+.travel-image-content-area {
+    padding: 140px 0 75px;
+
+    @media(max-width: 991px) {
+        padding: 80px 0 40px;
+    }
+}
+
+
+.travel-image-content {
+    padding-top: 12px;
+
+    .lead {
+        font-size: 20px;
+        font-weight: 400;
+        color: #0d031f;
+        margin-bottom: 20px;
+    }
+
+    .description {
+        margin: 0;
+        margin-top: -20px;
+    }
+}
+
+.travel-parallax-image {
+    position: relative;
+
+    .travel-image-one {
+        text-align: center;
+    }
+
+    .travel-image-two {
+        position: absolute;
+        left: -65px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        @media(max-width: 991px) {
+            max-width: 220px;
+        }
+
+        @media(max-width: 767px) {
+            left: 0;
+        }
+
+        
+    }
+}
+
+.shape-circle-bg {
+    position: absolute;
+    border-radius: 50%;
+    background-color: #ff9f65;
+    left: 50%;
+    top: 46%;
+    width: 420px;
+    height: 420px;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+
+    @media(max-width: 991px) {
+        height: 320px;
+        width: 320px;
+    }
+}
+  

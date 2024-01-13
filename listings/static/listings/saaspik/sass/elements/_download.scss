@@ -1,0 +1,351 @@
+.download {
+	padding: 120px 0;
+	overflow: hidden;
+}
+
+
+.download-wrapper {
+	padding-top: 115px;
+
+	.title {
+		font-size: 34px;
+		font-weight: 700;
+		margin-bottom: 25px;
+	}
+
+	p {
+		margin-bottom: 40px;
+	}
+}
+
+.download-feature-image {
+	position: relative;
+
+	.image-one {
+		margin-left: 185px;
+		z-index: 22;
+		position: relative;
+	}
+
+	.image-two {
+		position: absolute;
+		right: 10px;
+		top: -20px;
+	}
+
+	svg {
+		position: absolute;
+		z-index: -1;
+		top: 43px;
+		right: 0;
+	}
+}
+
+.app-btn-wrapper {
+	.app-btn {
+		&:not(:last-child) {
+			margin-right: 20px;
+		}
+	}
+}
+
+/**
+Download Two
+ */
+.download-two {
+	.container-wrap {
+		overflow: hidden;
+	}
+}
+
+.download-wrapper-two {
+	padding: 130px 0;
+
+	.title {
+		font-size: 60px;
+		line-height: 1.2;
+		font-weight: 700;
+
+		@media(max-width: 768px) {
+			font-size: 40px;
+		}
+	}
+
+	p {
+		margin-bottom: 30px;
+		color: #76747f;
+	}
+}
+
+.download-feature-image-two {
+	position: relative;
+	height: 100%;
+
+	@media(max-width: 991px) {
+		display: none;
+	}
+
+	img {
+		position: absolute;
+		bottom: -160px;
+
+		&.image-one {
+			left: 0;
+			z-index: 2;
+		}
+
+		&.image-two {
+			left: 215px;
+			bottom: -240px;
+		}
+	}
+}
+
+.section-animate-element {
+	> div {
+		position: absolute;
+	}
+
+	.leaf-top {
+		top: -20px;
+		left: 40px;
+	}
+
+	.leaf-bottom {
+		right: 15px;
+		bottom: -20px;
+	}
+
+	.ball {
+		left: 5%;
+		top: 50%;
+		@media (max-width: 991px) {
+			display: none;
+		}
+	}
+
+	.triangle {
+		right: 8%;
+		top: 90px;
+	}
+}
+
+
+/*
+* Travel Download
+*/
+
+.travel-download {
+	padding-bottom: 85px;
+}
+.travel-download-content {
+	.section-title {
+		margin-bottom: 40px;
+	}
+}
+
+.travel-parallax-image-two {
+	position: relative;
+
+	.image-wrapper {
+		@media(min-width: 768px) {
+			margin-right: -100px;
+		}
+
+		img {
+			position: relative;
+			z-index: 2;
+		}
+	}
+
+	.circle-shape {
+		position: absolute;
+		top: 60px;
+		left: 20%;
+		border-radius: 50%;
+		width: 420px;
+		height: 420px;
+		background: #f66e93;
+		display: block;
+
+		@media(max-width: 991px) {
+			height: 320px;
+			width: 320px;
+		}
+
+		@media(max-width: 576px) {
+			height: 250px;
+			width: 250px;
+		}
+
+		@media(max-width: 420px) {
+			height: 200px;
+			width: 200px;
+		}
+	}
+}
+
+
+
+@media (max-width: 1200px) {
+	.download-feature-image .image-one {
+		margin-left: 0;
+	}
+}
+
+@media (max-width: 991px) {
+	.download-feature-image {
+		svg {
+			right: auto;
+			left: 0;
+		}
+
+		.image-one {
+			margin-left: 0;
+		}
+
+		.image-two {
+			right: 25%;
+		}
+	}
+
+	.download {
+		padding: 100px 0;
+	}
+
+	.signup-section {
+		padding: 70px 0;
+	}
+}
+
+@media (max-width: 768px) {
+	.download-feature-image {
+		.image-two {
+			left: 150px;
+			right: auto;
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.download-feature-image {
+		svg {
+			top: -50px;
+		}
+
+		.image-one {
+			margin-left: 0;
+			max-width: 200px;
+		}
+
+		.image-two {
+			right: auto;
+			top: -18px;
+			max-width: 270px;
+			left: 25%;
+		}
+	}
+
+	.download-wrapper {
+		padding-top: 50px;
+	}
+}
+
+
+@media (max-width: 480px) {
+	.download-feature-image {
+		.image-two {
+			right: auto;
+			left: 15%;
+		}
+	}
+
+	.app-btn-wrapper .app-btn:not(:last-child) {
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+}
+
+
+
+.download-two {
+    position: relative;
+    overflow: hidden;
+    padding: 0 0 50px 0;
+    @media (max-width:1200px) {
+        padding: 90px 0;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        background-color: #fdf8fb;
+        height: 550px;
+        width: 100%;
+        top: -12px;
+        left: 0;
+		z-index: -1;
+
+		@media (max-width: 991px) {
+			height: 85%;
+		}
+    }
+    .button-container {
+        .download-btn {
+            margin-left: 16px !important;
+
+			@media (max-width: 420px) {
+				margin-left: 0 !important;
+				margin-top: 15px;
+			}
+        }
+    }
+	.section-heading {
+		&.text-left {
+			@media (max-width: 991px) {
+				text-align: center !important;
+			}
+		}
+	}
+
+    .app-section-heading {
+		margin-bottom: 51px;
+        .section-title {
+            margin-bottom: 32px;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 28px;
+
+			@media (max-width: 767px) {
+				br {
+					display: none;
+				}
+			}
+        }
+    }
+    .image-one {
+        margin-right: -215px;
+        margin-left: 6px;
+        top: 50px;
+        @media (max-width:1200px) {
+            margin-right: 0;
+            margin-left: 0;
+            text-align: center;
+        }
+        @media (max-width:991px) {
+           top: 0;
+        }
+    }
+
+	.download-feature-image-wrapper {
+		@media (max-width: 991px) {
+			margin-top: 50px;
+		}
+	}
+		
+	
+}
+
+
+    

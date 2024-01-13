@@ -1,0 +1,91 @@
+.our-skrill {
+    padding-top: 185px;
+
+    @media(max-width: 991px) {
+        padding-top: 100px;
+    }
+}
+
+.teams-six {
+    position: relative;
+    overflow: hidden;
+
+    .right-shape {
+        position: absolute;
+        right: -200px;
+        top: 250px;
+    }
+}
+
+
+.skill-wrapper .skill-value {
+    display: inline-block;
+    float: right;
+    text-align: right;
+    color: #1a133b;
+}
+
+.skill-wrapper .skill:not(:last-child) {
+    margin-bottom: 40px;
+}
+
+.skill-wrapper .skill-label,
+.skill-wrapper .skill-value {
+    font-size: 16px;
+    color: #1a133b;
+    font-weight: 500;
+}
+
+.skill-wrapper .skill-value {
+    font-style: italic;
+}
+
+.skill-wrapper {
+
+    .skill {
+        .line {
+            background-color: #eaecf2;
+            position: relative;
+            width: 100%;
+            height: 6px;
+            margin: 10px 0 0 0;
+            border-radius: 6px;
+
+            .active-line {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 0;
+                transition: width 1.5s ease;
+                background-color: $color__theme;
+                border-radius: 6px;
+            }
+        }
+
+        &.color--two {
+            .line {
+                .active-line {
+                    background-color: #6b64fe;
+                }
+            }
+        }
+
+        &.color--three {
+            .line {
+                .active-line {
+                    background-color: #43bdab;
+                }
+            }
+        }
+    }
+}
+
+.app-image-wrapper {
+    text-align: right;
+
+    @media(max-width: 991px) {
+        text-align: center;
+        margin-top: 40px;
+    }
+}

@@ -1,0 +1,162 @@
+.contactus {
+    padding: 120px 0;
+}
+
+.gmap3-area {
+    height: 500px;
+}
+
+.contact-infos {
+    .contact-info {
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+
+        &:first-child {
+            border-bottom: 1px solid #efe7e7;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 28px;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 28px;
+        }
+
+        .info {
+
+            i {
+                margin-right: 10px;
+            }
+
+            &.phone {
+                color: $color__theme;
+            }
+        }
+    }
+}
+
+.saaspik-checkboxes {
+    margin-bottom: 30px;
+}
+
+.saaspik-checbox-wrapper {
+    display: flex;
+    align-items: center;
+
+    .saaspik-checkbox {
+        position: absolute;
+        opacity: 0;
+        height: 20px;
+        width: 16px;
+        margin: 0;
+    }
+
+    span {
+        font-size: 14px;
+    }
+}
+
+
+.saaspik-checkbox+label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    height: 20px;
+}
+
+.saaspik-checkbox+label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #aba8a4;
+    transition: all 0.3s ease-in-out;
+}
+
+.saaspik-checkbox:hover+label:before {
+    border-color: $color__theme;
+}
+
+.saaspik-checkbox:checked+label:before {
+    border-color: $color__theme;
+}
+
+.saaspik-checkbox:checked+label:after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    background: $color__theme;
+    width: 2px;
+    height: 2px;
+    box-shadow: 2px 0 0 $color__theme, 4px 0 0 $color__theme, 4px -2px 0 $color__theme, 4px -4px 0 $color__theme, 4px -6px 0 $color__theme, 4px -8px 0 $color__theme;
+    transform: rotate(45deg);
+}
+
+
+$color1: #f4f4f4;
+
+
+.saaspik-radio {
+    line-height: 1;
+    margin-bottom: 10px;
+
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        margin: 0;
+
+        +.radio-label {
+            margin: 0;
+            &:before {
+                content: '';
+                background: $color1;
+                border-radius: 100%;
+                border: 1px solid darken($color1, 25%);
+                display: inline-block;
+                width: 18px;
+                height: 18px;
+                position: relative;
+                top: -0.2em;
+                margin-right: 10px;
+                vertical-align: top;
+                cursor: pointer;
+                text-align: center;
+                transition: all 250ms ease;
+            }
+        }
+
+        &:checked {
+            +.radio-label {
+                &:before {
+                    background-color: $color__theme;
+                    box-shadow: inset 0 0 0 4px $color1;
+                }
+            }
+        }
+
+        &:focus {
+            +.radio-label {
+                &:before {
+                    outline: none;
+                    border-color: $color__theme;
+                }
+            }
+        } 
+
+        +.radio-label {
+            &:empty {
+                &:before {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
