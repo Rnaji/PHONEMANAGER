@@ -160,7 +160,7 @@ class CreateBrokenScreenView(View):
 
 questions_oled= [
     (0, "xxx", "oui", "non"),
-    (1, "L’écran est original", 2, 2),
+    (1, "L’écran est-il original?", 2, 2),
     (2, "Le tactile est défectueux", 3, 3),
     (3, "L’écran présente des dommages fonctionnels", 4, 4),
     (4, "L’écran a des points noirs", 5, 6),
@@ -172,7 +172,7 @@ questions_oled= [
 
 questions_not_oled = [
     (0, "xxx", "oui", "non"),
-    (1, "L’écran est original", 2, 2),
+    (1, "L’écran est-il original?", 2, 2),
     (2, "L’écran présente des dommages fonctionnel", 3, 3),
     (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
     (4, "L’écran est jaunâtre", 5, 5),

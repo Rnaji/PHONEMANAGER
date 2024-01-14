@@ -9371,12 +9371,12 @@ select {
 	margin-bottom: 50px;
 }
 .pricing-table .pricing-header .price {
-	color: #fa7070;
-	font-size: 36px;
-	font-weight: 800;
-	line-height: 50px;
-	margin-bottom: 25px;
+    color: #fa7070;
+    font-size: 36px;
+    line-height: 50px;
+    margin-bottom: 25px;
 }
+
 .pricing-table .pricing-header .price-title {
 	font-size: 20px;
 	font-weight: 600;

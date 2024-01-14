@@ -230,3 +230,7 @@ small-font {
     color: #3366cc;}
 
 	
+.list-group-broken_screen {
+  list-style-type: none; /* Supprime le marqueur (point) */
+  /* Autres styles pour l'élément <li> si nécessaire */
+}

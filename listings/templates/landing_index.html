@@ -36,6 +36,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
     
+
+
+    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/creeecran.png' %}">
+    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/diag.png' %}">
+    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/comparer.png' %}">
+    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/opportunities.png' %}">
+    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/opportunities.png' %}">
+
+
     {% endblock head %}
 </head>
 
@@ -87,7 +96,7 @@
                     <!-- /.toggle-menu -->
 
                     <div class="site-mobile-logo">
-                        <a href="{% url 'page_attente' %}" class="logo">
+                        <a href="{% url 'landing' %}" class="logo">
                             <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="main-logo">
                             <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="sticky-logo">
                         </a>
@@ -100,7 +109,7 @@
                         </div>
 
                         <div class="site-logo">
-                            <a href="{% url 'page_attente' %}" class="logo">
+                            <a href="{% url 'landing' %}" class="logo">
                                 <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="main-logo">
                                 <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="sticky-logo">
                             </a>
@@ -110,17 +119,17 @@
                         <div class="menu-wrapper" data-top="992">
                             <ul class="site-main-menu">
 
-                                <li><a href="{% url 'page_attente' %}">About</a></li>
+                                <li><a href="{% url 'landing' %}">About</a></li>
 
                                 <li class="menu-item-has-children">
                                     <a href="#">Pages</a>
                                     <!-- Add similar modifications for other pages -->
                                 </li>
-                                <li><a href="{% url 'page_attente' %}">Contact</a></li>
+                                <li><a href="{% url 'landing' %}">Contact</a></li>
                             </ul>
 
                             <div class="nav-right">
-                                <a href="{% url 'page_attente' %}" class="nav-btn">Free Sign Up</a>
+                                <a href="{% url 'landing' %}" class="nav-btn">Free Sign Up</a>
                             </div>
                         </div>
                         <!-- /.menu-wrapper -->
@@ -142,7 +151,7 @@
                         <div class="col-lg-6">
                             <div class="banner-content">
                                 <h1 class="banner-title wow pixFadeUp" data-wow-delay="0.3s">
-                                    La Solution Ultime
+                                    La Solution 🥇
                                     pour la Gestion de vos Écrans Cassés.
                                 </h1>
                         
@@ -182,18 +191,24 @@
                 <div class="section-title style-three text-center">
                     <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
                         Pourquoi les réparateurs <br>
-                        ❤️ ProPhone<span>Manager</span>? <br>Parceque nous tenons nos promesses.
+                        ❤️ ProPhone<span>Manager</span>? <br><br> Parce que nous tenons nos promesses.</span>
                     </h2>
                 </div><!-- /.section-title -->
+                
+                <style>
+                    .normal-text {
+                        font-weight: normal; /* ou font-weight: normal; */
+                    }
+                </style>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-6">
                         <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.5s">
                             <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/20.png' %}" alt="">
+                                <img src="{% static 'listings/saaspik/assets/img/temps.png' %}" alt="">
                             </div>
                             <div class="pixsass-icon-box-content">
-                                <h3 class="pixsass-icon-box-title">New sharing made for people</h3>
+                                <h3 class="pixsass-icon-box-title">Gagnez du Temps</h3>
                                 <p>
                                     The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
                                 </p>
@@ -210,10 +225,10 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.7s">
                             <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/19.png' %}" alt="">
+                                <img src="{% static 'listings/saaspik/assets/img/argent.png' %}" alt="">
                             </div>
                             <div class="pixsass-icon-box-content">
-                                <h3 class="pixsass-icon-box-title">One integrated solution Manage</h3>
+                                <h3 class="pixsass-icon-box-title">Gagnez de l'Argent</h3>
 
                                 <p>
                                     The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
@@ -231,10 +246,10 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.9s">
                             <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/18.png' %}" alt="">
+                                <img src="{% static 'listings/saaspik/assets/img/espace.png' %}" alt="">
                             </div>
                             <div class="pixsass-icon-box-content">
-                                <h3 class="pixsass-icon-box-title">Thousand of features and Custom option.</h3>
+                                <h3 class="pixsass-icon-box-title">Gagnez de l'Espace.</h3>
                                 <p>
                                     The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
                                 </p>
@@ -253,17 +268,13 @@
         <!--===============================-->
         <!--=         Service Tab         =-->
         <!--===============================-->
-        <div class="service-tabs">
+        <section class="featured-five">
             <div class="container">
-                <div class="app-section-heading color-two text-center">
-                    <h5 class="sub-title wow fadeInUp" data-wow-delay="0.3s">
-                        Why Choose Us
-                    </h5>
-
-                    <h2 class="section-title wow fadeInUp" data-wow-delay="0.5s">
-                        Key features of our app
+                <div class="section-title style-three text-center">
+                    <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
+                        Des fonctionnalités adaptées 📲
                     </h2>
-                </div>
+                </div><!-- /.section-title -->
 
                 <div class="gp-tabs gp-tab-style-two">
                     <div class="row align-items-center">
@@ -271,19 +282,9 @@
                             <nav class="pix-tab-navs wow fadeInUp" data-wow-delay="0.7s">
                                 <ul class="gp-tabs-navigation style-two">
                                     <li class="active tab-nav-item" data-content="mockup">
-                                        <img src="{% static 'listings/saaspik/media/tabs/icon.svg" alt="image">
-                                        <a href="#0" class="acc-btn">Optimal Choice</a>
+                                        <i class="fas fa-plus"></i>
+                                        <a href="#0" class="acc-btn">Créer</a>
 
-
-                                        <div class="content" style="display: none;">
-                                            <p>
-                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="tab-nav-item active-tab" data-content="mockup2">
-                                        <img src="{% static 'listings/saaspik/media/tabs/icon2.svg" alt="image">
-                                        <a href="#0" class="acc-btn">Instant Arrival Notifications</a>
 
                                         <div class="content" style="display: block;">
                                             <p>
@@ -291,9 +292,20 @@
                                             </p>
                                         </div>
                                     </li>
+                                    <li class="tab-nav-item" data-content="mockup2">
+                                        <i class="fas fa-stethoscope"></i>
+                                        <a href="#0" class="acc-btn">Diagnostiquer</a>
+                                    
+                                        <div class="content" style="display: none;">
+                                            <p>
+                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                            </p>
+                                        </div>
+                                    </li>
+                                    
                                     <li class="tab-nav-item" data-content="mockup3">
-                                        <img src="{% static 'listings/saaspik/media/tabs/icon3.svg" alt="image">
-                                        <a href="#0" class="acc-btn">Photo Capture</a>
+                                        <i class="fas fa-balance-scale"></i>
+                                        <a href="#0" class="acc-btn">Comparer</a>
 
                                         <div class="content" style="display: none;">
                                             <p>
@@ -302,8 +314,8 @@
                                         </div>
                                     </li>
                                     <li class="tab-nav-item" data-content="mockup4">
-                                        <img src="{% static 'listings/saaspik/media/tabs/icon4.svg" alt="image">
-                                        <a href="#0" class="acc-btn">Customize Branding</a>
+                                        <i class="fas fa-search-dollar"></i>
+                                        <a href="#0" class="acc-btn">Saisir une Opportunité</a>
 
                                         <div class="content" style="display: none;">
                                             <p>
@@ -312,8 +324,8 @@
                                         </div>
                                     </li>
                                     <li class="tab-nav-item" data-content="mockup5">
-                                        <img src="{% static 'listings/saaspik/media/tabs/icon5.svg" alt="image">
-                                        <a href="#0" class="acc-btn">Wireframing Task</a>
+                                        <i class="fab fa-ups"></i>
+                                        <a href="#0" class="acc-btn">Expédier</a>
 
                                         <div class="content" style="display: none;">
                                             <p>
@@ -325,20 +337,19 @@
                             </nav>
                         </div><!-- /.col-lg-5 -->
                         <div class="col-lg-6">
-                            <div class="tab-content-inner text-center">
-                                <div class="gp-tabs-content" style="height: auto;">
-                                    <li data-content="mockup" class="pix-tab-item">
-                                        <div class="inspect-tab-image">
-                                            <div class="image-top">
-                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" alt="image">
-                                            </div>
+                            <div class="gp-tabs-content" style="height: auto;">
+                                <li data-content="mockup" class="pix-tab-item active">
+                                    <div class="inspect-tab-image">
+                                        <div class="image-top">
+                                            <img src="{% static 'listings/saaspik/assets/img/creeecran.png' %}" alt="mockup">
                                         </div>
-                                    </li>
+                                    </div>
+                                </li>
 
-                                    <li data-content="mockup2" class="pix-tab-item active-tab">
+                                    <li data-content="mockup2" class="pix-tab-item">
                                         <div class="inspect-tab-image">
                                             <div class="image-top">
-                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" class="wow fadeInRight" data-wow-delay="0.9s" alt="image">
+                                                <img src="{% static 'listings/saaspik/assets/img/diag.png' %}" alt="image">
                                             </div>
                                         </div>
                                     </li>
@@ -346,7 +357,7 @@
                                     <li data-content="mockup3" class="pix-tab-item">
                                         <div class="inspect-tab-image">
                                             <div class="image-top">
-                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" alt="image">
+                                                <img src="{% static 'listings/saaspik/assets/img/comparer.png' %}" alt="image">
                                             </div>
                                         </div>
                                     </li>
@@ -354,7 +365,7 @@
                                     <li data-content="mockup4" class="pix-tab-item">
                                         <div class="inspect-tab-image">
                                             <div class="image-top">
-                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" alt="image">
+                                                <img src="{% static 'listings/saaspik/assets/img/opportunities.png' %}" alt="image">
                                             </div>
                                         </div>
                                     </li>
@@ -362,7 +373,7 @@
                                     <li data-content="mockup5" class="pix-tab-item">
                                         <div class="inspect-tab-image">
                                             <div class="image-top">
-                                                <img src="{% static 'listings/saaspik/media/tabs/tab5.png' %}" alt="image">
+                                                <img src="{% static 'listings/saaspik/assets/img/expedier.png' %}" alt="image">
                                             </div>
                                         </div>
                                     </li>
@@ -387,15 +398,15 @@
             <div class="container">
                 <div class="section-title style-three text-center">
                     <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
-                        Use your android or ios device<br>
-                        to manage everything.
+                        Une prise en main immédiate<br>
+                        et sans contrainte 😎
                     </h2>
                 </div><!-- /.section-title -->
 
                 <div class="row align-items-center">
                     <div class="col-lg-5 col-md-5">
                         <div class="feature-image-wrapper wow pixFadeLeft">
-                            <img src="{% static 'listings/saaspik/media/feature/tablet.png' %}" alt="">
+                            <img src="{% static 'listings/saaspik/assets/img/ipadpor.png' %}" alt="mockup">
                         </div>
                         <!-- /.feature-image-wrapper -->
                     </div>
@@ -404,34 +415,34 @@
                     <div class="col-lg-7 col-md-7">
                         <div class="saaspik-icon-box-wrapper style-six wow pixFadeRight" data-wow-delay="0.4s">
                             <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/22.png' %}" alt="icon">
+                                <img src="{% static 'listings/saaspik/assets/img/cloud.png' %}" alt="mockup">
                             </div>
                             <div class="pixsass-icon-box-content">
                                 <h3 class="pixsass-icon-box-title">
-                                    <a href="#">Show off show off pick your nose and<br> blow off grub so I said pardon.</a>
+                                    <a href="#">Aucun téléchargement, tout est dans le cloud<br> Inscrivez vous et c'est parti.</a>
                                 </h3>
                             </div>
                         </div><!-- /.pixsass-box style-six -->
 
                         <div class="saaspik-icon-box-wrapper style-six wow pixFadeRight" data-wow-delay="0.5s">
                             <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/23.png' %}" alt="icon">
+                                <img src="{% static 'listings/saaspik/assets/img/multiscreen.png' %}" alt="mockup">
                             </div>
                             <div class="pixsass-icon-box-content">
                                 <h3 class="pixsass-icon-box-title">
-                                    <a href="#">Daft blimey squiffy lemon squeezy<br> Richard bite your arm.</a>
+                                    <a href="#">Ordinateur, Smartphone, Tablette, Android, MacOs Utilisez notre solution sur tous vos appareils</a>
                                 </h3>
                             </div>
                         </div><!-- /.pixsass-box style-six -->
 
                         <div class="saaspik-icon-box-wrapper style-six wow pixFadeRight" data-wow-delay="0.6s">
                             <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/24.png' %}" alt="icon">
+                                <img src="{% static 'listings/saaspik/assets/img/easyuse.png' %}" alt="mockup">
                             </div>
                             <div class="pixsass-icon-box-content">
                                 <h3 class="pixsass-icon-box-title">
                                     <a href="#">
-                                        Lost the plot don't get shirty with me<br> cheeky bugger.
+                                        Une solution simple et inuitive<br> Pas besoin de compétences en informatique.
                                     </a>
                                 </h3>
                             </div>
@@ -439,12 +450,13 @@
 
                         <div class="saaspik-icon-box-wrapper style-six wow pixFadeRight" data-wow-delay="0.7s">
                             <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/25.png' %}" alt="icon">
+                                <img src="{% static 'listings/saaspik/assets/img/gestion.png' %}" alt="mockup">
                             </div>
                             <div class="pixsass-icon-box-content">
                                 <h3 class="pixsass-icon-box-title">
                                     <a href="#">
-                                        Cup of char horse play excuse my<br> French sloshed butty.
+                                        Gestion facile de votre stock d'écrans cassés<br> Ajouter, archiver, rechercher, lister, imprimer...
+
                                     </a>
                                 </h3>
                             </div>
@@ -461,143 +473,123 @@
 
         
  
-        <!--===========================-->
-        <!--=         Pricing         =-->
-        <!--===========================-->
-        <section class="pricing-two">
-            <div class="container">
-                <div class="section-title color-two text-center">
-                    <h3 class="sub-title wow pixFadeUp">Pricing Plan</h3>
-                    <h2 class="title wow pixFadeUp" data-wow-delay="0.3s">
-                        No Hidden Charges! Choose <br>
-                        your Plan.
-                    </h2>
+<!--===========================-->
+<!--=         Pricing         =-->
+<!--===========================-->
+<section class="pricing-two">
+    <div class="container">
+        <div class="section-title color-two text-center">
+            <h3 class="sub-title wow pixFadeUp">Pricing Plan</h3>
+            <h2 class="title wow pixFadeUp" data-wow-delay="0.3s">
+                Des prix transparents et dégressifs 🤝<br>
+            </h2>
+        </div>
+        <!-- /.section-title -->
+
+
+        <div class="row advanced-pricing-table">
+            <div class="col-lg-4">
+                <div class="pricing-table style-two price-two wow pixFadeLeft" data-wow-delay="0.5s">
+                    <div class="pricing-header pricing-amount">
+                        <div class="monthly_price">
+                            <h2 class="price">€19.99/mo</h2>
+                        </div>
+                        <!-- /.monthly_price -->
+
+                        <h3 class="price-title">Forfait Mensuel</h3>
+                        <p>Sans engagement</p>
+                    </div>
+                    <!-- /.pricing-header -->
+
+                    <ul class="price-feture">
+                        <li class="have">Single User</li>
+                        <li class="have">Accès illimité</li>
+                        <li class="have">Sans engagement</li>
+                        <li class="have">Hotline Support 24/7</li>
+                        <li class="have">Free Updates</li>
+                    </ul>
+
+                    <div class="action text-left">
+                        <a href="#" class="pix-btn btn-outline-two">Get Started</a>
+                    </div>
                 </div>
-                <!-- /.section-title -->
-                <nav class="pricing-tab color-two wow pixFadeUp" data-wow-delay="0.4s">
-                    <span class="monthly_tab_title tab-btn">
-                        Monthly
-                    </span>
-                    <span class="pricing-tab-switcher"></span>
-                    <span class="annual_tab_title tab-btn">
-                        Annual
-                    </span>
-                </nav>
-
-                <div class="row advanced-pricing-table">
-                    <div class="col-lg-4">
-                        <div class="pricing-table style-two price-two wow pixFadeLeft" data-wow-delay="0.5s">
-                            <div class="pricing-header pricing-amount">
-                                <div class="annual_price">
-                                    <h2 class="price">$0.00</h2>
-                                </div>
-                                <!-- /.annual_price -->
-
-                                <div class="monthly_price">
-                                    <h2 class="price">$0.00</h2>
-                                </div>
-                                <!-- /.monthly_price -->
-
-                                <h3 class="price-title">Basic Account</h3>
-                                <p>Only for first month</p>
-                            </div>
-                            <!-- /.pricing-header -->
-
-                            <ul class="price-feture">
-                                <li class="have">Limited Acess Library</li>
-                                <li class="have">Single User</li>
-                                <li class="have">eCommerce Store</li>
-                                <li class="not">Hotline Support 24/7</li>
-                                <li class="not">No Updates</li>
-                            </ul>
-
-                            <div class="action text-left">
-                                <a href="#" class="pix-btn btn-outline-two">Get Started</a>
-                            </div>
-                        </div>
-                        <!-- /.pricing-table -->
-                    </div>
-                    <!-- /.col-lg-4 -->
-
-                    <div class="col-lg-4">
-                        <div class="pricing-table color-two style-two price-two featured wow pixFadeLeft" data-wow-delay="0.7s">
-                            <div class="trend">
-                                <p>Popular</p>
-                            </div>
-
-                            <div class="pricing-header pricing-amount">
-                                <div class="annual_price">
-                                    <h2 class="price">$80.50</h2>
-                                </div>
-                                <!-- /.annual_price -->
-
-                                <div class="monthly_price">
-                                    <h2 class="price">$16.97</h2>
-                                </div>
-                                <!-- /.monthly_price -->
-
-                                <h3 class="price-title">Standard Account</h3>
-                                <p>Only for first month</p>
-                            </div>
-                            <!-- /.pricing-header -->
-
-                            <ul class="price-feture">
-                                <li class="have">Limited Acess Library</li>
-                                <li class="have">Single User</li>
-                                <li class="have">eCommerce Store</li>
-                                <li class="have">Hotline Support 24/7</li>
-                                <li class="not">No Updates</li>
-                            </ul>
-
-                            <div class="action text-left">
-                                <a href="#" class="pix-btn btn-outline-two">Get Started</a>
-                            </div>
-                        </div>
-                        <!-- /.pricing-table -->
-                    </div>
-                    <!-- /.col-lg-4 -->
-
-                    <div class="col-lg-4">
-                        <div class="pricing-table color-three style-two price-two wow pixFadeLeft" data-wow-delay="0.9s">
-
-                            <div class="pricing-header pricing-amount">
-                                <div class="annual_price">
-                                    <h2 class="price">$180.70</h2>
-                                </div>
-                                <!-- /.annual_price -->
-
-                                <div class="monthly_price">
-                                    <h2 class="price">$29.45</h2>
-                                </div>
-                                <!-- /.monthly_price -->
-
-                                <h3 class="price-title">Premium Account</h3>
-                                <p>Only for first month</p>
-                            </div>
-                            <!-- /.pricing-header -->
-
-                            <ul class="price-feture">
-                                <li class="have">Limited Acess Library</li>
-                                <li class="have">Single User</li>
-                                <li class="have">eCommerce Store</li>
-                                <li class="have">Hotline Support 24/7</li>
-                                <li class="have">No Updates</li>
-                            </ul>
-
-                            <div class="action text-left"></div>
-                            <a href="#" class="pix-btn btn-outline-two">Get Started</a>
-                        </div>
-
-
-                        <!-- /.pricing-table -->
-                    </div>
-                    <!-- /.col-lg-4 -->
-                </div>
-                <!-- /.advanced-pricing-table -->
+                <!-- /.pricing-table -->
             </div>
-            <!-- /.container -->
-        </section>
-        <!-- /.pricing -->
+            <!-- /.col-lg-4 -->
+
+            <div class="col-lg-4">
+                <div class="pricing-table color-two style-two price-two featured wow pixFadeLeft" data-wow-delay="0.7s">
+                    <div class="trend">
+                        <p>Popular</p>
+                    </div>
+
+                    <div class="pricing-header pricing-amount">
+                        <div class="monthly_price">
+                            <h2 class="price">€149.99/an</h2>
+                        </div>
+                        <!-- /.monthly_price -->
+
+                        <h3 class="price-title">Accès annuel</h3>
+                        <p>Réduction de 37,5% comparé au Forfait Mensuel</p>
+                    </div>
+                    <!-- /.pricing-header -->
+
+                    <ul class="price-feture">
+                        <li class="have">Single User</li>
+                        <li class="have">Accès illimité</li>
+                        <li class="have">Sans engagement</li>
+                        <li class="have">Hotline Support 24/7</li>
+                        <li class="have">Free Updates</li>
+                    </ul>
+
+                    <div class="action text-left">
+                        <a href="#" class="pix-btn btn-outline-two">Get Started</a>
+                    </div>
+                </div>
+                <!-- /.pricing-table -->
+            </div>
+            <!-- /.col-lg-4 -->
+
+            <div class="col-lg-4">
+                <div class="pricing-table color-three style-two price-two wow pixFadeLeft" data-wow-delay="0.9s">
+
+                    <div class="pricing-header pricing-amount">
+                        <div class="monthly_price">
+                            <h2 class="price">€299.99/1x</h2>
+                        </div>
+                        <!-- /.monthly_price -->
+
+                        <h3 class="price-title">Accès à vie</h3>
+                        <p>Utilisez notre solution à vie</p>
+                    </div>
+                    <!-- /.pricing-header -->
+
+                    <ul class="price-feture">
+                        <li class="have">Single User</li>
+                        <li class="have">Accès illimité</li>
+                        <li class="have">Sans engagement</li>
+                        <li class="have">Hotline Support 24/7</li>
+                        <li class="have">Free Updates</li>
+                    </ul>
+
+                    <div class="action text-left">
+                        <a href="#" class="pix-btn btn-outline-two">Get Started</a>
+                    </div>
+                </div>
+                <!-- /.pricing-table -->
+            </div>
+            <!-- /.col-lg-4 -->
+        </div>
+        <!-- /.advanced-pricing-table -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.pricing -->
+
+
+
+
+
 
  <!--==================================-->
         <!--=         Call To Action         =-->
@@ -609,8 +601,8 @@
                     <div class="col-lg-7">
                         <div class="action-content style-two wow pixFadeUp">
                             <h2 class="title">
-                                Getting connected with us<br>
-                                & for the update.
+                                Une Question, une Précision<br>
+                                Contactez-Nous.
                             </h2>
                         </div>
                         <!-- /.action-content -->
@@ -753,14 +745,9 @@
             <div class="container">
 
                 <div class="newsletter-content-two text-center wow pixFadeUp">
-                    <h2 class="title">
-                        Comprueba ahora como<br> pixsaas trabaja para tu asesoria
-                    </h2>
-
-                    <p class="description">
-                        Solicita una demo personalizada para descubrir como pixsaas puede ayudarte a mejorar la<br>
-                        gestion de los clientes de tu despacho profesional.
-                    </p>
+                  <p class="description">
+                        Contactez-nous pour obtenir des informations détaillées<br>
+                        ou planifier une démo personnalisée.
                 </div>
                 <!-- /.newsletter-content -->
 
@@ -908,6 +895,17 @@
 <!-- Site Scripts -->
 <script src="{% static 'listings/saaspik/assets/js/header.js' %}"></script>
 <script src="{% static 'listings/saaspik/assets/js/app.js' %}"></script>
+
+
+<script>
+    // Attendre que le document soit prêt
+    document.addEventListener("DOMContentLoaded", function() {
+        // Simuler un clic sur l'onglet "Créer" après un délai court
+        setTimeout(function() {
+            document.querySelector('.tab-nav-item[data-content="mockup"]').click();
+        }, 100);
+    });
+</script>
 
 
 </body>
