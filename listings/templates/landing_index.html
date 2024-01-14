@@ -36,15 +36,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
     
-
-
-    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/creeecran.png' %}">
-    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/diag.png' %}">
-    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/comparer.png' %}">
-    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/opportunities.png' %}">
-    <link rel="preload" as="image" href="{% static 'listings/saaspik/assets/img/opportunities.png' %}">
-
-
     {% endblock head %}
 </head>
 
@@ -183,88 +174,94 @@
         </section><!-- /.banner banner-one -->
 
 
- <!--==========================-->
-        <!--=         Feature        =-->
-        <!--==========================-->
-        <section class="featured-five">
-            <div class="container">
-                <div class="section-title style-three text-center">
-                    <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
-                        Pourquoi les réparateurs <br>
-                        ❤️ ProPhone<span>Manager</span>? <br><br> Parce que nous tenons nos promesses.</span>
-                    </h2>
-                </div><!-- /.section-title -->
-                
-                <style>
-                    .normal-text {
-                        font-weight: normal; /* ou font-weight: normal; */
-                    }
-                </style>
+<!-- ========================== -->
+<!-- =         Feature        = -->
+<!-- ========================== -->
+<section class="featured-five">
+    <div class="container">
+        <div class="section-title style-three text-center">
+            <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
+                Pourquoi les réparateurs <br>
+                ❤️ ProPhone<span>Manager</span>? <br><br> Parce que nous tenons nos promesses.
+            </h2>
+        </div><!-- /.section-title -->
 
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.5s">
-                            <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/assets/img/temps.png' %}" alt="">
-                            </div>
-                            <div class="pixsass-icon-box-content">
-                                <h3 class="pixsass-icon-box-title">Gagnez du Temps</h3>
-                                <p>
-                                    The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
-                                </p>
+        <style>
+            .normal-text {
+                font-weight: normal; /* ou font-weight: normal; */
+            }
+        </style>
 
-                                <a href="#" class="more-btn"><i class="ei ei-arrow_right"></i></a>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.5s">
+                    <div class="saaspik-icon-box-icon">
+                        <img src="{% static 'listings/saaspik/assets/img/temps.png' %}" alt="">
+                    </div>
+                    <div class="pixsass-icon-box-content" id="toggle-content">
+                        <h3 class="pixsass-icon-box-title">Gagnez du Temps</h3>
+                        <p>
+                            Chaque écran endommagé est associé à un numéro unique, fournissant des détails complets tels que la marque, le modèle et le grade.<br>
+                            Que ce soit pour une expédition à un recycleur ou une vente directe à un itinérant, le processus est grandement simplifié.
+                            <details>
+                                <summary>Cliquez pour + détails</summary>En cas d'expédition, vous savez précisément quel écran envoyer à quel recycleur, avec toutes les informations nécessaires sur la marque, le modèle, le grade et le prix estimé.<br>
+                                Si le recycleur se rend chez vous, plus besoin de surveiller chaque écran à tester ; vous avez déjà toutes les informations à portée de main. Vous n'aurez qu'à vérifier les écrans sur lesquels vous n'êtes pas d'accord.
+                                <br>Dans tous les cas, vous gagnerez du temps.
+                            </details>
+                        </p>
 
-                                <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
-                                    <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
-                                </svg>
-                            </div>
-                        </div><!-- /.pixsass-box style-four -->
-                    </div><!-- /.col-lg-4 col-md-6 -->
+                        <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                            <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                        </svg>
+                    </div>
+                </div><!-- /.pixsass-box style-four -->
+            </div><!-- /.col-lg-4 col-md-6 -->
 
-                    <div class="col-lg-4 col-md-6">
-                        <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.7s">
-                            <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/assets/img/argent.png' %}" alt="">
-                            </div>
-                            <div class="pixsass-icon-box-content">
-                                <h3 class="pixsass-icon-box-title">Gagnez de l'Argent</h3>
+            <div class="col-lg-4 col-md-6">
+                <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.7s">
+                    <div class="saaspik-icon-box-icon">
+                        <img src="{% static 'listings/saaspik/assets/img/argent.png' %}" alt="">
+                    </div>
+                    <div class="pixsass-icon-box-content">
+                        <h3 class="pixsass-icon-box-title">Gagnez de l'Argent</h3>
+                        <p>
+                            ProPhoneManager vous offre la possibilité de définir le grade de vos écrans cassés. <br>Vous obtiendrez en temps réel, les offres des différents recycleurs. <br>Si une meilleure offre que celle que vous avez choisie est disponible, vous êtes averti.<br><br>
+                            <details>
+                                <summary>Cliquez pour + détails</summary>Découvrez également de nouveaux partenaires vérifiés pour la revente, élargissant ainsi vos possibilités de revente. <br>Actuellement plus de 250 modèles sont pris en charge et de nouveaux modèles sont ajoutés chaque mois. <br>Certains de ces modèles n'étaient probablement pas acceptés par vos recycleurs précédents. <br>Dans tous les cas, vous gagnerez de l'argent.
+                            </details>
+                        </p>
+                    </div>
 
-                                <p>
-                                    The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
-                                </p>
+                    <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                        <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                    </svg>
+                </div><!-- /.pixsass-box style-four -->
+            </div><!-- /.col-lg-4 col-md-6 -->
 
-                                <a href="#" class="more-btn"><i class="ei ei-arrow_right"></i></a>
-                            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.9s">
+                    <div class="saaspik-icon-box-icon">
+                        <img src="{% static 'listings/saaspik/assets/img/espace.png' %}" alt="">
+                    </div>
+                    <div class="pixsass-icon-box-content">
+                        <h3 class="pixsass-icon-box-title">Gagnez de l'Espace.</h3>
+                        <p>
+                            Un espace bien rangé se traduit par un gain de place significatif, une considération essentielle dans une boutique où chaque mètre carré compte. <br>Chaque écran est défini par son numéro unique, facilitant la gestion précise et organisée de votre inventaire.
+                            <details>
+                                <summary>Cliquez pour + détails</summary>Éliminez l'encombrement des écrans qui traînent dans vos tiroirs ou sur vos étagères, optimisez ainsi l'efficacité de votre espace et améliorez l'expérience globale dans votre établissement.<br>Les retours de nos clients indiquent clairement un gain d'espace significatif, de l'ordre de 10%.<br>Dans tous les cas, vous gagnerez de l'espace.
+                            </details>
+                        </p>
+                    </div>
 
-                            <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
-                                <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
-                            </svg>
-                        </div><!-- /.pixsass-box style-four -->
-                    </div><!-- /.col-lg-4 col-md-6 -->
+                    <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                        <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                    </svg>
+                </div><!-- /.pixsass-box style-four -->
+            </div><!-- /.col-lg-4 col-md-6 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.featured -->
 
-                    <div class="col-lg-4 col-md-6">
-                        <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.9s">
-                            <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/assets/img/espace.png' %}" alt="">
-                            </div>
-                            <div class="pixsass-icon-box-content">
-                                <h3 class="pixsass-icon-box-title">Gagnez de l'Espace.</h3>
-                                <p>
-                                    The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
-                                </p>
-
-                                <a href="#" class="more-btn"><i class="ei ei-arrow_right"></i></a>
-                            </div>
-
-                            <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
-                                <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
-                            </svg>
-                        </div><!-- /.pixsass-box style-four -->
-                    </div><!-- /.col-lg-4 col-md-6 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </section><!-- /.featured -->
         <!--===============================-->
         <!--=         Service Tab         =-->
         <!--===============================-->
@@ -288,7 +285,7 @@
 
                                         <div class="content" style="display: block;">
                                             <p>
-                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                                Plus de 250 modèles différents repris.<br> De nouveaux modèles chaques mois,<br> La meilleur offre du marché.
                                             </p>
                                         </div>
                                     </li>
@@ -298,7 +295,7 @@
                                     
                                         <div class="content" style="display: none;">
                                             <p>
-                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                                Attribuer un grade à votre écran en 8 questions. Le diagnostic s'adapte au modèle  du téléphone.
                                             </p>
                                         </div>
                                     </li>
@@ -309,7 +306,7 @@
 
                                         <div class="content" style="display: none;">
                                             <p>
-                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                                Comparez les offres de rachat de différents recycleurs dans votre pays. Les offres sont mises à jour quotidiennement.
                                             </p>
                                         </div>
                                     </li>
@@ -319,7 +316,7 @@
 
                                         <div class="content" style="display: none;">
                                             <p>
-                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                                Si une meilleur offre que celle que vous avez choisi est disponible, vous êtes averti.
                                             </p>
                                         </div>
                                     </li>
@@ -329,7 +326,7 @@
 
                                         <div class="content" style="display: none;">
                                             <p>
-                                                Have it sloshed Richard down the pub bobby<br> chip shop cup of tea tomfoolery.!
+                                                Grace à la reference unique attribué à chaque écran, vous retrouvez les écrans à envoyer à chaque recycleur.
                                             </p>
                                         </div>
                                     </li>
@@ -338,7 +335,7 @@
                         </div><!-- /.col-lg-5 -->
                         <div class="col-lg-6">
                             <div class="gp-tabs-content" style="height: auto;">
-                                <li data-content="mockup" class="pix-tab-item active">
+                                <li data-content="mockup" class="pix-tab-item active wow fadeInUp" data-wow-delay="0.7s">
                                     <div class="inspect-tab-image">
                                         <div class="image-top">
                                             <img src="{% static 'listings/saaspik/assets/img/creeecran.png' %}" alt="mockup">
@@ -346,15 +343,15 @@
                                     </div>
                                 </li>
 
-                                    <li data-content="mockup2" class="pix-tab-item">
-                                        <div class="inspect-tab-image">
+                                <li data-content="mockup2" class="pix-tab-item wow fadeInUp" data-wow-delay="0.7s">
+                                    <div class="inspect-tab-image">
                                             <div class="image-top">
                                                 <img src="{% static 'listings/saaspik/assets/img/diag.png' %}" alt="image">
                                             </div>
                                         </div>
                                     </li>
 
-                                    <li data-content="mockup3" class="pix-tab-item">
+                                    <li data-content="mockup3" class="pix-tab-item wow fadeInUp" data-wow-delay="0.7s">
                                         <div class="inspect-tab-image">
                                             <div class="image-top">
                                                 <img src="{% static 'listings/saaspik/assets/img/comparer.png' %}" alt="image">
@@ -362,7 +359,7 @@
                                         </div>
                                     </li>
 
-                                    <li data-content="mockup4" class="pix-tab-item">
+                                    <li data-content="mockup4" class="pix-tab-item wow fadeInUp" data-wow-delay="0.7s">
                                         <div class="inspect-tab-image">
                                             <div class="image-top">
                                                 <img src="{% static 'listings/saaspik/assets/img/opportunities.png' %}" alt="image">
@@ -370,7 +367,7 @@
                                         </div>
                                     </li>
 
-                                    <li data-content="mockup5" class="pix-tab-item">
+                                    <li data-content="mockup5" class="pix-tab-item wow fadeInUp" data-wow-delay="0.7s">
                                         <div class="inspect-tab-image">
                                             <div class="image-top">
                                                 <img src="{% static 'listings/saaspik/assets/img/expedier.png' %}" alt="image">
@@ -630,8 +627,8 @@
                 <div class="section-title text-center">
                     <h3 class="sub-title wow pixFadeUp">Testimonial</h3>
                     <h2 class="title-two wow pixFadeUp" data-wow-delay="0.3s">
-                        Mas de <span>3.400 asesorias</span> ya confian en pixsaas para mejorar la
-                        gestion de sus despachos profesionales.
+                        Plus de <span>1400 boutiques dans le monde</span> font déjà confiance à ProPhoneManager.<br>
+                        Vous aussi passez à la gestion professionnel de vos écrans cassés.
                     </h2>
                 </div><!-- /.section-title -->
 
@@ -654,7 +651,7 @@
                                             </div>
                                         </div>
                                         <!-- /.testimonial-bio -->
-                                        <p>Horse play a blinding shot the little rotter nice one ummm I'm telling bits and bobs grub boot that bevvy, cockup matie.!</p>
+                                        <p>Je suis utilisateur de l'app. Je reçois un acheteur une fois par mois pour tester une centaine d'écrans. c'était une demi journée et je devais être avec lui, maintenant c'est 2h et j'interviens que de temps en temps. en + je lui fais monter les prix en lui montrant les offres</p>
                                     </div>
                                     <!-- /.testimonial-content -->
 
@@ -679,7 +676,7 @@
                                             </div>
                                         </div>
                                         <!-- /.testimonial-bio -->
-                                        <p>Horse play a blinding shot the little rotter nice one ummm I'm telling bits and bobs grub boot that bevvy, cockup matie.!</p>
+                                        <p>Application simple d'utilisation, je m'en sers tous les jours; J'ai rentabilisé mon accès annuel à mon premier envoi d'écran. </p>
                                     </div>
                                     <!-- /.testimonial-content -->
 
@@ -706,7 +703,7 @@
                                             </div>
                                         </div>
                                         <!-- /.testimonial-bio -->
-                                        <p>Horse play a blinding shot the little rotter nice one ummm I'm telling bits and bobs grub boot that bevvy, cockup matie.!</p>
+                                        <p>Je valide à 100%; Plus besoin de perdre du temps à comparer les offres des différents racheteurs. Je sais directement à qui envoyer mes écrans cassés au meilleur prix; </p>
                                     </div>
                                     <!-- /.testimonial-content -->
 
@@ -745,9 +742,10 @@
             <div class="container">
 
                 <div class="newsletter-content-two text-center wow pixFadeUp">
+                    <h3 class="sub-title wow pixFadeUp">NEWSLETTER</h3>
+
                   <p class="description">
-                        Contactez-nous pour obtenir des informations détaillées<br>
-                        ou planifier une démo personnalisée.
+                    Les abonnés à notre newsletter bénéficient fréquemment de conseils sur la vente d'écrans endommagés, les nouvelles adhésions de recycleurs, l'ajout de nouveaux modèles d'écrans, ainsi que des informations sur d'éventuelles fluctuations de prix. Vous êtes les bienvenus.
                 </div>
                 <!-- /.newsletter-content -->
 
@@ -907,6 +905,14 @@
     });
 </script>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".more-btn").click(function() {
+            $("#toggle-content").slideToggle();
+        });
+    });
+</script>
 
 </body>
 
