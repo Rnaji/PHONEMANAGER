@@ -910,3 +910,11 @@ def update_package(request, reference):
         return redirect('settings_view')  # Assurez-vous de remplacer 'settings_view' par le nom réel de votre vue des paramètres
 
     return render(request, 'update_package.html', {'package': package, 'brokenscreen_instances': brokenscreen_instances})
+
+
+
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')

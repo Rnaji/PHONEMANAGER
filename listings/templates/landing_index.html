@@ -10,11 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     
     {% block head %}
-    <title>{% block title %}ProPhoneManager — Facilitez vous la vie{% endblock title %}</title>
+    <title>{% block title %}ProPhoneManager{% endblock title %}</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'listings/saaspik/assets/img/fav/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'listings/saaspik/assets/img/fav/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'listings/saaspik/assets/img/fav/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'listings/saaspik/assets/img/minilogo.png' %}"">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'listings/saaspik/assets/img/minilogo.png' %}">
     <link rel="mask-icon" href="{% static 'listings/saaspik/assets/img/fav/safari-pinned-tab.svg' %}" color="#fa7070">
 
     <meta name="msapplication-TileColor" content="#fa7070">
@@ -110,17 +110,14 @@
                         <div class="menu-wrapper" data-top="992">
                             <ul class="site-main-menu">
 
-                                <li><a href="{% url 'landing' %}">About</a></li>
+                                <li><a href="{% url 'about' %}">About</a></li>
 
-                                <li class="menu-item-has-children">
-                                    <a href="#">Pages</a>
-                                    <!-- Add similar modifications for other pages -->
-                                </li>
-                                <li><a href="{% url 'landing' %}">Contact</a></li>
+
+                                <li><a href="{% url 'contact' %}">Contact</a></li>
                             </ul>
 
                             <div class="nav-right">
-                                <a href="{% url 'landing' %}" class="nav-btn">Free Sign Up</a>
+                                <a href="{% url 'login' %}" class="nav-btn">Se connecter </a>
                             </div>
                         </div>
                         <!-- /.menu-wrapper -->
@@ -150,8 +147,8 @@
                                     Gagner du Temps, de l'Argent et de l'Espace.
                                 </p>
                         
-                                <a href="#" class="pxs-btn banner-btn wow pixFadeUp" data-wow-delay="0.6s">Get Started</a>
-                                <a href="https://www.youtube.com/watch?v=9No-FiEInLA" class="pxs-btn banner-btn wow pixFadeUp play-btn popup-video" data-wow-delay="0.6s">Watch Video</a>
+                                <a href="{% url 'user_registration' %}" class="pxs-btn banner-btn wow pixFadeUp" data-wow-delay="0.6s">Essai Gratuit (sans CB)</a>
+                                <a href="https://www.youtube.com/watch?v=9No-FiEInLA" class="pxs-btn banner-btn wow pixFadeUp play-btn popup-video" data-wow-delay="0.6s">Video de Présentation</a>
                                 
 
                             </div><!-- /.banner-content -->
@@ -182,7 +179,7 @@
         <div class="section-title style-three text-center">
             <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
                 Pourquoi les réparateurs <br>
-                ❤️ ProPhone<span>Manager</span>? <br><br> Parce que nous tenons nos promesses.
+                ❤️ ProPhone<span>Manager</span>? <br><br> Parce que nous tenons nos promesses👍
             </h2>
         </div><!-- /.section-title -->
 
@@ -199,12 +196,12 @@
                         <img src="{% static 'listings/saaspik/assets/img/temps.png' %}" alt="">
                     </div>
                     <div class="pixsass-icon-box-content" id="toggle-content">
-                        <h3 class="pixsass-icon-box-title">Gagnez du Temps</h3>
+                        <h3 class="pixsass-icon-box-title">Gagnez du Temps.</h3>
                         <p>
                             Chaque écran endommagé est associé à un numéro unique, fournissant des détails complets tels que la marque, le modèle et le grade.<br>
                             Que ce soit pour une expédition à un recycleur ou une vente directe à un itinérant, le processus est grandement simplifié.
                             <details>
-                                <summary>Cliquez pour + détails</summary>En cas d'expédition, vous savez précisément quel écran envoyer à quel recycleur, avec toutes les informations nécessaires sur la marque, le modèle, le grade et le prix estimé.<br>
+                                <summary>Cliquez pour dérouler</summary> <br> En cas d'expédition, vous savez précisément quel écran envoyer à quel recycleur, avec toutes les informations nécessaires sur la marque, le modèle, le grade et le prix estimé.<br>
                                 Si le recycleur se rend chez vous, plus besoin de surveiller chaque écran à tester ; vous avez déjà toutes les informations à portée de main. Vous n'aurez qu'à vérifier les écrans sur lesquels vous n'êtes pas d'accord.
                                 <br>Dans tous les cas, vous gagnerez du temps.
                             </details>
@@ -223,11 +220,11 @@
                         <img src="{% static 'listings/saaspik/assets/img/argent.png' %}" alt="">
                     </div>
                     <div class="pixsass-icon-box-content">
-                        <h3 class="pixsass-icon-box-title">Gagnez de l'Argent</h3>
+                        <h3 class="pixsass-icon-box-title">Gagnez de l'Argent.</h3>
                         <p>
-                            ProPhoneManager vous offre la possibilité de définir le grade de vos écrans cassés. <br>Vous obtiendrez en temps réel, les offres des différents recycleurs. <br>Si une meilleure offre que celle que vous avez choisie est disponible, vous êtes averti.<br><br>
+                            ProPhoneManager vous offre la possibilité de définir le grade de vos écrans cassés. <br>Vous obtiendrez ainsi en temps réel, les offres des différents recycleurs. <br>Si une meilleure offre que celle que vous avez choisie est disponible, vous êtes averti.<br><br>
                             <details>
-                                <summary>Cliquez pour + détails</summary>Découvrez également de nouveaux partenaires vérifiés pour la revente, élargissant ainsi vos possibilités de revente. <br>Actuellement plus de 250 modèles sont pris en charge et de nouveaux modèles sont ajoutés chaque mois. <br>Certains de ces modèles n'étaient probablement pas acceptés par vos recycleurs précédents. <br>Dans tous les cas, vous gagnerez de l'argent.
+                                <summary>Cliquez pour dérouler</summary> <br>Découvrez également de nouveaux partenaires vérifiés pour la revente, élargissant ainsi vos possibilités de revente. <br>Actuellement plus de 250 modèles sont pris en charge et de nouveaux modèles sont ajoutés chaque mois. <br>Certains de ces modèles n'étaient probablement pas acceptés par vos recycleurs précédents. <br>Dans tous les cas, vous gagnerez de l'argent.
                             </details>
                         </p>
                     </div>
@@ -248,7 +245,7 @@
                         <p>
                             Un espace bien rangé se traduit par un gain de place significatif, une considération essentielle dans une boutique où chaque mètre carré compte. <br>Chaque écran est défini par son numéro unique, facilitant la gestion précise et organisée de votre inventaire.
                             <details>
-                                <summary>Cliquez pour + détails</summary>Éliminez l'encombrement des écrans qui traînent dans vos tiroirs ou sur vos étagères, optimisez ainsi l'efficacité de votre espace et améliorez l'expérience globale dans votre établissement.<br>Les retours de nos clients indiquent clairement un gain d'espace significatif, de l'ordre de 10%.<br>Dans tous les cas, vous gagnerez de l'espace.
+                                <summary>Cliquez pour dérouler</summary><br>Éliminez l'encombrement des écrans qui traînent dans vos tiroirs ou sur vos étagères, optimisez ainsi l'efficacité de votre espace et améliorez l'expérience globale dans votre établissement.<br>Les retours de nos clients indiquent clairement un gain d'espace significatif.<br>Dans tous les cas, vous gagnerez de l'espace.
                             </details>
                         </p>
                     </div>
@@ -326,7 +323,7 @@
 
                                         <div class="content" style="display: none;">
                                             <p>
-                                                Grace à la reference unique attribué à chaque écran, vous retrouvez les écrans à envoyer à chaque recycleur.
+                                                Grace à la reference unique attribué à chaque écran, vous retrouvez facilement les écrans à envoyer à chaque recycleur.
                                             </p>
                                         </div>
                                     </li>
@@ -427,7 +424,7 @@
                             </div>
                             <div class="pixsass-icon-box-content">
                                 <h3 class="pixsass-icon-box-title">
-                                    <a href="#">Ordinateur, Smartphone, Tablette, Android, MacOs Utilisez notre solution sur tous vos appareils</a>
+                                    <a href="#">Ordinateur, Smartphone, Tablette, Android, MacOs Utilisez notre solution sur tous vos appareils.</a>
                                 </h3>
                             </div>
                         </div><!-- /.pixsass-box style-six -->
@@ -476,7 +473,6 @@
 <section class="pricing-two">
     <div class="container">
         <div class="section-title color-two text-center">
-            <h3 class="sub-title wow pixFadeUp">Pricing Plan</h3>
             <h2 class="title wow pixFadeUp" data-wow-delay="0.3s">
                 Des prix transparents et dégressifs 🤝<br>
             </h2>
@@ -598,8 +594,7 @@
                     <div class="col-lg-7">
                         <div class="action-content style-two wow pixFadeUp">
                             <h2 class="title">
-                                Une Question, une Précision<br>
-                                Contactez-Nous.
+                                Une Question, Une Précision 🤔<br>
                             </h2>
                         </div>
                         <!-- /.action-content -->
@@ -607,7 +602,7 @@
                     <!-- /.col-lg-7 -->
 
                     <div class="col-lg-5 text-right">
-                        <a href="#newsletter" class="pix-btn btn-light btn-big scroll-btn wow pixFadeUp">Subscribe Now!</a>
+                        <a href="contact" class="pix-btn btn-light btn-big scroll-btn wow pixFadeUp">Contactez nous</a>
                     </div>
                     <!-- /.col-lg-5 -->
                 </div>
@@ -625,15 +620,14 @@
 
             <div class="container">
                 <div class="section-title text-center">
-                    <h3 class="sub-title wow pixFadeUp">Testimonial</h3>
                     <h2 class="title-two wow pixFadeUp" data-wow-delay="0.3s">
-                        Plus de <span>1400 boutiques dans le monde</span> font déjà confiance à ProPhoneManager.<br>
-                        Vous aussi passez à la gestion professionnel de vos écrans cassés.
+                        Plus de <span>3 boutiques dans le monde 🌐</span> font déjà confiance à ProPhoneManager. <br>
+                        Vous aussi 🫵 passez à la gestion professionnel de vos écrans cassés.
                     </h2>
                 </div><!-- /.section-title -->
 
                 <div id="testimonial-wrapper-three">
-                    <div class="swiper-container wow pixFadeUp" data-wow-delay="0.5s" id="testimonial-slider-three" data-speed="700" data-autoplay="5000" data-perpage="1" data-space="90" data-breakpoints='{"768": {"spaceBetween": 50}, "640": {"spaceBetween": 30}}'>
+                    <div class="swiper-container wow pixFadeUp" data-wow-delay="0.5s" id="testimonial-slider-three" data-speed="700" data-autoplay="10000" data-perpage="1" data-space="90" data-breakpoints='{"768": {"spaceBetween": 50}, "640": {"spaceBetween": 30}}'>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="testimonial-three">
@@ -703,7 +697,7 @@
                                             </div>
                                         </div>
                                         <!-- /.testimonial-bio -->
-                                        <p>Je valide à 100%; Plus besoin de perdre du temps à comparer les offres des différents racheteurs. Je sais directement à qui envoyer mes écrans cassés au meilleur prix; </p>
+                                        <p>Je valide à 100%; Tout est carré et bien organisé, Plus besoin de perdre du temps à comparer les offres des différents racheteurs. Je sais directement à qui envoyer mes écrans cassés au meilleur prix; </p>
                                     </div>
                                     <!-- /.testimonial-content -->
 
@@ -742,20 +736,18 @@
             <div class="container">
 
                 <div class="newsletter-content-two text-center wow pixFadeUp">
-                    <h3 class="sub-title wow pixFadeUp">NEWSLETTER</h3>
 
                   <p class="description">
-                    Les abonnés à notre newsletter bénéficient fréquemment de conseils sur la vente d'écrans endommagés, les nouvelles adhésions de recycleurs, l'ajout de nouveaux modèles d'écrans, ainsi que des informations sur d'éventuelles fluctuations de prix. Vous êtes les bienvenus.
+                    Les abonnés à notre newsletter bénéficient de conseils sur la vente d'écrans endommagés, les nouvelles adhésions de recycleurs, l'ajout de nouveaux modèles d'écrans, ainsi que des informations sur d'éventuelles fluctuations de prix. Vous êtes les bienvenus.
                 </div>
                 <!-- /.newsletter-content -->
 
                 <form action="php/subscribe.php" method="post" class="newsletter-form-two wow pixFadeUp" data-pixsaas="newsletter-subscribe">
                     <div class="newsletter-inner">
 
-                        <input type="email" name="email" class="form-control" id="newsletter-form-email" placeholder="Enter your Email" required>
-                        <button type="submit" name="submit" id="newsletter-submit" class="newsletter-submit">
-                            <span class="btn-text">Subscribe Now!</span>
-                            <i class="fas fa-spinner fa-spin"></i>
+                        <input type="email" name="email" class="form-control" id="newsletter-form-email" placeholder="Entrez votre Email" required>
+                        <button type="submit" name="submit" id="newsletter-submit" class="pix-btn btn-light btn-big scroll-btn wow pixFadeUp">
+                            <span class="btn-text">Subscribe</span>
                         </button>
                         <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                     </div>

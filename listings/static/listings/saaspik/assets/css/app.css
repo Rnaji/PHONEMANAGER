@@ -2585,8 +2585,7 @@ select {
 	}
 }
 .site-header.header-seven .site-main-menu li a {
-	color: #fff;
-}
+color: #2b2350;}
 .site-header.header-seven .site-main-menu li a:after {
 	display: none;
 }
@@ -3074,7 +3073,7 @@ select {
 		background: #333;
 	}
 	.pix-header-fixed .site-main-menu li a {
-		color: #fff;
+		color: navy;
 	}
 	.pix-header-fixed .site-main-menu li.menu-item-has-children:after {
 		color: #fff;
@@ -17884,4 +17883,8 @@ Download Two
 }
 /*# sourceMappingURL=app.css.map */
 
+.white-band {
+    height: 30px; /* Ajustez la hauteur selon vos besoins */
+    background-color: #fff; /* Couleur de la bande blanche */
+}
 
