@@ -1,16 +1,31 @@
 {% extends "base_account.html" %}
 {% load static %}
-{% block title %}Connexion{% endblock title %}
-{% block card_header %}Connection{% endblock card_header %}
+
+{% block title %}
+    Connexion
+{% endblock title %}
+
+{% block card_header %}
+    Connection
+{% endblock card_header %}
+
 {% block card_form %}
-<form id="login-form" class="form" action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="form-group text-center">
-        <input type="submit" name="submit" class="btn btn-lg btn-blue" value="Me connecter">
-    </div>
-</form>
+    <form id="login-form" class="form" action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        
+        <label for="{{ form.username.id_for_label }}">Nom d'utilisateur :</label><br>
+        {{ form.username }}<br>
+        
+        <label for="{{ form.password.id_for_label }}">Mot de passe :</label><br>
+        {{ form.password }}<br>
+
+        <div class="form-group text-center connect-button">
+            <input type="submit" name="submit" class="btn btn-sm btn-blue" value="Me connecter">
+        </div>
+    </form>
 {% endblock card_form %}
+
 {% block form_footer %}
-<a role="button" class="text-decoration-none btn btn-block btn-outline-blue" href="{% url 'user_registration' %}">Créer mon compte gratuit</a>
+    <a role="button" class="text-decoration-none btn btn-sm btn-block btn-outline-blue" href="{% url 'user_registration' %}">Créer mon compte gratuit</a>
 {% endblock form_footer %}
+

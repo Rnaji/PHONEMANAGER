@@ -234,3 +234,8 @@ small-font {
   list-style-type: none; /* Supprime le marqueur (point) */
   /* Autres styles pour l'élément <li> si nécessaire */
 }
+
+
+.connect-button {
+    margin-top: 20px; /* Ajoutez la valeur de l'espace souhaité */
+}
