@@ -49,14 +49,20 @@ def user_registration(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
+            # Ajoutez des logs de débogage
+            print("Formulaire valide. Traitement en cours...")
             user = form.save()
             login(request, user)
             request.session['registered_username'] = user.username
             return redirect('complete_store_configuration')
+        else:
+            # Ajoutez des logs de débogage pour voir les erreurs de validation
+            print("Erreurs de validation :", form.errors)
     else:
         form = UserRegistrationForm()
 
     return render(request, 'user_registration.html', {'form': form})
+
 
 # Store Configuration view
 
@@ -398,6 +404,7 @@ from django.shortcuts import render
 from django.db.models import Count, Sum
 from django.shortcuts import render
 
+@login_required
 def dashboard(request):
     # Récupérer toutes les instances de BrokenScreen pour l'utilisateur actuel
     broken_screens = BrokenScreen.objects.filter(repairstore__user=request.user, is_packed=False)

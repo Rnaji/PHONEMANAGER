@@ -8,18 +8,27 @@
         <!-- row LOGO -->
         <div class="row">
             <div class="col">
-                <a class="text-decoration-none fs-2 logo-white" href="{% url 'dashboard' %}">PRO PHONE MANAGER</a>
+                {% if user.is_authenticated %}
+                    {% if request.resolver_match.url_name != 'complete_store_configuration' %}
+                        <a class="text-decoration-none fs-2 logo-white" href="{% url 'dashboard' %}">PRO PHONE MANAGER</a>
+                    {% else %}
+                        <a class="text-decoration-none fs-2 logo-white" href="{% url 'landing' %}">PRO PHONE MANAGER</a>
+                    {% endif %}
+                {% else %}
+                    <a class="text-decoration-none fs-2 logo-white" href="{% url 'landing' %}">PRO PHONE MANAGER</a>
+                {% endif %}
             </div>
             <div class="col text-end">
                 <div class="col text-end" style="margin-top: 10px;">
-                    <a class="text-decoration-none logo-white small-font" style="font-size: 24px;" href="{% url 'settings_view' %}">Mon Compte ⚙</a>
+                    {% if request.resolver_match.url_name != 'complete_store_configuration' %}
+                        <a class="text-decoration-none logo-white small-font" style="font-size: 24px;" href="{% url 'settings_view' %}" {% if not profile_complete %}disabled{% endif %}>Mon Compte ⚙</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </div>
 {% endblock navbar %}
-
 
 {% block content %}
 <!-- HEADER -->

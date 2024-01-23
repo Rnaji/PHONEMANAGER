@@ -110,10 +110,9 @@
                         <div class="menu-wrapper" data-top="992">
                             <ul class="site-main-menu">
 
-                                <li><a href="{% url 'about' %}">About</a></li>
+                                <li><a href="{% url 'about' %}" class="btn-underline">About</a></li>
+                                <li><a href="{% url 'contact' %}" class="btn-underline">Contact</a></li>
 
-
-                                <li><a href="{% url 'contact' %}">Contact</a></li>
                             </ul>
 
                             <div class="nav-right">
@@ -127,7 +126,7 @@
             </div><!-- /.container -->
         </header><!-- /.site-header -->
 
-<!--==========================-->
+
 <!--==========================-->
 <!--=         Sign In         =-->
 <!--==========================-->
@@ -185,8 +184,8 @@
     <!-- /.container -->
 
     <div class="signin-banner">
-        <img src="{% static 'listings/saaspik/media/animated/lock.png' %}" alt="" class="image-one wow pixFadeDown">
-        <img src="{% static 'listings/saaspik/media/animated/lock2.png' %}" alt="" class="image-two wow pixFadeUp">
+        <img src="{% static 'listings/saaspik/assets/img/cadenas.png' %}" alt="" class="image-one wow pixFadeDown">
+        <img src="{% static 'listings/saaspik/assets/img/bouclier.png' %}" alt="" class="image-two wow pixFadeUp">
     </div>
     <!-- /.signin-banner -->
 </section>

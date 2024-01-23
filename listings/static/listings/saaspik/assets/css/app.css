@@ -608,7 +608,7 @@ section {
 	max-width: 140px;
 	margin: 0 auto;
 }
-.btn-underline:before {
+.btn-underline:before {s
 	content: "";
 	position: absolute;
 	width: 100%;
@@ -2332,7 +2332,7 @@ select {
 	margin-right: 0;
 }
 .site-header .site-main-menu li > a {
-	color: #fff;
+	color: orange;
 	font-size: 15px;
 	font-weight: 500;
 	position: relative;
@@ -2343,7 +2343,7 @@ select {
 	bottom: -2px;
 	width: 0;
 	height: 1px;
-	background: #fff;
+	background: navy;
 	opacity: 1;
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
@@ -2364,7 +2364,7 @@ select {
 	font-family: eleganticons;
 	font-size: 10px;
 	font-weight: 700;
-	color: #fff;
+	color: navy;
 	font-size: 14px;
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
@@ -2378,7 +2378,7 @@ select {
 	margin: 0;
 	padding: 23px 30px;
 	list-style: none;
-	background: #fff;
+	background: navy;
 	-webkit-box-shadow: 0px 0px 36px 4px rgba(79, 35, 35, 0.1);
 	        box-shadow: 0px 0px 36px 4px rgba(79, 35, 35, 0.1);
 	position: absolute;
@@ -2710,7 +2710,7 @@ color: #2b2350;}
 	color: navy;
 }
 .site-header.header-hosting .site-main-menu li a {
-	color: #fff;
+	color: navy;
 }
 .site-header.header-hosting .site-main-menu li a:after {
 	display: none;
@@ -17887,4 +17887,5 @@ Download Two
     height: 30px; /* Ajustez la hauteur selon vos besoins */
     background-color: #fff; /* Couleur de la bande blanche */
 }
+
 

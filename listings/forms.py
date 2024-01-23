@@ -13,7 +13,7 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         # Champs à inclure dans le formulaire et leur ordre
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1']
 
 class RepairStoreForm(forms.ModelForm):
     class Meta:
