@@ -144,15 +144,26 @@
             <div class="col-lg-7">
                 <div class="signin-from-wrapper">
                     <div class="signin-from-inner">
-                        <h2 class="title">Signup Now!</h2>
+                        <br><br>
+                        <h2 class="title">Inscrivez-vous.</h2>
+
+                        <p>
+                            "Découvrez toutes les fonctionnalités de Pro Phone Manager dès maintenant !"
+                        </p>
+
                         <form method="post" action="{% url 'user_registration' %}" class="sign-form">
                             {% csrf_token %}
                             <div class="form-group mb-3">
                                 <label for="email_field" class="fs-6 mb-2">Email</label><br>
                                 {{ form.email }}
                             </div>
+                            
+                            <script>
+                                document.getElementById('email_field').focus();
+                            </script>
+                            
                             <div class="form-group mb-3">
-                                <label for="username" class="fs-6 mb-2">Nom d'utilisateur</label><br>
+                                <label for="username" class="fs-6 mb-2">Nom d'utilisateur (sans espace)</label><br>
                                 {{ form.username }}
                             </div>
                             <div class="form-group mb-3">
@@ -167,7 +178,7 @@
                                 {% endif %}
                             </div>
                             <button type="submit" class="pix-btn">Sign Up</button>
-                            <p>Already have an account? <a href="{% url 'login' %}">Sign in</a> now.</p>
+                            <p>Vous avez déjà un compte? <a href="{% url 'login' %}">Connectez-vous</a> maintenant.</p>
                         </form>
                     </div>
 
@@ -204,6 +215,7 @@
 
     </div><!-- /#site -->
 
+
 <!-- Dependency Scripts -->
 <script src="{% static 'listings/saaspik/dependencies/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'listings/saaspik/dependencies/bootstrap/js/bootstrap.min.js' %}"></script>
@@ -221,6 +233,12 @@
 <!-- Site Scripts -->
 <script src="{% static 'listings/saaspik/assets/js/header.js' %}"></script>
 <script src="{% static 'listings/saaspik/assets/js/app.js' %}"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('email_field').focus();
+    });
+</script>
 
 </body>
 

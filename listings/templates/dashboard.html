@@ -31,7 +31,7 @@
                     <span class="float-end">{{ items_count }}</span>
                 </li>
                 <li class="list-group-item fs-6">
-                    <span>Valeur estimée</span>
+                    <span>Valeur totale estimée</span>
                     <span class="float-end">{{ items_value |floatformat:2}} €</span>
                 </li>
                 {% if request.resolver_match.url_name == 'dashboard' %}
@@ -76,7 +76,7 @@
                             <span class="float-end">{{ brand_info.items_count_brand }}</span>
                         </li>
                         <li class="list-group-item fs-6">
-                            <span>Valeur totale</span>
+                            <span>Valeur totale estimée</span>
                             <span class="float-end">{{ brand_info.total_value |floatformat:2}} €</span>
                         </li>
                         <li class="list-group-item text-end">
@@ -99,7 +99,7 @@
                         <span class="float-end">0</span>
                     </li>
                     <li class="list-group-item fs-6">
-                        <span>Valeur totale</span>
+                        <span>Valeur totale estimée</span>
                         <span class="float-end">0.00 €</span>
                     </li>
                     <li class="list-group-item text-end">
@@ -131,7 +131,7 @@
                             <span class="float-end">{{ recycler_info.items_count_brand }}</span>
                         </li>
                         <li class="list-group-item fs-6">
-                            <span>Valeur estimée</span>
+                            <span>Valeur totale estimée</span>
                             {% if recycler_info.total_value_recycler == 0 %}
                                 <span class="float-end">❓</span>
                             {% else %}
@@ -163,7 +163,7 @@
                         <span class="float-end">0</span>
                     </li>
                     <li class="list-group-item fs-6">
-                        <span>Valeur estimée</span>
+                        <span>Valeur totale estimée</span>
                         <span class="float-end">0.00 €</span>
                     </li>
                     <li class="list-group-item text-end">

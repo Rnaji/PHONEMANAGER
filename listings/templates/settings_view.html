@@ -84,9 +84,9 @@
                                 </li>
                             {% endfor %}
                             <li class="list-group-item fs-6">
-                                <a href="{% url 'mark_package_as_paid' reference=package.reference %}" class="btn btn-primary btn-sm float-end">Marquer ce package comme payé</a>
+                                <a href="{% url 'mark_package_as_paid' reference=package.reference %}" class="btn btn-sm btn-outline-blue">Marquer ce package comme payé</a>
                                 <!-- Bouton "Modifier" -->
-                                <a href="{% url 'update_package' reference=package.reference %}" class="btn btn-warning btn-sm">Modifier ce package</a>
+                                <a href="{% url 'update_package' reference=package.reference %}" class="btn btn-sm btn-outline-blue">Modifier ce package</a>
                             </li>
                         </ul>
                     </div>

@@ -1,11 +1,13 @@
 {% extends "base_webapp.html" %}
 {% load static %}
 
-{% block title %}Créer un écran cassé{% endblock title %}
+{% block title %}Ajouter un écran cassé{% endblock title %}
 
-{% block content %}
+{% block page_title %}📲 Ajouter un écran cassé
+{% endblock page_title %}
+
+{% block page_content %}
   <div class="container mt-5">
-    <h2>Créer un écran cassé</h2>
 
     <form method="post" id="brokenScreenForm" action="{% url 'create_brokenscreen' %}">
       {% csrf_token %}
@@ -77,4 +79,4 @@
 
 
 
-{% endblock content %}
+{% endblock page_content %}

@@ -1,18 +1,19 @@
 {% extends "base_webapp.html" %}
 {% load static %}
 
-{% block title %}
-  Mon compte
-{% endblock title %}
+{% block title %}Mettre à jour le Package{% endblock title %}
 
-{% block content %}
+{% block page_title %}Mettre à jour le Package - {{ package.reference }}
+{% endblock page_title %}
+
+{% block page_content %}
 <style>
   body {
     font-size: 16px; /* Ajustez la taille de la police de base pour tout le corps du document */
   }
 
   h1 {
-    font-size: 1.5em; /* Ajustez la taille de la police pour les titres h1 */
+    font-size: 1em; /* Ajustez la taille de la police pour les titres h1 */
   }
 
   label, select {
@@ -31,7 +32,6 @@
   /* Ajoutez d'autres styles CSS si nécessaire */
 </style>
 
-<h1 class="update-package-header">Mettre à jour le Package - {{ package.reference }}</h1>
 
 <form method="post" action="{% url 'update_package' reference=package.reference %}">
   {% csrf_token %}
@@ -59,9 +59,10 @@
       </li>
     {% endfor %}
   </ul>
+<br>
 
   <div class="text-start">
-    <button type="submit" class="btn btn-primary btn-sm">Mettre à jour</button>
+    <button type="submit" class="btn btn-sm btn-outline-blue"">Mettre à jour</button>
   </div>
 </form>
-{% endblock content %}
+{% endblock page_content %}
