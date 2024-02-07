@@ -39,6 +39,11 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+<style>
+    #email_field {
+        order: -1; /* Cette propriété place l'élément en premier dans l'ordre de tabulation */
+    }
+</style>
 
     {% endblock head %}
 </head>
@@ -238,6 +243,14 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('email_field').focus();
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var emailField = document.getElementById('id_email');
+        if (emailField && window.getComputedStyle(emailField).display !== 'none') {
+            emailField.focus();
+        }
     });
 </script>
 
