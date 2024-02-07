@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    
+
     {% block head %}
     <title>{% block title %}ProPhoneManager{% endblock title %}</title>
 
@@ -35,7 +35,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
-    
+
     {% endblock head %}
 </head>
 
@@ -112,8 +112,11 @@
 
                                 <li><a href="{% url 'about' %}">À Propos</a></li>
 
-
                                 <li><a href="{% url 'contact' %}">Contact</a></li>
+
+                                <li><a href="{% url 'pricing' %}">Tarifs</a></li>
+
+                                <li><a href="{% url 'faq' %}">Faq's</a></li>
                             </ul>
 
                             <div class="nav-right">
@@ -142,19 +145,23 @@
                                     La Solution 🥇
                                     pour la Gestion de vos Écrans Cassés.
                                 </h1>
-                        
+
                                 <p class="description wow pixFadeUp" data-wow-delay="0.5s">
                                     Gagner du Temps, de l'Argent et de l'Espace.
                                 </p>
-                        
+
                                 <a href="{% url 'user_registration' %}" class="pxs-btn banner-btn wow pixFadeUp" data-wow-delay="0.6s">Essai Gratuit (sans CB)</a>
-                                <a href="https://www.youtube.com/watch?v=9No-FiEInLA" class="pxs-btn banner-btn wow pixFadeUp play-btn popup-video" data-wow-delay="0.6s">Video de Présentation</a>
-                                
+                                <br><br>
+                                  <a href="https://www.youtube.com/watch?v=9No-FiEInLA" id="presentation-video-link" class="pxs-btn banner-btn wow pixFadeUp play-btn popup-video" data-wow-delay="0.6s">Video de Présentation</a>
+
+
+
+
 
                             </div><!-- /.banner-content -->
                         </div><!-- /.col-lg-6 -->
-                        
-                        
+
+
 
                         <div class="col-lg-6">
                             <div class="promo-mockup wow pixFadeLeft">
@@ -289,14 +296,14 @@
                                     <li class="tab-nav-item" data-content="mockup2">
                                         <i class="fas fa-stethoscope"></i>
                                         <a href="#0" class="acc-btn">Diagnostiquer</a>
-                                    
+
                                         <div class="content" style="display: none;">
                                             <p>
                                                 Attribuer un grade à votre écran en 8 questions. Le diagnostic s'adapte au modèle  du téléphone.
                                             </p>
                                         </div>
                                     </li>
-                                    
+
                                     <li class="tab-nav-item" data-content="mockup3">
                                         <i class="fas fa-balance-scale"></i>
                                         <a href="#0" class="acc-btn">Comparer</a>
@@ -413,7 +420,7 @@
                             </div>
                             <div class="pixsass-icon-box-content">
                                 <h3 class="pixsass-icon-box-title">
-                                    <a href="#">Aucun téléchargement, tout est dans le cloud<br> Inscrivez vous et c'est parti.</a>
+                                    <a>Aucun téléchargement, tout est dans le cloud<br> Inscrivez-vous et c'est parti.</a>
                                 </h3>
                             </div>
                         </div><!-- /.pixsass-box style-six -->
@@ -424,7 +431,7 @@
                             </div>
                             <div class="pixsass-icon-box-content">
                                 <h3 class="pixsass-icon-box-title">
-                                    <a href="#">Ordinateur, Smartphone, Tablette, Android, MacOs Utilisez notre solution sur tous vos appareils.</a>
+                                    <a>Ordinateur, Smartphone, Tablette, Android, MacOs Utilisez notre solution sur tous vos appareils.</a>
                                 </h3>
                             </div>
                         </div><!-- /.pixsass-box style-six -->
@@ -435,7 +442,7 @@
                             </div>
                             <div class="pixsass-icon-box-content">
                                 <h3 class="pixsass-icon-box-title">
-                                    <a href="#">
+                                    <a>
                                         Une solution simple et inuitive<br> Pas besoin de compétences en informatique.
                                     </a>
                                 </h3>
@@ -448,7 +455,7 @@
                             </div>
                             <div class="pixsass-icon-box-content">
                                 <h3 class="pixsass-icon-box-title">
-                                    <a href="#">
+                                    <a>
                                         Gestion facile de votre stock d'écrans cassés<br> Ajouter, archiver, rechercher, lister, imprimer...
 
                                     </a>
@@ -465,8 +472,8 @@
             </div>
         </section><!-- /.featured -->
 
-        
- 
+
+
 <!--===========================-->
 <!--=         Pricing         =-->
 <!--===========================-->
@@ -485,7 +492,7 @@
                 <div class="pricing-table style-two price-two wow pixFadeLeft" data-wow-delay="0.5s">
                     <div class="pricing-header pricing-amount">
                         <div class="monthly_price">
-                            <h2 class="price">€19.99/mo</h2>
+                            <h2 class="price">€19.99 ht/mo</h2>
                         </div>
                         <!-- /.monthly_price -->
 
@@ -503,7 +510,7 @@
                     </ul>
 
                     <div class="action text-left">
-                        <a href="#" class="pix-btn btn-outline-two">Get Started</a>
+                        <a href="https://buy.stripe.com/4gw03oeRibh2cneaEE" class="pix-btn btn-outline-two">Commencer</a>
                     </div>
                 </div>
                 <!-- /.pricing-table -->
@@ -518,7 +525,7 @@
 
                     <div class="pricing-header pricing-amount">
                         <div class="monthly_price">
-                            <h2 class="price">€149.99/an</h2>
+                            <h2 class="price">€149.99 ht/an</h2>
                         </div>
                         <!-- /.monthly_price -->
 
@@ -536,7 +543,7 @@
                     </ul>
 
                     <div class="action text-left">
-                        <a href="#" class="pix-btn btn-outline-two">Get Started</a>
+                        <a href="https://buy.stripe.com/dR6eYi10s0CoevmbIJ" class="pix-btn btn-outline-two">Commencer</a>
                     </div>
                 </div>
                 <!-- /.pricing-table -->
@@ -548,7 +555,7 @@
 
                     <div class="pricing-header pricing-amount">
                         <div class="monthly_price">
-                            <h2 class="price">€299.99/1x</h2>
+                            <h2 class="price">€299.99 ht/1x</h2>
                         </div>
                         <!-- /.monthly_price -->
 
@@ -566,7 +573,7 @@
                     </ul>
 
                     <div class="action text-left">
-                        <a href="#" class="pix-btn btn-outline-two">Get Started</a>
+                        <a href="https://buy.stripe.com/8wM8zU9wYcl65YQ146" class="pix-btn btn-outline-two">Commencerà</a>
                     </div>
                 </div>
                 <!-- /.pricing-table -->
@@ -616,117 +623,164 @@
         <!--===============================-->
         <!--=         Testimonial         =-->
         <!--===============================-->
-        <section class="testimonials-three">
+        <section class="testimonials-two-about" id="temoignages">
 
             <div class="container">
                 <div class="section-title text-center">
                     <h2 class="title-two wow pixFadeUp" data-wow-delay="0.3s">
-                        Plus de <span>3 boutiques dans le monde 🌐</span> font déjà confiance à ProPhoneManager. <br>
+                        Plus de <span>3140 boutiques dans le monde 🌐</span> font déjà confiance à ProPhoneManager. <br>
                         Vous aussi 🫵 passez à la gestion professionnel de vos écrans cassés.
                     </h2>
                 </div><!-- /.section-title -->
 
-                <div id="testimonial-wrapper-three">
-                    <div class="swiper-container wow pixFadeUp" data-wow-delay="0.5s" id="testimonial-slider-three" data-speed="700" data-autoplay="10000" data-perpage="1" data-space="90" data-breakpoints='{"768": {"spaceBetween": 50}, "640": {"spaceBetween": 30}}'>
+                <div id="testimonial-wrapper">
+                    <div class="swiper-container wow pixFadeUp" data-wow-delay="0.5s" id="testimonial-two" data-speed="700" data-autoplay="5000" data-perpage="2" data-space="50" data-breakpoints='{"991": {"slidesPerView": 1}}'>
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <div class="testimonial-three">
-
-                                    <div class="avatar">
-                                        <img src="{% static 'listings/saaspik/media/testimonial/4.jpg' %}" alt="testimonial">
-                                    </div>
-                                    <!-- /.avatar -->
-
-                                    <div class="testimonial-content">
+                                <div class="testimonial-two">
+                                    <div class="testi-content-inner">
                                         <div class="testimonial-bio">
+                                            <div class="avatar">
+                                                <img src="{% static 'img/brand_logos/Karim Repair.png' %}" alt="testimonial">
+                                            </div>
+                                            <!-- /.avatar -->
+
                                             <div class="bio-info">
-                                                <h3 class="name">Desmond Eagle</h3>
-                                                <span class="job">Web designer</span>
+                                                <h3 class="name">Karim Zeib</h3>
+                                                <span class="job">Gérant de RepairShop</span>
                                             </div>
                                         </div>
-                                        <!-- /.testimonial-bio -->
+                                        <!-- /.testimonial -->
+
+
+                                        <div class="testimonial-content">
                                         <p>Je suis utilisateur de l'app. Je reçois un acheteur une fois par mois pour tester une centaine d'écrans. c'était une demi journée et je devais être avec lui, maintenant c'est 2h et j'interviens que de temps en temps. en + je lui fais monter les prix en lui montrant les offres</p>
+                                        </div>
+                                        <!-- /.testimonial-content -->
+
+                                        <ul class="rating">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                        </ul>
+
+                                        <div class="quote">
+                                            <img src="{% static 'listings/saaspik/media/testimonial/quote.png' %}" alt="quote">
+                                        </div>
+                                        <!-- /.quote -->
                                     </div>
-                                    <!-- /.testimonial-content -->
+                                    <!-- /.testi-content-inner -->
 
-
+                                    <div class="shape-shadow"></div>
                                 </div>
-                                <!-- /.testimonial-three -->
+                                <!-- /.testimonial-two -->
                             </div>
 
                             <div class="swiper-slide">
-                                <div class="testimonial-three">
-
-                                    <div class="avatar">
-                                        <img src="{% static 'listings/saaspik/media/testimonial/4.jpg' %}" alt="testimonial">
-                                    </div>
-                                    <!-- /.avatar -->
-
-                                    <div class="testimonial-content">
+                                <div class="testimonial-two">
+                                    <div class="testi-content-inner">
                                         <div class="testimonial-bio">
+                                            <div class="avatar">
+                                                <img src="{% static 'img/brand_logos/Shan Repair.png' %}" alt="testimonial">
+                                            </div>
+                                            <!-- /.avatar -->
+
                                             <div class="bio-info">
-                                                <h3 class="name">Desmond Eagle</h3>
-                                                <span class="job">Web designer</span>
+                                                <h3 class="name">Shan Rukhan</h3>
+                                                <span class="job">Gérant de RepairShop</span>
                                             </div>
                                         </div>
-                                        <!-- /.testimonial-bio -->
+                                        <!-- /.testimonial -->
+
+
+                                        <div class="testimonial-content">
                                         <p>Application simple d'utilisation, je m'en sers tous les jours; J'ai rentabilisé mon accès annuel à mon premier envoi d'écran. </p>
+                                        </div>
+                                        <!-- /.testimonial-content -->
+                                        <ul class="rating">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                        </ul>
+
+                                        <div class="quote">
+                                            <img src="{% static 'listings/saaspik/media/testimonial/quote.png' %}" alt="quote">
+                                        </div>
                                     </div>
-                                    <!-- /.testimonial-content -->
+                                    <!-- /.testi-content-inner -->
 
-
+                                    <div class="shape-shadow"></div>
                                 </div>
-                                <!-- /.testimonial-three -->
+                                <!-- /.testimonial-two -->
                             </div>
 
                             <div class="swiper-slide">
-                                <div class="testimonial-three">
-
-                                    <div class="avatar">
-                                        <img src="{% static 'listings/saaspik/media/testimonial/4.jpg' %}" alt="testimonial">
-                                    </div>
-                                    <!-- /.avatar -->
-
-
-
-                                    <div class="testimonial-content">
+                                <div class="testimonial-two">
+                                    <div class="testi-content-inner">
                                         <div class="testimonial-bio">
+                                            <div class="avatar">
+                                                <img src="{% static 'img/brand_logos/Albert Repair.png' %}" alt="testimonial">
+                                            </div>
+                                            <!-- /.avatar -->
+
                                             <div class="bio-info">
-                                                <h3 class="name">Desmond Eagle</h3>
-                                                <span class="job">Web designer</span>
+                                                <h3 class="name">Albert Mathieu</h3>
+                                                <span class="job">Gérant de RepairShop</span>
                                             </div>
                                         </div>
-                                        <!-- /.testimonial-bio -->
+                                        <!-- /.testimonial -->
+
+
+                                        <div class="testimonial-content">
                                         <p>Je valide à 100%; Tout est carré et bien organisé, Plus besoin de perdre du temps à comparer les offres des différents racheteurs. Je sais directement à qui envoyer mes écrans cassés au meilleur prix; </p>
+                                        </div>
+                                        <!-- /.testimonial-content -->
+
+                                        <ul class="rating">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                        </ul>
+
+                                        <div class="quote">
+                                            <img src="{% static 'listings/saaspik/media/testimonial/quote.png' %}" alt="quote">
+                                        </div>
                                     </div>
-                                    <!-- /.testimonial-content -->
+                                    <!-- /.testi-content-inner -->
 
-
+                                    <div class="shape-shadow"></div>
                                 </div>
-                                <!-- /.testimonial-three -->
+                                <!-- /.testimonial-two -->
                             </div>
 
                         </div><!-- /.swiper-wrapper -->
 
-                        <div class="slider-nav">
-                            <div id="slide-prev" class="swiper-button-prev">
-                                <div class="arrow"></div>
-                            </div>
-                            <div id="slide-next" class=" swiper-button-next">
-                                <div class="arrow"></div>
-                            </div>
+                    </div><!-- /.swiper-container -->
+                    <div class="shape-shadow"></div>
+
+                    <div class="slider-nav wow pixFadeUp" data-wow-delay="0.3s">
+                        <div id="slide-prev" class="swiper-button-prev">
+                            <i class="ei ei-arrow_left"></i>
                         </div>
-
-                    </div>
-                    <!-- /.swiper-containe -->
-
-                    <div class="quote">
-                        <img src="{% static 'listings/saaspik/media/testimonial/quote2.png' %}" alt="">
+                        <div id="slide-next" class=" swiper-button-next">
+                            <i class="ei ei-arrow_right"></i>
+                        </div>
                     </div>
                 </div>
                 <!-- /#testimonial-wrapper -->
+
+
             </div>
             <!-- /.container -->
+            <div class="scroll-circle">
+                <img src="{% static 'listings/saaspik/media/background/circle11.png' %}" data-parallax='{"y" : 250}' alt="shape">
+            </div>
         </section><!-- /.testimonial -->
 
         <!--=============================-->
@@ -746,8 +800,8 @@
                     <div class="newsletter-inner">
 
                         <input type="email" name="email" class="form-control" id="newsletter-form-email" placeholder="Entrez votre Email" required>
-                        <button type="submit" name="submit" id="newsletter-submit" class="pix-btn btn-light btn-big scroll-btn wow pixFadeUp">
-                            <span class="btn-text">Subscribe</span>
+                        <button type="submit" name="submit" id="newsletter-submit" class="pix-btn btn-light scroll-btn wow pixFadeUp">
+                            <span class="btn-text">S'abonner</span>
                         </button>
                         <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                     </div>
@@ -778,14 +832,12 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="widget footer-widget">
-                                <h3 class="widget-title">Company</h3>
+                                <h3 class="widget-title">À Propos</h3>
 
                                 <ul class="footer-menu">
-                                    <li><a href="#">Features</a></li>
-                                    <li><a href="#">Dashboard & Tool</a></li>
-                                    <li><a href="#">Our Portfolio</a></li>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Get In Touch</a></li>
+                                    <li><a href="{% url 'about' %}">À Propos de Nous</a></li>
+                                    <li><a href="#temoignages">Témoignages Clients</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- /.widget footer-widget -->
@@ -794,14 +846,12 @@
 
                         <div class="col-lg-3 col-md-6">
                             <div class="widget footer-widget">
-                                <h3 class="widget-title">Services</h3>
+                                <h3 class="widget-title">Solutions</h3>
 
                                 <ul class="footer-menu">
-                                    <li><a href="#">Web Design</a></li>
-                                    <li><a href="#">Development</a></li>
-                                    <li><a href="#">Wordpress</a></li>
-                                    <li><a href="#">Online Marketing</a></li>
-                                    <li><a href="#">Content</a></li>
+                                    <li><a href="{% url 'faq' %}">FAQ's</a></li>
+                                    <li><a href="#" id="video-demo-link">Vidéo Démo</a></li>
+                                    <li><a href="#newsletter">Newsletter</a></li>
                                 </ul>
                             </div>
                             <!-- /.widget footer-widget -->
@@ -810,14 +860,13 @@
 
                         <div class="col-lg-3 col-md-6">
                             <div class="widget footer-widget">
-                                <h3 class="widget-title">Digital Experience</h3>
+                                <h3 class="widget-title">Infos</h3>
 
                                 <ul class="footer-menu">
-                                    <li><a href="#">Web Design</a></li>
-                                    <li><a href="#">Mobile App Design</a></li>
-                                    <li><a href="#">UX / UI design</a></li>
-                                    <li><a href="#">Dashboard & Tool</a></li>
-                                    <li><a href="#">Logo & Identity</a></li>
+                                    <li><a href="{% url 'pricing' %}">Nos prix</a></li>
+                                    <li><a href="{% url 'legal' %}">Mentions légales</a></li>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'contact' %}">Support</a></li>
                                 </ul>
                             </div>
                             <!-- /.widget footer-widget -->
@@ -826,10 +875,10 @@
 
                         <div class="col-lg-3 col-md-6">
                             <div class="widget footer-widget">
-                                <h3 class="widget-title">Our Address</h3>
+                                <h3 class="widget-title">Notre Adresse</h3>
 
                                 <p>
-                                    Lavaca Street, Suite 24, Road Apt New York, USA
+                                    114 rue de la libération, <br> 27140 Gisors, <br> France
                                 </p>
 
                                 <ul class="footer-social-link">
@@ -849,13 +898,12 @@
 
                 <div class="site-info">
                     <div class="copyright">
-                        <p>© 2023 All Rights Reserved Design by <a href="http://www.pixelsigns.art" target="_blank">PixelSigns</a></p>
+                        <p>© 2024 All Rights Reserved Design by ProPhoneManager</a></p>
                     </div>
 
                     <ul class="site-info-menu">
-                        <li><a href="#">Privacy & Policy.</a></li>
-                        <li><a href="#">Faq.</a></li>
-                        <li><a href="#">Terms.</a></li>
+                        <li><a href="{% url 'legal' %}">Mentions légales RGPD</a></li>
+
                     </ul>
                 </div><!-- /.site-info -->
             </div><!-- /.container -->
@@ -905,6 +953,32 @@
         });
     });
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Sélectionnez le lien "Vidéo Démo"
+      var videoDemoLink = document.getElementById('video-demo-link');
+
+      // Ajoutez un écouteur d'événements pour le clic sur le lien "Vidéo Démo"
+      videoDemoLink.addEventListener('click', function (event) {
+        // Empêchez le comportement par défaut du lien (ne pas suivre le lien)
+        event.preventDefault();
+
+        // Récupérez l'élément de la vidéo de présentation
+        var presentationVideoLink = document.getElementById('presentation-video-link');
+
+        // Faites défiler jusqu'à l'élément de la vidéo de présentation
+        presentationVideoLink.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Attendez un court instant pour que le défilement se termine, puis déclenchez le clic
+        setTimeout(function () {
+          presentationVideoLink.click();
+        }, 500); // Ajustez la durée selon vos besoins
+      });
+    });
+  </script>
+
+
 
 </body>
 

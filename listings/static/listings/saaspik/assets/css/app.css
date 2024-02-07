@@ -2332,7 +2332,7 @@ select {
 	margin-right: 0;
 }
 .site-header .site-main-menu li > a {
-	color: orange;
+	color: white;
 	font-size: 15px;
 	font-weight: 500;
 	position: relative;
@@ -2343,7 +2343,7 @@ select {
 	bottom: -2px;
 	width: 0;
 	height: 1px;
-	background: navy;
+	background: white;
 	opacity: 1;
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;

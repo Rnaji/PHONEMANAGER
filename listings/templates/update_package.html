@@ -45,7 +45,7 @@
 
         <label for="grade_{{ brokenscreen_instance.uniquereference }}">Nouveau Grade pour le {{ brokenscreen_instance.screenmodel }}:</label>
         <select name="grade_{{ brokenscreen_instance.uniquereference }}">
-          <option value="" selected disabled>Sélectionner le grade</option>
+          <option value="" selected disabled>Sélectionnera le grade</option>
           <option value="A" {% if brokenscreen_instance.grade == 'A' %}selected{% endif %}>A</option>
           <option value="B" {% if brokenscreen_instance.grade == 'B' %}selected{% endif %}>B</option>
           <option value="C" {% if brokenscreen_instance.grade == 'C' %}selected{% endif %}>C</option>

@@ -1406,37 +1406,42 @@ Smartgrade, Oppo Reno, Grade D,2.2
 Smartgrade, Oppo Reno, Grade G,0.8
 ispart, iPhone 14 Pro Max, GRADE A,139.0
 ispart, iPhone 14 Pro, GRADE A,113.0
-ispart, iPhone 14 Plus, GRADE A,62.0
-ispart, iPhone 14, GRADE A,62.0
-ispart, iPhone 13 Pro, GRADE A,113.0
-ispart, iPhone 13 Mini, GRADE A,51.0
-ispart, iPhone 13, GRADE A,42.0
-ispart, iPhone 12 Pro Max, GRADE A,57.0
-ispart, iPhone 12, GRADE A,23.0
-ispart, iPhone 12 Mini, GRADE A,27.0
+ispart, iPhone 14 Plus, GRADE A,56.0
+ispart, iPhone 14, GRADE A,48.0
+ispart, iPhone 13 Pro, GRADE A,104.0
+ispart, iPhone 13 Mini, GRADE A,48.0
+ispart, iPhone 13, GRADE A,28.0
+ispart, iPhone 12 Pro Max, GRADE A,43.0
+ispart, iPhone 12, GRADE A,18.0
+ispart, iPhone 12 Mini, GRADE A,33.0
 ispart, iPhone 11 Pro Max, GRADE A,20.0
 ispart, iPhone 11 Pro, GRADE A,13.0
-ispart, iPhone 11, GRADE A,2.0
+ispart, iPhone 11, GRADE A,1.0
 ispart, iPhone XS Max, GRADE A,28.0
 ispart, iPhone XS, GRADE A,12.0
 ispart, iPhone X, GRADE A,13.0
-ispart, iPhone XR, GRADE A,1.0
+ispart, iPhone XR, GRADE A,0.0
 ispart, iPhone 8 Plus, GRADE A,1.0
-ispart, iPhone 7 Plus, GRADE A,2.5
+ispart, iPhone 7 Plus, GRADE A,0.0
 ispart, iPhone 6S Plus, GRADE A,1.0
-ispart, iPhone 12 Pro, GRADE A,23.0
-ispart, Fold 5 (F946) Inner screen, GRADE A,177.0
-ispart, Fold  C118 (F900) Inner screen, GRADE A,114.0
+ispart, iPhone 12 Pro, GRADE A,18.0
+ispart, iPhone 8, GRADE A,0.0
+ispart, iPhone 7, GRADE A,0.0
+ispart, iPhone 6S, GRADE A,0.0
+ispart, iPhone 6 Plus, GRADE A,0.0
+ispart, iPhone 6, GRADE A,0.0
+ispart, Fold 5 (F946) Inner screen, GRADE A,164.0
+ispart, Fold  C118 (F900) Inner screen, GRADE A,105.0
 ispart, Flip 5 (F731) Inner screen, GRADE A,118.0
 ispart, Fold 5 (F946) Outer screen, GRADE A,27.0
-ispart, S23 Ultra 5G (G918), GRADE A,82.0
-ispart, S23 Plus 5G (G916), GRADE A,39.0
+ispart, S23 Ultra 5G (G918), GRADE A,91.0
+ispart, S23 Plus 5G (G916), GRADE A,41.0
 ispart, S21 FE 5G (G990), GRADE A,28.0
-ispart, Note 20 Ultra 5G, GRADE A,87.0
-ispart, Note 10+, GRADE A,74.0
+ispart, Note 20 Ultra 5G, GRADE A,92.0
+ispart, Note 10+, GRADE A,78.0
 ispart, Note 10, GRADE A,50.0
-ispart, Note 9, GRADE A,39.0
-ispart, Note 8, GRADE A,30.0
+ispart, Note 9, GRADE A,42.0
+ispart, Note 8, GRADE A,33.0
 ispart, A805/A80, GRADE A,17.0
 ispart, A8 (A8 2015), GRADE A,10.0
 ispart, A750 (A7 2018), GRADE A,10.0
@@ -1444,16 +1449,16 @@ ispart, A730 (A8+), GRADE A,10.0
 ispart, A716, GRADE A,16.0
 ispart, A715, GRADE A,17.0
 ispart, A70/A705, GRADE A,16.0
-ispart, S22 Ultra 5G (G908), GRADE A,89.0
-ispart, S22 Plus 5G (G906), GRADE A,37.0
-ispart, S22 5G (G901), GRADE A,37.0
+ispart, S22 Ultra 5G (G908), GRADE A,91.0
+ispart, S22 Plus 5G (G906), GRADE A,41.0
+ispart, S22 5G (G901), GRADE A,41.0
 ispart, A605 (J805/J810 2018), GRADE A,9.0
 ispart, A516, GRADE A,11.0
 ispart, A50/A505, GRADE A,10.0
 ispart, A42 5G, GRADE A,9.0
 ispart, A415, GRADE A,6.0
 ispart, A40/A405, GRADE A,7.0
-ispart, A320, GRADE A,1.0
+ispart, A320, GRADE A,0.0
 ispart, A32/A325, GRADE A,11.0
 ispart, A315, GRADE A,11.0
 ispart, A310, GRADE A,4.0
@@ -1465,14 +1470,14 @@ ispart, J730/J7Pro/J700 2017, GRADE A,8.0
 ispart, J700 (J700 2015), GRADE A,5.0
 ispart, J530 (J500 2017), GRADE A,2.0
 ispart, M52, GRADE A,25.0
-ispart, S21 Ultra 5G (G998), GRADE A,76.0
-ispart, S21 Plus 5G (G996), GRADE A,35.0
-ispart, S21 5G (G991), GRADE A,35.0
-ispart, S20 Ultra 5G (G988), GRADE A,52.0
+ispart, S21 Ultra 5G (G998), GRADE A,73.0
+ispart, S21 Plus 5G (G996), GRADE A,39.0
+ispart, S21 5G (G991), GRADE A,39.0
+ispart, S20 Ultra 5G (G988), GRADE A,56.0
 ispart, S20 Plus (G985), GRADE A,48.0
-ispart, S20 FE 5G (G781), GRADE A,21.0
+ispart, S20 FE 5G (G781), GRADE A,20.0
 ispart, S20 5G (G981), GRADE A,39.0
-ispart, S10 Plus (G975), GRADE A,57.0
+ispart, S10 Plus (G975), GRADE A,59.0
 ispart, S10 lite (G770), GRADE A,19.0
 ispart, S10 5G (G977), GRADE A,59.0
 ispart, S10 (G973), GRADE A,43.0
@@ -1483,21 +1488,21 @@ ispart, S8 Edge+ (G955), GRADE A,35.0
 ispart, S8 Edge (G950), GRADE A,24.0
 ispart, S8 Active (G892), GRADE A,15.0
 ispart, S7 Edge (G935), GRADE A,11.0
-ispart, S7 (G930), GRADE A,1.5
+ispart, S7 (G930), GRADE A,0.0
 ispart, S6 Edge+ (G928), GRADE A,5.0
 ispart, S6 Edge (G925), GRADE A,4.0
-ispart, S6 (G920), GRADE A,1.5
-ispart, S5 (G900), GRADE A,1.0
+ispart, S6 (G920), GRADE A,0.0
+ispart, S5 (G900), GRADE A,0.0
 ispart, Note 20 5G, GRADE A,35.0
 ispart, Note 10 Lite, GRADE A,20.0
 ispart, Note 5, GRADE A,11.0
-ispart, Note 4, GRADE A,1.0
+ispart, Note 4, GRADE A,0.0
 ispart, A920, GRADE A,16.0
 ispart, A90/A905, GRADE A,18.0
 ispart, A900 (A9 2016), GRADE A,21.0
 ispart, A720 (A7 2017), GRADE A,10.0
 ispart, A710 (A7 2016), GRADE A,9.0
-ispart, A700 (A7 2015), GRADE A,1.0
+ispart, A700 (A7 2015), GRADE A,0.0
 ispart, A72/A725, GRADE A,20.0
 ispart, A6 (J800 2018), GRADE A,9.0
 ispart, A530, GRADE A,7.0
@@ -1505,7 +1510,7 @@ ispart, A520, GRADE A,7.0
 ispart, A52/A525, GRADE A,20.0
 ispart, A515, GRADE A,12.0
 ispart, A510, GRADE A,6.0
-ispart, A500, GRADE A,2.0
+ispart, A500, GRADE A,0.0
 ispart, A336, GRADE A,16.0
 ispart, A50S, GRADE A,9.0
 ispart, A526, GRADE A,22.0
@@ -1516,9 +1521,9 @@ ispart, C9, GRADE A,21.0
 ispart, J110, GRADE A,1.0
 ispart, J200, GRADE A,6.0
 ispart, J250, GRADE A,3.0
-ispart, J320/J3 Pro, GRADE A,1.0
+ispart, J320/J3 Pro, GRADE A,0.0
 ispart, J400, GRADE A,3.0
-ispart, J500 (J500 2015), GRADE A,1.0
+ispart, J500 (J500 2015), GRADE A,0.0
 ispart, J510 (J500 2016), GRADE A,2.0
 ispart, J701, GRADE A,2.0
 ispart, J710 (J700 2016), GRADE A,6.0
@@ -1531,19 +1536,20 @@ ispart, M31s, GRADE A,18.0
 ispart, M325, GRADE A,12.0
 ispart, M515, GRADE A,16.0
 ispart, M535, GRADE A,23.0
-ispart, S23 5G (G911), GRADE A,39.0
-ispart, Fold 4 (F936) Inner screen, GRADE A,177.0
-ispart, Fold 3 (F926) Inner screen, GRADE A,155.0
-ispart, Fold 2 (F916) Inner screen, GRADE A,136.0
-ispart, Flip 4 (F721) Inner screen, GRADE A,118.0
-ispart, Flip 3 (F711) Inner screen, GRADE A,95.0
-ispart, Flip (F700) Inner screen, GRADE A,68.0
+ispart, S23 5G (G911), GRADE A,41.0
+ispart, Fold 4 (F936) Inner screen, GRADE A,141.0
+ispart, Fold 3 (F926) Inner screen, GRADE A,141.0
+ispart, Fold 2 (F916) Inner screen, GRADE A,114.0
+ispart, Flip 4 (F721) Inner screen, GRADE A,100.0
+ispart, Flip 3 (F711) Inner screen, GRADE A,77.0
+ispart, Flip (F700) Inner screen, GRADE A,59.0
 ispart, Fold 4 (F936) Outer screen, GRADE A,27.0
 ispart, Fold 3 (F926) Outer screen, GRADE A,27.0
 ispart, Fold 2 (F916) Outer screen, GRADE A,24.0
 ispart, Fold (F900) Outer screen, GRADE A,2.0
-ispart, S20 FE 5G R8, GRADE A,16.0
+ispart, S20 FE 5G R8, GRADE A,18.0
 ispart, M536, GRADE A,25.0
+ispart, M546, GRADE A,25.0
 ispart, iPad Pro 11/18/19/20, GRADE A,14.0
 ispart, iPad Pro 10.5, GRADE A,15.0
 ispart, iPad 10.2/7/8/9, GRADE A,8.0
@@ -1572,51 +1578,54 @@ ispart, Huawei Mate 30 Pro, GRADE A,72.0
 ispart, Huawei Mate 20 X, GRADE A,62.0
 ispart, Huawei Mate 20 Pro, GRADE A,14.0
 ispart, Huawei Mate 10 Pro, GRADE A,10.0
-ispart, Huawei Mate 9 Pro, GRADE A,1.0
+ispart, Huawei Mate 9 Pro, GRADE A,0.0
 ispart, Huawei Mate RS, GRADE A,17.0
 ispart, Huawei P30 Pro, GRADE A,12.0
 ispart, Huawei P30, GRADE A,10.0
 ispart, Huawei P20 Pro, GRADE A,16.0
-ispart, Huawei P9 Plus, GRADE A,2.0
+ispart, Huawei P9 Plus, GRADE A,0.0
 ispart, Huawei Nova 5 Pro, GRADE A,13.0
 ispart, Huawei Nova 5, GRADE A,13.0
 ispart, Huawei Nova 7, GRADE A,17.0
 ispart, Huawei Honor Note 10, GRADE A,24.0
-ispart, Huawei Honor 20, GRADE A,9.0
+ispart, Huawei Honor 20, GRADE A,0.0
 ispart, Huawei Honor Magic 2, GRADE A,8.0
 ispart, Huawei Nova 8, GRADE A,13.0
 ispart, Huawei Nova 8 Pro, GRADE A,9.0
+ispart, Huawei Mate 50 pro, GRADE A,66.0
+ispart, Huawei Mate 50E, GRADE A,30.0
+ispart, Huawei Mate 50, GRADE A,30.0
 LcdPhone, Modèle, GRADE A,0
 LcdPhone, Modèle, GRADE B,0
-LcdPhone, iPhone 14 Pro Max, GRADE A,160.0
+LcdPhone, iPhone 14 Pro Max, GRADE A,120.0
 LcdPhone, iPhone 14 Pro Max, GRADE B,10.0
-LcdPhone, iPhone 14 Pro, GRADE A,130.0
+LcdPhone, iPhone 14 Pro, GRADE A,100.0
 LcdPhone, iPhone 14 Pro, GRADE B,10.0
-LcdPhone, iPhone 14 Plus, GRADE A,80.0
+LcdPhone, iPhone 14 Plus, GRADE A,60.0
 LcdPhone, iPhone 14 Plus, GRADE B,10.0
-LcdPhone, iPhone 14, GRADE A,70.0
+LcdPhone, iPhone 14, GRADE A,50.0
 LcdPhone, iPhone 14, GRADE B,10.0
-LcdPhone, iPhone 13 Pro Max, GRADE A,140.0
+LcdPhone, iPhone 13 Pro Max, GRADE A,110.0
 LcdPhone, iPhone 13 Pro Max, GRADE B,10.0
-LcdPhone, iPhone 13 Pro, GRADE A,115.0
+LcdPhone, iPhone 13 Pro, GRADE A,90.0
 LcdPhone, iPhone 13 Pro, GRADE B,10.0
-LcdPhone, iPhone 13, GRADE A,55.0
+LcdPhone, iPhone 13, GRADE A,35.0
 LcdPhone, iPhone 13, GRADE B,10.0
-LcdPhone, iPhone 13 Mini, GRADE A,50.0
+LcdPhone, iPhone 13 Mini, GRADE A,30.0
 LcdPhone, iPhone 13 Mini, GRADE B,10.0
-LcdPhone, iPhone 12 Pro Max, GRADE A,70.0
+LcdPhone, iPhone 12 Pro Max, GRADE A,45.0
 LcdPhone, iPhone 12 Pro Max, GRADE B,10.0
-LcdPhone, iPhone 12 Pro, GRADE A,40.0
-LcdPhone, iPhone 12 Pro, GRADE B,20.0
-LcdPhone, iPhone 12, GRADE A,40.0
-LcdPhone, iPhone 12, GRADE B,20.0
+LcdPhone, iPhone 12 Pro, GRADE A,30.0
+LcdPhone, iPhone 12 Pro, GRADE B,15.0
+LcdPhone, iPhone 12, GRADE A,30.0
+LcdPhone, iPhone 12, GRADE B,15.0
 LcdPhone, iPhone 12 Mini, GRADE A,30.0
 LcdPhone, iPhone 12 Mini, GRADE B,10.0
 LcdPhone, iPhone 11 Pro Max, GRADE A,25.0
 LcdPhone, iPhone 11 Pro Max, GRADE B,15.0
 LcdPhone, iPhone 11 Pro, GRADE A,15.0
 LcdPhone, iPhone 11 Pro, GRADE B,10.0
-LcdPhone, iPhone 11, GRADE A,6.0
+LcdPhone, iPhone 11, GRADE A,5.0
 LcdPhone, iPhone 11, GRADE B,3.0
 LcdPhone, iPhone XS Max, GRADE A,20.0
 LcdPhone, iPhone XS Max, GRADE B,10.0

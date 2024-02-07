@@ -274,7 +274,7 @@ def diagnostic(request, ref_unique_list):
     else:
         raise Http404()
 
-        
+
 @login_required
 def quotation(request, ref_unique_list):
     broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=ref_unique_list)
@@ -480,7 +480,7 @@ class BrokenScreenDetail(View):
     def get(self, request, *args, **kwargs):
         # Récupérer l'instance de BrokenScreen avec is_packed=False
         broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=kwargs['uniquereference_value'], is_packed=False)
-        
+
 
         # Récupérez les objets RecyclerPricing associés à ce BrokenScreen
         quotations = broken_screen.quotations.all()
@@ -625,7 +625,7 @@ class ValiderExpedition(View):
             package.save()
 
         # Rediriger vers une page de confirmation ou une autre vue
-        return redirect('dashboard')
+        return redirect('settings_view')
 
 
 
@@ -717,7 +717,7 @@ def delete_diagnostic(request, ref_unique_list):
     message_text = 'Le diagnostic a été supprimé'
     messages.add_message(request, messages.SUCCESS, message_text)
     return redirect('diagnostic', ref_unique_list=broken_screen.uniquereference.value)
-	
+
 
 
 
@@ -744,7 +744,7 @@ def get_unused_ref_unique_list_view(request):
 
 # Vue pour obtenir les modèles à partir de la marque (HTMX)
 
-    
+
 @require_GET
 def htmx_get_modeles_from_brand(request):
     try:
@@ -779,7 +779,9 @@ def htmx_get_modeles_from_brand(request):
     except Exception as e:
         logger.error(f"Erreur dans la vue htmx_get_modeles_from_brand: {e}")
         return JsonResponse({'error': 'Une erreur s\'est produite'}, status=500)
-    
+
+
+from django.db.models import Sum
 
 @login_required
 def settings_view(request):
@@ -792,6 +794,8 @@ def settings_view(request):
     packages_info = {}
     non_paid_packages = []  # Nouvelle variable pour stocker les packages non payés
 
+    total_value = 0  # Initialiser la valeur totale
+
     for reference in unique_references:
         package = Package.objects.get(reference=reference)
         brokenscreen_fields = package.get_brokenscreen_fields()
@@ -799,6 +803,8 @@ def settings_view(request):
             'package': package,
             'brokenscreen_fields': brokenscreen_fields,
         }
+
+        total_value += package.total_value  # Ajouter la valeur totale du colis à la valeur totale générale
 
         if not package.is_paid:
             non_paid_packages.append(package)
@@ -810,9 +816,11 @@ def settings_view(request):
         'packages_info': packages_info,
         'has_paid_packages': has_paid_packages,
         'non_paid_packages': non_paid_packages,
+        'total_value': total_value,  # Ajouter la valeur totale au contexte
     }
 
     return render(request, 'settings_view.html', context)
+
 
 @login_required
 def mark_package_as_paid(request, reference):
@@ -851,7 +859,7 @@ def settings_edit_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('landing') 
+    return redirect('landing')
 
 
 
@@ -861,10 +869,10 @@ def stickers(request):
     try:
         # Récupérer le magasin de réparation associé à l'utilisateur connecté
         repairstore = RepairStore.objects.get(user=request.user)
-        
+
         # Récupérer les références uniques non utilisées spécifiques au magasin de réparation
         stickers = UniqueReference.objects.filter(repairstore=repairstore, is_used=False)
-        
+
         template = 'stickers.html'
         context = {
             'stickers': stickers,
@@ -874,7 +882,7 @@ def stickers(request):
     except RepairStore.DoesNotExist:
         # Gérer le cas où l'utilisateur n'a pas de magasin de réparation associé
         return render(request, 'error_page.html', {'error_message': 'User has no associated RepairStore'})
-    
+
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import Http404
@@ -884,39 +892,43 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+from django.db import transaction
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Package
+
 @login_required
 @transaction.atomic
 def update_package(request, reference):
-    # Récupérer le package en fonction de la référence
     package = get_object_or_404(Package, reference=reference)
-    
-    # Récupérer les instances d'écrans cassés associées au package
     brokenscreen_instances = package.get_brokenscreen_fields()
 
     if request.method == 'POST':
-        for brokenscreen_instance in brokenscreen_instances:
-            price_key = f'price_{brokenscreen_instance.uniquereference}'
-            grade_key = f'grade_{brokenscreen_instance.uniquereference}'
+        try:
+            with transaction.atomic():
+                for brokenscreen_instance in brokenscreen_instances:
+                    price_key = f'price_{brokenscreen_instance.uniquereference}'
+                    grade_key = f'grade_{brokenscreen_instance.uniquereference}'
 
-            print(f"Processing brokenscreen_instance with id={brokenscreen_instance.id}")
+                    if price_key in request.POST:
+                        new_price = request.POST[price_key]
+                        brokenscreen_instance.price = new_price
 
-            if price_key in request.POST:
-                new_price = request.POST[price_key]
-                print(f"New price for brokenscreen_instance with id={brokenscreen_instance.id}: {new_price}")
-                brokenscreen_instance.price = new_price
+                    if grade_key in request.POST:
+                        new_grade = request.POST[grade_key]
+                        brokenscreen_instance.grade = new_grade
 
-            if grade_key in request.POST:
-                new_grade = request.POST[grade_key]
-                print(f"New grade for brokenscreen_instance with id={brokenscreen_instance.id}: {new_grade}")
-                brokenscreen_instance.grade = new_grade
+                    brokenscreen_instance.save()
 
-            brokenscreen_instance.save()
-            print(f"Saved changes for brokenscreen_instance with id={brokenscreen_instance.id}")
+                # Si toutes les modifications sont réussies, redirigez vers la vue des paramètres
+                return redirect('settings_view')
 
-        print("Redirecting to settings view")
-        return redirect('settings_view')  # Assurez-vous de remplacer 'settings_view' par le nom réel de votre vue des paramètres
+        except Exception as e:
+            # Gérer les erreurs potentielles lors de la mise à jour des instances
+            print(f"An error occurred: {e}")
+            # Vous pouvez ajouter des messages d'erreur ici si nécessaire
 
     return render(request, 'update_package.html', {'package': package, 'brokenscreen_instances': brokenscreen_instances})
+
 
 
 
@@ -925,3 +937,9 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+def faq(request):
+    return render(request, 'faq.html')
+
+def pricing(request):
+    return render(request, 'pricing.html')

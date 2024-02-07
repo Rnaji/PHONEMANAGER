@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities, BrokenScreenDetail, DeleteBrokenScreen, ExpedierMesEcransView, ExpedierMesEcransRecycler, settings_view, settings_edit_view, logout_view, stickers, ValiderExpedition, mark_package_as_paid, update_package, about, contact
+from .views import landing, legal, user_registration, complete_store_configuration, dashboard, page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, quotation, screen_offre, stock_all, stock_brand, stock_recycler, opportunities, BrokenScreenDetail, DeleteBrokenScreen, ExpedierMesEcransView, ExpedierMesEcransRecycler, settings_view, settings_edit_view, logout_view, stickers, ValiderExpedition, mark_package_as_paid, update_package, about, contact, faq, pricing
 
 
 from django.contrib.auth.views import LoginView
@@ -17,7 +17,7 @@ urlpatterns = [
 
     # URLs d'enregistrement et de configuration de l'utilisateur
     path('user_registration/', user_registration, name='user_registration'),
-    
+
     path('complete_store_configuration/', complete_store_configuration, name='complete_store_configuration'),
 
     # URL du tableau de bord
@@ -41,7 +41,7 @@ urlpatterns = [
     path('get_unused_ref_unique_list/', get_unused_ref_unique_list_view, name='get_unused_ref_unique_list'),
 
     path('diagnostic/<ref_unique_list>/', diagnostic, name='diagnostic'),
-    
+
 	path('diagnostic/delete/<ref_unique_list>/', delete_diagnostic, name='delete_diagnostic'),
 
     path('quotation/<ref_unique_list>/', quotation, name='quotation'),
@@ -69,7 +69,7 @@ urlpatterns = [
     path('expedier_mes_ecrans/', ExpedierMesEcransView.as_view(), name='expedier_mes_ecrans'),
 
     path('expedier_mes_ecrans/recycler/<recycler_ref>/', ExpedierMesEcransRecycler.as_view(), name='expedier_mes_ecrans_recycler'),
-        
+
     path('valider_expedition/recycler/<recycler_ref>/', ValiderExpedition.as_view(), name='valider_expedition'),
 
     path('mark_package_as_paid/<str:reference>/', mark_package_as_paid, name='mark_package_as_paid'),
@@ -80,7 +80,8 @@ urlpatterns = [
 
     path('contact/', contact, name='contact'),
 
+    path('faq/', faq , name='faq'),
 
+    path('pricing/', pricing , name='pricing'),
 
 ]
-

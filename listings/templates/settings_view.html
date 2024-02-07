@@ -53,7 +53,7 @@
                 {% for package in non_paid_packages %}
                     <li class="list-group-item fs-6">
                         <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseShipments{{ package.reference }}" role="button" aria-expanded="false" aria-controls="collapseShipments{{ package.reference }}">détails</span>
-                        📦 Colis - {{ package.reference }}
+                        📦 Colis - {{ package.reference }} - Valeur :{{ package.total_value }} €
                     </li>
                     <div class="collapse" id="collapseShipments{{ package.reference }}">
                         <!-- Ajoutez ici les détails supplémentaires du package si nécessaire -->
@@ -67,10 +67,10 @@
                                         </div>
                                         <div class="col-md-2 text-start">
                                             <span>{{ brokenscreen_field.screenbrand }}</span>
-                                        </div>  
+                                        </div>
                                         <div class="col-md-3 text-start">
                                             <span>{{ brokenscreen_field.screenmodel }}</span>
-                                        </div>  
+                                        </div>
                                         <div class="col-md-2 text-start">
                                             GRADE {{ brokenscreen_field.grade }}
                                         </div>
@@ -95,7 +95,7 @@
         {% endif %}
         <!-- Message toujours présent -->
         <div class="alert alert-warning mt-2" role="alert">
-            Si le recycler vous a proposé un prix ou un grade différent, vous pouvez les mettre à jour en cliquant sur "Modifier".
+            Si le recycler vous propose un prix ou un grade différent, vous pourrez les mettre à jour en cliquant sur "Modifier".
         </div>
     </div>
 </div>
@@ -104,14 +104,14 @@
 
 
 <div class="row mb-5">
-    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">📦 Mes envois payés 💵</div>
+    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">💵 Mes envois payés</div>
     <div class="col-12 col-md-8 col-lg-7">
         <ul class="list-group shadow-sm">
             {% for reference, package_info in packages_info.items %}
                 {% if package_info.package.is_paid %}
                     <li class="list-group-item fs-6">
                         <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseShipments{{ reference }}" role="button" aria-expanded="false" aria-controls="collapseShipments{{ reference }}">détails</span>
-                        📦 Colis - {{ reference }}
+                        <p>📦 Colis - {{ reference }} - Valeur : {{ package_info.package.total_value }} €</p>
                     </li>
                     <div class="collapse" id="collapseShipments{{ reference }}">
                         <!-- Ajoutez ici les détails supplémentaires du package si nécessaire -->
@@ -124,10 +124,10 @@
                                         </div>
                                         <div class="col-md-2 text-start">
                                             <span>{{ brokenscreen_field.screenbrand }}</span>
-                                        </div>  
+                                        </div>
                                         <div class="col-md-3 text-start">
                                             <span>{{ brokenscreen_field.screenmodel }}</span>
-                                        </div>  
+                                        </div>
                                         <div class="col-md-2 text-start">
                                             GRADE {{ brokenscreen_field.grade }}
                                         </div>

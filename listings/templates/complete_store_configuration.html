@@ -9,35 +9,47 @@
 <div class="row">
     <div class="col-12 mb-5 fs-6 text-blue">Bienvenue sur l'application <span class="logo-blue">PRO PHONE MANAGER</span> ! <br>Dernière étape avant de pouvoir utiliser nos services:</div>
     <div class="col-10 offset-1 p-3 col-md-8 offset-md-2 px-md-4 py-md-3 col-lg-6 offset-lg-3 bg-white rounded" style="border: 2px solid navy;">
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <strong>Erreur !</strong> Veuillez corriger les erreurs suivantes :
+                <ul>
+                    {% for field, error_list in form.errors.items %}
+                        {% for error in error_list %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
         <form method="post">
             {% csrf_token %}
             <div class="mb-1 col-md-8">
                 <label for="company_field" class="form-label fs-6">Société</label>
-                <input type="text" class="form-control form-control-sm" name="company_name" id="company_field" value="{{ user.profile.company|default_if_none:''|upper }}" required>
+                <input type="text" class="form-control form-control-sm" name="company_name" id="company_field" value="{{ form.cleaned_data.company_name|default_if_none:''|upper }}" required>
             </div>
             <div class="mb-1 col-md-8">
                 <label for="first_name_field" class="form-label fs-6">Prénom</label>
-                <input type="text" class="form-control form-control-sm" name="first_name" id="first_name_field" value="{{ user.profile.first_name|default_if_none:''|title }}" required>
+                <input type="text" class="form-control form-control-sm" name="first_name" id="first_name_field" value="{{ form.cleaned_data.first_name|default_if_none:''|title }}" required>
             </div>
             <div class="mb-1 col-md-8">
                 <label for="last_name_field" class="form-label fs-6">Nom</label>
-                <input type="text" class="form-control form-control-sm" name="last_name" id="last_name_field" value="{{ user.profile.last_name|default_if_none:''|title }}" required>
+                <input type="text" class="form-control form-control-sm" name="last_name" id="last_name_field" value="{{ form.cleaned_data.last_name|default_if_none:''|title }}" required>
             </div>
             <div class="mb-1 col-md-8">
                 <label for="address_field" class="form-label fs-6">Adresse</label>
-                <textarea class="form-control form-control-sm" name="address" id="address_field" rows="3" required>{{ user.profile.address|default_if_none:'' }}</textarea>
+                <textarea class="form-control form-control-sm" name="address" id="address_field" rows="3" required>{{ form.cleaned_data.address|default_if_none:'' }}</textarea>
             </div>
             <div class="mb-1 col-md-8">
                 <label for="zip_field" class="form-label fs-6">Code Postal</label>
-                <input type="text" class="form-control form-control-sm" name="postal_code" id="zip_field" value="{{ user.profile.postal_code|default_if_none:'' }}" required>
+                <input type="text" class="form-control form-control-sm" name="postal_code" id="zip_field" value="{{ form.cleaned_data.postal_code|default_if_none:'' }}" required>
             </div>
             <div class="mb-1 col-md-8">
                 <label for="city_field" class="form-label fs-6">Ville</label>
-                <input type="text" class="form-control form-control-sm" name="city" id="city_field" value="{{ user.profile.city|default_if_none:''|title }}" required>
+                <input type="text" class="form-control form-control-sm" name="city" id="city_field" value="{{ form.cleaned_data.city|default_if_none:''|title }}" required>
             </div>
             <div class="mb-1 col-md-8">
                 <label for="phone_1_field" class="form-label fs-6">Téléphone</label>
-                <input type="text" class="form-control form-control-sm" name="phone_number" id="phone_1_field" value="{{ user.profile.phone_number|default_if_none:'' }}" required>
+                <input type="text" class="form-control form-control-sm" name="phone_number" id="phone_1_field" value="{{ form.cleaned_data.phone_number|default_if_none:'' }}" required>
             </div>
             <div class="mb-1 col-12 text-end">
                 <button type="submit" class="btn btn-sm btn-outline-blue">Enregistrer mon profil</button>
@@ -46,4 +58,3 @@
     </div>
 </div>
 {% endblock page_content %}
-

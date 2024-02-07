@@ -20,7 +20,7 @@
                         <div class="btn-group btn-group-lg" role="group" aria-label="Groupe de boutons radio basique">
                             <input type="radio" class="btn-check" name="la_reponse" id="{{ question_number|default:1 }}_oui" value="oui" autocomplete="off" required>
                             <label class="btn btn-outline-success" for="{{ question_number|default:1 }}_oui">Oui</label>
-                            
+
                             <input type="radio" class="btn-check" name="la_reponse" id="{{ question_number|default:1 }}_non" value="non" autocomplete="off" required>
                             <label class="btn btn-outline-danger" for="{{ question_number|default:1 }}_non">Non</label>
                         </div>
@@ -37,7 +37,7 @@
             // Réinitialiser les couleurs des boutons
             document.getElementById('{{ question_number|default:1 }}_oui').classList.remove('btn-dark', 'btn-outline-success');
             document.getElementById('{{ question_number|default:1 }}_non').classList.remove('btn-dark', 'btn-outline-danger');
-            
+
             // Définir la couleur du bouton en fonction de la sélection de l'utilisateur
             if (input.value === 'oui') {
                 document.getElementById('{{ question_number|default:1 }}_oui').classList.add('btn-success');

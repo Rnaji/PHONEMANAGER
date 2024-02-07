@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    
+
     {% block head %}
     <title>{% block title %}ProPhoneManager{% endblock title %}</title>
 
@@ -35,7 +35,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
-    
+
     {% endblock head %}
 </head>
 
@@ -76,29 +76,27 @@
         <!--=========================-->
         <!--=        Navbar         =-->
         <!--=========================-->
-        <header class="site-header header_trans-fixed" data-top="992">
+        <header class="site-header header-dark header_trans-fixed" data-top="992">
             <div class="container">
                 <div class="header-inner">
+                    <div class="site-mobile-logo">
+                        <a href="{% url 'landing' %}" class="logo">
+                            <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="main-logo">
+                            <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="sticky-logo">
+                        </a>
+                    </div><!-- /.site-mobile-logo -->
+
                     <div class="toggle-menu">
                         <span class="bar"></span>
                         <span class="bar"></span>
                         <span class="bar"></span>
                     </div>
                     <!-- /.toggle-menu -->
-
-                    <div class="site-mobile-logo">
-                        <a href="{% url 'landing' %}" class="logo">
-                            <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="main-logo">
-                            <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="sticky-logo">
-                        </a>
-                    </div>
-
-                    <nav class="site-nav">
+                    <nav class="site-nav nav-dark">
                         <div class="close-menu">
                             <span>Close</span>
                             <i class="ei ei-icon_close"></i>
                         </div>
-
                         <div class="site-logo">
                             <a href="{% url 'landing' %}" class="logo">
                                 <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="main-logo">
@@ -110,9 +108,13 @@
                         <div class="menu-wrapper" data-top="992">
                             <ul class="site-main-menu">
 
-                                <li><a href="{% url 'about' %}" class="btn-underline">About</a></li>
-                                <li><a href="{% url 'contact' %}" class="btn-underline">Contact</a></li>
+                                <li><a href="{% url 'about' %}">À Propos</a></li>
 
+                                <li><a href="{% url 'contact' %}">Contact</a></li>
+
+                                <li><a href="{% url 'pricing' %}">Tarifs</a></li>
+
+                                <li><a href="{% url 'faq' %}">Faq's</a></li>
                             </ul>
 
                             <div class="nav-right">

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    
+
     {% block head %}
     <title>{% block title %}ProPhoneManager{% endblock title %}</title>
 
@@ -36,7 +36,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
-    
+
     {% endblock head %}
 
 </head>
@@ -111,9 +111,13 @@
                         <div class="menu-wrapper" data-top="992">
                             <ul class="site-main-menu">
 
-                                <li><a href="{% url 'about' %}">About</a></li>
+                                <li><a href="{% url 'about' %}">À Propos</a></li>
 
                                 <li><a href="{% url 'contact' %}">Contact</a></li>
+
+                                <li><a href="{% url 'pricing' %}">Tarifs</a></li>
+
+                                <li><a href="{% url 'faq' %}">Faq's</a></li>
                             </ul>
 
                             <div class="nav-right">
@@ -133,11 +137,11 @@
         <section class="page-banner">
             <div class="container">
                 <div class="page-title-wrapper">
-                    <h1 class="page-title">About Us</h1>
+                    <h1 class="page-title">À Propos de Nous</h1>
 
                     <ul class="bradcurmed">
                         <li><a href="{% url 'landing' %}" rel="noopener noreferrer">Home</a></li>
-                        <li>About Us</li>
+                        <li>À Propos</li>
                     </ul>
                 </div>
                 <!-- /.page-title-wrapper -->
@@ -168,21 +172,20 @@
                     <div class="col-lg-7">
                         <div class="about-content">
                             <div class="section-title">
-                                <h3 class="sub-title wow pixFadeUp">Our History</h3>
+                                <h3 class="sub-title wow pixFadeUp">Notre Histoire</h3>
                                 <h2 class="title wow pixFadeUp" data-wow-delay="0.3s">
-                                    A wide range of business<br>
-                                    and Saas services
+                                    La naissance <br>d'une solution SaaS astucieuse
+
                                 </h2>
                             </div>
                             <!-- /.section-title -->
 
                             <p class="description wow pixFadeUp" data-wow-delay="0.4s">
-                                Why I say old chap that is spiffing, bite your arm off geeza blag pukka bleeder A bit of how's your father bugger all mate gutted mate, cheesed off hunky-dory gosh morish get stuffed mate lemon squeezy. Bodge barmy bugger no biggie bleeding bits and bobs my good sir, spend a penny faff about are you taking the piss what a plonker bobby bevvy, chancer Eaton me old mucker don't get shirty with me is.
-                            </p>
+                                Bienvenue chez ProPhoneManager, une histoire simple et pratique initiée par Maaki, ancien réparateur d'écrans.<br> Confronté à l'accumulation d'écrans cassés dans son atelier, Maaki a conçu ProPhoneManager, une solution SaaS astucieuse pour simplifier la gestion quotidienne des réparateurs.<br> Chez ProPhoneManager, nous comprenons les défis auxquels font face les réparateurs au quotidien. <br>Rejoignez-nous pour bénéficier d'une gestion d'atelier facilitée et découvrez une nouvelle approche pragmatique pour optimiser vos écrans cassés. <br>Avec ProPhoneManager, transformez la complexité en simplicité et consacrez-vous pleinement à votre coeur de métier: Réparer.                            </p>
 
                             <div class="singiture wow pixFadeUp" data-wow-delay="0.5s">
                                 <h4>
-                                    Max Conversion
+                                    Maaki
                                 </h4>
 
                                 <img src="{% static 'listings/saaspik/media/about/sing.png' %}" class="wow pixFadeUp" data-wow-delay="0.6s" alt="sign">
@@ -195,7 +198,7 @@
 
                     <div class="col-lg-5">
                         <div class="about-thumb wow pixFadeRight" data-wow-delay="0.6s">
-                            <img src="{% static 'listings/saaspik/media/about/1.jpg' %}" alt="about">
+                            <img src="{% static 'img/brand_logos/maaki.png' %}" alt="MAAKI">
                         </div>
                         <!-- /.about-thumb -->
                     </div>
@@ -207,80 +210,93 @@
         </section>
         <!-- /.about -->
 
-        <!--===========================-->
-        <!--=         Feature         =-->
-        <!--===========================-->
-        <section class="featured-four-ab">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h3 class="sub-title wow pixFadeUp">Our service</h3>
-                    <h2 class="title wow pixFadeUp" data-wow-delay="0.3s">Why you choose Our plugin</h2>
-                </div><!-- /.section-title -->
+<!-- ========================== -->
+<!-- =         Feature        = -->
+<!-- ========================== -->
+<section class="featured-five">
+    <div class="container">
+        <div class="section-title style-three text-center">
+            <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
+                Pourquoi les réparateurs <br>
+                ❤️ ProPhone<span>Manager</span>? <br><br> Parce que nous tenons nos promesses👍
+            </h2>
+        </div><!-- /.section-title -->
 
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.5s">
-                            <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/20.png' %}" alt="">
-                            </div>
-                            <div class="pixsass-icon-box-content">
-                                <h3 class="pixsass-icon-box-title"><a href="#">New sharing made for people</a></h3>
-                                <p>
-                                    The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
-                                </p>
+        <style>
+            .normal-text {
+                font-weight: normal; /* ou font-weight: normal; */
+            }
+        </style>
 
-                                <a href="#" class="more-btn"><i class="ei ei-arrow_right"></i></a>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.5s">
+                    <div class="saaspik-icon-box-icon">
+                        <img src="{% static 'listings/saaspik/assets/img/temps.png' %}" alt="">
+                    </div>
+                    <div class="pixsass-icon-box-content" id="toggle-content">
+                        <h3 class="pixsass-icon-box-title">Gagnez du Temps.</h3>
+                        <p>
+                            Chaque écran endommagé est associé à un numéro unique, fournissant des détails complets tels que la marque, le modèle et le grade.<br>
+                            Que ce soit pour une expédition à un recycleur ou une vente directe à un itinérant, le processus est grandement simplifié.
+                            <details>
+                                <summary>Cliquez pour dérouler</summary> <br> En cas d'expédition, vous savez précisément quel écran envoyer à quel recycleur, avec toutes les informations nécessaires sur la marque, le modèle, le grade et le prix estimé.<br>
+                                Si le recycleur se rend chez vous, plus besoin de surveiller chaque écran à tester ; vous avez déjà toutes les informations à portée de main. Vous n'aurez qu'à vérifier les écrans sur lesquels vous n'êtes pas d'accord.
+                                <br>Dans tous les cas, vous gagnerez du temps.
+                            </details>
+                        </p>
 
-                                <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
-                                    <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
-                                </svg>
-                            </div>
-                        </div><!-- /.pixsass-box style-four -->
-                    </div><!-- /.col-lg-4 col-md-6 -->
+                        <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                            <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                        </svg>
+                    </div>
+                </div><!-- /.pixsass-box style-four -->
+            </div><!-- /.col-lg-4 col-md-6 -->
 
-                    <div class="col-lg-4 col-md-6">
-                        <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.6s">
-                            <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/19.png' %}" alt="">
-                            </div>
-                            <div class="pixsass-icon-box-content">
-                                <h3 class="pixsass-icon-box-title"><a href="#">One integrated solution Manage</a></h3>
+            <div class="col-lg-4 col-md-6">
+                <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.7s">
+                    <div class="saaspik-icon-box-icon">
+                        <img src="{% static 'listings/saaspik/assets/img/argent.png' %}" alt="">
+                    </div>
+                    <div class="pixsass-icon-box-content">
+                        <h3 class="pixsass-icon-box-title">Gagnez de l'Argent.</h3>
+                        <p>
+                            ProPhoneManager vous offre la possibilité de définir le grade de vos écrans cassés. <br>Vous obtiendrez ainsi en temps réel, les offres des différents recycleurs. <br>Si une meilleure offre que celle que vous avez choisie est disponible, vous êtes averti.<br><br>
+                            <details>
+                                <summary>Cliquez pour dérouler</summary> <br>Découvrez également de nouveaux partenaires vérifiés pour la revente, élargissant ainsi vos possibilités de revente. <br>Actuellement plus de 250 modèles sont pris en charge et de nouveaux modèles sont ajoutés chaque mois. <br>Certains de ces modèles n'étaient probablement pas acceptés par vos recycleurs précédents. <br>Dans tous les cas, vous gagnerez de l'argent.
+                            </details>
+                        </p>
+                    </div>
 
-                                <p>
-                                    The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
-                                </p>
+                    <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                        <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                    </svg>
+                </div><!-- /.pixsass-box style-four -->
+            </div><!-- /.col-lg-4 col-md-6 -->
 
-                                <a href="#" class="more-btn"><i class="ei ei-arrow_right"></i></a>
-                            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.9s">
+                    <div class="saaspik-icon-box-icon">
+                        <img src="{% static 'listings/saaspik/assets/img/espace.png' %}" alt="">
+                    </div>
+                    <div class="pixsass-icon-box-content">
+                        <h3 class="pixsass-icon-box-title">Gagnez de l'Espace.</h3>
+                        <p>
+                            Un espace bien rangé se traduit par un gain de place significatif, une considération essentielle dans une boutique où chaque mètre carré compte. <br>Chaque écran est défini par son numéro unique, facilitant la gestion précise et organisée de votre inventaire.
+                            <details>
+                                <summary>Cliquez pour dérouler</summary><br>Éliminez l'encombrement des écrans qui traînent dans vos tiroirs ou sur vos étagères, optimisez ainsi l'efficacité de votre espace et améliorez l'expérience globale dans votre établissement.<br>Les retours de nos clients indiquent clairement un gain d'espace significatif.<br>Dans tous les cas, vous gagnerez de l'espace.
+                            </details>
+                        </p>
+                    </div>
 
-                            <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
-                                <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
-                            </svg>
-                        </div><!-- /.pixsass-box style-four -->
-                    </div><!-- /.col-lg-4 col-md-6 -->
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.9s">
-                            <div class="saaspik-icon-box-icon">
-                                <img src="{% static 'listings/saaspik/media/feature/18.png' %}" alt="">
-                            </div>
-                            <div class="pixsass-icon-box-content">
-                                <h3 class="pixsass-icon-box-title"><a href="#">Thousand of features and Custom option.</a></h3>
-                                <p>
-                                    The full monty twit cracking goal Jeffrey lurgy chinwag bobby vagabond David, I don't want no agro what a load.!
-                                </p>
-
-                                <a href="#" class="more-btn"><i class="ei ei-arrow_right"></i></a>
-                            </div>
-
-                            <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
-                                <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
-                            </svg>
-                        </div><!-- /.pixsass-box style-four -->
-                    </div><!-- /.col-lg-4 col-md-6 -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
-        </section><!-- /.featured -->
+                    <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                        <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                    </svg>
+                </div><!-- /.pixsass-box style-four -->
+            </div><!-- /.col-lg-4 col-md-6 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.featured -->
 
         <!--===========================-->
         <!--=         Count Up        =-->
@@ -291,10 +307,9 @@
             </div>
             <div class="container">
                 <div class="section-title text-center">
-                    <h3 class="sub-title wow pixFadeUp">Fun Facts</h3>
                     <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
-                        We Always try to Understand<br>
-                        Users expectation
+                        Nous connaissons , grâce à notre expérience,<br>
+                        les besoins des Réparateurs 🎯
                     </h2>
                 </div>
                 <!-- /.section-title -->
@@ -304,12 +319,12 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="fun-fact wow pixFadeUp" data-wow-delay="0.3s">
                                 <div class="counter">
-                                    <h4 class="count" data-counter="14">14 </h4>
-                                    <span>K+</span>
+                                    <h4 class="count" data-counter="3140">14 </h4>
+                                    <span>+</span>
                                 </div>
                                 <!-- /.counter -->
 
-                                <p>Total Download</p>
+                                <p>Utilisateurs dans le monde</p>
                             </div>
                             <!-- /.fun-fact -->
                         </div>
@@ -318,11 +333,11 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="fun-fact color-two wow pixFadeUp" data-wow-delay="0.5s">
                                 <div class="counter">
-                                    <h4 class="count" data-counter="13">13 </h4>
-                                    <span>M+</span>
+                                    <h4 class="count" data-counter="250">13 </h4>
+                                    <span>+</span>
                                 </div>
                                 <!-- /.counter -->
-                                <p>Total Download</p>
+                                <p>Modèles différents repris</p>
                             </div>
                             <!-- /.fun-fact -->
                         </div>
@@ -331,11 +346,11 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="fun-fact color-three wow pixFadeUp" data-wow-delay="0.7s">
                                 <div class="counter">
-                                    <h4 class="count" data-counter="244">244 </h4>
-                                    <span>+</span>
+                                    <h4 class="count" data-counter="648">244 </h4>
+                                    <span>K+</span>
                                 </div>
                                 <!-- /.counter -->
-                                <p>Total Download</p>
+                                <p>Écrans Diagnostiqués</p>
                             </div>
                             <!-- /.fun-fact -->
                         </div>
@@ -344,11 +359,11 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="fun-fact color-four wow pixFadeUp" data-wow-delay="0.9s">
                                 <div class="counter">
-                                    <h4 class="count" data-counter="53">53 </h4>
-                                    <span>M+</span>
+                                    <h4 class="count" data-counter="497">153 </h4>
+                                    <span>K+</span>
                                 </div>
                                 <!-- /.counter -->
-                                <p>Total Download</p>
+                                <p>Écrans Vendus</p>
                             </div>
                             <!-- /.fun-fact -->
                         </div>
@@ -359,7 +374,7 @@
                 <!-- /.countup-wrapper -->
 
                 <div class="button-container text-center wow pixFadeUp" data-wow-delay="0.3s">
-                    <a href="#" class="pix-btn btn-outline">See All Review</a>
+                    <a href="{% url 'user_registration' %}" class="pix-btn btn-outline">Débutez votre Essai Gratuit</a>
                 </div>
                 <!-- /.button-container -->
             </div>
@@ -374,8 +389,10 @@
 
             <div class="container">
                 <div class="section-title text-center">
-                    <h3 class="sub-title wow pixFadeUp">Testiimonial</h3>
-                    <h2 class="title wow pixFadeUp" data-wow-delay="0.3s">What our client say about us</h2>
+                    <h2 class="title-two wow pixFadeUp" data-wow-delay="0.3s">
+                        Plus de <span>3140 boutiques dans le monde 🌐</span> font déjà confiance à ProPhoneManager. <br>
+                        Vous aussi 🫵 passez à la gestion professionnel de vos écrans cassés.
+                    </h2>
                 </div><!-- /.section-title -->
 
                 <div id="testimonial-wrapper">
@@ -386,20 +403,20 @@
                                     <div class="testi-content-inner">
                                         <div class="testimonial-bio">
                                             <div class="avatar">
-                                                <img src="{% static 'listings/saaspik/media/testimonial/1.jpg' %}" alt="testimonial">
+                                                <img src="{% static 'img/brand_logos/Karim Repair.png' %}" alt="testimonial">
                                             </div>
                                             <!-- /.avatar -->
 
                                             <div class="bio-info">
-                                                <h3 class="name">Desmond Eagle</h3>
-                                                <span class="job">Web designer</span>
+                                                <h3 class="name">Karim Zeib</h3>
+                                                <span class="job">Gérant de RepairShop</span>
                                             </div>
                                         </div>
                                         <!-- /.testimonial -->
 
 
                                         <div class="testimonial-content">
-                                            <p>Tosser nancy boy super tickety-boo lemon squeezy easy peasy quaint, hunky-dory baking cakes pear shaped butty do one, it's all gone to pot chinwag.!</p>
+                                        <p>Je suis utilisateur de l'app. Je reçois un acheteur une fois par mois pour tester une centaine d'écrans. c'était une demi journée et je devais être avec lui, maintenant c'est 2h et j'interviens que de temps en temps. en + je lui fais monter les prix en lui montrant les offres</p>
                                         </div>
                                         <!-- /.testimonial-content -->
 
@@ -428,20 +445,20 @@
                                     <div class="testi-content-inner">
                                         <div class="testimonial-bio">
                                             <div class="avatar">
-                                                <img src="{% static 'listings/saaspik/media/testimonial/1.jpg' %}" alt="testimonial">
+                                                <img src="{% static 'img/brand_logos/Shan Repair.png' %}" alt="testimonial">
                                             </div>
                                             <!-- /.avatar -->
 
                                             <div class="bio-info">
-                                                <h3 class="name">Desmond Eagle</h3>
-                                                <span class="job">Web designer</span>
+                                                <h3 class="name">Shan Rukhan</h3>
+                                                <span class="job">Gérant de RepairShop</span>
                                             </div>
                                         </div>
                                         <!-- /.testimonial -->
 
 
                                         <div class="testimonial-content">
-                                            <p>Tosser nancy boy super tickety-boo lemon squeezy easy peasy quaint, hunky-dory baking cakes pear shaped butty do one, it's all gone to pot chinwag.!</p>
+                                        <p>Application simple d'utilisation, je m'en sers tous les jours; J'ai rentabilisé mon accès annuel à mon premier envoi d'écran. </p>
                                         </div>
                                         <!-- /.testimonial-content -->
                                         <ul class="rating">
@@ -468,20 +485,20 @@
                                     <div class="testi-content-inner">
                                         <div class="testimonial-bio">
                                             <div class="avatar">
-                                                <img src="{% static 'listings/saaspik/media/testimonial/1.jpg' %}" alt="testimonial">
+                                                <img src="{% static 'img/brand_logos/Albert Repair.png' %}" alt="testimonial">
                                             </div>
                                             <!-- /.avatar -->
 
                                             <div class="bio-info">
-                                                <h3 class="name">Desmond Eagle</h3>
-                                                <span class="job">Web designer</span>
+                                                <h3 class="name">Albert Mathieu</h3>
+                                                <span class="job">Gérant de RepairShop</span>
                                             </div>
                                         </div>
                                         <!-- /.testimonial -->
 
 
                                         <div class="testimonial-content">
-                                            <p>Tosser nancy boy super tickety-boo lemon squeezy easy peasy quaint, hunky-dory baking cakes pear shaped butty do one, it's all gone to pot chinwag.!</p>
+                                        <p>Je valide à 100%; Tout est carré et bien organisé, Plus besoin de perdre du temps à comparer les offres des différents racheteurs. Je sais directement à qui envoyer mes écrans cassés au meilleur prix; </p>
                                         </div>
                                         <!-- /.testimonial-content -->
 
@@ -528,160 +545,7 @@
             </div>
         </section><!-- /.testimonial -->
 
-        <!--========================-->
-        <!--=         Team         =-->
-        <!--========================-->
-        <section class="teams">
-            <div class="container">
-                <div class="section-title text-center">
-                    <h3 class="sub-title wow pixFadeUp">Meet The Team</h3>
-                    <h2 class="title wow pixFadeUp" data-wow-delay="0.3s">Awesome pix saas Team</h2>
-                </div>
-                <!-- /.section-title text-center -->
 
-
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="team-member wow pixFadeRight" data-wow-delay="0.3s">
-                            <div class="member-avater">
-                                <img src="{% static 'listings/saaspik/media/team/1.jpg' %}" alt="avater">
-
-                                <ul class="member-social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-
-                                <svg class="layer-one" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="210px">
-                                    <path fill-rule="evenodd" opacity="0.302" fill="rgb(250, 112, 112)" d="M-0.000,79.999 C-0.000,79.999 85.262,-11.383 187.324,50.502 C297.703,117.429 370.000,-0.001 370.000,-0.001 L370.000,203.999 C370.000,207.313 367.314,209.999 364.000,209.999 L6.000,209.999 C2.686,209.999 -0.000,207.313 -0.000,203.999 L-0.000,79.999 Z" />
-                                </svg>
-
-                                <svg class="layer-two" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="218px">
-                                    <path fill-rule="evenodd" opacity="0.8" fill="rgb(250, 112, 112)" d="M-0.000,27.999 C-0.000,27.999 95.694,-46.224 188.615,48.781 C278.036,140.208 370.000,57.999 370.000,57.999 L370.000,211.999 C370.000,215.313 367.314,217.999 364.000,217.999 L6.000,217.999 C2.686,217.999 -0.000,215.313 -0.000,211.999 L-0.000,27.999 Z" />
-                                </svg>
-                            </div>
-
-                            <div class="team-info">
-                                <h3 class="name">Dylan Meringue</h3>
-                                <h4 class="job">Project Manager</h4>
-                            </div>
-                        </div>
-                        <!-- /.team-member -->
-                    </div>
-                    <!-- /.col-lg-4 col-md-6 -->
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="team-member wow pixFadeRight" data-wow-delay="0.5s">
-                            <div class="member-avater">
-                                <img src="{% static 'listings/saaspik/media/team/2.jpg' %}" alt="avater">
-
-                                <ul class="member-social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-
-                                <svg class="layer-one" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="210px">
-                                    <path fill-rule="evenodd" opacity="0.302" fill="rgb(250, 112, 112)" d="M-0.000,79.999 C-0.000,79.999 85.262,-11.383 187.324,50.502 C297.703,117.429 370.000,-0.001 370.000,-0.001 L370.000,203.999 C370.000,207.313 367.314,209.999 364.000,209.999 L6.000,209.999 C2.686,209.999 -0.000,207.313 -0.000,203.999 L-0.000,79.999 Z" />
-                                </svg>
-
-                                <svg class="layer-two" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="218px">
-                                    <path fill-rule="evenodd" opacity="0.8" fill="rgb(250, 112, 112)" d="M-0.000,27.999 C-0.000,27.999 95.694,-46.224 188.615,48.781 C278.036,140.208 370.000,57.999 370.000,57.999 L370.000,211.999 C370.000,215.313 367.314,217.999 364.000,217.999 L6.000,217.999 C2.686,217.999 -0.000,215.313 -0.000,211.999 L-0.000,27.999 Z" />
-                                </svg>
-                            </div>
-
-                            <div class="team-info">
-                                <h3 class="name">Lance Bogrol</h3>
-                                <h4 class="job">Developer</h4>
-                            </div>
-                        </div>
-                        <!-- /.team-member -->
-                    </div>
-                    <!-- /.col-lg-4 col-md-6 -->
-
-                    <div class="col-lg-4 col-md-6">
-                        <div class="team-member wow pixFadeRight" data-wow-delay="0.7s">
-                            <div class="member-avater">
-                                <img src="{% static 'listings/saaspik/media/team/3.jpg' %}" alt="avater">
-
-                                <ul class="member-social">
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-
-                                <svg class="layer-one" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="210px">
-                                    <path fill-rule="evenodd" opacity="0.302" fill="rgb(250, 112, 112)" d="M-0.000,79.999 C-0.000,79.999 85.262,-11.383 187.324,50.502 C297.703,117.429 370.000,-0.001 370.000,-0.001 L370.000,203.999 C370.000,207.313 367.314,209.999 364.000,209.999 L6.000,209.999 C2.686,209.999 -0.000,207.313 -0.000,203.999 L-0.000,79.999 Z" />
-                                </svg>
-
-                                <svg class="layer-two" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="218px">
-                                    <path fill-rule="evenodd" opacity="0.8" fill="rgb(250, 112, 112)" d="M-0.000,27.999 C-0.000,27.999 95.694,-46.224 188.615,48.781 C278.036,140.208 370.000,57.999 370.000,57.999 L370.000,211.999 C370.000,215.313 367.314,217.999 364.000,217.999 L6.000,217.999 C2.686,217.999 -0.000,215.313 -0.000,211.999 L-0.000,27.999 Z" />
-                                </svg>
-                            </div>
-
-                            <div class="team-info">
-                                <h3 class="name">Dylan Meringue</h3>
-                                <h4 class="job">UI/UX designer</h4>
-                            </div>
-                        </div>
-                        <!-- /.team-member -->
-                    </div>
-                    <!-- /.col-lg-4 col-md-6 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container -->
-
-        </section>
-        <!-- /.teams -->
-
-        <!--=================================-->
-        <!--=         Logo Carousel         =-->
-        <!--=================================-->
-        <section class="brand-logo-ab">
-            <div class="section-small text-center">
-                <h2 class="title wow pixFadeUp">Trusted Over 2500+ Companies</h2>
-            </div>
-            <div class="container">
-                <div class="swiper-container logo-carousel wow pixFadeUp" id="logo-carousel" data-perpage="6" data-breakpoints='{"1024": {"slidesPerView": 4}, "768": {"slidesPerView": 4}, "620": {"slidesPerView": 3}}'>
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="brand-logo"><img src="{% static 'listings/saaspik/media/brand/1.png' %}" alt="brand"></div>
-                        </div>
-                        <!-- /.swiper-slide -->
-
-                        <div class="swiper-slide">
-                            <div class="brand-logo"><img src="{% static 'listings/saaspik/media/brand/2.png' %}" alt="brand"></div>
-                        </div>
-                        <!-- /.swiper-slide -->
-
-                        <div class="swiper-slide">
-                            <div class="brand-logo"><img src="{% static 'listings/saaspik/media/brand/3.png' %}" alt="brand"></div>
-                        </div>
-                        <!-- /.swiper-slide -->
-
-                        <div class="swiper-slide">
-                            <div class="brand-logo"><img src="{% static 'listings/saaspik/media/brand/4.png' %}" alt="brand"></div>
-                        </div>
-                        <!-- /.swiper-slide -->
-
-                        <div class="swiper-slide">
-                            <div class="brand-logo"><img src="{% static 'listings/saaspik/media/brand/5.png' %}" alt="brand"></div>
-                        </div>
-                        <!-- /.swiper-slide -->
-
-                        <div class="swiper-slide">
-                            <div class="brand-logo"><img src="{% static 'listings/saaspik/media/brand/6.png' %}" alt="brand"></div>
-                        </div>
-                        <!-- /.swiper-slide -->
-                    </div>
-                    <!-- /.swiper-wrapper -->
-                </div>
-                <!-- /#logo-carousel.swiper-container logo-carousel -->
-            </div>
-            <!-- /.container -->
-        </section>
-        <!-- /.brand-logo -->
 
         <!--==================================-->
         <!--=         Call To Action         =-->
@@ -691,16 +555,10 @@
             <div class="container">
                 <div class="action-content text-center wow pixFadeUp">
                     <h2 class="title">
-                        We are optimists who<br>
-                        love to work together
-                    </h2>
+                                Une Question, Une Précision 🤔<br>
+                            </h2>
 
-                    <p>
-                        Spiffing good time nice one mush ummm I'm telling down the pub spend<br>
-                        a penny only a quid such a fibber tomfoolery, on your bike.
-                    </p>
-
-                    <a href="#" class="pix-btn btn-light">Free Consultation</a>
+                    <a href="{% url 'contact' %}" class="pix-btn btn-light">Contactez-nous</a>
                 </div>
                 <!-- /.action-content -->
             </div>
@@ -716,20 +574,18 @@
         <!--=========================-->
         <!--=        Footer         =-->
         <!--=========================-->
-        <footer id="footer">
+        <footer id="footer" class="footer-three">
             <div class="container">
                 <div class="footer-inner wow pixFadeUp">
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="widget footer-widget">
-                                <h3 class="widget-title">Company</h3>
+                                <h3 class="widget-title">À Propos</h3>
 
                                 <ul class="footer-menu">
-                                    <li><a href="#">Features</a></li>
-                                    <li><a href="#">Dashboard & Tool</a></li>
-                                    <li><a href="#">Our Portfolio</a></li>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Get In Touch</a></li>
+                                    <li><a href="{% url 'about' %}">À Propos de Nous</a></li>
+                                    <li><a href="#temoignages">Témoignages Clients</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- /.widget footer-widget -->
@@ -738,14 +594,12 @@
 
                         <div class="col-lg-3 col-md-6">
                             <div class="widget footer-widget">
-                                <h3 class="widget-title">Services</h3>
+                                <h3 class="widget-title">Solutions</h3>
 
                                 <ul class="footer-menu">
-                                    <li><a href="#">Features</a></li>
-                                    <li><a href="#">Dashboard & Tool</a></li>
-                                    <li><a href="#">Our Portfolio</a></li>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Get In Touch</a></li>
+                                    <li><a href="{% url 'faq' %}">FAQ's</a></li>
+                                    <li><a href="#" id="video-demo-link">Vidéo Démo</a></li>
+                                    <li><a href="#newsletter">Newsletter</a></li>
                                 </ul>
                             </div>
                             <!-- /.widget footer-widget -->
@@ -754,14 +608,13 @@
 
                         <div class="col-lg-3 col-md-6">
                             <div class="widget footer-widget">
-                                <h3 class="widget-title">Digital Experience</h3>
+                                <h3 class="widget-title">Infos</h3>
 
                                 <ul class="footer-menu">
-                                    <li><a href="#">Features</a></li>
-                                    <li><a href="#">Dashboard & Tool</a></li>
-                                    <li><a href="#">Our Portfolio</a></li>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Get In Touch</a></li>
+                                    <li><a href="{% url 'pricing' %}">Nos prix</a></li>
+                                    <li><a href="{% url 'legal' %}">Mentions légales</a></li>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'contact' %}">Support</a></li>
                                 </ul>
                             </div>
                             <!-- /.widget footer-widget -->
@@ -770,10 +623,10 @@
 
                         <div class="col-lg-3 col-md-6">
                             <div class="widget footer-widget">
-                                <h3 class="widget-title">Our Address</h3>
+                                <h3 class="widget-title">Notre Adresse</h3>
 
                                 <p>
-                                    Lavaca Street, Suite 24, Road Apt New York, USA
+                                    114 rue de la libération, <br> 27140 Gisors, <br> France
                                 </p>
 
                                 <ul class="footer-social-link">
@@ -793,17 +646,91 @@
 
                 <div class="site-info">
                     <div class="copyright">
-                        <p>© 2023 All Rights Reserved Design by <a href="http://www.pixelsigns.art" target="_blank">PixelSigns</a></p>
+                        <p>© 2024 All Rights Reserved Design by ProPhoneManager</a></p>
                     </div>
 
                     <ul class="site-info-menu">
-                        <li><a href="#">Privacy & Policy.</a></li>
-                        <li><a href="#">Faq.</a></li>
-                        <li><a href="#">Terms.</a></li>
+                        <li><a href="{% url 'legal' %}">Mentions légales RGPD</a></li>
+
                     </ul>
                 </div><!-- /.site-info -->
             </div><!-- /.container -->
+
+            <div class="map-bg">
+                <img src="{% static 'listings/saaspik/media/background/map2.png' %}" alt="map-bg">
+            </div>
         </footer><!-- /#footer -->
+
+
+    </div><!-- /#site -->
+
+<!-- Dependency Scripts -->
+<script src="{% static 'listings/saaspik/dependencies/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/swiper/js/swiper.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/jquery.appear/jquery.appear.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/wow/js/wow.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/countUp.js/countUp.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/jquery.parallax-scroll/js/jquery.parallax-scroll.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/magnific-popup/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/gmap3/js/gmap3.min.js' %}"></script>
+<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2HrmqE4sWSei0XdKGbOMOHN3Mm2Bf-M&#038;ver=2.1.6'></script>
+
+<!-- Site Scripts -->
+<script src="{% static 'listings/saaspik/assets/js/header.js' %}"></script>
+<script src="{% static 'listings/saaspik/assets/js/app.js' %}"></script>
+
+
+<script>
+    // Attendre que le document soit prêt
+    document.addEventListener("DOMContentLoaded", function() {
+        // Simuler un clic sur l'onglet "Créer" après un délai court
+        setTimeout(function() {
+            document.querySelector('.tab-nav-item[data-content="mockup"]').click();
+        }, 100);
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".more-btn").click(function() {
+            $("#toggle-content").slideToggle();
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Sélectionnez le lien "Vidéo Démo"
+      var videoDemoLink = document.getElementById('video-demo-link');
+
+      // Ajoutez un écouteur d'événements pour le clic sur le lien "Vidéo Démo"
+      videoDemoLink.addEventListener('click', function (event) {
+        // Empêchez le comportement par défaut du lien (ne pas suivre le lien)
+        event.preventDefault();
+
+        // Récupérez l'élément de la vidéo de présentation
+        var presentationVideoLink = document.getElementById('presentation-video-link');
+
+        // Faites défiler jusqu'à l'élément de la vidéo de présentation
+        presentationVideoLink.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Attendez un court instant pour que le défilement se termine, puis déclenchez le clic
+        setTimeout(function () {
+          presentationVideoLink.click();
+        }, 500); // Ajustez la durée selon vos besoins
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>
 
 
     </div><!-- /#site -->

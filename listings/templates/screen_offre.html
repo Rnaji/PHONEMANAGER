@@ -6,7 +6,7 @@
 {% block title %}Détail de l'écran {{ broken_screen.uniquereference.value }}{% endblock title %}
 
 {% block page_title %}
-    ⚙ L'écran a été attribué à {{ recycler_price.recycler.company_name }}
+    L'écran a été attribué à {{ recycler_price.recycler.company_name }}
 {% endblock page_title %}
 
 {% block page_content %}
@@ -30,7 +30,7 @@
 
     <!-- Ajoutez un bouton pour retourner au tableau de bord -->
     <div class="d-flex justify-content-center mt-4">
-        <a class="btn btn-primary" href="{% url 'dashboard' %}">Retour au tableau de bord</a>
+        <a class="btn btn-sm btn-outline-blue float-end" href="{% url 'dashboard' %}">Retour au tableau de bord</a>
     </div>
 
 {% endblock page_content %}

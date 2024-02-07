@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    {% block head %}
+    <title>{% block title %}ProPhoneManager{% endblock title %}</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'listings/saaspik/assets/img/fav/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'listings/saaspik/assets/img/minilogo.png' %}"">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'listings/saaspik/assets/img/minilogo.png' %}">
+    <link rel="mask-icon" href="{% static 'listings/saaspik/assets/img/fav/safari-pinned-tab.svg' %}" color="#fa7070">
+
+    <meta name="msapplication-TileColor" content="#fa7070">
+    <meta name="theme-color" content="#fa7070">
+
+    <!-- Dependency Styles -->
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/bootstrap/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/fontawesome/css/all.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/swiper/css/swiper.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/wow/css/animate.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/magnific-popup/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/components-elegant-icons/css/elegant-icons.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/simple-line-icons/css/simple-line-icons.css' %}" type="text/css">
+
+    <!-- Site Stylesheet -->
+    <link rel="stylesheet" href="{% static 'listings/saaspik/assets/css/app.css' %}" type="text/css">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+
+    {% endblock head %}
+</head>
+
+
+<body id="home-version-1" class="home-version-3" data-style="default">
+
+    <a href="#main_content" data-type="section-switch" class="return-to-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+
+    <div class="page-loader">
+        <div class="loader">
+            <!-- Loader -->
+            <div class="blobs">
+                <div class="blob-center"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+                <div class="blob"></div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                        <feBlend in="SourceGraphic" in2="goo" />
+                    </filter>
+                </defs>
+            </svg>
+
+        </div>
+    </div><!-- /.page-loader -->
+
+    <div id="main_content">
+
+        <!--=========================-->
+        <!--=        Navbar         =-->
+        <!--=========================-->
+        <header class="site-header header-dark header_trans-fixed" data-top="992">
+            <div class="container">
+                <div class="header-inner">
+                    <div class="site-mobile-logo">
+                        <a href="{% url 'landing' %}" class="logo">
+                            <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="main-logo">
+                            <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="sticky-logo">
+                        </a>
+                    </div><!-- /.site-mobile-logo -->
+
+                    <div class="toggle-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                    <!-- /.toggle-menu -->
+                    <nav class="site-nav nav-dark">
+                        <div class="close-menu">
+                            <span>Close</span>
+                            <i class="ei ei-icon_close"></i>
+                        </div>
+                        <div class="site-logo">
+                            <a href="{% url 'landing' %}" class="logo">
+                                <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="main-logo">
+                                <img src="{% static 'listings/saaspik/assets/img/logo_transparent.png' %}" alt="site logo" class="sticky-logo">
+                            </a>
+                        </div>
+                        <!-- /.site-logo -->
+
+                        <div class="menu-wrapper" data-top="992">
+                            <ul class="site-main-menu">
+
+                                <li><a href="{% url 'about' %}">À Propos</a></li>
+
+                                <li><a href="{% url 'contact' %}">Contact</a></li>
+
+                                <li><a href="{% url 'pricing' %}">Tarifs</a></li>
+
+                                <li><a href="{% url 'faq' %}">Faq's</a></li>
+                            </ul>
+
+                            <div class="nav-right">
+                                <a href="{% url 'login' %}" class="nav-btn">Se connecter </a>
+                            </div>
+                        </div>
+                        <!-- /.menu-wrapper -->
+
+                    </nav><!-- /.site-nav -->
+                </div><!-- /.header-inner -->
+            </div><!-- /.container -->
+        </header><!-- /.site-header -->
+
+        <!--==========================-->
+        <!--=         Banner         =-->
+        <!--==========================-->
+        <section class="page-banner">
+            <div class="container">
+                <div class="page-title-wrapper">
+                    <h1 class="page-title">Notre structure Tarifaire</h1>
+
+                    <ul class="bradcurmed">
+                        <li><a href="#" rel="noopener noreferrer">Home</a></li>
+                        <li> Pricing </li>
+                    </ul>
+                </div>
+                <!-- /.page-title-wrapper -->
+            </div>
+            <!-- /.container -->
+
+            <svg class="circle" data-parallax='{"x" : -200}' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="950px" height="950px">
+                <path fill-rule="evenodd" stroke="rgb(250, 112, 112)" stroke-width="100px" stroke-linecap="butt" stroke-linejoin="miter" opacity="0.051" fill="none" d="M450.000,50.000 C670.914,50.000 850.000,229.086 850.000,450.000 C850.000,670.914 670.914,850.000 450.000,850.000 C229.086,850.000 50.000,670.914 50.000,450.000 C50.000,229.086 229.086,50.000 450.000,50.000 Z" />
+            </svg>
+
+            <ul class="animate-ball">
+                <li class="ball"></li>
+                <li class="ball"></li>
+                <li class="ball"></li>
+                <li class="ball"></li>
+                <li class="ball"></li>
+            </ul>
+        </section>
+        <!-- /.page-banner -->
+
+        <!--===========================-->
+<!--=         Pricing         =-->
+<!--===========================-->
+<section class="pricing-two">
+    <div class="container">
+        <div class="section-title color-two text-center">
+            <h2 class="title wow pixFadeUp" data-wow-delay="0.3s">
+                Des prix transparents et dégressifs 🤝<br>
+            </h2>
+        </div>
+        <!-- /.section-title -->
+
+
+        <div class="row advanced-pricing-table">
+            <div class="col-lg-4">
+                <div class="pricing-table style-two price-two wow pixFadeLeft" data-wow-delay="0.5s">
+                    <div class="pricing-header pricing-amount">
+                        <div class="monthly_price">
+                            <h2 class="price">€19.99 ht/mo</h2>
+                        </div>
+                        <!-- /.monthly_price -->
+
+                        <h3 class="price-title">Forfait Mensuel</h3>
+                        <p>Sans engagement</p>
+                    </div>
+                    <!-- /.pricing-header -->
+
+                    <ul class="price-feture">
+                        <li class="have">Single User</li>
+                        <li class="have">Accès illimité</li>
+                        <li class="have">Sans engagement</li>
+                        <li class="have">Hotline Support 24/7</li>
+                        <li class="have">Free Updates</li>
+                    </ul>
+
+                    <div class="action text-left">
+                        <a href="https://buy.stripe.com/4gw03oeRibh2cneaEE" class="pix-btn btn-outline-two">Commencer</a>
+                    </div>
+                </div>
+                <!-- /.pricing-table -->
+            </div>
+            <!-- /.col-lg-4 -->
+
+            <div class="col-lg-4">
+                <div class="pricing-table color-two style-two price-two featured wow pixFadeLeft" data-wow-delay="0.7s">
+                    <div class="trend">
+                        <p>Popular</p>
+                    </div>
+
+                    <div class="pricing-header pricing-amount">
+                        <div class="monthly_price">
+                            <h2 class="price">€149.99 ht/an</h2>
+                        </div>
+                        <!-- /.monthly_price -->
+
+                        <h3 class="price-title">Accès annuel</h3>
+                        <p>Réduction de 37,5% comparé au Forfait Mensuel</p>
+                    </div>
+                    <!-- /.pricing-header -->
+
+                    <ul class="price-feture">
+                        <li class="have">Single User</li>
+                        <li class="have">Accès illimité</li>
+                        <li class="have">Sans engagement</li>
+                        <li class="have">Hotline Support 24/7</li>
+                        <li class="have">Free Updates</li>
+                    </ul>
+
+                    <div class="action text-left">
+                        <a href="https://buy.stripe.com/dR6eYi10s0CoevmbIJ" class="pix-btn btn-outline-two">Commencer</a>
+                    </div>
+                </div>
+                <!-- /.pricing-table -->
+            </div>
+            <!-- /.col-lg-4 -->
+
+            <div class="col-lg-4">
+                <div class="pricing-table color-three style-two price-two wow pixFadeLeft" data-wow-delay="0.9s">
+
+                    <div class="pricing-header pricing-amount">
+                        <div class="monthly_price">
+                            <h2 class="price">€299.99 ht/1x</h2>
+                        </div>
+                        <!-- /.monthly_price -->
+
+                        <h3 class="price-title">Accès à vie</h3>
+                        <p>Utilisez notre solution à vie</p>
+                    </div>
+                    <!-- /.pricing-header -->
+
+                    <ul class="price-feture">
+                        <li class="have">Single User</li>
+                        <li class="have">Accès illimité</li>
+                        <li class="have">Sans engagement</li>
+                        <li class="have">Hotline Support 24/7</li>
+                        <li class="have">Free Updates</li>
+                    </ul>
+
+                    <div class="action text-left">
+                        <a href="https://buy.stripe.com/8wM8zU9wYcl65YQ146" class="pix-btn btn-outline-two">Commencer</a>
+                    </div>
+                </div>
+                <!-- /.pricing-table -->
+            </div>
+            <!-- /.col-lg-4 -->
+        </div>
+        <!-- /.advanced-pricing-table -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.pricing -->
+
+        <!-- ========================== -->
+<!-- =         Feature        = -->
+<!-- ========================== -->
+<section class="featured-five">
+    <div class="container">
+        <div class="section-title style-three text-center">
+            <h2 class="title wow pixFadeUp" data-wow-delay="0.2s">
+                Pourquoi les réparateurs <br>
+                ❤️ ProPhone<span>Manager</span>? <br><br> Parce que nous tenons nos promesses👍
+            </h2>
+        </div><!-- /.section-title -->
+
+        <style>
+            .normal-text {
+                font-weight: normal; /* ou font-weight: normal; */
+            }
+        </style>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.5s">
+                    <div class="saaspik-icon-box-icon">
+                        <img src="{% static 'listings/saaspik/assets/img/temps.png' %}" alt="">
+                    </div>
+                    <div class="pixsass-icon-box-content" id="toggle-content">
+                        <h3 class="pixsass-icon-box-title">Gagnez du Temps.</h3>
+                        <p>
+                            Chaque écran endommagé est associé à un numéro unique, fournissant des détails complets tels que la marque, le modèle et le grade.<br>
+                            Que ce soit pour une expédition à un recycleur ou une vente directe à un itinérant, le processus est grandement simplifié.
+                            <details>
+                                <summary>Cliquez pour dérouler</summary> <br> En cas d'expédition, vous savez précisément quel écran envoyer à quel recycleur, avec toutes les informations nécessaires sur la marque, le modèle, le grade et le prix estimé.<br>
+                                Si le recycleur se rend chez vous, plus besoin de surveiller chaque écran à tester ; vous avez déjà toutes les informations à portée de main. Vous n'aurez qu'à vérifier les écrans sur lesquels vous n'êtes pas d'accord.
+                                <br>Dans tous les cas, vous gagnerez du temps.
+                            </details>
+                        </p>
+
+                        <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                            <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                        </svg>
+                    </div>
+                </div><!-- /.pixsass-box style-four -->
+            </div><!-- /.col-lg-4 col-md-6 -->
+
+            <div class="col-lg-4 col-md-6">
+                <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.7s">
+                    <div class="saaspik-icon-box-icon">
+                        <img src="{% static 'listings/saaspik/assets/img/argent.png' %}" alt="">
+                    </div>
+                    <div class="pixsass-icon-box-content">
+                        <h3 class="pixsass-icon-box-title">Gagnez de l'Argent.</h3>
+                        <p>
+                            ProPhoneManager vous offre la possibilité de définir le grade de vos écrans cassés. <br>Vous obtiendrez ainsi en temps réel, les offres des différents recycleurs. <br>Si une meilleure offre que celle que vous avez choisie est disponible, vous êtes averti.<br><br>
+                            <details>
+                                <summary>Cliquez pour dérouler</summary> <br>Découvrez également de nouveaux partenaires vérifiés pour la revente, élargissant ainsi vos possibilités de revente. <br>Actuellement plus de 250 modèles sont pris en charge et de nouveaux modèles sont ajoutés chaque mois. <br>Certains de ces modèles n'étaient probablement pas acceptés par vos recycleurs précédents. <br>Dans tous les cas, vous gagnerez de l'argent.
+                            </details>
+                        </p>
+                    </div>
+
+                    <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                        <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                    </svg>
+                </div><!-- /.pixsass-box style-four -->
+            </div><!-- /.col-lg-4 col-md-6 -->
+
+            <div class="col-lg-4 col-md-6">
+                <div class="saaspik-icon-box-wrapper style-four wow pixFadeLeft" data-wow-delay="0.9s">
+                    <div class="saaspik-icon-box-icon">
+                        <img src="{% static 'listings/saaspik/assets/img/espace.png' %}" alt="">
+                    </div>
+                    <div class="pixsass-icon-box-content">
+                        <h3 class="pixsass-icon-box-title">Gagnez de l'Espace.</h3>
+                        <p>
+                            Un espace bien rangé se traduit par un gain de place significatif, une considération essentielle dans une boutique où chaque mètre carré compte. <br>Chaque écran est défini par son numéro unique, facilitant la gestion précise et organisée de votre inventaire.
+                            <details>
+                                <summary>Cliquez pour dérouler</summary><br>Éliminez l'encombrement des écrans qui traînent dans vos tiroirs ou sur vos étagères, optimisez ainsi l'efficacité de votre espace et améliorez l'expérience globale dans votre établissement.<br>Les retours de nos clients indiquent clairement un gain d'espace significatif.<br>Dans tous les cas, vous gagnerez de l'espace.
+                            </details>
+                        </p>
+                    </div>
+
+                    <svg class="layer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="370px" height="270px">
+                        <path fill-rule="evenodd" fill="rgb(253, 248, 248)" d="M-0.000,269.999 L-0.000,-0.001 L370.000,-0.001 C370.000,-0.001 347.889,107.879 188.862,112.181 C35.160,116.338 -0.000,269.999 -0.000,269.999 Z" />
+                    </svg>
+                </div><!-- /.pixsass-box style-four -->
+            </div><!-- /.col-lg-4 col-md-6 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.featured -->
+
+
+
+        <!--=========================-->
+        <!--=        Footer         =-->
+        <!--=========================-->
+        <footer id="footer" class="footer-three">
+            <div class="container">
+                <div class="footer-inner wow pixFadeUp">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget footer-widget">
+                                <h3 class="widget-title">À Propos</h3>
+
+                                <ul class="footer-menu">
+                                    <li><a href="{% url 'about' %}">À Propos de Nous</a></li>
+                                    <li><a href="#temoignages">Témoignages Clients</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.widget footer-widget -->
+                        </div>
+                        <!-- /.col-lg-3 col-md-6 -->
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget footer-widget">
+                                <h3 class="widget-title">Solutions</h3>
+
+                                <ul class="footer-menu">
+                                    <li><a href="{% url 'faq' %}">FAQ's</a></li>
+                                    <li><a href="#" id="video-demo-link">Vidéo Démo</a></li>
+                                    <li><a href="#newsletter">Newsletter</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.widget footer-widget -->
+                        </div>
+                        <!-- /.col-lg-3 col-md-6 -->
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget footer-widget">
+                                <h3 class="widget-title">Infos</h3>
+
+                                <ul class="footer-menu">
+                                    <li><a href="{% url 'pricing' %}">Nos prix</a></li>
+                                    <li><a href="{% url 'legal' %}">Mentions légales</a></li>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'contact' %}">Support</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.widget footer-widget -->
+                        </div>
+                        <!-- /.col-lg-3 col-md-6 -->
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="widget footer-widget">
+                                <h3 class="widget-title">Notre Adresse</h3>
+
+                                <p>
+                                    114 rue de la libération, <br> 27140 Gisors, <br> France
+                                </p>
+
+                                <ul class="footer-social-link">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                            <!-- /.widget footer-widget -->
+                        </div>
+                        <!-- /.col-lg-3 col-md-6 -->
+                    </div>
+                    <!-- /.row -->
+
+                </div><!-- /.footer-inner -->
+
+                <div class="site-info">
+                    <div class="copyright">
+                        <p>© 2024 All Rights Reserved Design by ProPhoneManager</a></p>
+                    </div>
+
+                    <ul class="site-info-menu">
+                        <li><a href="{% url 'legal' %}">Mentions légales RGPD</a></li>
+
+                    </ul>
+                </div><!-- /.site-info -->
+            </div><!-- /.container -->
+
+            <div class="map-bg">
+                <img src="{% static 'listings/saaspik/media/background/map2.png' %}" alt="map-bg">
+            </div>
+        </footer><!-- /#footer -->
+
+
+    </div><!-- /#site -->
+
+<!-- Dependency Scripts -->
+<script src="{% static 'listings/saaspik/dependencies/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/swiper/js/swiper.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/jquery.appear/jquery.appear.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/wow/js/wow.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/countUp.js/countUp.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/jquery.parallax-scroll/js/jquery.parallax-scroll.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/magnific-popup/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/gmap3/js/gmap3.min.js' %}"></script>
+<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2HrmqE4sWSei0XdKGbOMOHN3Mm2Bf-M&#038;ver=2.1.6'></script>
+
+<!-- Site Scripts -->
+<script src="{% static 'listings/saaspik/assets/js/header.js' %}"></script>
+<script src="{% static 'listings/saaspik/assets/js/app.js' %}"></script>
+
+
+<script>
+    // Attendre que le document soit prêt
+    document.addEventListener("DOMContentLoaded", function() {
+        // Simuler un clic sur l'onglet "Créer" après un délai court
+        setTimeout(function() {
+            document.querySelector('.tab-nav-item[data-content="mockup"]').click();
+        }, 100);
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".more-btn").click(function() {
+            $("#toggle-content").slideToggle();
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Sélectionnez le lien "Vidéo Démo"
+      var videoDemoLink = document.getElementById('video-demo-link');
+
+      // Ajoutez un écouteur d'événements pour le clic sur le lien "Vidéo Démo"
+      videoDemoLink.addEventListener('click', function (event) {
+        // Empêchez le comportement par défaut du lien (ne pas suivre le lien)
+        event.preventDefault();
+
+        // Récupérez l'élément de la vidéo de présentation
+        var presentationVideoLink = document.getElementById('presentation-video-link');
+
+        // Faites défiler jusqu'à l'élément de la vidéo de présentation
+        presentationVideoLink.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        // Attendez un court instant pour que le défilement se termine, puis déclenchez le clic
+        setTimeout(function () {
+          presentationVideoLink.click();
+        }, 500); // Ajustez la durée selon vos besoins
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>
+
+
+    </div><!-- /#site -->
+
+<!-- Dependency Scripts -->
+<script src="{% static 'listings/saaspik/dependencies/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/swiper/js/swiper.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/jquery.appear/jquery.appear.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/wow/js/wow.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/countUp.js/countUp.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/jquery.parallax-scroll/js/jquery.parallax-scroll.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/magnific-popup/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'listings/saaspik/dependencies/gmap3/js/gmap3.min.js' %}"></script>
+<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2HrmqE4sWSei0XdKGbOMOHN3Mm2Bf-M&#038;ver=2.1.6'></script>
+
+<!-- Site Scripts -->
+<script src="{% static 'listings/saaspik/assets/js/header.js' %}"></script>
+<script src="{% static 'listings/saaspik/assets/js/app.js' %}"></script>
+
+</body>
+
+</html>

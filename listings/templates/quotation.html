@@ -12,7 +12,9 @@
 {% block page_content %}
     {% if recycler_prices.count > 0 %}
         <div class="row mb-4 md-mb-5 mb-lg-5">
-            <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">Il existe {{ recycler_prices.count }} offres de rachat !</div>
+            <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">
+                Votre écran est un GRADE {{ broken_screen.grade }} ! <br><br> Il existe {{ recycler_prices.count }} offres de rachat !
+            </div>
             <div class="col-12 fs-6 text-dark">Veuillez faire votre choix,<br>vous pourrez le modifier plus tard si une meilleure opportunité se présente.</div>
         </div>
 
