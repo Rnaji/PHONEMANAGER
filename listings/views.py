@@ -850,6 +850,10 @@ def update_package(request, reference):
 
                     brokenscreen_instance.save()
 
+                # Mettez à jour la valeur totale du package
+                package.total_value = sum([brokenscreen.price for brokenscreen in package.brokenscreens.all()])
+                package.save()
+
                 # Si toutes les modifications sont réussies, ajoutez un message flash
                 messages.success(request, 'Package mis à jour avec succès.')
                 return redirect('settings_view')
@@ -860,6 +864,7 @@ def update_package(request, reference):
             messages.error(request, 'Une erreur s\'est produite lors de la mise à jour du package.')
 
     return render(request, 'update_package.html', {'package': package, 'brokenscreen_instances': brokenscreen_instances})
+
 
 ########################
 # Static Content Views #
