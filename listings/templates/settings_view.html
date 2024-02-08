@@ -80,10 +80,13 @@
                                     </div>
                                 </li>
                             {% endfor %}
-                            <li class="list-group-item fs-6">
-                                <a href="{% url 'mark_package_as_paid' reference=package.reference %}" class="btn btn-sm btn-outline-blue">Marquer ce package comme payé</a>
+                            <li class="list-group-item fs-6 d-flex justify-content-between">
                                 <!-- Bouton "Modifier" -->
-                                <a href="{% url 'update_package' reference=package.reference %}" class="btn btn-sm btn-outline-blue">Modifier ce package</a>
+                                <a href="{% url 'update_package' reference=package.reference %}" class="btn btn-sm btn-outline-blue">Modifier ce Package</a>
+                                <form method="post" action="{% url 'mark_package_as_archived' reference=package.reference %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-outline-blue">Marquer ce Package comme Payé</button>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -101,54 +104,41 @@
     </div>
 </div>
 
-<!-- Section "💵 Mes envois payés" -->
+
+
+
+
+
+<!-- Section "🗄️ Mes envois payés" -->
 <div class="row mb-5">
-    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">💵 Mes envois payés</div>
+    <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">🗄️ Mes envois Payés</div>
     <div class="col-12 col-md-8 col-lg-7">
         <ul class="list-group shadow-sm">
-            {% for reference, package_info in packages_info.items %}
-                {% if package_info.package.is_paid %}
-                    <li class="list-group-item fs-6">
-                        <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseShipments{{ reference }}" role="button" aria-expanded="false" aria-controls="collapseShipments{{ reference }}">détails</span>
-                        <p>📦 Colis - {{ reference }} - Valeur : {{ package_info.package.total_value }} €</p>
-                    </li>
-                    <div class="collapse" id="collapseShipments{{ reference }}">
-                        <!-- Ajoutez ici les détails supplémentaires du package si nécessaire -->
-                        <ul class="list-group shadow-sm">
-                            {% for brokenscreen_field in package_info.brokenscreen_fields %}
-                                <li class="list-group-item fs-6">
-                                    <div class="row">
-                                        <div class="col-md-2 text-start">
-                                            <span class="badge rounded-pill font-monospace bg-success">{{ brokenscreen_field.uniquereference }}</span>
-                                        </div>
-                                        <div class="col-md-2 text-start">
-                                            <span>{{ brokenscreen_field.screenbrand }}</span>
-                                        </div>
-                                        <div class="col-md-3 text-start">
-                                            <span>{{ brokenscreen_field.screenmodel }}</span>
-                                        </div>
-                                        <div class="col-md-2 text-start">
-                                            GRADE {{ brokenscreen_field.grade }}
-                                        </div>
-                                        <div class="col-md-2 text-start">
-                                            <span>{{ brokenscreen_field.price }} €</span>
-                                        </div>
-                                        <div class="col-md-2 text-end">
-                                            <!-- Ajoutez ici d'autres éléments si nécessaire -->
-                                        </div>
-                                    </div>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-            {% endfor %}
-            {% if not has_paid_packages %}
-                <li class="list-group-item fs-6">Pas d'envoi payés actuellement</li>
+            {% if archived_packages %}
+                <!-- Première ligne avec le nom du premier package -->
+                <li class="list-group-item fs-6">
+                    📦 Cliquez sur détails pour voir vos colis payés
+                    <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseArchivedPackages" role="button" aria-expanded="false" aria-controls="collapseArchivedPackages">détails</span>
+                </li>
+                <!-- Contenu supplémentaire avec tous les packages archivés -->
+                <div class="collapse" id="collapseArchivedPackages">
+                    <ul class="list-group shadow-sm">
+                        {% for package in archived_packages %}
+                            <a href="#" class="list-group-item fs-6">
+                                <!-- Contenu du package archivé -->
+                                📦 Colis - {{ package.reference }} - Valeur : {{ package.total_value }} €
+                            </a>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% else %}
+                <li class="list-group-item fs-6">Pas d'envoi archivés actuellement</li>
             {% endif %}
         </ul>
     </div>
 </div>
+
+
 
 
 <!-- FIN Mes Envois -->

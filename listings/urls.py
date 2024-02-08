@@ -7,8 +7,8 @@ from .views import (
     quotation, screen_offre, stock_all, stock_brand, stock_recycler, 
     opportunities, BrokenScreenDetail, DeleteBrokenScreen, 
     ExpedierMesEcransView, ExpedierMesEcransRecycler, settings_view, 
-    settings_edit_view, logout_view, stickers, ValiderExpedition, 
-    mark_package_as_paid, update_package, about, contact, faq, pricing
+    settings_edit_view, logout_view, stickers, ValiderExpedition
+    , mark_package_as_archived, update_package, about, contact, faq, pricing
 )
 from django.contrib.auth.views import LoginView
 
@@ -68,7 +68,7 @@ urlpatterns = [
     path('valider_expedition/recycler/<recycler_ref>/', ValiderExpedition.as_view(), name='valider_expedition'),
 
     # Package URLs
-    path('mark_package_as_paid/<str:reference>/', mark_package_as_paid, name='mark_package_as_paid'),
+    path('mark_package_as_archived/<str:reference>/', mark_package_as_archived, name='mark_package_as_archived'),
     path('update_package/<str:reference>/', update_package, name='update_package'),
 
     # Static Content URLs

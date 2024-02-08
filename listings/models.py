@@ -463,6 +463,7 @@ class Package(models.Model):
     date_shipped = models.DateTimeField(auto_now_add=True)
     is_shipped = models.BooleanField(default=False)
     is_paid = models.BooleanField(default=False)
+    is_archived = models.BooleanField(default=False)
     total_value = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
@@ -473,8 +474,6 @@ class Package(models.Model):
         logger.info(f"get_brokenscreen_fields() returned: {type(brokenscreen_instances)}")
         return brokenscreen_instances
 
-
-
     def save(self, *args, **kwargs):
         # Enregistrer le Package pour obtenir un ID avant de calculer total_value
         super().save(*args, **kwargs)
@@ -482,3 +481,10 @@ class Package(models.Model):
         self.total_value = self.brokenscreens.aggregate(total=Sum('price'))['total'] or 0
         # Appeler save une seule fois après le calcul de total_value
         super().save(*args, **kwargs)
+
+    def archive_package(self):
+        # Méthode pour marquer le package comme archivé
+        self.is_archived = True
+        self.is_paid = True
+
+        self.save()

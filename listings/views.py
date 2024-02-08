@@ -633,22 +633,31 @@ def settings_view(request):
 
     # Organiser les informations par référence
     packages_info = {}
-    non_paid_packages = []  # Nouvelle variable pour stocker les packages non payés
+    non_paid_packages = []  # Ajouter une liste pour les colis non payés
+    archived_packages = []  # Ajouter une liste pour les colis archivés
 
-    total_value = 0  # Initialiser la valeur totale
+    total_value_paid = 0  # Initialiser la valeur totale des colis payés
 
     for reference in unique_references:
-        package = Package.objects.get(reference=reference)
-        brokenscreen_fields = package.get_brokenscreen_fields()
-        packages_info[reference] = {
-            'package': package,
-            'brokenscreen_fields': brokenscreen_fields,
-        }
+        package = Package.objects.filter(
+            reference=reference,
+            brokenscreens__repairstore=repair_store
+        ).first()
 
-        total_value += package.total_value  # Ajouter la valeur totale du colis à la valeur totale générale
+        if package:
+            brokenscreen_fields = package.get_brokenscreen_fields()
+            packages_info[reference] = {
+                'package': package,
+                'brokenscreen_fields': brokenscreen_fields,
+            }
 
-        if not package.is_paid:
-            non_paid_packages.append(package)
+            if not package.is_paid:
+                non_paid_packages.append(package)  # Ajouter le colis non payé à la liste
+            elif package.is_archived:
+                archived_packages.append(package)  # Ajouter le colis archivé à la liste
+
+            if package.is_paid:
+                total_value_paid += package.total_value  # Ajouter la valeur totale du colis payé
 
     has_paid_packages = any(package_info['package'].is_paid for package_info in packages_info.values())
 
@@ -656,8 +665,9 @@ def settings_view(request):
         'repair_store': repair_store,
         'packages_info': packages_info,
         'has_paid_packages': has_paid_packages,
-        'non_paid_packages': non_paid_packages,
-        'total_value': total_value,  # Ajouter la valeur totale au contexte
+        'non_paid_packages': non_paid_packages,  # Ajouter la liste des colis non payés au contexte
+        'archived_packages': archived_packages,  # Ajouter la liste des colis archivés au contexte
+        'total_value_paid': total_value_paid,  # Ajouter la valeur totale des colis payés au contexte
     }
 
     return render(request, 'settings_view.html', context)
@@ -823,23 +833,25 @@ class ValiderExpedition(View):
 # Package Views #
 #################
        
+
+    
 @login_required
-def mark_package_as_paid(request, reference):
-    # Filtrer les packages en fonction de la référence et du repairstore de l'utilisateur connecté
-    packages = Package.objects.filter(reference=reference, brokenscreens__repairstore=request.user.repairstore)
+def mark_package_as_archived(request, reference):
+    # Récupérer le package en fonction de la référence et du repairstore de l'utilisateur connecté
+    package = Package.objects.filter(
+        reference=reference,
+        brokenscreens__repairstore=request.user.repairstore,
+    ).first()
 
-    if packages.exists():
-        # Itérer sur tous les packages trouvés (peut y en avoir plusieurs)
-        for package in packages:
-            # Mettez ici le code pour marquer le package comme payé, par exemple :
-            package.is_paid = True
-            package.save()
+    if package:
+        # Appeler la méthode d'archivage définie dans le modèle
+        package.archive_package()
 
-        # Redirection vers la vue des paramètres après le traitement réussi
-        return redirect('settings_view')  # Assurez-vous de remplacer 'settings_view' par le nom réel de votre vue des paramètres
+        messages.success(request, "Le package a été archivé avec succès.")
+        return redirect('settings_view')
     else:
-        # Retourner une réponse appropriée si aucun package correspondant n'est trouvé
-        raise Http404("Package does not exist")
+        raise Http404("Paid package does not exist")
+
     
 @login_required
 @transaction.atomic
