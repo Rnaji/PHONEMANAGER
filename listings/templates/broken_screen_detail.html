@@ -31,26 +31,76 @@
     </div>
 </div>
 
-<!-- DEBUT Grade -->
 <div class="row mb-4 md-mb-5 mb-lg-4">
-    <div class="col-12 col-md-8 col-lg-7 mb-2 fs-5 text-blue">🔎 Diagnostic</div>
+    <div class="col-12 col-md-8 col-lg-7 mb-2 fs-5 text-blue">🩺 Diagnostic</div>
     <div class="col-12 col-md-8 col-lg-7">
         <ul class="list-group">
             <li class="list-group-item fs-6">
                 <div class="d-flex justify-content-between">
                     <span>GRADE {{ broken_screen.grade }}</span>
+                    <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseQuestions" role="button" aria-expanded="false" aria-controls="collapseQuestions">
+                        détails
+                    </span>
+                </div>
+                <div class="collapse" id="collapseQuestions">
+                    <!-- Contenu des questions et réponses -->
+                    <style>
+                        .custom-badge {
+                            width: 60px; /* Ajustez la largeur selon vos besoins */
+                            height: 25px; /* Ajustez la hauteur selon vos besoins */
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 14px; /* Ajustez la taille du texte selon vos besoins */
+                        }
+                    </style>
+                    
+                    <!-- Contenu des questions et réponses -->
+                    <ul class="list-group">
+                        {% for question_number, question, response in broken_screen.get_diag_questions_and_responses %}
+                            {% if question is not None %}
+                                <li class="list-group-item fs-6">
+                                    <div class="d-flex justify-content-between">
+                                        <strong> {{ question }} </strong>
+                                        <span class="badge rounded-pill custom-badge {% if response == True %}bg-success{% else %}bg-danger{% endif %}">
+                                            {% if response == True %}
+                                                Oui
+                                            {% else %}
+                                                Non
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                    <div class="collapse" id="collapse{{ question_number }}">
+                                        <strong>Réponse:</strong>
+                                        <span class="badge rounded-pill custom-badge {% if response == True %}bg-success{% else %}bg-danger{% endif %}">
+                                            {% if response == True %}
+                                                Oui
+                                            {% else %}
+                                                Non
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                    
                 </div>
             </li>
+
             <li class="list-group-item fs-6">
                 <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-outline-blue btn-sm" data-bs-toggle="modal" data-bs-target="#refaireDiagnosticModal">
+                    <button type="button" id="renewDiagnosticBtn" class="btn btn-outline-blue btn-sm" data-bs-toggle="modal" data-bs-target="#refaireDiagnosticModal">
                         Refaire le diagnostic
                     </button>
+                    
                 </div>
             </li>
         </ul>
     </div>
 </div>
+
+
 
 <!-- Modal Refaire Diagnostic -->
 <div class="modal fade" id="refaireDiagnosticModal" tabindex="-1" aria-labelledby="refaireDiagnosticModalLabel" aria-hidden="true">
@@ -63,13 +113,17 @@
             <div class="modal-body">
                 <p>Êtes-vous sûr de vouloir refaire le diagnostic ? Cela réinitialisera les réponses existantes.</p>
             </div>
+            
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <a href="{% url 'diagnostic' ref_unique_list=broken_screen.uniquereference.value %}" class="btn btn-sm btn-outline-blue">Refaire le diagnostic</a>
+                <a href="{% url 'delete_diagnostic' ref_unique_list=broken_screen.uniquereference.value %}" class="btn btn-sm btn-outline-blue">Refaire le diagnostic</a>
             </div>
         </div>
     </div>
 </div>
+
+
+
 
 <!-- DEBUT Offres de rachat -->
 <div class="row mb-4 md-mb-5 mb-lg-4">

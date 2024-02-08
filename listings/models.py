@@ -147,6 +147,15 @@ class BrokenScreen(models.Model):
     uniquereference = models.OneToOneField(UniqueReference, on_delete=models.CASCADE)
     screenbrand = models.ForeignKey(ScreenBrand, on_delete=models.CASCADE)
     screenmodel = models.ForeignKey(ScreenModel, on_delete=models.CASCADE)
+    diag_question_1 = models.TextField(null=True, blank=True)
+    diag_question_2 = models.TextField(null=True, blank=True)
+    diag_question_3 = models.TextField(null=True, blank=True)
+    diag_question_4 = models.TextField(null=True, blank=True)
+    diag_question_5 = models.TextField(null=True, blank=True)
+    diag_question_6 = models.TextField(null=True, blank=True)
+    diag_question_7 = models.TextField(null=True, blank=True)
+    diag_question_8 = models.TextField(null=True, blank=True)
+    diag_question_9 = models.TextField(null=True, blank=True)
     diag_response_1 = models.BooleanField(null=True)
     diag_response_2 = models.BooleanField(null=True)
     diag_response_3 = models.BooleanField(null=True)
@@ -413,12 +422,39 @@ class BrokenScreen(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.grade:
+            # Ajoutez ici votre logique pour déterminer la valeur de self.some_condition
+            self.some_condition = True  # Remplacez ceci par votre logique réelle
+
             if self.some_condition:
                 self.grade = self.attribuer_grade_non_oled()
             else:
                 self.grade = self.attribuer_grade_oled()
+
         super().save(*args, **kwargs)
 
+
+    def get_diag_questions_and_responses(self):
+        # Ajoutez votre logique pour récupérer les questions et réponses du diagnostic
+        questions_and_responses = [
+            (1, getattr(self, 'diag_question_1', ''), getattr(self, 'diag_response_1', '')),
+            (2, getattr(self, 'diag_question_2', ''), getattr(self, 'diag_response_2', '')),
+            (3, getattr(self, 'diag_question_3', ''), getattr(self, 'diag_response_3', '')),
+            (4, getattr(self, 'diag_question_4', ''), getattr(self, 'diag_response_4', '')),
+            (5, getattr(self, 'diag_question_5', ''), getattr(self, 'diag_response_5', '')),
+            (6, getattr(self, 'diag_question_6', ''), getattr(self, 'diag_response_6', '')),
+            (7, getattr(self, 'diag_question_7', ''), getattr(self, 'diag_response_7', '')),
+            (8, getattr(self, 'diag_question_8', ''), getattr(self, 'diag_response_8', '')),
+            (9, getattr(self, 'diag_question_9', ''), getattr(self, 'diag_response_9', '')),
+            # Ajoutez les autres questions de la même manière
+        ]
+
+        return questions_and_responses
+
+    class Meta:
+        ordering = ['-date_joined']
+
+    def __str__(self):
+        return f"{self.screenbrand} {self.screenmodel} - {self.grade}"
 
 
 class Package(models.Model):

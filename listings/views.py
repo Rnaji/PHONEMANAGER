@@ -312,7 +312,7 @@ def diagnostic(request, ref_unique_list):
         message_text = 'Le diagnostic a déjà été effectué'
         messages.add_message(request, messages.ERROR, message_text)
         return redirect('quotation', ref_unique_list=broken_screen.uniquereference.value)
-
+    
     # Définir le jeu de question oled ou non oled
     if broken_screen.screenmodel.is_oled:
         questions_set = questions_oled
@@ -390,7 +390,7 @@ def diagnostic(request, ref_unique_list):
 @require_GET
 def delete_diagnostic(request, ref_unique_list):
     # Assurez-vous d'obtenir l'instance BrokenScreen correcte
-    broken_screen = BrokenScreen.objects.get(ref_unique_list=ref_unique_list)
+    broken_screen = BrokenScreen.objects.get(uniquereference__value=ref_unique_list)
 
     # Réinitialiser les valeurs du diagnostic
     for i in range(1, 11):
@@ -403,6 +403,8 @@ def delete_diagnostic(request, ref_unique_list):
 
     message_text = 'Le diagnostic a été supprimé'
     messages.add_message(request, messages.SUCCESS, message_text)
+
+    # Rediriger vers la page de diagnostic pour commencer un nouveau diagnostic
     return redirect('diagnostic', ref_unique_list=broken_screen.uniquereference.value)
 
 @login_required
@@ -581,7 +583,6 @@ class BrokenScreenDetail(View):
         # Récupérer l'instance de BrokenScreen avec is_packed=False
         broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=kwargs['uniquereference_value'], is_packed=False)
 
-
         # Récupérez les objets RecyclerPricing associés à ce BrokenScreen
         quotations = broken_screen.quotations.all()
 
@@ -589,10 +590,23 @@ class BrokenScreenDetail(View):
             'broken_screen': broken_screen,
             'quotations': quotations,
             'recycler': broken_screen.recycler,  # Ajoutez le recycler au contexte
+            'diag_questions_and_responses': broken_screen.get_diag_questions_and_responses(),
+            'is_oled': broken_screen.screenmodel.is_oled,
         }
 
         return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        # Récupérer à nouveau l'instance de BrokenScreen avec is_packed=False
+        broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=kwargs['uniquereference_value'], is_packed=False)
+
+        # Ajoutez un message de succès pour informer l'utilisateur que les modifications ont été enregistrées
+        messages.success(request, "Les réponses du diagnostic ont été enregistrées avec succès.")
+
+        return redirect('quotation', ref_unique_list=broken_screen.uniquereference.value)
+
     
+
 @method_decorator(login_required, name='dispatch')
 class DeleteBrokenScreen(View):
     template_name = 'delete_brokenscreen.html'
