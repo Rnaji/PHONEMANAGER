@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from .views import (
-    landing, legal, user_registration, complete_store_configuration, dashboard, 
+    landing, legal, user_registration, complete_store_configuration, inscription_newsletter, dashboard, 
     page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, 
     get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, 
     quotation, screen_offre, stock_all, stock_brand, stock_recycler, 
@@ -25,12 +25,15 @@ urlpatterns = [
     # User Registration and Configuration URLs
     path('user_registration/', user_registration, name='user_registration'),
     path('complete_store_configuration/', complete_store_configuration, name='complete_store_configuration'),
+    path('inscription_newsletter/', inscription_newsletter, name='inscription_newsletter'),
+
 
     # Dashboard and Authentication URLs
     path('dashboard/', dashboard, name='dashboard'),
 
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', logout_view, name='logout_view'),
+
 
     # Broken Screen URLs
     path('create_brokenscreen/', CreateBrokenScreenView.as_view(), name='create_brokenscreen'),

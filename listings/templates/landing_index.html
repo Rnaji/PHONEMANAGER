@@ -35,6 +35,8 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     {% endblock head %}
 </head>
@@ -784,44 +786,52 @@
         </section><!-- /.testimonial -->
 
         <!--=============================-->
-        <!--=         Newsletter        =-->
-        <!--=============================-->
-        <section class="newsletter-two" id="newsletter">
-            <div class="container">
+<!--=         Newsletter        =-->
+<!--=============================-->
+<section class="newsletter-two" id="newsletter">
+    <div class="container">
 
-                <div class="newsletter-content-two text-center wow pixFadeUp">
+        <div class="newsletter-content-two text-center wow pixFadeUp">
+            <p class="description">
+                Les abonnés à notre newsletter bénéficient de conseils sur la vente d'écrans endommagés, les nouvelles adhésions de recycleurs, l'ajout de nouveaux modèles d'écrans, ainsi que des informations sur d'éventuelles fluctuations de prix. Vous êtes les bienvenus.
+            </p>
+        </div>
+        <!-- /.newsletter-content -->
 
-                  <p class="description">
-                    Les abonnés à notre newsletter bénéficient de conseils sur la vente d'écrans endommagés, les nouvelles adhésions de recycleurs, l'ajout de nouveaux modèles d'écrans, ainsi que des informations sur d'éventuelles fluctuations de prix. Vous êtes les bienvenus.
-                </div>
-                <!-- /.newsletter-content -->
-
-                <form action="php/subscribe.php" method="post" class="newsletter-form-two wow pixFadeUp" data-pixsaas="newsletter-subscribe">
-                    <div class="newsletter-inner">
-
-                        <input type="email" name="email" class="form-control" id="newsletter-form-email" placeholder="Entrez votre Email" required>
-                        <button type="submit" name="submit" id="newsletter-submit" class="pix-btn btn-light scroll-btn wow pixFadeUp">
-                            <span class="btn-text">S'abonner</span>
-                        </button>
-                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-                    </div>
-                    <!-- /.newsletter-inner -->
-
-                    <div class="clearfix"></div>
-                    <div class="form-result alert">
-                        <div class="content"></div>
-                    </div>
-                    <!-- /.form-result-->
-                </form>
-
+        <form action="{% url 'inscription_newsletter' %}" method="post" class="newsletter-form-two wow pixFadeUp" data-pixsaas="newsletter-subscribe">
+            {% csrf_token %}
+            <div class="newsletter-inner">
+                <input type="email" name="email" class="form-control" id="newsletter-form-email" placeholder="Entrez votre Email" required>
+                {{ form.as_p }}
+                <button type="submit" name="submit" id="newsletter-submit" class="pix-btn btn-light btn-big scroll-btn wow pixFadeUp">
+                    <span class="btn-text">S'abonner</span>
+                </button>
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
             </div>
-            <!-- /.container -->
-
-            <div class="scroll-circle wow pixFadeUp">
-                <img src="{% static 'listings/saaspik/media/background/circle12.png' %}" data-parallax='{"y" : -230}' alt="circle6">
+            <div class="clearfix"></div>
+            <div class="form-result alert">
+                <div class="content"></div>
             </div>
-        </section>
-        <!-- /.newsletter -->
+        </form>
+<div class="form-result alert alert-success">
+    <div class="content">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'success' %}
+                    {{ message|safe }}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+        <div class="scroll-circle wow pixFadeUp">
+            <img src="{% static 'listings/saaspik/media/background/circle12.png' %}" data-parallax='{"y" : -230}' alt="circle6">
+        </div>
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.newsletter -->
+
 
         <!--=========================-->
         <!--=        Footer         =-->
@@ -976,7 +986,7 @@
         }, 500); // Ajustez la durée selon vos besoins
       });
     });
-  </script>
+</script>
 
 
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import RepairStore, UniqueReference, ScreenBrand, ScreenModel, Recycler, RecyclerPricing, BrokenScreen, Package
+from .models import RepairStore, UniqueReference, ScreenBrand, ScreenModel, Recycler, RecyclerPricing, BrokenScreen, Package, AbonneNewsletter
 
 @admin.register(RepairStore)
 class RepairStoreAdmin(admin.ModelAdmin):
@@ -42,3 +42,8 @@ class PackageAdmin(admin.ModelAdmin):
     list_display = ['reference', 'date_shipped', 'is_shipped', 'is_paid']
     list_filter = ['is_shipped', 'is_paid']
     search_fields = ['reference']
+
+@admin.register(AbonneNewsletter)
+class AbonneNewsletterAdmin(admin.ModelAdmin):
+    list_display = ('email', )
+    search_fields = ('email', )

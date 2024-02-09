@@ -483,3 +483,9 @@ class Package(models.Model):
         self.is_paid = True
 
         self.save()
+
+
+
+
+class AbonneNewsletter(models.Model):
+    email = models.EmailField(unique=True)

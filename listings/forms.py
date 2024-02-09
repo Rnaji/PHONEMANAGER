@@ -1,7 +1,7 @@
 # dans votre_app/forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import RepairStore
+from .models import RepairStore, AbonneNewsletter
 from django.contrib.auth.models import User
 import logging
 from django import forms
@@ -47,3 +47,9 @@ class CreateBrokenScreenForm(forms.Form):
         print("Cleaned Data:", cleaned_data)
 
         return cleaned_data
+
+
+class NewsletterForm(forms.ModelForm):
+    class Meta:
+        model = AbonneNewsletter
+        fields = ['email']

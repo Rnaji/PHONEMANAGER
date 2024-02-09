@@ -55,6 +55,8 @@ MIDDLEWARE = [
     
 ]
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
+
 ROOT_URLCONF = 'listings.urls'
 
 TEMPLATES = [
