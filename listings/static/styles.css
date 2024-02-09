@@ -239,3 +239,65 @@ small-font {
 .connect-button {
     margin-top: 20px; /* Ajoutez la valeur de l'espace souhaité */
 }
+
+.custom-search-button {
+    /* Ajoutez ici vos styles personnalisés pour le bouton de recherche */
+    background-color: white;
+    color: navy;
+    /* Autres styles personnalisés */
+}
+
+.custom-search-button:hover {
+    /* Styles spécifiques au survol si nécessaire */
+    background-color: no;
+    color: no;
+}
+
+.custom-search-input:hover,
+.custom-search-input:hover + .btn {
+    background-color: transparent !important;
+}
+
+.custom-search-input:valid {
+    border-color: navy !important; /* Garder la même couleur de bord quand le champ est valide */
+}
+
+.custom-search-input:invalid {
+    border-color: navy !important; /* Garder la même couleur de bord quand le champ est invalide */
+}
+
+.custom-search-input {
+    font-style: italic;
+    font-weight: 100; /* Ajustez la valeur selon vos préférences pour une écriture fine */
+    color: #666; /* Couleur de texte plus claire - ajustez selon vos préférences */
+    border: 1px solid #ced4da; /* Couleur de bord */
+}
+
+.custom-search-input:focus {
+    border-color: navy; /* Couleur de bord lorsqu'il est en focus */
+    box-shadow: none; /* Désactive l'ombre lorsqu'il est en focus */
+}
+
+.custom-search-container {
+    position: relative;
+}
+
+.custom-search-container::before {
+    content: "Rechercher un écran";
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-style: italic;
+    font-weight: 300;
+    color: #666;
+    pointer-events: none; /* Empêche le texte du pseudo-élément de capturer les événements de souris */
+}
+
+.custom-search-input:not(:placeholder-shown) + .custom-search-container::before {
+    display: none; /* Masque le texte lorsque le champ est rempli */
+}
+
+.custom-search-input:valid {
+    color: black; /* Couleur du texte lorsqu'il est rempli */
+}

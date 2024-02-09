@@ -896,14 +896,9 @@ def package_detail(request, reference):
     # Appeler la méthode pour obtenir les écrans cassés associés
     brokenscreens = package.get_brokenscreen_fields()
 
-    # Calculer la valeur totale des écrans cassés dans le package
-    total_value_brokenscreens = sum(broken_screen.price for broken_screen in brokenscreens if broken_screen.price)
-
     context = {
         'package': package,
         'brokenscreens': brokenscreens,
-        'num_brokenscreens': len(brokenscreens),
-        'total_value_brokenscreens': total_value_brokenscreens,
     }
 
     return render(request, 'package_detail.html', context)

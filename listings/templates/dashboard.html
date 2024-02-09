@@ -1,23 +1,93 @@
 {% extends "base_webapp.html" %}
 {% load static %}
 
-{% block title %}Home{% endblock title %}
 
 {% block page_title %}
     <span>🏠 Home</span>
-    <span>
-        <a class="btn btn-sm btn-outline-blue float-end{% if broken_screens.count == 0 %} disabled{% endif %}" href="{% url 'expedier_mes_ecrans' %}">
-            <span class="me-2">📦</span>
-            <span>Expédier mes écrans</span>
-        </a>
-    </span>
-    <span>
-        <a class="btn btn-sm btn-outline-blue float-end" href="{% url 'create_brokenscreen' %}">
+    <div class="float-end d-flex align-items-center">
+        <!-- Bouton Ajouter -->
+        <a class="btn btn-sm btn-outline-blue me-2" href="{% url 'create_brokenscreen' %}">
             <span class="me-2">📲</span>
             <span>Ajouter un écran</span>
         </a>
-    </span>
-{% endblock page_title %}
+
+        <!-- Bouton Expédier -->
+        <a class="btn btn-sm btn-outline-blue me-2{% if broken_screens.count == 0 %} disabled{% endif %}" href="{% url 'expedier_mes_ecrans' %}">
+            <span class="me-2">📦</span>
+            <span>Expédier mes écrans</span>
+        </a>
+
+        <!-- Champ de recherche -->
+<form class="d-flex me-2" id="searchForm">
+    <input 
+        type="text" 
+        class="form-control custom-search-input btn btn-sm btn-outline-blue" 
+        placeholder="Rechercher un écran..." 
+        aria-label="Trouver un écran" 
+        aria-describedby="button-addon2" 
+        id="searchInput"
+    >
+    <button 
+        class="btn btn-sm btn-outline-secondary" 
+        type="submit" 
+        id="button-addon2"
+    >
+        🔍
+    </button>
+</form>
+
+<!-- Message d'erreur -->
+<div id="errorMessage" class="error-message">
+    La référence ne correspond pas ou n'existe pas.
+</div>
+
+<style>
+    .error-message {
+        color: red;
+        font-size: 12px;
+        font-weight: bold;
+        display: none;
+    }
+</style>
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+    // Empêcher le formulaire de se soumettre normalement
+    event.preventDefault();
+
+    // Récupérer la valeur de la référence entrée par l'utilisateur
+    var reference = document.getElementById('searchInput').value;
+
+    // Vérifier si la référence n'est pas vide
+    if (reference.trim() !== '') {
+        // Construire l'URL avec la référence
+        var url = 'http://127.0.0.1:8000/brokenscreen/detail/' + encodeURIComponent(reference);
+
+        // Effectuer une requête HEAD pour vérifier le statut HTTP
+        var xhr = new XMLHttpRequest();
+        xhr.open('HEAD', url, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    // Rediriger l'utilisateur vers l'URL construit si la référence existe
+                    window.location.href = url;
+                } else {
+                    // Afficher le message d'erreur comme une popup si la référence n'existe pas (404)
+                    alert('La référence ne correspond pas ou n\'existe pas.');
+                }
+            }
+        };
+        xhr.send();
+    } else {
+        // Afficher le message d'erreur comme une popup si la référence est vide
+        alert('Veuillez entrer une référence.');
+    }
+});
+</script>
+{% endblock %}
+
+
+
 
 {% block page_content %}
     <!-- DEBUT Stock & Opportunités -->
