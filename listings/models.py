@@ -112,9 +112,6 @@ class Recycler(models.Model):
         return self.company_name
     
 
-from django.db import models
-from .models import Recycler, ScreenModel
-
 class RecyclerPricing(models.Model):
     recycler = models.ForeignKey(Recycler, on_delete=models.CASCADE)
     screenbrand = models.ForeignKey(ScreenBrand, on_delete=models.CASCADE)
@@ -463,7 +460,6 @@ class Package(models.Model):
     date_shipped = models.DateTimeField(auto_now_add=True)
     is_shipped = models.BooleanField(default=False)
     is_paid = models.BooleanField(default=False)
-    is_archived = models.BooleanField(default=False)
     total_value = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     def __str__(self):
@@ -482,9 +478,8 @@ class Package(models.Model):
         # Appeler save une seule fois après le calcul de total_value
         super().save(*args, **kwargs)
 
-    def archive_package(self):
+    def paid_package(self):
         # Méthode pour marquer le package comme archivé
-        self.is_archived = True
         self.is_paid = True
 
         self.save()

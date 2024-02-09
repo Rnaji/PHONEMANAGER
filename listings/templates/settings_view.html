@@ -83,7 +83,7 @@
                             <li class="list-group-item fs-6 d-flex justify-content-between">
                                 <!-- Bouton "Modifier" -->
                                 <a href="{% url 'update_package' reference=package.reference %}" class="btn btn-sm btn-outline-blue">Modifier ce Package</a>
-                                <form method="post" action="{% url 'mark_package_as_archived' reference=package.reference %}">
+                                <form method="post" action="{% url 'mark_package_as_paid' reference=package.reference %}">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-sm btn-outline-blue">Marquer ce Package comme Payé</button>
                                 </form>
@@ -110,24 +110,38 @@
 
 
 <!-- Section "🗄️ Mes envois payés" -->
+<style>
+    .package-item {
+        color: initial; /* Couleur initiale du texte */
+        text-decoration: none; /* Supprimer le soulignement par défaut des liens */
+        transition: color 0.3s ease; /* Ajouter une transition pour une animation fluide */
+    }
+
+    .package-item:hover {
+        color: navy; /* Changer la couleur au survol */
+    }
+</style>
+
 <div class="row mb-5">
     <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">🗄️ Mes envois Payés</div>
     <div class="col-12 col-md-8 col-lg-7">
         <ul class="list-group shadow-sm">
-            {% if archived_packages %}
+            {% if paid_packages %}
                 <!-- Première ligne avec le nom du premier package -->
                 <li class="list-group-item fs-6">
-                    📦 Cliquez sur détails pour voir vos colis payés
+                    Cliquez sur détails pour voir vos colis payés
                     <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseArchivedPackages" role="button" aria-expanded="false" aria-controls="collapseArchivedPackages">détails</span>
                 </li>
                 <!-- Contenu supplémentaire avec tous les packages archivés -->
                 <div class="collapse" id="collapseArchivedPackages">
                     <ul class="list-group shadow-sm">
-                        {% for package in archived_packages %}
-                            <a href="#" class="list-group-item fs-6">
-                                <!-- Contenu du package archivé -->
-                                📦 Colis - {{ package.reference }} - Valeur : {{ package.total_value }} €
-                            </a>
+                        {% for package in paid_packages %}
+                            <li class="list-group-item fs-6">
+                                <a href="{% url 'package_detail' reference=package.reference %}" class="package-item" data-reference="{{ package.reference }}" data-value="{{ package.total_value }}">
+                                    <!-- Contenu du package archivé -->
+                                    📦 Colis - {{ package.reference }} - Valeur : {{ package.total_value }} €
+                                </a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -137,6 +151,7 @@
         </ul>
     </div>
 </div>
+
 
 
 

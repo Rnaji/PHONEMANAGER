@@ -92,7 +92,6 @@ def user_registration(request):
 
     return render(request, 'user_registration.html', {'form': form})
     
-    
 @login_required
 def complete_store_configuration(request):
         registered_username = request.session.get('registered_username', None)
@@ -606,7 +605,6 @@ class BrokenScreenDetail(View):
         return redirect('quotation', ref_unique_list=broken_screen.uniquereference.value)
 
     
-
 @method_decorator(login_required, name='dispatch')
 class DeleteBrokenScreen(View):
     template_name = 'delete_brokenscreen.html'
@@ -634,7 +632,7 @@ def settings_view(request):
     # Organiser les informations par référence
     packages_info = {}
     non_paid_packages = []  # Ajouter une liste pour les colis non payés
-    archived_packages = []  # Ajouter une liste pour les colis archivés
+    paid_packages = []  # Ajouter une liste pour les colis archivés
 
     total_value_paid = 0  # Initialiser la valeur totale des colis payés
 
@@ -653,8 +651,8 @@ def settings_view(request):
 
             if not package.is_paid:
                 non_paid_packages.append(package)  # Ajouter le colis non payé à la liste
-            elif package.is_archived:
-                archived_packages.append(package)  # Ajouter le colis archivé à la liste
+            elif package.is_paid:
+                paid_packages.append(package)  # Ajouter le colis archivé à la liste
 
             if package.is_paid:
                 total_value_paid += package.total_value  # Ajouter la valeur totale du colis payé
@@ -666,7 +664,7 @@ def settings_view(request):
         'packages_info': packages_info,
         'has_paid_packages': has_paid_packages,
         'non_paid_packages': non_paid_packages,  # Ajouter la liste des colis non payés au contexte
-        'archived_packages': archived_packages,  # Ajouter la liste des colis archivés au contexte
+        'paid_packages': paid_packages,  # Ajouter la liste des colis archivés au contexte
         'total_value_paid': total_value_paid,  # Ajouter la valeur totale des colis payés au contexte
     }
 
@@ -833,10 +831,8 @@ class ValiderExpedition(View):
 # Package Views #
 #################
        
-
-    
 @login_required
-def mark_package_as_archived(request, reference):
+def mark_package_as_paid(request, reference):
     # Récupérer le package en fonction de la référence et du repairstore de l'utilisateur connecté
     package = Package.objects.filter(
         reference=reference,
@@ -845,14 +841,13 @@ def mark_package_as_archived(request, reference):
 
     if package:
         # Appeler la méthode d'archivage définie dans le modèle
-        package.archive_package()
+        package.paid_package()
 
         messages.success(request, "Le package a été archivé avec succès.")
         return redirect('settings_view')
     else:
         raise Http404("Paid package does not exist")
-
-    
+   
 @login_required
 @transaction.atomic
 def update_package(request, reference):
@@ -890,6 +885,29 @@ def update_package(request, reference):
             messages.error(request, 'Une erreur s\'est produite lors de la mise à jour du package.')
 
     return render(request, 'update_package.html', {'package': package, 'brokenscreen_instances': brokenscreen_instances})
+
+
+
+@login_required
+def package_detail(request, reference):
+    # Récupérer l'instance de Package avec is_paid=True
+    package = get_object_or_404(Package, reference=reference, is_paid=True)
+
+    # Appeler la méthode pour obtenir les écrans cassés associés
+    brokenscreens = package.get_brokenscreen_fields()
+
+    # Calculer la valeur totale des écrans cassés dans le package
+    total_value_brokenscreens = sum(broken_screen.price for broken_screen in brokenscreens if broken_screen.price)
+
+    context = {
+        'package': package,
+        'brokenscreens': brokenscreens,
+        'num_brokenscreens': len(brokenscreens),
+        'total_value_brokenscreens': total_value_brokenscreens,
+    }
+
+    return render(request, 'package_detail.html', context)
+
 
 
 ########################
