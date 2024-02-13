@@ -2,7 +2,7 @@
 
 from django.db.models.signals import post_delete, pre_save, post_save
 from django.dispatch import receiver
-from .models import UniqueReference, RepairStore
+from .models import UniqueReference, RepairStore, RecyclerPricing, BrokenScreen
 import logging
 
 logger = logging.getLogger(__name__)
@@ -60,3 +60,7 @@ def ensure_user_has_65_unique_references(sender, instance, created, **kwargs):
         except Exception as e:
             logger.error(f"Error in ensure_user_has_65_unique_references: {e}", exc_info=True)
 
+@receiver(post_save, sender=RecyclerPricing)
+def update_broken_screen_price(sender, instance, **kwargs):
+    # Mettez à jour le prix pour tous les écrans cassés liés à cette offre et ce recycler
+    BrokenScreen.objects.filter(quotations=instance, recycler=instance.recycler, is_packed=False).update(price=instance.price)

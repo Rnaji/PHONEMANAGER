@@ -192,7 +192,7 @@
                             {% if recycler_info.recycler__company_name is None %}
                                 <span class="me-2">❓</span>
                             {% else %}
-                            <img src="{% static 'img/recycler_logos/'|add:recycler_info.recycler__company_name|lower|add:'.png' %}" alt="Logo Recycleur" class="me-2" width="60" height="20">
+                            <img src="{% static 'img/recycler_logos/'|add:recycler_info.recycler__company_name|lower|add:'.png' %}" alt="Logo Recycleur" class="me-2" width="50" height="20">
                             {% endif %}
                             <span>{{ recycler_info.recycler__company_name|default_if_none:"Non attribué"|title }}</span>
                         </li>

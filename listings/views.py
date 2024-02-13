@@ -45,9 +45,10 @@ questions_oled= [
     (3, "L’écran présente des dommages fonctionnels", 4, 4),
     (4, "L’écran a des points noirs", 5, 6),
     (5, "Ces points noirs sont gros", 6, 6),
-    (6, "L’écran a des ombres persistantes", 7, "fin du diag"),
-    (7, "Ces ombres sont presque invisibles", "fin du diag", 8),
-    (8, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
+    (6, "Le 3D Touch est défectueux", 7, 7),
+    (7, "L’écran a des ombres persistantes", 8, "fin du diag"),
+    (8, "Ces ombres sont presque invisibles", "fin du diag", 9),
+    (9, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
 ]
 
 questions_not_oled = [
@@ -597,7 +598,7 @@ class BrokenScreenDetail(View):
         broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=kwargs['uniquereference_value'], is_packed=False)
 
         # Récupérez les objets RecyclerPricing associés à ce BrokenScreen
-        quotations = broken_screen.quotations.all()
+        quotations = broken_screen.quotations.filter(grade=broken_screen.grade).all()
 
         context = {
             'broken_screen': broken_screen,
