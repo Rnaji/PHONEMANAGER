@@ -18,8 +18,9 @@ class ScreenBrandAdmin(admin.ModelAdmin):
 
 @admin.register(ScreenModel)
 class ScreenModelAdmin(admin.ModelAdmin):
-    list_display = ['screenbrand', 'screenmodel', 'is_oled', 'is_wanted']
+    list_display = ['screenbrand', 'screenmodel', 'is_oled', 'is_wanted', 'is_3dtouch']
     search_fields = ['screenbrand__screenbrand', 'screenmodel']
+    list_editable = ['is_oled', 'is_wanted', 'is_3dtouch']
 
 @admin.register(Recycler)
 class RecyclerAdmin(admin.ModelAdmin):

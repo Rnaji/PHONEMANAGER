@@ -83,6 +83,7 @@ class ScreenModel(models.Model):
     screenbrand = models.ForeignKey(ScreenBrand, on_delete=models.CASCADE)
     screenmodel = models.CharField(max_length=50)
     is_oled = models.BooleanField(default=False)
+    is_3dtouch = models.BooleanField(default=False)
     is_wanted = models.BooleanField(default=False)
 
     class Meta:

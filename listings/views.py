@@ -34,36 +34,6 @@ import json
 from django.contrib import messages
 from django.utils import timezone
 
-##################
-# Questions diag #
-##################
-
-questions_oled= [
-    (0, "xxx", "oui", "non"),
-    (1, "L’écran est-il original?", 2, 2),
-    (2, "Le tactile est défectueux", 3, 3),
-    (3, "L’écran présente des dommages fonctionnels", 4, 4),
-    (4, "L’écran a des points noirs", 5, 6),
-    (5, "Ces points noirs sont gros", 6, 6),
-    (6, "Le 3D Touch est défectueux", 7, 7),
-    (7, "L’écran a des ombres persistantes", 8, "fin du diag"),
-    (8, "Ces ombres sont presque invisibles", "fin du diag", 9),
-    (9, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
-]
-
-questions_not_oled = [
-    (0, "xxx", "oui", "non"),
-    (1, "L’écran est-il original?", 2, 2),
-    (2, "L’écran présente des dommages fonctionnel", 3, 3),
-    (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
-    (4, "L’écran est jaunâtre", 5, 5),
-    (5, "Le tactile est défectueux", 6, 6),
-    (6, "Le 3D Touch est défectueux", 7, 7),
-    (7, "L’écran a des points lumineux ou une distorsion des couleurs", 8, 8),
-    (8, "L’écran a des pixels morts", 9,"fin du diag"),
-    (9, "L’écran a des Gros pixels morts", "fin du diag", "fin du diag")
-]
-
 ########################
 # Home and Legal Views #
 ########################
@@ -311,6 +281,49 @@ def get_unused_ref_unique_list_view(request):
 
     return render(request, 'votre_template.html', context)
 
+##################
+# Questions diag #
+##################
+
+questions_oled_apple= [
+    (0, "xxx", "oui", "non"),
+    (1, "L’écran est-il original?", 2, 2),
+    (2, "Le tactile est défectueux", 3, 3),
+    (3, "L’écran présente des dommages fonctionnels", 4, 4),
+    (4, "L’écran a des points noirs", 5, 6),
+    (5, "Ces points noirs sont gros", 6, 6),
+    (6, "Le 3D Touch est défectueux", 7, 7),
+    (7, "L’écran a des ombres persistantes", 8, "fin du diag"),
+    (8, "Ces ombres sont presque invisibles", "fin du diag", 9),
+    (9, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
+]
+
+questions_not_oled_apple = [
+    (0, "xxx", "oui", "non"),
+    (1, "L’écran est-il original?", 2, 2),
+    (2, "L’écran présente des dommages fonctionnel", 3, 3),
+    (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
+    (4, "L’écran est jaunâtre", 5, 5),
+    (5, "Le tactile est défectueux", 6, 6),
+    (6, "Le 3D Touch est défectueux", 7, 7),
+    (7, "L’écran a des points lumineux ou une distorsion des couleurs", 8, 8),
+    (8, "L’écran a des pixels morts", 9,"fin du diag"),
+    (9, "L’écran a des Gros pixels morts", "fin du diag", "fin du diag")
+]
+
+questions_general= [
+    (0, "xxx", "oui", "non"),
+    (1, "L’écran est-il original?", 2, 2),
+    (2, "Le tactile est défectueux", 3, 3),
+    (3, "L’écran présente des dommages fonctionnels", 4, 4),
+    (4, "L’écran a un point noir", 5, 7),
+    (5, "Ce point noir est petit (1-2mm)", 7, 6),
+    (6, "Ce point noir est gros (3-4mm)", 7, 7),
+    (7, "L’écran a des ombres persistantes", 8, "fin du diag"),
+    (8, "Ces ombres sont presque invisibles", "fin du diag", 9),
+    (9, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
+]
+
 ##################################
 # Diagnostic and Quotation Views #
 ##################################
@@ -319,7 +332,7 @@ def get_unused_ref_unique_list_view(request):
 @require_http_methods(['GET', 'POST'])
 def diagnostic(request, ref_unique_list):
     # Assurez-vous d'obtenir l'instance BrokenScreen correcte
-    broken_screen = BrokenScreen.objects.get(uniquereference__value=ref_unique_list)
+    broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=ref_unique_list)
 
     # Si le diagnostic est déjà effectué, renvoyez à la page quotation
     if broken_screen.is_diag_done:
@@ -327,11 +340,12 @@ def diagnostic(request, ref_unique_list):
         messages.add_message(request, messages.ERROR, message_text)
         return redirect('quotation', ref_unique_list=broken_screen.uniquereference.value)
     
-    # Définir le jeu de question oled ou non oled
-    if broken_screen.screenmodel.is_oled:
-        questions_set = questions_oled
-    elif not broken_screen.screenmodel.is_oled:
-        questions_set = questions_not_oled
+    if broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple':
+        questions_set = questions_oled_apple
+    elif not broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple':
+        questions_set = questions_not_oled_apple
+    elif broken_screen.screenbrand.screenbrand != 'apple':
+        questions_set = questions_general
     else:
         raise Http404()
 
