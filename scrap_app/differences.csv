@@ -1,1 +1,314 @@
 Scraper,Modèle,Grade,Prix
+ispart, iPhone 8, GRADE A,0.0
+ispart, iPhone 7, GRADE A,0.0
+ispart, iPhone 6S, GRADE A,0.0
+ispart, iPhone 6 Plus, GRADE A,0.0
+ispart, iPhone 6, GRADE A,0.0
+ispart, M546, GRADE A,25.0
+ispart, Huawei Mate 50 pro, GRADE A,66.0
+ispart, Huawei Mate 50E, GRADE A,30.0
+ispart, Huawei Mate 50, GRADE A,30.0
+LcdPhone, iphone 14 pro max, Grade A,120.0
+LcdPhone, iphone 14 pro max, Grade B,10.0
+LcdPhone, iphone 14 pro max, Grade G,100.0
+LcdPhone, iphone 14 pro, Grade A,100.0
+LcdPhone, iphone 14 pro, Grade B,10.0
+LcdPhone, iphone 14 pro, Grade G,100.0
+LcdPhone, iphone 14 plus, Grade A,60.0
+LcdPhone, iphone 14 plus, Grade B,10.0
+LcdPhone, iphone 14 plus, Grade G,100.0
+LcdPhone, iphone 14, Grade A,50.0
+LcdPhone, iphone 14, Grade B,10.0
+LcdPhone, iphone 14, Grade G,80.0
+LcdPhone, iphone 13 pro max, Grade A,110.0
+LcdPhone, iphone 13 pro max, Grade B,10.0
+LcdPhone, iphone 13 pro max, Grade G,100.0
+LcdPhone, iphone 13 pro, Grade A,90.0
+LcdPhone, iphone 13 pro, Grade B,10.0
+LcdPhone, iphone 13 pro, Grade G,80.0
+LcdPhone, iphone 13, Grade A,35.0
+LcdPhone, iphone 13, Grade B,10.0
+LcdPhone, iphone 13, Grade G,50.0
+LcdPhone, iphone 13 mini, Grade A,30.0
+LcdPhone, iphone 13 mini, Grade B,10.0
+LcdPhone, iphone 13 mini, Grade G,50.0
+LcdPhone, iphone 12 pro max, Grade A,45.0
+LcdPhone, iphone 12 pro max, Grade B,10.0
+LcdPhone, iphone 12 pro max, Grade G,50.0
+LcdPhone, iphone 12 pro, Grade A,30.0
+LcdPhone, iphone 12 pro, Grade B,15.0
+LcdPhone, iphone 12 pro, Grade G,30.0
+LcdPhone, iphone 12, Grade A,30.0
+LcdPhone, iphone 12, Grade B,15.0
+LcdPhone, iphone 12, Grade G,30.0
+LcdPhone, iphone 12 mini, Grade A,30.0
+LcdPhone, iphone 12 mini, Grade B,10.0
+LcdPhone, iphone 12 mini, Grade G,35.0
+LcdPhone, iphone 11 pro max, Grade A,25.0
+LcdPhone, iphone 11 pro max, Grade B,15.0
+LcdPhone, iphone 11 pro max, Grade G,30.0
+LcdPhone, iphone 11 pro, Grade A,15.0
+LcdPhone, iphone 11 pro, Grade B,10.0
+LcdPhone, iphone 11 pro, Grade G,20.0
+LcdPhone, iphone 11, Grade A,5.0
+LcdPhone, iphone 11, Grade B,3.0
+LcdPhone, iphone 11, Grade G,15.0
+LcdPhone, iphone xs max, Grade A,20.0
+LcdPhone, iphone xs max, Grade B,10.0
+LcdPhone, iphone xs max, Grade G,20.0
+LcdPhone, iphone xs, Grade A,15.0
+LcdPhone, iphone xs, Grade B,10.0
+LcdPhone, iphone xs, Grade G,15.0
+LcdPhone, iphone xr, Grade A,5.0
+LcdPhone, iphone xr, Grade B,2.0
+LcdPhone, iphone xr, Grade G,15.0
+LcdPhone, iphone x, Grade A,15.0
+LcdPhone, iphone x, Grade B,10.0
+LcdPhone, iphone x, Grade G,15.0
+LcdPhone, iphone 8 plus, Grade A,2.0
+LcdPhone, iphone 8 plus, Grade B,1.0
+LcdPhone, iphone 8 plus, Grade G,10.0
+LcdPhone, iphone 8, Grade A,1.0
+LcdPhone, iphone 8, Grade B,0.5
+LcdPhone, iphone 8, Grade G,8.0
+LcdPhone, iphone 7 plus, Grade A,2.0
+LcdPhone, iphone 7 plus, Grade B,1.0
+LcdPhone, iphone 7 plus, Grade G,10.0
+LcdPhone, iphone 7, Grade A,1.0
+LcdPhone, iphone 7, Grade B,0.5
+LcdPhone, iphone 7, Grade G,8.0
+LcdPhone, iphone 6s plus, Grade A,2.0
+LcdPhone, iphone 6s plus, Grade B,1.0
+LcdPhone, iphone 6s plus, Grade G,10.0
+LcdPhone, iphone 6s, Grade A,1.0
+LcdPhone, iphone 6s, Grade B,0.5
+LcdPhone, iphone 6s, Grade G,8.0
+LcdPhone, iphone 6 plus, Grade A,2.0
+LcdPhone, iphone 6 plus, Grade B,1.0
+LcdPhone, iphone 6 plus, Grade G,8.0
+LcdPhone, iphone 6, Grade A,1.0
+LcdPhone, iphone 6, Grade B,0.5
+LcdPhone, iphone 6, Grade G,8.0
+LcdPhone, iphone 5s, Grade A,0.5
+LcdPhone, iphone 5s, Grade B,0.2
+LcdPhone, iphone 5s, Grade G,8.0
+LcdPhone, iphone 5, Grade A,0.5
+LcdPhone, iphone 5, Grade B,0.2
+LcdPhone, iphone 5, Grade G,8.0
+LcdPhone, iphone 5c, Grade A,0.5
+LcdPhone, iphone 5c, Grade B,0.2
+LcdPhone, iphone 5c, Grade G,8.0
+LcdPhone, ipad air 2, Grade A,10.0
+LcdPhone, ipad air 2, Grade B,5.0
+LcdPhone, ipad mini 4, Grade A,10.0
+LcdPhone, ipad mini 4, Grade B,5.0
+LcdPhone, ipad pro 9.7, Grade A,10.0
+LcdPhone, ipad pro 9.7, Grade B,5.0
+LcdPhone, ipad pro 10.5, Grade A,10.0
+LcdPhone, ipad pro 10.5, Grade B,5.0
+LcdPhone, ipad pro 11, Grade A,10.0
+LcdPhone, ipad pro 11, Grade B,5.0
+LcdPhone, ipad pro 12.9, Grade A,20.0
+LcdPhone, ipad pro 12.9, Grade B,10.0
+LcdPhone, samsung a22/a32 lte/a42/a52/a72, Grade A,10.0
+LcdPhone, samsung a22/a32 lte/a42/a52/a72, Grade B,5.0
+LcdPhone, samsung a22/a32 lte/a42/a52/a72, Grade G,1.0
+LcdPhone, samsung a31/a41/a51/a71, Grade A,9.0
+LcdPhone, samsung a31/a41/a51/a71, Grade B,4.0
+LcdPhone, samsung a31/a41/a51/a71, Grade G,1.0
+LcdPhone, samsung a80/a70/a50/a40/a30, Grade A,8.0
+LcdPhone, samsung a80/a70/a50/a40/a30, Grade B,4.0
+LcdPhone, samsung a80/a70/a50/a40/a30, Grade G,1.0
+LcdPhone, samsung s23/s22/s21/s20/note20, Grade A,40.0
+LcdPhone, samsung s23/s22/s21/s20/note20, Grade B,15.0
+LcdPhone, samsung s23/s22/s21/s20/note20, Grade G,1.0
+LcdPhone, samsungs23u/s22u/s21u/s20u/note20u, Grade A,80.0
+LcdPhone, samsungs23u/s22u/s21u/s20u/note20u, Grade B,30.0
+LcdPhone, samsungs23u/s22u/s21u/s20u/note20u, Grade G,1.0
+LcdPhone, samsungs23+/s22+/s21+/s20+, Grade A,60.0
+LcdPhone, samsungs23+/s22+/s21+/s20+, Grade B,20.0
+LcdPhone, samsungs23+/s22+/s21+/s20+, Grade G,1.0
+LcdPhone, samsung s10+/s10/note10+/note10, Grade A,30.0
+LcdPhone, samsung s10+/s10/note10+/note10, Grade B,15.0
+LcdPhone, samsung s10+/s10/note10+/note10, Grade G,1.0
+LcdPhone, samsung s9+/s9/s8+/s8/note9/note8, Grade A,15.0
+LcdPhone, samsung s9+/s9/s8+/s8/note9/note8, Grade B,5.0
+LcdPhone, samsung s9+/s9/s8+/s8/note9/note8, Grade G,1.0
+LcdPhone, samsung s21fe/s20fe/s10e, Grade A,15.0
+LcdPhone, samsung s21fe/s20fe/s10e, Grade B,5.0
+LcdPhone, samsung s21fe/s20fe/s10e, Grade G,1.0
+LcdPhone, samsung s7edge, Grade A,8.0
+LcdPhone, samsung s7edge, Grade B,5.0
+LcdPhone, samsung s7edge, Grade G,1.0
+LcdPhone, samsung fold 4 /fold 3, Grade A,100.0
+LcdPhone, samsung fold 4 /fold 3, Grade B,50.0
+LcdPhone, samsung fold 4 /fold 3, Grade G,1.0
+LcdPhone, samsungfold 2 / fold 1, Grade A,80.0
+LcdPhone, samsungfold 2 / fold 1, Grade B,40.0
+LcdPhone, samsungfold 2 / fold 1, Grade G,1.0
+LcdPhone, samsung flip 4 /flip 3, Grade A,60.0
+LcdPhone, samsung flip 4 /flip 3, Grade B,30.0
+LcdPhone, samsung flip 4 /flip 3, Grade G,1.0
+LcdPhone, samsungflip 2 / flip 1, Grade A,30.0
+LcdPhone, samsungflip 2 / flip 1, Grade B,15.0
+LcdPhone, samsungflip 2 / flip 1, Grade G,1.0
+LcdPhone, huawei p40 pro, Grade A,40.0
+LcdPhone, huawei p40 pro, Grade B,15.0
+LcdPhone, huawei p40 pro, Grade G,1.0
+LcdPhone, huawei p30 pro, Grade A,10.0
+LcdPhone, huawei p30 pro, Grade B,5.0
+LcdPhone, huawei p30 pro, Grade G,1.0
+LcdPhone, huawei p20 pro, Grade A,8.0
+LcdPhone, huawei p20 pro, Grade B,4.0
+LcdPhone, huawei p20 pro, Grade G,1.0
+LcdPhone, huawei mate 20 pro, Grade A,10.0
+LcdPhone, huawei mate 20 pro, Grade B,5.0
+LcdPhone, huawei mate 20 pro, Grade G,1.0
+RecycleMonLcd, Samsung Galaxy S23 Ultra (S918B), GRADE A,85.0
+RecycleMonLcd, Samsung Galaxy S23+ (S916B), GRADE A,40.0
+RecycleMonLcd, Samsung Galaxy S23 (S911B), GRADE A,40.0
+RecycleMonLcd, Samsung Galaxy S22 Ultra (S908B), GRADE A,85.0
+RecycleMonLcd, Samsung Galaxy S22+ (S906B), GRADE A,40.0
+RecycleMonLcd, Samsung Galaxy S21 (G991B), GRADE A,45.0
+RecycleMonLcd, Samsung Galaxy S21 FE (G990B), GRADE A,40.0
+RecycleMonLcd, Samsung Galaxy S10 5G (G977B), GRADE A,55.0
+RecycleMonLcd, Samsung Galaxy S8 Active (G892A), GRADE A,12.0
+RecycleMonLcd, Samsung Galaxy A90 5G (A908B), GRADE A,23.0
+RecycleMonLcd, Samsung Galaxy A80 (A805F), GRADE A,17.0
+RecycleMonLcd, Samsung Galaxy A71 5G (A716F), GRADE A,16.0
+RecycleMonLcd, Samsung Galaxy A53 5G (A536B / A536E), GRADE A,13.0
+RecycleMonLcd, Samsung Galaxy A52S 5G (A528B), GRADE A,20.0
+RecycleMonLcd, Samsung Galaxy A52 5G (A526B), GRADE A,21.0
+RecycleMonLcd, Samsung Galaxy A52 4G (A525F), GRADE A,20.0
+RecycleMonLcd, Samsung Galaxy A51 5G (A516B), GRADE A,13.0
+RecycleMonLcd, Samsung Galaxy A50S (A507F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy A33 5G (A336B), GRADE A,16.0
+RecycleMonLcd, Samsung Galaxy A32 5G (A326B), GRADE A,16.0
+RecycleMonLcd, Samsung Galaxy A22 5G (A226B), GRADE A,19.0
+RecycleMonLcd, Samsung Galaxy A22 4G (A225F), GRADE A,19.0
+RecycleMonLcd, Samsung Galaxy A13 (A135F / A137F / A136B), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy A12 (A127F), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy A02s (A025F / A025G), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy A9 2016 (A900F), GRADE A,20.0
+RecycleMonLcd, Samsung Galaxy A8+ 2018 (A730F), GRADE A,12.0
+RecycleMonLcd, Samsung Galaxy A8 (A800F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy A7 2017 (A720F), GRADE A,12.0
+RecycleMonLcd, Samsung Galaxy A7 2016 (A710F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy A7 2015 (A700F), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy A6+ 2018 (A605F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy A6 (A600F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy A3 2017 (A320F), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy Z Fold5 (F946B), GRADE A,186.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold5 (F946B), GRADE A,32.0
+RecycleMonLcd, Samsung Galaxy Z Fold4 (F936B), GRADE A,186.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold4 (F936B), GRADE A,32.0
+RecycleMonLcd, Samsung Galaxy Z Fold3 (F926B), GRADE A,163.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold3 (F926B), GRADE A,32.0
+RecycleMonLcd, Samsung Galaxy Z Fold2 (F916B), GRADE A,144.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold2 (F916B), GRADE A,29.0
+RecycleMonLcd, Samsung Galaxy Z Fold (F900F), GRADE A,121.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold (F900F), GRADE A,7.0
+RecycleMonLcd, Samsung Galaxy Z Flip5 (F731B), GRADE A,126.0
+RecycleMonLcd, Samsung Galaxy Z Flip4 (F721B), GRADE A,126.0
+RecycleMonLcd, Samsung Galaxy Z Flip3 (F711B), GRADE A,102.0
+RecycleMonLcd, Samsung Galaxy Z Flip 5G (F707B), GRADE A,74.0
+RecycleMonLcd, Samsung Galaxy Z Flip 4G (F700F), GRADE A,74.0
+RecycleMonLcd, Samsung Galaxy J8 (J810F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy J8+ (J805F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy J8 2018 (J800F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy J7 Duo (J720F), GRADE A,4.0
+RecycleMonLcd, Samsung Galaxy J7 2018 (J710F), GRADE A,8.0
+RecycleMonLcd, Samsung Galaxy J7 (J701F), GRADE A,5.0
+RecycleMonLcd, Samsung Galaxy J7 (J700F), GRADE A,7.0
+RecycleMonLcd, Samsung Galaxy J5 2016 (J510F), GRADE A,5.0
+RecycleMonLcd, Samsung Galaxy J4 (J400), GRADE A,5.0
+RecycleMonLcd, Samsung Galaxy J3 Pro (J320F), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy J2 Pro (J250F), GRADE A,6.0
+RecycleMonLcd, Samsung Galaxy J2 (J200F), GRADE A,8.0
+RecycleMonLcd, Samsung Galaxy J1 Ace (J110F), GRADE A,4.0
+RecycleMonLcd, Samsung Galaxy C9 Pro (C900F), GRADE A,20.0
+RecycleMonLcd, Samsung Galaxy C7 (C700F), GRADE A,14.0
+RecycleMonLcd, Samsung Galaxy M53 (M536B), GRADE A,23.0
+RecycleMonLcd, Samsung Galaxy M52 5G (M526B), GRADE A,22.0
+RecycleMonLcd, Samsung Galaxy M51 (M515F), GRADE A,16.0
+RecycleMonLcd, Samsung Galaxy M32 (M325F), GRADE A,13.0
+RecycleMonLcd, Samsung Galaxy M31S (M317), GRADE A,18.0
+RecycleMonLcd, Samsung Galaxy M31 (M315), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy M30S (M307F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy M22 (M225F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy M21S (F415F), GRADE A,11.0
+RecycleMonLcd, Rachat d'ecrans full broken et ecrans generiques au kilogramme, GRADE A,1.0
+RecycleMonLcd, Rachat de cartes mères. connectiques et cameras de smartphones au kilogramme, GRADE A,5.5
+RecycleMonLcd, Rachat de telephones et tablettes casses au kilogramme sans batterie, GRADE A,2.5
+RecycleMonLcd, Samsung Galaxy S23 Ultra (S918B), GRADE A,85.0
+RecycleMonLcd, Samsung Galaxy S23+ (S916B), GRADE A,40.0
+RecycleMonLcd, Samsung Galaxy S23 (S911B), GRADE A,40.0
+RecycleMonLcd, Samsung Galaxy S22 Ultra (S908B), GRADE A,85.0
+RecycleMonLcd, Samsung Galaxy S22+ (S906B), GRADE A,40.0
+RecycleMonLcd, Samsung Galaxy S21 (G991B), GRADE A,45.0
+RecycleMonLcd, Samsung Galaxy S21 FE (G990B), GRADE A,40.0
+RecycleMonLcd, Samsung Galaxy S10 5G (G977B), GRADE A,55.0
+RecycleMonLcd, Samsung Galaxy S8 Active (G892A), GRADE A,12.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold5 (F946B), GRADE A,32.0
+RecycleMonLcd, Samsung Galaxy Z Fold4 (F936B), GRADE A,186.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold4 (F936B), GRADE A,32.0
+RecycleMonLcd, Samsung Galaxy Z Fold3 (F926B), GRADE A,163.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold3 (F926B), GRADE A,32.0
+RecycleMonLcd, Samsung Galaxy Z Fold2 (F916B), GRADE A,144.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold2 (F916B), GRADE A,29.0
+RecycleMonLcd, Samsung Galaxy Z Fold (F900F), GRADE A,121.0
+RecycleMonLcd, exterieur Samsung Galaxy Z Fold (F900F), GRADE A,7.0
+RecycleMonLcd, Samsung Galaxy Z Flip5 (F731B), GRADE A,126.0
+RecycleMonLcd, Samsung Galaxy Z Flip4 (F721B), GRADE A,126.0
+RecycleMonLcd, Samsung Galaxy Z Flip3 (F711B), GRADE A,102.0
+RecycleMonLcd, Samsung Galaxy Z Flip 5G (F707B), GRADE A,74.0
+RecycleMonLcd, Samsung Galaxy Z Flip 4G (F700F), GRADE A,74.0
+RecycleMonLcd, Samsung Galaxy A90 5G (A908B), GRADE A,23.0
+RecycleMonLcd, Samsung Galaxy A80 (A805F), GRADE A,17.0
+RecycleMonLcd, Samsung Galaxy A71 5G (A716F), GRADE A,16.0
+RecycleMonLcd, Samsung Galaxy A53 5G (A536B / A536E), GRADE A,13.0
+RecycleMonLcd, Samsung Galaxy A52S 5G (A528B), GRADE A,20.0
+RecycleMonLcd, Samsung Galaxy A52 5G (A526B), GRADE A,21.0
+RecycleMonLcd, Samsung Galaxy A52 4G (A525F), GRADE A,20.0
+RecycleMonLcd, Samsung Galaxy A51 5G (A516B), GRADE A,13.0
+RecycleMonLcd, Samsung Galaxy A50S (A507F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy A33 5G (A336B), GRADE A,16.0
+RecycleMonLcd, Samsung Galaxy A32 5G (A326B), GRADE A,16.0
+RecycleMonLcd, Samsung Galaxy A22 5G (A226B), GRADE A,19.0
+RecycleMonLcd, Samsung Galaxy A22 4G (A225F), GRADE A,19.0
+RecycleMonLcd, Samsung Galaxy A13 (A135F / A137F / A136B), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy A12 (A127F), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy A02s (A025F / A025G), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy A9 2016 (A900F), GRADE A,20.0
+RecycleMonLcd, Samsung Galaxy A8+ 2018 (A730F), GRADE A,12.0
+RecycleMonLcd, Samsung Galaxy A8 (A800F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy A7 2017 (A720F), GRADE A,12.0
+RecycleMonLcd, Samsung Galaxy A7 2016 (A710F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy A7 2015 (A700F), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy A6+ 2018 (A605F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy A6 (A600F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy A3 2017 (A320F), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy J8 (J810F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy J8+ (J805F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy J8 2018 (J800F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy J7 Duo (J720F), GRADE A,4.0
+RecycleMonLcd, Samsung Galaxy J7 2018 (J710F), GRADE A,8.0
+RecycleMonLcd, Samsung Galaxy J7 (J701F), GRADE A,5.0
+RecycleMonLcd, Samsung Galaxy J7 (J700F), GRADE A,7.0
+RecycleMonLcd, Samsung Galaxy J5 2016 (J510F), GRADE A,5.0
+RecycleMonLcd, Samsung Galaxy J4 (J400), GRADE A,5.0
+RecycleMonLcd, Samsung Galaxy J3 Pro (J320F), GRADE A,2.0
+RecycleMonLcd, Samsung Galaxy J2 Pro (J250F), GRADE A,6.0
+RecycleMonLcd, Samsung Galaxy J2 (J200F), GRADE A,8.0
+RecycleMonLcd, Samsung Galaxy J1 Ace (J110F), GRADE A,4.0
+RecycleMonLcd, Samsung Galaxy C9 Pro (C900F), GRADE A,20.0
+RecycleMonLcd, Samsung Galaxy C7 (C700F), GRADE A,14.0
+RecycleMonLcd, Samsung Galaxy M53 (M536B), GRADE A,23.0
+RecycleMonLcd, Samsung Galaxy M52 5G (M526B), GRADE A,22.0
+RecycleMonLcd, Samsung Galaxy M51 (M515F), GRADE A,16.0
+RecycleMonLcd, Samsung Galaxy M32 (M325F), GRADE A,13.0
+RecycleMonLcd, Samsung Galaxy M31S (M317), GRADE A,18.0
+RecycleMonLcd, Samsung Galaxy M31 (M315), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy M30S (M307F), GRADE A,10.0
+RecycleMonLcd, Samsung Galaxy M22 (M225F), GRADE A,11.0
+RecycleMonLcd, Samsung Galaxy M21S (F415F), GRADE A,11.0

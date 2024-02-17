@@ -139,6 +139,9 @@ google,Pixel 3XL,B,smartgrade,2.3
 google,Pixel 3XL,C,smartgrade,0.0
 google,Pixel 3XL,D,smartgrade,0.0
 google,Pixel 3A,A,recyclemonlcd,5.0
+huawei,Mate 50,A,ispart,30.0
+huawei,Mate 50E,A,ispart,30.0
+huawei,Mate 50 Pro,A,ispart,66.0
 huawei,Mate 40 Pro,A,ispart,45.0
 huawei,Mate 40 Pro,A,smartgrade,48.4
 huawei,Mate 40 Pro,A,paylcd,35.0
@@ -359,12 +362,15 @@ samsung,S23 Plus 5G (G916),Fully Broken,smartgrade,0.8
 samsung,S23 5G (G911),A,ispart,39.0
 samsung,S23 5G (G911),A,smartgrade,50.3
 samsung,S23 5G (G911),A,paylcd,35.0
+samsung,S23 5G (G911),A,lcdphone,40.0
 samsung,S23 5G (G911),B,smartgrade,45.2
+samsung,S23 5G (G911),B,lcdphone,15.0
 samsung,S23 5G (G911),C,smartgrade,28.2
 samsung,S23 5G (G911),D,smartgrade,18.4
 samsung,S23 5G (G911),E,smartgrade,0.0
 samsung,S23 5G (G911),F,smartgrade,0.0
 samsung,S23 5G (G911),G,smartgrade,4.3
+samsung,S23 5G (G911),G,lcdphone,1.0
 samsung,S23 5G (G911),Fully Broken,smartgrade,0.8
 samsung,S22 Ultra 5G (G908),A,ispart,89.0
 samsung,S22 Ultra 5G (G908),A,smartgrade,102.9
@@ -388,18 +394,19 @@ samsung,S22 Plus 5G (G906),G,smartgrade,4.3
 samsung,S22 Plus 5G (G906),Fully Broken,smartgrade,0.2
 samsung,S22 5G (G901),A,ispart,37.0
 samsung,S22 5G (G901),A,smartgrade,51.2
-samsung,S22 5G (G901),A,lcdphone,69.0
+samsung,S22 5G (G901),A,lcdphone,40.0
 samsung,S22 5G (G901),A,paylcd,35.0
 samsung,S22 5G (G901),A,recyclemonlcd,55.0
 samsung,S22 5G (G901),B,smartgrade,45.7
-samsung,S22 5G (G901),B,lcdphone,58.0
+samsung,S22 5G (G901),B,lcdphone,15.0
 samsung,S22 5G (G901),C,smartgrade,28.2
-samsung,S22 5G (G901),C,lcdphone,26.0
+samsung,S22 5G (G901),C,lcdphone,0.0
 samsung,S22 5G (G901),D,smartgrade,15.9
-samsung,S22 5G (G901),D,lcdphone,15.0
+samsung,S22 5G (G901),D,lcdphone,0.0
 samsung,S22 5G (G901),E,smartgrade,0.0
 samsung,S22 5G (G901),F,smartgrade,0.0
 samsung,S22 5G (G901),G,smartgrade,4.3
+samsung,S22 5G (G901),G,lcdphone,1.0
 samsung,S22 5G (G901),Fully Broken,smartgrade,0.2
 samsung,S21 Ultra 5G (G998),A,ispart,76.0
 samsung,S21 Ultra 5G (G998),A,smartgrade,81.7
@@ -443,7 +450,9 @@ samsung,S21 FE 5G (G78),Fully Broken,smartgrade,0.0
 samsung,S21 5G (G991),A,ispart,35.0
 samsung,S21 5G (G991),A,smartgrade,47.2
 samsung,S21 5G (G991),A,paylcd,30.0
+samsung,S21 5G (G991),A,lcdphone,40.0
 samsung,S21 5G (G991),B,smartgrade,42.0
+samsung,S21 5G (G991),B,lcdphone,15.0
 samsung,S21 5G (G991),C,smartgrade,24.1
 samsung,S21 5G (G991),D,smartgrade,15.1
 samsung,S21 5G (G991),E,smartgrade,0.0
@@ -492,18 +501,19 @@ samsung,S20 FE 5G (G781) R8,G,smartgrade,4.3
 samsung,S20 FE 5G (G781) R8,Fully Broken,smartgrade,0.0
 samsung,S20 5G (G981),A,ispart,39.0
 samsung,S20 5G (G981),A,smartgrade,57.7
-samsung,S20 5G (G981),A,lcdphone,67.0
+samsung,S20 5G (G981),A,lcdphone,40.0
 samsung,S20 5G (G981),A,paylcd,45.0
 samsung,S20 5G (G981),A,recyclemonlcd,52.0
 samsung,S20 5G (G981),B,smartgrade,55.1
-samsung,S20 5G (G981),B,lcdphone,55.0
+samsung,S20 5G (G981),B,lcdphone,15.0
 samsung,S20 5G (G981),C,smartgrade,34.0
-samsung,S20 5G (G981),C,lcdphone,37.0
+samsung,S20 5G (G981),C,lcdphone,0.0
 samsung,S20 5G (G981),D,smartgrade,15.9
-samsung,S20 5G (G981),D,lcdphone,22.0
+samsung,S20 5G (G981),D,lcdphone,0.0
 samsung,S20 5G (G981),E,smartgrade,11.8
 samsung,S20 5G (G981),F,smartgrade,6.8
 samsung,S20 5G (G981),G,smartgrade,4.3
+samsung,S20 5G (G981),G,lcdphone,1.0
 samsung,S20 5G (G981),Fully Broken,smartgrade,0.0
 samsung,S10 Plus (G975),A,ispart,57.0
 samsung,S10 Plus (G975),A,smartgrade,68.8
@@ -741,17 +751,18 @@ samsung,Note 20 Ultra 5G,G,smartgrade,4.3
 samsung,Note 20 Ultra 5G,Fully Broken,smartgrade,0.8
 samsung,Note 20 5G,A,ispart,35.0
 samsung,Note 20 5G,A,smartgrade,42.9
-samsung,Note 20 5G,A,lcdphone,48.0
+samsung,Note 20 5G,A,lcdphone,40.0
 samsung,Note 20 5G,A,paylcd,35.0
 samsung,Note 20 5G,B,smartgrade,41.2
-samsung,Note 20 5G,B,lcdphone,37.0
+samsung,Note 20 5G,B,lcdphone,15.0
 samsung,Note 20 5G,C,smartgrade,25.8
-samsung,Note 20 5G,C,lcdphone,28.0
+samsung,Note 20 5G,C,lcdphone,0.0
 samsung,Note 20 5G,D,smartgrade,17.6
-samsung,Note 20 5G,D,lcdphone,15.0
+samsung,Note 20 5G,D,lcdphone,0.0
 samsung,Note 20 5G,E,smartgrade,0.0
 samsung,Note 20 5G,F,smartgrade,0.0
 samsung,Note 20 5G,G,smartgrade,4.3
+samsung,Note 20 5G,G,lcdphone,1.0
 samsung,Note 20 5G,Fully Broken,smartgrade,0.0
 samsung,Note 10+,A,ispart,74.0
 samsung,Note 10+,A,smartgrade,87.2
@@ -884,12 +895,15 @@ samsung,A9 2016 (A900),Fully Broken,smartgrade,0.0
 samsung,A80 (A805),A,ispart,17.0
 samsung,A80 (A805),A,smartgrade,21.7
 samsung,A80 (A805),A,paylcd,8.0
+samsung,A80 (A805),A,lcdphone,8.0
 samsung,A80 (A805),B,smartgrade,19.4
+samsung,A80 (A805),B,lcdphone,4.0
 samsung,A80 (A805),C,smartgrade,11.3
 samsung,A80 (A805),D,smartgrade,8.1
 samsung,A80 (A805),E,smartgrade,0.0
 samsung,A80 (A805),F,smartgrade,0.0
 samsung,A80 (A805),G,smartgrade,2.5
+samsung,A80 (A805),G,lcdphone,1.0
 samsung,A80 (A805),Fully Broken,smartgrade,0.0
 samsung,A8 (A800),A,ispart,10.0
 samsung,A8 (A800),A,smartgrade,13.9
@@ -943,15 +957,18 @@ samsung,A7 2015 (A700),F,smartgrade,0.0
 samsung,A7 2015 (A700),G,smartgrade,0.7
 samsung,A7 2015 (A700),Fully Broken,smartgrade,0.0
 samsung,A72 (A725),A,ispart,20.0
+samsung,A72 (A725),A,lcdphone,10.0
 samsung,A72 (A725),A,smartgrade,24.3
 samsung,A72 (A725),A,paylcd,12.0
 samsung,A72 (A725),A,recyclemonlcd,9.0
 samsung,A72 (A725),B,smartgrade,20.4
+samsung,A72 (A725),B,lcdphone,5.0
 samsung,A72 (A725),C,smartgrade,13.6
 samsung,A72 (A725),D,smartgrade,9.7
 samsung,A72 (A725),E,smartgrade,0.0
 samsung,A72 (A725),F,smartgrade,0.0
 samsung,A72 (A725),G,smartgrade,2.5
+samsung,A72 (A725),G,lcdphone,1.0
 samsung,A72 (A725),Fully Broken,smartgrade,0.0
 samsung,A71 5G (A716),A,ispart,16.0
 samsung,A71 5G (A716),A,smartgrade,20.7
@@ -966,23 +983,29 @@ samsung,A71 (A715),A,ispart,17.0
 samsung,A71 (A715),A,smartgrade,20.7
 samsung,A71 (A715),A,paylcd,14.0
 samsung,A71 (A715),A,recyclemonlcd,12.0
+samsung,A71 (A715),A,lcdphone,9.0
 samsung,A71 (A715),B,smartgrade,17.4
+samsung,A71 (A715),B,lcdphone,4.0
 samsung,A71 (A715),C,smartgrade,9.3
 samsung,A71 (A715),D,smartgrade,6.1
 samsung,A71 (A715),E,smartgrade,0.0
 samsung,A71 (A715),F,smartgrade,0.0
 samsung,A71 (A715),G,smartgrade,2.5
+samsung,A71 (A715),G,lcdphone,1.0
 samsung,A71 (A715),Fully Broken,smartgrade,0.0
 samsung,A70 (A705),A,ispart,16.0
 samsung,A70 (A705),A,smartgrade,20.7
 samsung,A70 (A705),A,paylcd,14.0
+samsung,A70 (A705),A,lcdphone,8.0
 samsung,A70 (A705),A,recyclemonlcd,14.0
 samsung,A70 (A705),B,smartgrade,18.4
+samsung,A70 (A705),B,lcdphone,4.0
 samsung,A70 (A705),C,smartgrade,9.3
 samsung,A70 (A705),D,smartgrade,6.1
 samsung,A70 (A705),E,smartgrade,0.0
 samsung,A70 (A705),F,smartgrade,0.0
 samsung,A70 (A705),G,smartgrade,2.5
+samsung,A70 (A705),G,lcdphone,1.0
 samsung,A70 (A705),Fully Broken,smartgrade,0.0
 samsung,A6+ 2018 (A605),A,ispart,9.0
 samsung,A6+ 2018 (A605),A,smartgrade,13.6
@@ -1060,23 +1083,29 @@ samsung,A52 5G (A526),F,smartgrade,0.0
 samsung,A52 5G (A526),G,smartgrade,2.5
 samsung,A52 5G (A526),Fully Broken,smartgrade,0.0
 samsung,A52 (A525),A,smartgrade,24.9
+samsung,A52 (A525),A,lcdphone,10.0
 samsung,A52 (A525),A,paylcd,12.0
 samsung,A52 (A525),B,smartgrade,22.3
+samsung,A52 (A525),B,lcdphone,5.0
 samsung,A52 (A525),C,smartgrade,13.6
 samsung,A52 (A525),D,smartgrade,8.9
 samsung,A52 (A525),E,smartgrade,0.0
 samsung,A52 (A525),F,smartgrade,0.0
 samsung,A52 (A525),G,smartgrade,2.5
+samsung,A52 (A525),G,lcdphone,1.0
 samsung,A52 (A525),Fully Broken,smartgrade,0.0
 samsung,A51 (A515),A,ispart,12.0
+samsung,A51 (A515),A,lcdphone,9.0
 samsung,A51 (A515),A,smartgrade,17.2
 samsung,A51 (A515),A,paylcd,12.0
 samsung,A51 (A515),A,recyclemonlcd,12.0
 samsung,A51 (A515),B,smartgrade,13.8
+samsung,A51 (A515),B,lcdphone,4.0
 samsung,A51 (A515),C,smartgrade,8.1
 samsung,A51 (A515),D,smartgrade,4.6
 samsung,A51 (A515),E,smartgrade,0.0
 samsung,A51 (A515),F,smartgrade,0.0
+samsung,A51 (A515),B,lcdphone,1.0
 samsung,A51 (A515),G,smartgrade,2.5
 samsung,A51 (A515),Fully Broken,smartgrade,0.0
 samsung,A5 2016 (A510),A,ispart,6.0
@@ -1122,45 +1151,57 @@ samsung,A50 (A505),A,ispart,10.0
 samsung,A50 (A505),A,smartgrade,15.2
 samsung,A50 (A505),A,paylcd,12.0
 samsung,A50 (A505),A,recyclemonlcd,8.0
+samsung,A50 (A505),A,lcdphone,8.0
 samsung,A50 (A505),B,smartgrade,11.4
+samsung,A50 (A505),B,lcdphone,4.0
 samsung,A50 (A505),C,smartgrade,7.4
 samsung,A50 (A505),D,smartgrade,5.6
 samsung,A50 (A505),E,smartgrade,0.0
 samsung,A50 (A505),F,smartgrade,0.0
 samsung,A50 (A505),G,smartgrade,2.5
+samsung,A50 (A505),G,lcdphone,1.0
 samsung,A50 (A505),Fully Broken,smartgrade,0.0
 samsung,A41 (A415),A,ispart,6.0
+samsung,A41 (A415),A,lcdphone,9.0
 samsung,A41 (A415),A,smartgrade,10.1
 samsung,A41 (A415),A,paylcd,8.0
 samsung,A41 (A415),A,recyclemonlcd,8.0
+samsung,A41 (A415),B,lcdphone,9.0
 samsung,A41 (A415),B,smartgrade,6.7
 samsung,A41 (A415),C,smartgrade,3.3
 samsung,A41 (A415),D,smartgrade,1.6
 samsung,A41 (A415),E,smartgrade,0.0
 samsung,A41 (A415),F,smartgrade,0.0
 samsung,A41 (A415),G,smartgrade,2.5
+samsung,A41 (A415),G,lcdphone,1.0
 samsung,A41 (A415),Fully Broken,smartgrade,0.0
 samsung,A42 5G (A426),A,ispart,9.0
+samsung,A42 5G (A426),A,lcdphone,10.0
 samsung,A42 5G (A426),A,smartgrade,14.3
 samsung,A42 5G (A426),A,paylcd,8.0
 samsung,A42 5G (A426),A,recyclemonlcd,8.0
+samsung,A42 5G (A426),B,lcdphone,5.0
 samsung,A42 5G (A426),B,smartgrade,11.4
 samsung,A42 5G (A426),C,smartgrade,6.9
 samsung,A42 5G (A426),D,smartgrade,3.6
 samsung,A42 5G (A426),E,smartgrade,0.0
 samsung,A42 5G (A426),F,smartgrade,0.0
 samsung,A42 5G (A426),G,smartgrade,2.5
+samsung,A42 5G (A426),G,lcdphone,1.0
 samsung,A42 5G (A426),Fully Broken,smartgrade,0.0
 samsung,A40 (A405),A,ispart,7.0
 samsung,A40 (A405),A,smartgrade,16.1
 samsung,A40 (A405),A,paylcd,8.0
+samsung,A40 (A405),A,lcdphone,8.0
 samsung,A40 (A405),A,recyclemonlcd,8.0
+samsung,A40 (A405),B,lcdphone,4.0
 samsung,A40 (A405),B,smartgrade,12.4
 samsung,A40 (A405),C,smartgrade,5.7
 samsung,A40 (A405),D,smartgrade,4.2
 samsung,A40 (A405),E,smartgrade,0.0
 samsung,A40 (A405),F,smartgrade,0.0
 samsung,A40 (A405),G,smartgrade,2.5
+samsung,A40 (A405),G,lcdphone,1.0
 samsung,A40 (A405),Fully Broken,smartgrade,0.0
 samsung,A3 2017 (A320),A,ispart,1.0
 samsung,A3 2017 (A320),A,smartgrade,3.0
@@ -1172,14 +1213,17 @@ samsung,A3 2017 (A320),F,smartgrade,0.0
 samsung,A3 2017 (A320),G,smartgrade,1.3
 samsung,A3 2017 (A320),Fully Broken,smartgrade,0.0
 samsung,A31 (A315),A,ispart,11.0
+samsung,A31 (A315),A,lcdphone,9.0
 samsung,A31 (A315),A,smartgrade,20.7
 samsung,A31 (A315),A,recyclemonlcd,8.0
 samsung,A31 (A315),B,smartgrade,18.0
+samsung,A31 (A315),B,lcdphone,4.0
 samsung,A31 (A315),C,smartgrade,10.5
 samsung,A31 (A315),D,smartgrade,8.1
 samsung,A31 (A315),E,smartgrade,0.0
 samsung,A31 (A315),F,smartgrade,0.0
 samsung,A31 (A315),G,smartgrade,2.5
+samsung,A31 (A315),G,lcdphone,1.0
 samsung,A31 (A315),Fully Broken,smartgrade,0.0
 samsung,A3 2016 (A310),A,ispart,4.0
 samsung,A3 2016 (A310),A,smartgrade,8.3
@@ -1196,22 +1240,28 @@ samsung,A32 (A325),A,ispart,11.0
 samsung,A32 (A325),A,smartgrade,20.7
 samsung,A32 (A325),A,paylcd,5.0
 samsung,A32 (A325),A,recyclemonlcd,8.0
+samsung,A32 (A325),A,lcdphone,10.0
 samsung,A32 (A325),B,smartgrade,17.4
+samsung,A32 (A325),B,lcdphone,5.0
 samsung,A32 (A325),C,smartgrade,9.3
 samsung,A32 (A325),D,smartgrade,5.2
 samsung,A32 (A325),E,smartgrade,0.0
 samsung,A32 (A325),F,smartgrade,0.0
 samsung,A32 (A325),G,smartgrade,2.5
+samsung,A32 (A325),G,lcdphone,1.0
 samsung,A32 (A325),Fully Broken,smartgrade,0.0
 samsung,A30S (A307),A,ispart,9.0
 samsung,A30S (A307),A,smartgrade,13.4
 samsung,A30S (A307),A,recyclemonlcd,8.0
+samsung,A30S (A307),A,lcdphone,8.0
 samsung,A30S (A307),B,smartgrade,10.4
+samsung,A30S (A307),B,lcdphone,4.0
 samsung,A30S (A307),C,smartgrade,5.5
 samsung,A30S (A307),D,smartgrade,3.8
 samsung,A30S (A307),E,smartgrade,0.0
 samsung,A30S (A307),F,smartgrade,0.0
 samsung,A30S (A307),G,smartgrade,2.5
+samsung,A30S (A307),G,lcdphone,1.0
 samsung,A30S (A307),Fully Broken,smartgrade,0.0
 samsung,A30 (A305),A,ispart,10.0
 samsung,A30 (A305),A,smartgrade,14.2
@@ -1224,13 +1274,16 @@ samsung,A30 (A305),F,smartgrade,0.0
 samsung,A30 (A305),G,smartgrade,2.5
 samsung,A30 (A305),Fully Broken,smartgrade,0.0
 samsung,A22 4G (A225),A,ispart,19.0
+samsung,A22 4G (A225),A,lcdphone,10.0
 samsung,A22 4G (A225),A,smartgrade,23.5
 samsung,A22 4G (A225),B,smartgrade,21.2
+samsung,A22 4G (A225),B,lcdphone,5.0
 samsung,A22 4G (A225),C,smartgrade,14.9
 samsung,A22 4G (A225),D,smartgrade,9.8
 samsung,A22 4G (A225),E,smartgrade,0.0
 samsung,A22 4G (A225),F,smartgrade,0.0
 samsung,A22 4G (A225),G,smartgrade,2.5
+samsung,A22 4G (A225),G,lcdphone,1.0
 samsung,A22 4G (A225),Fully Broken,smartgrade,0.0
 samsung,A20 (A205),A,ispart,4.0
 samsung,A20 (A205),A,smartgrade,8.3
@@ -1408,6 +1461,7 @@ samsung,C7 (C700),E,smartgrade,0.0
 samsung,C7 (C700),F,smartgrade,0.0
 samsung,C7 (C700),G,smartgrade,2.5
 samsung,C7 (C700),Fully Broken,smartgrade,0.0
+samsung,M546,A,ispart,25.0
 samsung,M536,A,ispart,25.0
 samsung,M536,A,smartgrade,29.5
 samsung,M536,B,smartgrade,28.8
@@ -1510,7 +1564,7 @@ samsung,Fold 3 (F926) Outer screen,A,ispart,27.0
 samsung,Fold 2 (F916) Outer screen,A,ispart,24.0
 apple,iPhone 14 Pro Max,A,ispart,139.0
 apple,iPhone 14 Pro Max,A,smartgrade,157.6
-apple,iPhone 14 Pro Max,A,lcdphone,160.0
+apple,iPhone 14 Pro Max,A,lcdphone,100.0
 apple,iPhone 14 Pro Max,A,paylcd,110.0
 apple,iPhone 14 Pro Max,A,recyclemonlcd,125.0
 apple,iPhone 14 Pro Max,B,smartgrade,121.5
@@ -1534,7 +1588,7 @@ apple,iPhone 14 Pro,Aftermarket,smartgrade,0.0
 apple,iPhone 14 Pro,Fully Broken,smartgrade,4.5
 apple,iPhone 14 Plus,A,ispart,62.0
 apple,iPhone 14 Plus,A,smartgrade,71.1
-apple,iPhone 14 Plus,A,lcdphone,80.0
+apple,iPhone 14 Plus,A,lcdphone,60.0
 apple,iPhone 14 Plus,A,paylcd,70.0
 apple,iPhone 14 Plus,A,recyclemonlcd,65.0
 apple,iPhone 14 Plus,B,smartgrade,56.4
@@ -1546,7 +1600,7 @@ apple,iPhone 14 Plus,Aftermarket,smartgrade,0.0
 apple,iPhone 14 Plus,Fully Broken,smartgrade,4.5
 apple,iPhone 14,A,ispart,62.0
 apple,iPhone 14,A,smartgrade,71.2
-apple,iPhone 14,A,lcdphone,70.0
+apple,iPhone 14,A,lcdphone,50.0
 apple,iPhone 14,A,paylcd,70.0
 apple,iPhone 14,A,recyclemonlcd,55.0
 apple,iPhone 14,B,smartgrade,56.4
@@ -1557,7 +1611,7 @@ apple,iPhone 14,G,smartgrade,16.5
 apple,iPhone 14,Aftermarket,smartgrade,0.0
 apple,iPhone 14,Fully Broken,smartgrade,4.5
 apple,iPhone 13 Pro Max,A,smartgrade,143.7
-apple,iPhone 13 Pro Max,A,lcdphone,140.0
+apple,iPhone 13 Pro Max,A,lcdphone,110.0
 apple,iPhone 13 Pro Max,A,paylcd,90.0
 apple,iPhone 13 Pro Max,A,recyclemonlcd,110.0
 apple,iPhone 13 Pro Max,B,smartgrade,117.0
@@ -1569,7 +1623,7 @@ apple,iPhone 13 Pro Max,Aftermarket,smartgrade,8.3
 apple,iPhone 13 Pro Max,Fully Broken,smartgrade,3.4
 apple,iPhone 13 Pro,A,ispart,113.0
 apple,iPhone 13 Pro,A,smartgrade,125.1
-apple,iPhone 13 Pro,A,lcdphone,115.0
+apple,iPhone 13 Pro,A,lcdphone,90.0
 apple,iPhone 13 Pro,A,paylcd,70.0
 apple,iPhone 13 Pro,A,recyclemonlcd,90.0
 apple,iPhone 13 Pro,B,smartgrade,103.4
@@ -1581,7 +1635,7 @@ apple,iPhone 13 Pro,Aftermarket,smartgrade,7.4
 apple,iPhone 13 Pro,Fully Broken,smartgrade,3.4
 apple,iPhone 13,A,ispart,42.0
 apple,iPhone 13,A,smartgrade,49.5
-apple,iPhone 13,A,lcdphone,55.0
+apple,iPhone 13,A,lcdphone,35.0
 apple,iPhone 13,A,paylcd,40.0
 apple,iPhone 13,A,recyclemonlcd,45.0
 apple,iPhone 13,B,smartgrade,42.0
@@ -1593,7 +1647,7 @@ apple,iPhone 13,Aftermarket,smartgrade,4.8
 apple,iPhone 13,Fully Broken,smartgrade,3.4
 apple,iPhone 13 Mini,A,ispart,51.0
 apple,iPhone 13 Mini,A,smartgrade,58.9
-apple,iPhone 13 Mini,A,lcdphone,50.0
+apple,iPhone 13 Mini,A,lcdphone,30.0
 apple,iPhone 13 Mini,A,paylcd,30.0
 apple,iPhone 13 Mini,A,recyclemonlcd,40.0
 apple,iPhone 13 Mini,B,smartgrade,45.6
@@ -1605,7 +1659,7 @@ apple,iPhone 13 Mini,Aftermarket,smartgrade,4.8
 apple,iPhone 13 Mini,Fully Broken,smartgrade,3.4
 apple,iPhone 12 Pro Max,A,ispart,57.0
 apple,iPhone 12 Pro Max,A,smartgrade,65.5
-apple,iPhone 12 Pro Max,A,lcdphone,70.0
+apple,iPhone 12 Pro Max,A,lcdphone,45.0
 apple,iPhone 12 Pro Max,A,paylcd,50.0
 apple,iPhone 12 Pro Max,A,recyclemonlcd,55.0
 apple,iPhone 12 Pro Max,B,smartgrade,53.7
@@ -1617,11 +1671,11 @@ apple,iPhone 12 Pro Max,Aftermarket,smartgrade,2.5
 apple,iPhone 12 Pro Max,Fully Broken,smartgrade,0.8
 apple,iPhone 12 Pro,A,ispart,23.0
 apple,iPhone 12 Pro,A,smartgrade,27.9
-apple,iPhone 12 Pro,A,lcdphone,40.0
+apple,iPhone 12 Pro,A,lcdphone,30.0
 apple,iPhone 12 Pro,A,paylcd,20.0
 apple,iPhone 12 Pro,A,recyclemonlcd,30.0
 apple,iPhone 12 Pro,B,smartgrade,22.4
-apple,iPhone 12 Pro,B,lcdphone,20.0
+apple,iPhone 12 Pro,B,lcdphone,15.0
 apple,iPhone 12 Pro,C,smartgrade,13.1
 apple,iPhone 12 Pro,D,smartgrade,5.8
 apple,iPhone 12 Pro,G,smartgrade,18.2
@@ -1641,11 +1695,11 @@ apple,iPhone 12 Mini,Aftermarket,smartgrade,2.5
 apple,iPhone 12 Mini,Fully Broken,smartgrade,0.8
 apple,iPhone 12,A,ispart,23.0
 apple,iPhone 12,A,smartgrade,27.9
-apple,iPhone 12,A,lcdphone,40.0
+apple,iPhone 12,A,lcdphone,30.0
 apple,iPhone 12,A,paylcd,20.0
 apple,iPhone 12,A,recyclemonlcd,30.0
 apple,iPhone 12,B,smartgrade,22.4
-apple,iPhone 12,B,lcdphone,20.0
+apple,iPhone 12,B,lcdphone,15.0
 apple,iPhone 12,C,smartgrade,13.1
 apple,iPhone 12,D,smartgrade,5.8
 apple,iPhone 12,G,smartgrade,18.2
@@ -1677,7 +1731,7 @@ apple,iPhone 11 Pro,Aftermarket,smartgrade,0.0
 apple,iPhone 11 Pro,Fully Broken,smartgrade,0.0
 apple,iPhone 11,A,ispart,2.0
 apple,iPhone 11,A,smartgrade,6.8
-apple,iPhone 11,A,lcdphone,6.0
+apple,iPhone 11,A,lcdphone,5.0
 apple,iPhone 11,A,paylcd,3.0
 apple,iPhone 11,A,recyclemonlcd,6.0
 apple,iPhone 11,B,smartgrade,6.8
@@ -1752,6 +1806,7 @@ apple,iPhone 8,A,smartgrade,1.1
 apple,iPhone 8,A,lcdphone,1.0
 apple,iPhone 8,A,paylcd,1.0
 apple,iPhone 8,A,recyclemonlcd,1.0
+apple,iPhone 8,A,ispart,0.0
 apple,iPhone 8,B,smartgrade,1.1
 apple,iPhone 8,B,lcdphone,0.5
 apple,iPhone 8,C,smartgrade,0.4
@@ -1775,6 +1830,7 @@ apple,iPhone 7,A,smartgrade,1.1
 apple,iPhone 7,A,lcdphone,1.0
 apple,iPhone 7,A,paylcd,0.5
 apple,iPhone 7,A,recyclemonlcd,1.0
+apple,iPhone 7,A,ispart,0.0
 apple,iPhone 7,B,smartgrade,1.1
 apple,iPhone 7,B,lcdphone,0.5
 apple,iPhone 7,C,smartgrade,0.4
@@ -1798,6 +1854,7 @@ apple,iPhone 6S,A,smartgrade,0.9
 apple,iPhone 6S,A,lcdphone,1.0
 apple,iPhone 6S,A,paylcd,1.0
 apple,iPhone 6S,A,recyclemonlcd,1.0
+apple,iPhone 6S,A,ispart,0.0
 apple,iPhone 6S,B,smartgrade,0.9
 apple,iPhone 6S,B,lcdphone,0.5
 apple,iPhone 6S,C,smartgrade,0.4
@@ -1809,6 +1866,7 @@ apple,iPhone 6 Plus,A,smartgrade,1.8
 apple,iPhone 6 Plus,A,lcdphone,2.0
 apple,iPhone 6 Plus,A,paylcd,1.0
 apple,iPhone 6 Plus,A,recyclemonlcd,2.0
+apple,iPhone 6 Plus,A,ispart,0.0
 apple,iPhone 6 Plus,B,smartgrade,1.8
 apple,iPhone 6 Plus,B,lcdphone,1.0
 apple,iPhone 6 Plus,C,smartgrade,1.2
@@ -1816,6 +1874,18 @@ apple,iPhone 6 Plus,D,smartgrade,0.0
 apple,iPhone 6 Plus,G,smartgrade,0.0
 apple,iPhone 6 Plus,Aftermarket,smartgrade,0.0
 apple,iPhone 6 Plus,Fully Broken,smartgrade,0.0
+apple,iPhone 6,A,smartgrade,0.2
+apple,iPhone 6,A,lcdphone,1.0
+apple,iPhone 6,A,paylcd,0.5
+apple,iPhone 6,A,recyclemonlcd,0.5
+apple,iPhone 6,A,ispart,0.0
+apple,iPhone 6,B,smartgrade,0.2
+apple,iPhone 6,B,lcdphone,0.5
+apple,iPhone 6,C,smartgrade,0.0
+apple,iPhone 6,D,smartgrade,0.0
+apple,iPhone 6,G,smartgrade,0.0
+apple,iPhone 6,Aftermarket,smartgrade,0.0
+apple,iPhone 6,Fully Broken,smartgrade,0.0
 apple,iPhone 5,A,lcdphone,0.5
 apple,iPhone 5,A,recyclemonlcd,0.5
 apple,iPhone 5,B,lcdphone,0.2
@@ -1830,7 +1900,7 @@ apple,iPhone 4 / 4s,A,recyclemonlcd,0.01
 apple,iPad Pro 12.9 2022,A,recyclemonlcd,25.0
 apple,iPad Pro 12.9 2021,A,ispart,25.0
 apple,iPad Pro 12.9 2021,A,smartgrade,30.7
-apple,iPad Pro 12.9 2021,A,lcdphone,25.0
+apple,iPad Pro 12.9 2021,A,lcdphone,20.0
 apple,iPad Pro 12.9 2021,A,paylcd,15.0
 apple,iPad Pro 12.9 2021,A,recyclemonlcd,25.0
 apple,iPad Pro 12.9 2021,B,smartgrade,11.0
@@ -1858,10 +1928,10 @@ apple,iPad Pro 12.9 2015,B,smartgrade,14.7
 apple,iPad Pro 12.9 2015,C,smartgrade,9.4
 apple,iPad Pro 11 - (2018/2019/2020),A,ispart,14.0
 apple,iPad Pro 11 - (2018/2019/2020),A,smartgrade,19.1
-apple,iPad Pro 11 - (2018/2019/2020),A,lcdphone,16.0
+apple,iPad Pro 11 - (2018/2019/2020),A,lcdphone,10.0
 apple,iPad Pro 11 - (2018/2019/2020),A,paylcd,10.0
 apple,iPad Pro 11 - (2018/2019/2020),B,smartgrade,8.4
-apple,iPad Pro 11 - (2018/2019/2020),B,lcdphone,8.0
+apple,iPad Pro 11 - (2018/2019/2020),B,lcdphone,5.0
 apple,iPad Pro 11 - (2018/2019/2020),C,smartgrade,3.6
 apple,iPad Pro 10.9 Air 4,A,ispart,6.0
 apple,iPad Pro 10.9 Air 4,A,smartgrade,11.1
@@ -1869,10 +1939,10 @@ apple,iPad Pro 10.9 Air 4,B,smartgrade,4.0
 apple,iPad Pro 10.9 Air 4,C,smartgrade,2.0
 apple,iPad Pro 10.5,A,ispart,15.0
 apple,iPad Pro 10.5,A,smartgrade,20.4
-apple,iPad Pro 10.5,A,lcdphone,16.0
+apple,iPad Pro 10.5,A,lcdphone,10.0
 apple,iPad Pro 10.5,A,recyclemonlcd,15.0
 apple,iPad Pro 10.5,B,smartgrade,6.5
-apple,iPad Pro 10.5,B,lcdphone,8.0
+apple,iPad Pro 10.5,B,lcdphone,5.0
 apple,iPad Pro 10.5,C,smartgrade,4.5
 apple,iPad 10.2 2022/ iPad 10,A,recyclemonlcd,10.0
 apple,iPad 10.2 2021/ iPad 9,A,ispart,8.0
@@ -1892,11 +1962,11 @@ apple,iPad 10.2 2019/ iPad 7,B,smartgrade,6.6
 apple,iPad 10.2 2019/ iPad 7,C,smartgrade,2.0
 apple,iPad Mini 4,A,ispart,9.0
 apple,iPad Mini 4,A,smartgrade,13.8
-apple,iPad Mini 4,A,lcdphone,12.0
+apple,iPad Mini 4,A,lcdphone,10.0
 apple,iPad Mini 4,A,paylcd,2.0
 apple,iPad Mini 4,A,recyclemonlcd,10.0
 apple,iPad Mini 4,B,smartgrade,8.4
-apple,iPad Mini 4,B,lcdphone,6.0
+apple,iPad Mini 4,B,lcdphone,5.0
 apple,iPad Mini 4,C,smartgrade,3.6
 apple,iPad Mini 2019,A,ispart,9.0
 apple,iPad Mini 2019,A,smartgrade,13.8
@@ -1911,12 +1981,12 @@ apple,iPad Mini 6,B,smartgrade,26.3
 apple,iPad Mini 6,C,smartgrade,20.2
 apple,iPad Air 2/ Air 6,A,ispart,8.0
 apple,iPad Air 2/ Air 6,A,smartgrade,12.9
-apple,iPad Air 2/ Air 6,A,lcdphone,12.0
+apple,iPad Air 2/ Air 6,A,lcdphone,10.0
 apple,iPad Air 2/ Air 6,A,paylcd,5.0
 apple,iPad Air 2/ Air 6,A,recyclemonlcd,10.0
 apple,iPad Air 2/ Air 6,A,recyclemonlcd,8.0
 apple,iPad Air 2/ Air 6,B,smartgrade,7.5
-apple,iPad Air 2/ Air 6,B,lcdphone,6.0
+apple,iPad Air 2/ Air 6,B,lcdphone,5.0
 apple,iPad Air 2/ Air 6,C,smartgrade,3.6
 apple,iPad Air/ Air 5,A,ispart,8.0
 apple,iPad Air/ Air 5,A,smartgrade,12.9
@@ -1924,10 +1994,10 @@ apple,iPad Air/ Air 5,B,smartgrade,7.5
 apple,iPad Air/ Air 5,C,smartgrade,2.0
 apple,iPad Pro 9.7,A,ispart,4.0
 apple,iPad Pro 9.7,A,smartgrade,8.4
-apple,iPad Pro 9.7,A,lcdphone,16.0
+apple,iPad Pro 9.7,A,lcdphone,10.0
 apple,iPad Pro 9.7,A,recyclemonlcd,12.0
 apple,iPad Pro 9.7,B,smartgrade,4.0
-apple,iPad Pro 9.7,B,lcdphone,8.0
+apple,iPad Pro 9.7,B,lcdphone,5.0
 apple,iPad Pro 9.7,C,smartgrade,2.0
 apple,iWatch Serie 1 / 2 / 3 / 4,A,paylcd,2.0
 apple,iWatch Serie 5 / 6,A,paylcd,4.5

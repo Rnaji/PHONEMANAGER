@@ -673,7 +673,10 @@
       "C7",
       "C7 (C700)"
     ],
-    "M536": [
+    "M54 (M546)": [
+      "M546"
+    ],  
+    "M53 (M536)": [
       "M536"
     ],
     "M52 5G (M535)": [
@@ -755,6 +758,17 @@
     ]
   },
   "huawei": {
+
+    "Mate 50": [
+      "Huawei Mate 50"
+    ],
+    "Mate 50E": [
+      "Huawei Mate 50E"
+    ],
+    "Mate 50 Pro": [
+      "Huawei Mate 50 Pro",
+      "Mate 50 Pro"
+    ],
     "Mate 40 Pro": [
       "Huawei Mate 40 Pro",
       "Mate 40 Pro"
