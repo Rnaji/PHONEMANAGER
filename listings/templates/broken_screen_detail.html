@@ -26,7 +26,7 @@
             <li class="list-group-item fs-6">
                 {{ broken_screen.screenmodel}}
                 <span class="fs-6 logo-blue fw-bold float-end">
-                    {% if broken_screen.is_oled %}OLED{% else %}LCD{% endif %}
+                    {% if broken_screen.screenmodel.is_oled %}OLED{% else %}LCD{% endif %}
                 </span>
             </li>
         </ul>

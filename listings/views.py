@@ -288,14 +288,13 @@ def get_unused_ref_unique_list_view(request):
 questions_oled_apple= [
     (0, "xxx", "oui", "non"),
     (1, "L’écran est-il original?", 2, 2),
-    (2, "Le tactile est défectueux", 3, 3),
-    (3, "L’écran présente des dommages fonctionnels", 4, 4),
+    (2, "L’écran présente des dommages fonctionnels", 3, 3),
+    (3, "Le tactile est défectueux ou l’écran clignote lorsque vous secouez doucement la nappe", 4, 4),
     (4, "L’écran a des points noirs", 5, 6),
     (5, "Ces points noirs sont gros", 6, 6),
-    (6, "Le 3D Touch est défectueux", 7, 7),
-    (7, "L’écran a des ombres persistantes", 8, "fin du diag"),
-    (8, "Ces ombres sont presque invisibles", "fin du diag", 9),
-    (9, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
+    (6, "L’écran a des ombres persistantes", 7, "fin du diag"),
+    (7, "Ces ombres sont presque invisibles", "fin du diag", 8),
+    (8, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
 ]
 
 questions_not_oled_apple = [
@@ -305,17 +304,44 @@ questions_not_oled_apple = [
     (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
     (4, "L’écran est jaunâtre", 5, 5),
     (5, "Le tactile est défectueux", 6, 6),
-    (6, "Le 3D Touch est défectueux", 7, 7),
-    (7, "L’écran a des points lumineux ou une distorsion des couleurs", 8, 8),
+    (6, "L’écran a des petits points lumineux ou de legères marques de couleurs", 7, 8),
+    (7, "Ces marques de couleurs ou points lumineux sont importantes, ou au centre de l'écran ", 8, 8),
     (8, "L’écran a des pixels morts", 9,"fin du diag"),
     (9, "L’écran a des Gros pixels morts", "fin du diag", "fin du diag")
 ]
 
-questions_general= [
+questions_oled_apple_3dt= [
     (0, "xxx", "oui", "non"),
     (1, "L’écran est-il original?", 2, 2),
-    (2, "Le tactile est défectueux", 3, 3),
-    (3, "L’écran présente des dommages fonctionnels", 4, 4),
+    (2, "L’écran présente des dommages fonctionnels", 3, 3),
+    (3, "Le tactile est défectueux ou l’écran clignote lorsque vous secouez doucement la nappe", 4, 4),
+    (4, "Le 3D Touch est défectueux", 5, 5),
+    (5, "L’écran a des points noirs", 6, 7),
+    (6, "Ces points noirs sont gros", 7, 7),
+    (7, "L’écran a des ombres persistantes", 8, "fin du diag"),
+    (8, "Ces ombres sont presque invisibles", "fin du diag", 9),
+    (9, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
+]
+
+questions_not_oled_apple_3dt = [
+    (0, "xxx", "oui", "non"),
+    (1, "L’écran est-il original?", 2, 2),
+    (2, "L’écran présente des dommages fonctionnel", 3, 3),
+    (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
+    (4, "L’écran est jaunâtre", 5, 5),
+    (5, "Le tactile est défectueux", 6, 6),
+    (6, "Le 3D Touch est défectueux", 7, 7),
+    (7, "L’écran a des petits points lumineux ou de legères marques de couleurs", 8, 9),
+    (8, "Ces marques de couleurs ou points lumineux sont importantes, ou au centre de l'écran ", 9, 9),
+    (9, "L’écran a des pixels morts", 10,"fin du diag"),
+    (10, "L’écran a des Gros pixels morts", "fin du diag", "fin du diag")
+]
+
+questions_general_oled= [
+    (0, "xxx", "oui", "non"),
+    (1, "L’écran est-il original?", 2, 2),
+    (2, "L’écran présente des dommages fonctionnels", 3, 3),
+    (3, "Le tactile est défectueux", 4, 4),
     (4, "L’écran a un point noir", 5, 7),
     (5, "Ce point noir est petit (1-2mm)", 7, 6),
     (6, "Ce point noir est gros (3-4mm)", 7, 7),
@@ -323,6 +349,20 @@ questions_general= [
     (8, "Ces ombres sont presque invisibles", "fin du diag", 9),
     (9, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
 ]
+
+questions_general_not_oled = [
+    (0, "xxx", "oui", "non"),
+    (1, "L’écran est-il original?", 2, 2),
+    (2, "L’écran présente des dommages fonctionnel", 3, 3),
+    (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
+    (4, "L’écran est jaunâtre", 5, 5),
+    (5, "Le tactile est défectueux", 6, 6),
+    (6, "L’écran a des petits points lumineux ou de legères marques de couleurs", 7, 8),
+    (7, "Ces marques de couleurs ou points lumineux sont importantes, ou au centre de l'écran ", 8, 8),
+    (8, "L’écran a des pixels morts", 9,"fin du diag"),
+    (9, "L’écran a des Gros pixels morts", "fin du diag", "fin du diag")
+]
+
 
 ##################################
 # Diagnostic and Quotation Views #
@@ -340,14 +380,21 @@ def diagnostic(request, ref_unique_list):
         messages.add_message(request, messages.ERROR, message_text)
         return redirect('quotation', ref_unique_list=broken_screen.uniquereference.value)
     
-    if broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple':
-        questions_set = questions_oled_apple
-    elif not broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple':
+    if not broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple' and not broken_screen.screenmodel.is_3dtouch:
         questions_set = questions_not_oled_apple
-    elif broken_screen.screenbrand.screenbrand != 'apple':
-        questions_set = questions_general
+    elif not broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple' and broken_screen.screenmodel.is_3dtouch:
+        questions_set = questions_not_oled_apple_3dt
+    elif broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple' and broken_screen.screenmodel.is_3dtouch:
+        questions_set = questions_oled_apple_3dt
+    elif broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple' and not broken_screen.screenmodel.is_3dtouch:
+        questions_set = questions_oled_apple
+    elif broken_screen.screenbrand.screenbrand != 'apple' and broken_screen.screenmodel.is_oled:
+        questions_set = questions_general_oled
+    elif broken_screen.screenbrand.screenbrand != 'apple' and not broken_screen.screenmodel.is_oled:
+        questions_set = questions_general_not_oled
     else:
         raise Http404()
+
 
     # Début méthode GET
     if request.method == "GET":
@@ -398,10 +445,20 @@ def diagnostic(request, ref_unique_list):
         elif isinstance(la_suite, str):
             if la_suite in ["fin du diag"]:
                 # Déterminez le jeu de questions en fonction du type d'écran
-                if broken_screen.screenmodel.is_oled:
-                    grade = broken_screen.attribuer_grade_oled()
+                if not broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple' and not broken_screen.screenmodel.is_3dtouch:
+                    grade = broken_screen.attribuer_grade_not_oled_apple()
+                elif not broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple' and broken_screen.screenmodel.is_3dtouch:
+                    grade = broken_screen.attribuer_grade_not_oled_apple_3dt()
+                elif broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple' and broken_screen.screenmodel.is_3dtouch:
+                    grade = broken_screen.attribuer_grade_oled_apple_3dt()
+                elif broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple' and not broken_screen.screenmodel.is_3dtouch:
+                    grade = broken_screen.attribuer_grade_oled_apple()
+                elif not broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple':
+                    grade = broken_screen.attribuer_grade_general_not_oled()
+                elif broken_screen.screenbrand.screenbrand != 'apple' and broken_screen.screenmodel.is_oled:
+                    grade = broken_screen.attribuer_grade_general_oled()
                 else:
-                    grade = broken_screen.attribuer_grade_non_oled()
+                    raise Http404()
 
                 print(f"Grade attribué : {grade}")
                 broken_screen.grade = grade

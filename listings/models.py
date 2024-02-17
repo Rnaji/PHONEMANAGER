@@ -6,6 +6,8 @@ import string
 import random
 from django.db.models import Sum
 import logging
+from django.http import Http404
+
 
 logger = logging.getLogger(__name__)
 
@@ -154,6 +156,7 @@ class BrokenScreen(models.Model):
     diag_question_7 = models.TextField(null=True, blank=True)
     diag_question_8 = models.TextField(null=True, blank=True)
     diag_question_9 = models.TextField(null=True, blank=True)
+    diag_question_10 = models.TextField(null=True, blank=True)
     diag_response_1 = models.BooleanField(null=True)
     diag_response_2 = models.BooleanField(null=True)
     diag_response_3 = models.BooleanField(null=True)
@@ -163,6 +166,8 @@ class BrokenScreen(models.Model):
     diag_response_7 = models.BooleanField(null=True)
     diag_response_8 = models.BooleanField(null=True)
     diag_response_9 = models.BooleanField(null=True)
+    diag_response_10 = models.BooleanField(null=True)
+
     is_diag_done = models.BooleanField(default=False)
     grade = models.CharField(
         max_length=20,
@@ -212,211 +217,551 @@ class BrokenScreen(models.Model):
     def get_sorted_recycler_prices(self):
         return self.recycler_prices.all().order_by('price')
 
-    def attribuer_grade_non_oled(self):
+    def attribuer_grade_oled_apple(self):
         # Extracting responses from the BrokenScreen instance
-        question1 = self.diag_response_1
-        question2 = self.diag_response_2
-        question3 = self.diag_response_3
-        question4 = self.diag_response_4
-        question5 = self.diag_response_5
-        question6 = self.diag_response_6
-        question7 = self.diag_response_7
-        question8 = self.diag_response_8
-        question9 = self.diag_response_9
+        question1, question2, question3, question4, question5, question6, question7, question8, question9, question10 = (
+            self.diag_response_1, self.diag_response_2, self.diag_response_3,
+            self.diag_response_4, self.diag_response_5, self.diag_response_6,
+            self.diag_response_7, self.diag_response_8, self.diag_response_9, self.diag_response_10
+        )
 
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question5 == False and
-            question6 == False and
-            question7 == False and
-            question8 == False
+        # Remplacer les valeurs None par False
+        responses = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10]
+        responses = [False if response is None else response for response in responses]
+
+        # Votre logique spécifique avec les réponses individuelles pour le grade A
+        if all(
+            response == expected_response
+            for response, expected_response in zip(responses, [True, False, False, False, False, False, False, False])
         ):
             return "A"
 
-        if (
-            question1 == False and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question5 == False and
-            question6 == False and
-            question7 == False and
-            question8 == False
-        ):
-            return "Aftermarket"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == True and
-            question4 == False and
-            question5 == False and
-            question6 == False and
-            question7 == False and
-            question8 == False
-        ):
-            return "B"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question5 == True and
-            question6 == False and
-            question7 == False and
-            question8 == False
-        ):
-            return "G"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question5 == False and
-            question6 == True and
-            question7 == False and
-            question8 == False
-        ):
-            return "D"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question5 == False and
-            question6 == False and
-            question7 == True and
-            question8 == True and
-            question9 == False
-        ):
-            return "C"
-
-        if (
-            question1 == False or
-            question2 == True or
-            question3 == True or
-            question4 == True or
-            question5 == True or
-            question6 == True and
-            question7 == True and
-            question8 == True and
-            question9 == True
-        ):
-            return "Fully Broken"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question5 == False and
-            question6 == False and
-            question7 == True and
-            question8 == True and
-            question9 == False
-        ):
-            return "C"
-
-        return "EN ATTENTE"
-
-    def attribuer_grade_oled(self):
-        # Extracting responses from the BrokenScreen instance
-        question1 = self.diag_response_1
-        question2 = self.diag_response_2
-        question3 = self.diag_response_3
-        question4 = self.diag_response_4
-        question5 = self.diag_response_5
-        question6 = self.diag_response_6
-        question7 = self.diag_response_7
-        question8 = self.diag_response_8
-
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question6 == False
-        ):
-            return "A"
-
-        if (
-            question1 == False and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question6 == False
-        ):
-            return "AFTERMARKET"
-
-        if (
-            question1 == True and
-            question2 == True and
-            question3 == False and
-            question4 == False and
-            question6 == False
-        ):
-            return "G"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == True and
-            question5 == False and
-            question6 == False
-        ):
-            return "E"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == True and
-            question5 == True and
-            question6 == False
-        ):
-            return "F"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question6 == True and
-            question7 == False and
-            question8 == False
-        ):
-            return "C"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question6 == True and
-            question7 == False and
-            question8 == True
-        ):
-            return "D"
-
-        if (
-            question1 == True and
-            question2 == False and
-            question3 == False and
-            question4 == False and
-            question6 == True and
-            question7 == True
+        # Votre logique spécifique avec les réponses individuelles pour le grade B
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            responses[2] == False and
+            responses[3] == False and
+            responses[4] == False and
+            responses[5] == True and
+            responses[6] == True and
+            responses[7] == False
         ):
             return "B"
         
-        return "EN ATTENTE"
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            responses[2] == False and
+            responses[3] == False and
+            responses[4] == False and
+            responses[5] == True and
+            responses[6] == False and
+            responses[7] == False
+        ):
+            return "C"
+        
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            responses[2] == False and
+            responses[3] == False and
+            responses[4] == False and
+            responses[5] == True and
+            responses[6] == False and
+            responses[7] == True
+        ):
+            return "D"
+        
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            responses[2] == True and
+            responses[3] == False and
+            responses[4] == False and
+            responses[5] == False and
+            responses[6] == False and
+            responses[7] == False
+        ):
+            return "G"
+
+        elif (
+                responses[0] == False and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False 
+            ):
+                return "Aftermarket"
+        
+        return "Fully Broken"
+
+
+
+    
+    def attribuer_grade_not_oled_apple(self):
+        # Extracting responses from the BrokenScreen instance
+        question1, question2, question3, question4, question5, question6, question7, question8, question9, question10 = (
+            self.diag_response_1, self.diag_response_2, self.diag_response_3,
+            self.diag_response_4, self.diag_response_5, self.diag_response_6,
+            self.diag_response_7, self.diag_response_8, self.diag_response_9, self.diag_response_10
+        )
+
+        # Remplacer les valeurs None par False
+        responses = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10]
+        responses = [False if response is None else response for response in responses]
+
+        # Votre logique spécifique avec les réponses individuelles pour le grade A
+        if all(
+            response == expected_response
+            for response, expected_response in zip(responses, [True, False, False, False, False, False, False, False, False])
+        ):
+            return "A"
+        
+        # Votre logique spécifique avec les réponses individuelles pour le grade B
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            (responses[2] == True or responses[3] == True or responses[7] == True) and
+            responses[4] == False and
+            responses[5] == False and
+            responses[6] == False and
+            responses[8] == False
+
+        ):
+            return "B"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                (responses[5] == True or (responses[7] == True and responses[8] == True)) and
+                responses[6] == False
+            ):
+                return "C"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == True and
+                responses[6] == True and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "D"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == True and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "G"
+        
+        elif (
+                responses[0] == False and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "Aftermarket"
+        
+        return "Fully Broken"
+        
+
+
+    
+    def attribuer_grade_oled_apple_3dt(self):
+    # Extracting responses from the BrokenScreen instance
+        question1, question2, question3, question4, question5, question6, question7, question8, question9, question10 = (
+            self.diag_response_1, self.diag_response_2, self.diag_response_3,
+            self.diag_response_4, self.diag_response_5, self.diag_response_6,
+            self.diag_response_7, self.diag_response_8, self.diag_response_9, self.diag_response_10
+        )
+
+        # Remplacer les valeurs None par False
+        responses = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10]
+        responses = [False if response is None else response for response in responses]
+
+        # Votre logique spécifique avec les réponses individuelles pour le grade A
+        if all(
+            response == expected_response
+            for response, expected_response in zip(responses, [True, False, False, False, False, False, False, False])
+        ):
+            return "A"
+
+        # Votre logique spécifique avec les réponses individuelles pour le grade B
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            responses[2] == False and
+            responses[3] == False and
+            responses[4] == False and
+            responses[5] == True and
+            responses[6] == True and
+            responses[7] == False
+        ):
+            return "B"
+        
+        # Votre logique spécifique avec les réponses individuelles pour le grade C
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            responses[2] == False and
+            responses[3] == False and
+            responses[4] == False and
+            responses[5] == True and
+            responses[6] == False and
+            responses[7] == False
+        ):
+            return "C"
+        
+        # Votre logique spécifique avec les réponses individuelles pour les deux conditions du grade D
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            responses[2] == False and
+            (responses[3] == True or (responses[6] == True and responses[7] == False and responses[8] == True)) and
+            responses[4] == False and
+            responses[5] == False
+
+        ):
+            return "D"
+        
+        
+        # Votre logique spécifique avec les réponses individuelles pour le grade G
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            responses[2] == True and
+            responses[3] == False and
+            responses[4] == False and
+            responses[5] == False and
+            responses[6] == False and
+            responses[7] == False
+        ):
+            return "G"
+
+        elif (
+                responses[0] == False and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "Aftermarket"
+        
+        return "Fully Broken"
+    
+    def attribuer_grade_not_oled_apple_3dt(self):
+         # Extracting responses from the BrokenScreen instance
+        question1, question2, question3, question4, question5, question6, question7, question8, question9, question10 = (
+            self.diag_response_1, self.diag_response_2, self.diag_response_3,
+            self.diag_response_4, self.diag_response_5, self.diag_response_6,
+            self.diag_response_7, self.diag_response_8, self.diag_response_9, self.diag_response_10
+        )
+
+        # Remplacer les valeurs None par False
+        responses = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10]
+        responses = [False if response is None else response for response in responses]
+
+        # Votre logique spécifique avec les réponses individuelles pour le grade A
+        if all(
+            response == expected_response
+            for response, expected_response in zip(responses, [True, False, False, False, False, False, False, False, False, False])
+        ):
+            return "A"
+        
+        # Votre logique spécifique avec les réponses individuelles pour le grade B
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            (responses[2] == True or responses[3] == True or responses[8] == True) and
+            responses[4] == False and
+            responses[5] == False and
+            responses[6] == False and
+            responses[7] == False and
+            responses[9] == False
+
+        ):
+            return "B"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                (responses[6] == True or (responses[8] == True and responses[9] == True)) and
+                responses[7] == False
+            ):
+                return "C"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                (responses[5] == True or (responses[6] == True and responses[7] == True)) and
+                responses[8] == False and
+                responses[9] == False
+
+            ):
+                return "D"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == True and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "G"
+        
+        elif (
+                responses[0] == False and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "Aftermarket"
+        
+        return "Fully Broken"
+    
+    def attribuer_grade_general_oled(self):
+        # Extracting responses from the BrokenScreen instance
+        question1, question2, question3, question4, question5, question6, question7, question8, question9, question10 = (
+            self.diag_response_1, self.diag_response_2, self.diag_response_3,
+            self.diag_response_4, self.diag_response_5, self.diag_response_6,
+            self.diag_response_7, self.diag_response_8, self.diag_response_9, self.diag_response_10
+        )
+
+        # Remplacer les valeurs None par False
+        responses = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10]
+        responses = [False if response is None else response for response in responses]
+
+        # Votre logique spécifique avec les réponses individuelles pour le grade A
+        if all(
+            response == expected_response
+            for response, expected_response in zip(responses, [True, False, False, False, False, False, False, False, False])
+        ):
+            return "A"
+        
+        # Votre logique spécifique avec les réponses individuelles pour le grade B
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == True and
+                responses[7] == True and
+                responses[8] == False
+            ):
+                return "B"
+        
+        # Votre logique spécifique avec les réponses individuelles pour le grade C
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == True and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "C"
+        
+        # Votre logique spécifique avec les réponses individuelles pour le grade D
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == True and
+                responses[7] == False and
+                responses[8] == True
+            ):
+                return "D"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == True and
+                responses[4] == True and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "E"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == True and
+                responses[4] == False and
+                responses[5] == True and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "F"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == True and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "G"
+        elif (
+                responses[0] == False and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "Aftermarket"
+        
+        return "Fully Broken"
+
+
+
+
+    def attribuer_grade_general_not_oled(self):
+        # Extracting responses from the BrokenScreen instance
+        question1, question2, question3, question4, question5, question6, question7, question8, question9, question10 = (
+            self.diag_response_1, self.diag_response_2, self.diag_response_3,
+            self.diag_response_4, self.diag_response_5, self.diag_response_6,
+            self.diag_response_7, self.diag_response_8, self.diag_response_9, self.diag_response_10
+        )
+
+        # Remplacer les valeurs None par False
+        responses = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10]
+        responses = [False if response is None else response for response in responses]
+
+        # Votre logique spécifique avec les réponses individuelles pour le grade A
+        if all(
+            response == expected_response
+            for response, expected_response in zip(responses, [True, False, False, False, False, False, False, False, False])
+        ):
+            return "A"
+        
+        # Votre logique spécifique avec les réponses individuelles pour le grade B
+        elif (
+            responses[0] == True and
+            responses[1] == False and
+            (responses[2] == True or responses[3] == True or responses[7] == True) and
+            responses[4] == False and
+            responses[5] == False and
+            responses[6] == False and
+            responses[8] == False
+
+        ):
+            return "B"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                (responses[5] == True or (responses[7] == True and responses[8] == True)) and
+                responses[6] == False
+            ):
+                return "C"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == True and
+                responses[6] == True and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "D"
+        
+        elif (
+                responses[0] == True and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == True and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "G"
+        
+        elif (
+                responses[0] == False and
+                responses[1] == False and
+                responses[2] == False and
+                responses[3] == False and
+                responses[4] == False and
+                responses[5] == False and
+                responses[6] == False and
+                responses[7] == False and
+                responses[8] == False
+            ):
+                return "Aftermarket"
+        
+        return "Fully Broken"
+
 
     def save(self, *args, **kwargs):
         if not self.grade:
@@ -424,10 +769,26 @@ class BrokenScreen(models.Model):
             self.some_condition = True  # Remplacez ceci par votre logique réelle
 
             if self.some_condition:
-                self.grade = self.attribuer_grade_non_oled()
-            else:
-                self.grade = self.attribuer_grade_oled()
+                # Votre code existant pour déterminer le grade en fonction du type d'écran
+                if not self.screenmodel.is_oled and self.screenbrand.screenbrand == 'apple' and not self.screenmodel.is_3dtouch:
+                    grade = self.attribuer_grade_not_oled_apple()
+                elif not self.screenmodel.is_oled and self.screenbrand.screenbrand == 'apple' and self.screenmodel.is_3dtouch:
+                    grade = self.attribuer_grade_not_oled_apple_3dt()
+                elif self.screenmodel.is_oled and self.screenbrand.screenbrand == 'apple' and self.screenmodel.is_3dtouch:
+                    grade = self.attribuer_grade_oled_apple_3dt()
+                elif self.screenmodel.is_oled and self.screenbrand.screenbrand == 'apple' and not self.screenmodel.is_3dtouch:
+                    grade = self.attribuer_grade_oled_apple()
+                elif not self.screenmodel.is_oled and self.screenbrand.screenbrand == 'apple':
+                    grade = self.attribuer_grade_general_not_oled()
+                elif self.screenbrand.screenbrand != 'apple' and self.screenmodel.is_oled:
+                    grade = self.attribuer_grade_general_oled()
+                else:
+                    raise Http404()
 
+                print(f"Grade attribué : {grade}")
+            self.grade = grade
+
+        print(f"Avant la sauvegarde - Grade : {self.grade}")
         super().save(*args, **kwargs)
 
 
@@ -443,6 +804,8 @@ class BrokenScreen(models.Model):
             (7, getattr(self, 'diag_question_7', ''), getattr(self, 'diag_response_7', '')),
             (8, getattr(self, 'diag_question_8', ''), getattr(self, 'diag_response_8', '')),
             (9, getattr(self, 'diag_question_9', ''), getattr(self, 'diag_response_9', '')),
+            (10, getattr(self, 'diag_question_10', ''), getattr(self, 'diag_response_10', '')),
+
             # Ajoutez les autres questions de la même manière
         ]
 
