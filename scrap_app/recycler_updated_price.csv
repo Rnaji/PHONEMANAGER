@@ -36,6 +36,11 @@ oppo,Reno 8,B,smartgrade,22.1
 oppo,Reno 8,C,smartgrade,17.6
 oppo,Reno 8,D,smartgrade,13.1
 oppo,Reno 8,G,smartgrade,0.8
+oppo,Reno 7,A,smartgrade,22.1
+oppo,Reno 7,B,smartgrade,17.6
+oppo,Reno 7,C,smartgrade,13.1
+oppo,Reno 7,D,smartgrade,8.5
+oppo,Reno 7,G,smartgrade,0.8
 oppo,Reno 6,A,smartgrade,22.1
 oppo,Reno 6,A,recyclemonlcd,17.0
 oppo,Reno 6,B,smartgrade,17.6
@@ -353,6 +358,11 @@ xiaomi,Mi 13,B,smartgrade,27.8
 xiaomi,Mi 13,C,smartgrade,18.4
 xiaomi,Mi 13,D,smartgrade,13.7
 xiaomi,Mi 13,G,smartgrade,0.8
+xiaomi,Mi 12,A,smartgrade,10.8
+xiaomi,Mi 12,B,smartgrade,8.0
+xiaomi,Mi 12,C,smartgrade,5.2
+xiaomi,Mi 12,D,smartgrade,2.3
+xiaomi,Mi 12,G,smartgrade,0.8
 xiaomi,Mi 12 Pro,A,smartgrade,10.8
 xiaomi,Mi 12 Pro,A,recyclemonlcd,30.0
 xiaomi,Mi 12 Pro,B,smartgrade,8.0
@@ -1462,7 +1472,7 @@ samsung,J7 (J701),E,smartgrade,0.0
 samsung,J7 (J701),F,smartgrade,0.0
 samsung,J7 (J701),G,smartgrade,2.5
 samsung,J7 (J701),Fully Broken,smartgrade,0.0
-samsung,J7 (J700),A,ispart,8.0
+samsung,J7 (J700),A,ispart,5.0
 samsung,J7 (J700),A,smartgrade,9.0
 samsung,J7 (J700),A,paylcd,5.0
 samsung,J7 (J700),A,recyclemonlcd,7.0

@@ -260,6 +260,41 @@
     },
     {
         "Marque": "oppo",
+        "Modèle": "Reno 7",
+        "Grade": "A",
+        "Recycleur": "smartgrade",
+        "Prix": 22.1
+    },
+    {
+        "Marque": "oppo",
+        "Modèle": "Reno 7",
+        "Grade": "B",
+        "Recycleur": "smartgrade",
+        "Prix": 17.6
+    },
+    {
+        "Marque": "oppo",
+        "Modèle": "Reno 7",
+        "Grade": "C",
+        "Recycleur": "smartgrade",
+        "Prix": 13.1
+    },
+    {
+        "Marque": "oppo",
+        "Modèle": "Reno 7",
+        "Grade": "D",
+        "Recycleur": "smartgrade",
+        "Prix": 8.5
+    },
+    {
+        "Marque": "oppo",
+        "Modèle": "Reno 7",
+        "Grade": "G",
+        "Recycleur": "smartgrade",
+        "Prix": 0.8
+    },
+    {
+        "Marque": "oppo",
         "Modèle": "Reno 6",
         "Grade": "A",
         "Recycleur": "smartgrade",
@@ -2473,6 +2508,41 @@
     {
         "Marque": "xiaomi",
         "Modèle": "Mi 13",
+        "Grade": "G",
+        "Recycleur": "smartgrade",
+        "Prix": 0.8
+    },
+    {
+        "Marque": "xiaomi",
+        "Modèle": "Mi 12",
+        "Grade": "A",
+        "Recycleur": "smartgrade",
+        "Prix": 10.8
+    },
+    {
+        "Marque": "xiaomi",
+        "Modèle": "Mi 12",
+        "Grade": "B",
+        "Recycleur": "smartgrade",
+        "Prix": 8.0
+    },
+    {
+        "Marque": "xiaomi",
+        "Modèle": "Mi 12",
+        "Grade": "C",
+        "Recycleur": "smartgrade",
+        "Prix": 5.2
+    },
+    {
+        "Marque": "xiaomi",
+        "Modèle": "Mi 12",
+        "Grade": "D",
+        "Recycleur": "smartgrade",
+        "Prix": 2.3
+    },
+    {
+        "Marque": "xiaomi",
+        "Modèle": "Mi 12",
         "Grade": "G",
         "Recycleur": "smartgrade",
         "Prix": 0.8
@@ -10245,7 +10315,7 @@
         "Modèle": "J7 (J700)",
         "Grade": "A",
         "Recycleur": "ispart",
-        "Prix": 8.0
+        "Prix": 5.0
     },
     {
         "Marque": "samsung",
