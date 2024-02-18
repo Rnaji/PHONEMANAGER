@@ -49,4 +49,7 @@ for item in product_items:
         # Formatez le prix avec deux décimales
         formatted_price = f"GRADE A, {price:.2f} €"
 
-        print(f"{name}, {formatted_price}")
+        # Vérifiez si le nom n'est pas celui que vous ne voulez pas afficher
+        if name != "PayLcd, Envoyez. nous trions pour vous !":
+            print(f"{name}, {formatted_price}")
+

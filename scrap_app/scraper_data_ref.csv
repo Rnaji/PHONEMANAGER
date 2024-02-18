@@ -1655,18 +1655,6 @@ LcdPhone, iphone 5, Grade A,0.5
 LcdPhone, iphone 5, Grade B,0.2
 LcdPhone, iphone 5c, Grade A,0.5
 LcdPhone, iphone 5c, Grade B,0.2
-LcdPhone, ipad air 2, Grade A,10.0
-LcdPhone, ipad air 2, Grade B,5.0
-LcdPhone, ipad mini 4, Grade A,10.0
-LcdPhone, ipad mini 4, Grade B,5.0
-LcdPhone, ipad pro 9.7, Grade A,10.0
-LcdPhone, ipad pro 9.7, Grade B,5.0
-LcdPhone, ipad pro 10.5, Grade A,10.0
-LcdPhone, ipad pro 10.5, Grade B,5.0
-LcdPhone, ipad pro 11, Grade A,10.0
-LcdPhone, ipad pro 11, Grade B,5.0
-LcdPhone, ipad pro 12.9, Grade A,20.0
-LcdPhone, ipad pro 12.9, Grade B,10.0
 LcdPhone, samsung a22/a32 lte/a42/a52/a72, Grade A,10.0
 LcdPhone, samsung a22/a32 lte/a42/a52/a72, Grade B,5.0
 LcdPhone, samsung a22/a32 lte/a42/a52/a72, Grade G,1.0
@@ -1721,7 +1709,6 @@ LcdPhone, huawei p20 pro, Grade G,1.0
 LcdPhone, huawei mate 20 pro, Grade A,10.0
 LcdPhone, huawei mate 20 pro, Grade B,5.0
 LcdPhone, huawei mate 20 pro, Grade G,1.0
-PayLcd, Envoyez. nous trions pour vous !, GRADE A,99.0
 PayLcd, iPhone 14 Pro Max, GRADE A,110.0
 PayLcd, iPhone 14 Pro, GRADE A,90.0
 PayLcd, iPhone 14 Plus, GRADE A,70.0
@@ -2091,144 +2078,3 @@ RecycleMonLcd, OnePlus Nord, GRADE A,3.0
 RecycleMonLcd, Rachat d'ecrans full broken et ecrans generiques au kilogramme, GRADE A,1.0
 RecycleMonLcd, Rachat de cartes mères. connectiques et cameras de smartphones au kilogramme, GRADE A,5.5
 RecycleMonLcd, Rachat de telephones et tablettes casses au kilogramme sans batterie, GRADE A,2.5
-RecycleMonLcd, Samsung Galaxy S23 Ultra (S918B), GRADE A,85.0
-RecycleMonLcd, Samsung Galaxy S23+ (S916B), GRADE A,40.0
-RecycleMonLcd, Samsung Galaxy S23 (S911B), GRADE A,40.0
-RecycleMonLcd, Samsung Galaxy S22 Ultra (S908B), GRADE A,85.0
-RecycleMonLcd, Samsung Galaxy S22+ (S906B), GRADE A,40.0
-RecycleMonLcd, Samsung Galaxy S22 (S901B), GRADE A,55.0
-RecycleMonLcd, Samsung Galaxy S21 Ultra (G998B), GRADE A,75.0
-RecycleMonLcd, Samsung Galaxy S21 Plus (G996B), GRADE A,45.0
-RecycleMonLcd, Samsung Galaxy S21 (G991B), GRADE A,45.0
-RecycleMonLcd, Samsung Galaxy S21 FE (G990B), GRADE A,40.0
-RecycleMonLcd, Samsung Galaxy S20 Ultra (G988F), GRADE A,70.0
-RecycleMonLcd, Samsung Galaxy S20 Plus (G985F), GRADE A,50.0
-RecycleMonLcd, Samsung Galaxy S20 FE 4G/5G (G780F/G781B), GRADE A,20.0
-RecycleMonLcd, Samsung Galaxy S20 (G980F), GRADE A,50.0
-RecycleMonLcd, Samsung Galaxy S10 5G (G977B), GRADE A,55.0
-RecycleMonLcd, Samsung Galaxy S10 Plus (G975F), GRADE A,70.0
-RecycleMonLcd, Samsung Galaxy S10 (G973F), GRADE A,30.0
-RecycleMonLcd, Samsung Galaxy S10 lite (G770F), GRADE A,20.0
-RecycleMonLcd, Samsung Galaxy S10e (G970F), GRADE A,15.0
-RecycleMonLcd, Samsung Galaxy S9 Plus (G965F), GRADE A,35.0
-RecycleMonLcd, Samsung Galaxy S9 (G960F), GRADE A,25.0
-RecycleMonLcd, Samsung Galaxy S8 Plus (G955F), GRADE A,35.0
-RecycleMonLcd, Samsung Galaxy S8 (G950F), GRADE A,25.0
-RecycleMonLcd, Samsung Galaxy S8 Active (G892A), GRADE A,12.0
-RecycleMonLcd, Samsung Galaxy S7 Edge (G935F), GRADE A,15.0
-RecycleMonLcd, Samsung Galaxy S7 (G930F), GRADE A,4.0
-RecycleMonLcd, Samsung Galaxy S6 Edge Plus (G928), GRADE A,10.0
-RecycleMonLcd, Samsung Galaxy S6 Edge (G925F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy S6 (G920F), GRADE A,4.0
-RecycleMonLcd, Samsung Galaxy S5 (G900F), GRADE A,2.0
-RecycleMonLcd, Samsung Galaxy S4 (i9505), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy S4 mini (i9195), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy S3 4G (i9305), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy S3 (I9300), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy S3 mini (i8190), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy S2 (i9100), GRADE A,0.01
-RecycleMonLcd, exterieur Samsung Galaxy Z Fold5 (F946B), GRADE A,32.0
-RecycleMonLcd, Samsung Galaxy Z Fold4 (F936B), GRADE A,186.0
-RecycleMonLcd, exterieur Samsung Galaxy Z Fold4 (F936B), GRADE A,32.0
-RecycleMonLcd, Samsung Galaxy Z Fold3 (F926B), GRADE A,163.0
-RecycleMonLcd, exterieur Samsung Galaxy Z Fold3 (F926B), GRADE A,32.0
-RecycleMonLcd, Samsung Galaxy Z Fold2 (F916B), GRADE A,144.0
-RecycleMonLcd, exterieur Samsung Galaxy Z Fold2 (F916B), GRADE A,29.0
-RecycleMonLcd, Samsung Galaxy Z Fold (F900F), GRADE A,121.0
-RecycleMonLcd, exterieur Samsung Galaxy Z Fold (F900F), GRADE A,7.0
-RecycleMonLcd, Samsung Galaxy Z Flip5 (F731B), GRADE A,126.0
-RecycleMonLcd, Samsung Galaxy Z Flip4 (F721B), GRADE A,126.0
-RecycleMonLcd, Samsung Galaxy Z Flip3 (F711B), GRADE A,102.0
-RecycleMonLcd, Samsung Galaxy Z Flip 5G (F707B), GRADE A,74.0
-RecycleMonLcd, Samsung Galaxy Z Flip 4G (F700F), GRADE A,74.0
-RecycleMonLcd, Samsung Galaxy A90 5G (A908B), GRADE A,23.0
-RecycleMonLcd, Samsung Galaxy A80 (A805F), GRADE A,17.0
-RecycleMonLcd, Samsung Galaxy A72 (A725F), GRADE A,9.0
-RecycleMonLcd, Samsung Galaxy A71 5G (A716F), GRADE A,16.0
-RecycleMonLcd, Samsung Galaxy A71 (A715F), GRADE A,12.0
-RecycleMonLcd, Samsung Galaxy A70 (A705F), GRADE A,14.0
-RecycleMonLcd, Samsung Galaxy A53 5G (A536B / A536E), GRADE A,13.0
-RecycleMonLcd, Samsung Galaxy A52S 5G (A528B), GRADE A,20.0
-RecycleMonLcd, Samsung Galaxy A52 5G (A526B), GRADE A,21.0
-RecycleMonLcd, Samsung Galaxy A52 4G (A525F), GRADE A,20.0
-RecycleMonLcd, Samsung Galaxy A51 5G (A516B), GRADE A,13.0
-RecycleMonLcd, Samsung Galaxy A51 (A515F), GRADE A,12.0
-RecycleMonLcd, Samsung Galaxy A50S (A507F), GRADE A,11.0
-RecycleMonLcd, Samsung Galaxy A50 (A505F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A42 (A426B), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A41 (A415F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A40 (A405F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A33 5G (A336B), GRADE A,16.0
-RecycleMonLcd, Samsung Galaxy A32 5G (A326B), GRADE A,16.0
-RecycleMonLcd, Samsung Galaxy A32 (A325F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A31 (A315F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A30s (A307F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A30 (A305F), GRADE A,6.0
-RecycleMonLcd, Samsung Galaxy A22 5G (A226B), GRADE A,19.0
-RecycleMonLcd, Samsung Galaxy A22 4G (A225F), GRADE A,19.0
-RecycleMonLcd, Samsung Galaxy A21s (A217F), GRADE A,1.5
-RecycleMonLcd, Samsung Galaxy A20s (A207F), GRADE A,1.0
-RecycleMonLcd, Samsung Galaxy A20E (A202F), GRADE A,1.5
-RecycleMonLcd, Samsung Galaxy A20 (A205F), GRADE A,4.0
-RecycleMonLcd, Samsung Galaxy A13 (A135F / A137F / A136B), GRADE A,2.0
-RecycleMonLcd, Samsung Galaxy A12 (A127F), GRADE A,2.0
-RecycleMonLcd, Samsung Galaxy A10s (A107F), GRADE A,1.5
-RecycleMonLcd, Samsung Galaxy A10 (A105F), GRADE A,1.5
-RecycleMonLcd, Samsung Galaxy A02s (A025F / A025G), GRADE A,2.0
-RecycleMonLcd, Samsung Galaxy A9 2018 (A920F), GRADE A,9.0
-RecycleMonLcd, Samsung Galaxy A9 2016 (A900F), GRADE A,20.0
-RecycleMonLcd, Samsung Galaxy A8+ 2018 (A730F), GRADE A,12.0
-RecycleMonLcd, Samsung Galaxy A8 2018 (A530F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A8 (A800F), GRADE A,11.0
-RecycleMonLcd, Samsung Galaxy A7 2018 (A750F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A7 2017 (A720F), GRADE A,12.0
-RecycleMonLcd, Samsung Galaxy A7 2016 (A710F), GRADE A,10.0
-RecycleMonLcd, Samsung Galaxy A7 2015 (A700F), GRADE A,2.0
-RecycleMonLcd, Samsung Galaxy A6+ 2018 (A605F), GRADE A,11.0
-RecycleMonLcd, Samsung Galaxy A6 (A600F), GRADE A,11.0
-RecycleMonLcd, Samsung Galaxy A5 2017 (A520F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy A5 2016 (A510F), GRADE A,1.5
-RecycleMonLcd, Samsung Galaxy A5 (A500F), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy A3 2017 (A320F), GRADE A,2.0
-RecycleMonLcd, Samsung Galaxy A3 2016 (A310F), GRADE A,0.01
-RecycleMonLcd, Samsung A3(A300F), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy Note 20 Ultra (N986F), GRADE A,80.0
-RecycleMonLcd, Samsung Galaxy Note 20 (N980F / N981F), GRADE A,36.0
-RecycleMonLcd, Samsung Galaxy Note 10 Plus (N975F), GRADE A,64.0
-RecycleMonLcd, Samsung Galaxy Note 10 (N970F), GRADE A,36.0
-RecycleMonLcd, Samsung Galaxy Note 10 lite (N770F), GRADE A,20.0
-RecycleMonLcd, Samsung Galaxy Note 9 (N960F), GRADE A,32.0
-RecycleMonLcd, Samsung Galaxy Note8 (N950F), GRADE A,28.0
-RecycleMonLcd, Samsung Galaxy Note 4 (N910F), GRADE A,0.1
-RecycleMonLcd, Samsung Galaxy Note 3 (N9005), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy Note 2 4G (N7105), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy Note 2 (N7100), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy Note Edge (N915FY), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy Note (N7000), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy J8 (J810F), GRADE A,10.0
-RecycleMonLcd, Samsung Galaxy J8+ (J805F), GRADE A,10.0
-RecycleMonLcd, Samsung Galaxy J8 2018 (J800F), GRADE A,10.0
-RecycleMonLcd, Samsung Galaxy J7 2017 (J730F), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy J7 Duo (J720F), GRADE A,4.0
-RecycleMonLcd, Samsung Galaxy J7 2018 (J710F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy J7 (J701F), GRADE A,5.0
-RecycleMonLcd, Samsung Galaxy J7 (J700F), GRADE A,7.0
-RecycleMonLcd, Samsung Galaxy J5 2017 (J530F), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy J5 2016 (J510F), GRADE A,5.0
-RecycleMonLcd, Samsung Galaxy J5 (J500F), GRADE A,0.01
-RecycleMonLcd, Samsung Galaxy J4 (J400), GRADE A,5.0
-RecycleMonLcd, Samsung Galaxy J3 Pro (J320F), GRADE A,2.0
-RecycleMonLcd, Samsung Galaxy J2 Pro (J250F), GRADE A,6.0
-RecycleMonLcd, Samsung Galaxy J2 (J200F), GRADE A,8.0
-RecycleMonLcd, Samsung Galaxy J1 Ace (J110F), GRADE A,4.0
-RecycleMonLcd, Samsung Galaxy C9 Pro (C900F), GRADE A,20.0
-RecycleMonLcd, Samsung Galaxy C7 (C700F), GRADE A,14.0
-RecycleMonLcd, Samsung Galaxy M53 (M536B), GRADE A,23.0
-RecycleMonLcd, Samsung Galaxy M52 5G (M526B), GRADE A,22.0
-RecycleMonLcd, Samsung Galaxy M51 (M515F), GRADE A,16.0
-RecycleMonLcd, Samsung Galaxy M32 (M325F), GRADE A,13.0
-RecycleMonLcd, Samsung Galaxy M31S (M317), GRADE A,18.0
-RecycleMonLcd, Samsung Galaxy M31 (M315), GRADE A,10.0
-RecycleMonLcd, Samsung Galaxy M30S (M307F), GRADE A,10.0
-RecycleMonLcd, Samsung Galaxy M22 (M225F), GRADE A,11.0
-RecycleMonLcd, Samsung Galaxy M21S (F415F), GRADE A,11.0

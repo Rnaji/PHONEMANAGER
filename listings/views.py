@@ -136,12 +136,13 @@ def dashboard(request):
                     grade=broken_screen.grade
                 ).order_by('-price')
 
-                # Exclude opportunities with the recycler named "VotreRecycleur"
+                # Exclude opportunities with the recycler named "Votre Recycleur"
                 if (
                     recycler_prices.exists()
                     and recycler_prices.first().price > current_value
-                    and broken_screen.recycler.company_name != "VotreRecycleur"
+                    and broken_screen.recycler and broken_screen.recycler.company_name != "VotreRecycleur"
                 ):
+
                     quotation_count = recycler_prices.count()
                     best_offer = recycler_prices.first()
 
@@ -187,10 +188,9 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('landing')
+import logging
 
-#######################
-# Broken Screen Views #
-#######################
+logger = logging.getLogger(__name__)
 
 @method_decorator(login_required, name='dispatch')
 @method_decorator(require_http_methods(['GET', 'POST']), name='dispatch')
@@ -214,7 +214,6 @@ class CreateBrokenScreenView(View):
             if form.is_valid():
                 cleaned_data = form.cleaned_data
 
-                # Obtenez les instances de modèles à partir des chaînes
                 screenbrand = ScreenBrand.objects.get(screenbrand=cleaned_data['brand_field'])
                 screenmodel = ScreenModel.objects.get(screenmodel=cleaned_data['model_field'])
                 uniquereference = UniqueReference.objects.get(pk=cleaned_data['unique_ref_field'])
@@ -224,13 +223,12 @@ class CreateBrokenScreenView(View):
                     uniquereference=uniquereference,
                     screenbrand=screenbrand,
                     screenmodel=screenmodel,
-                    # is_used n'est pas un argument lors de la création
                 )
 
-                # Mettez à jour le champ is_used de la référence unique après la création de l'instance
-                uniquereference.is_used = True  # ou False, en fonction de la logique de votre application
+                uniquereference.is_used = True
                 uniquereference.save()
 
+                logger.info("Formulaire valide. Création de l'écran cassé.")
                 return redirect('diagnostic', ref_unique_list=uniquereference.value)
 
             context = {
@@ -240,7 +238,20 @@ class CreateBrokenScreenView(View):
             }
             return render(request, self.template_name, context)
 
+        except ScreenBrand.DoesNotExist:
+            logger.error("La marque d'écran spécifiée n'existe pas.")
+            return JsonResponse({'error': 'La marque d\'écran spécifiée n\'existe pas.'}, status=400)
+
+        except ScreenModel.DoesNotExist:
+            logger.error("Le modèle d'écran spécifié n'existe pas.")
+            return JsonResponse({'error': 'Le modèle d\'écran spécifié n\'existe pas.'}, status=400)
+
+        except UniqueReference.DoesNotExist:
+            logger.error("La référence unique spécifiée n'existe pas.")
+            return JsonResponse({'error': 'La référence unique spécifiée n\'existe pas.'}, status=400)
+
         except Exception as e:
+            logger.error(f"Une erreur s'est produite : {e}")
             return JsonResponse({'error': 'Une erreur s\'est produite'}, status=500)
         
 @require_GET
@@ -453,7 +464,7 @@ def diagnostic(request, ref_unique_list):
                     grade = broken_screen.attribuer_grade_oled_apple_3dt()
                 elif broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple' and not broken_screen.screenmodel.is_3dtouch:
                     grade = broken_screen.attribuer_grade_oled_apple()
-                elif not broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand == 'apple':
+                elif not broken_screen.screenmodel.is_oled and broken_screen.screenbrand.screenbrand != 'apple':
                     grade = broken_screen.attribuer_grade_general_not_oled()
                 elif broken_screen.screenbrand.screenbrand != 'apple' and broken_screen.screenmodel.is_oled:
                     grade = broken_screen.attribuer_grade_general_oled()
@@ -605,8 +616,8 @@ def opportunities(request):
     # Filtrer les instances de BrokenScreen pour l'utilisateur connecté
     all_broken_screens = BrokenScreen.objects.filter(is_packed=False, repairstore=request.user.repairstore)
 
-    # Exclure les instances avec le recycleur "VotreRecycleur"
-    all_broken_screens = all_broken_screens.exclude(recycler__company_name="VotreRecycleur")
+    # Exclure les instances avec le recycleur "Votre Recycleur"
+    all_broken_screens = all_broken_screens.exclude(recycler__company_name="Votre Recycleur")
 
     # Opportunités
     opportunities_count = 0

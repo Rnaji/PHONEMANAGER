@@ -23,6 +23,9 @@ recycleurs_possibles = ["ispart", "smartgrade", "lcdphone", "paylcd", "recyclemo
 # Créer une liste pour stocker les résultats
 resultats = []
 
+# Créer un ensemble global pour stocker les combinaisons uniques
+combinaisons_uniques = set()
+
 # Modifier la fonction pour trouver les correspondances pour une marque et un modèle donnés
 def trouver_correspondances_marque(marque, modele):
     modele = modele.strip()  # Enlever les espaces inutiles
@@ -38,39 +41,49 @@ def trouver_correspondances_marque(marque, modele):
 
 for marque in marques_possibles:
     for modele in data[marque]:
-        for grade in grades_possibles:
-            for recycleur in recycleurs_possibles:
-                print(f"Marque: {marque}, Modèle: {modele}, Grade: {grade}, Recycleur: {recycleur}")
+        # Ajouter une vérification pour itérer uniquement sur la première marque correspondante
+        if trouver_correspondances_marque(marque, modele):
+            for grade in grades_possibles:
+                for recycleur in recycleurs_possibles:
+                    print(f"Marque: {marque}, Modèle: {modele}, Grade: {grade}, Recycleur: {recycleur}")
 
-                resultat = trouver_correspondances_marque(marque, modele)
+                    resultat = trouver_correspondances_marque(marque, modele)
 
-                if resultat:
-                    for modele_trouve in resultat:
-                        lignes_modele = data_ref[data_ref.iloc[:, 1].str.strip().str.lower() == modele_trouve.strip().lower()]
+                    if resultat:
+                        for modele_trouve in resultat:
+                            lignes_modele = data_ref[data_ref.iloc[:, 1].str.strip().str.lower() == modele_trouve.strip().lower()]
 
-                        print("Lignes avant filtrage :")
-                        print(lignes_modele)  # Afficher les lignes avant le filtrage
+                            print("Lignes avant filtrage :")
+                            print(lignes_modele)  # Afficher les lignes avant le filtrage
 
-                        lignes_modele = lignes_modele[
-                            ((lignes_modele.iloc[:, 2].str.strip().str.lower() == grade.lower()) |
-                             (lignes_modele.iloc[:, 2].str.strip().str.lower() == f"grade {grade.lower()}")) &
-                            (lignes_modele.iloc[:, 0].str.lower() == recycleur)
-                        ]
+                            lignes_modele = lignes_modele[
+                                ((lignes_modele.iloc[:, 2].str.strip().str.lower() == grade.lower()) |
+                                (lignes_modele.iloc[:, 2].str.strip().str.lower() == f"grade {grade.lower()}")) &
+                                (lignes_modele.iloc[:, 0].str.lower() == recycleur)
+                            ]
 
-                        print("Lignes après filtrage :")
-                        print(lignes_modele)  # Afficher les lignes après le filtrage
+                            print("Lignes après filtrage :")
+                            print(lignes_modele)  # Afficher les lignes après le filtrage
 
-                        if not lignes_modele.empty:
-                            prix = lignes_modele.iloc[0, 3]  # Utiliser la quatrième colonne pour le prix
-                            recycleur_trouve = lignes_modele.iloc[0, 0]  # Utiliser la première colonne pour le nom du recycleur
+                            if not lignes_modele.empty:
+                                # Utiliser une chaîne unique pour identifier la combinaison
+                                combinaison_unique = f"{marque}_{modele}_{grade}_{recycleur}"
+                                
+                                # Vérifier si la combinaison est déjà dans l'ensemble global
+                                if combinaison_unique not in combinaisons_uniques:
+                                    prix = lignes_modele.iloc[0, 3]  # Utiliser la quatrième colonne pour le prix
+                                    recycleur_trouve = lignes_modele.iloc[0, 0]  # Utiliser la première colonne pour le nom du recycleur
 
-                            resultats.append({
-                                "Marque": marque,
-                                "Modèle": modele,
-                                "Grade": grade,
-                                "Recycleur": recycleur,
-                                "Prix": prix
-                            })
+                                    resultats.append({
+                                        "Marque": marque,
+                                        "Modèle": modele,
+                                        "Grade": grade,
+                                        "Recycleur": recycleur,
+                                        "Prix": prix
+                                    })
+
+                                    # Ajouter la combinaison à l'ensemble global
+                                    combinaisons_uniques.add(combinaison_unique)
 
 print(resultats)
 

@@ -778,7 +778,7 @@ class BrokenScreen(models.Model):
                     grade = self.attribuer_grade_oled_apple_3dt()
                 elif self.screenmodel.is_oled and self.screenbrand.screenbrand == 'apple' and not self.screenmodel.is_3dtouch:
                     grade = self.attribuer_grade_oled_apple()
-                elif not self.screenmodel.is_oled and self.screenbrand.screenbrand == 'apple':
+                elif not self.screenmodel.is_oled and self.screenbrand.screenbrand != 'apple':
                     grade = self.attribuer_grade_general_not_oled()
                 elif self.screenbrand.screenbrand != 'apple' and self.screenmodel.is_oled:
                     grade = self.attribuer_grade_general_oled()

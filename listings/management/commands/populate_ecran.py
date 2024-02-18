@@ -23,10 +23,15 @@ class Command(BaseCommand):
                             self.stdout.write(self.style.SUCCESS(f"Création de la marque {marque}"))
 
                         for modele in modeles:
-                            model, created = ScreenModel.objects.get_or_create(
-                                screenbrand=brand, screenmodel=modele, is_oled=False, is_wanted=False
-                            )
-                            if created:
+                            # Vérifier si le modèle existe déjà
+                            model_exists = ScreenModel.objects.filter(screenbrand=brand, screenmodel=modele).exists()
+                            if model_exists:
+                                self.stdout.write(self.style.SUCCESS(f"Le modèle {modele} existe déjà."))
+                            else:
+                                # Créer le modèle avec is_oled=False
+                                model = ScreenModel.objects.create(
+                                    screenbrand=brand, screenmodel=modele, is_oled=False, is_wanted=False
+                                )
                                 self.stdout.write(self.style.SUCCESS(f"Création du modèle {modele}"))
                             i += 1
 
@@ -41,3 +46,5 @@ class Command(BaseCommand):
             return  # Retourner sans créer une instance d'HttpResponse
 
         self.stdout.write(self.style.SUCCESS("Opération réussie"))
+
+

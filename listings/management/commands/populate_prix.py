@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
         try:
             # Récupérer le recycleur existant ou le créer s'il n'existe pas
-            recycleur, created = Recycler.objects.get_or_create(company_name="Votre Recycleur")
+            recycleur, created = Recycler.objects.get_or_create(company_name="Votrerecycleur")
 
             # Parcourir toutes les combinaisons possibles de screenbrand, screenmodel et grade
             for modele_ecran in ScreenModel.objects.all():
@@ -40,42 +40,52 @@ class Command(BaseCommand):
             with open(file_path, 'r') as fichier:
                 donnees_prix = json.load(fichier)
 
-                # Traiter les données JSON
-                with transaction.atomic():
-                    for item in donnees_prix:
-                        nom_marque = item["Marque"]
-                        nom_modele = item["Modèle"]
-                        grade = item["Grade"]
-                        recycleur_name = item["Recycleur"]
+               # ...
 
-                        prix_value = item["Prix"]
-                        prix = float(prix_value.replace(' €', '')) if isinstance(prix_value, str) else float(prix_value)
+            # Traiter les données JSON
+            with transaction.atomic():
+                for item in donnees_prix:
+                    nom_marque = item["Marque"]
+                    nom_modele = item["Modèle"]
+                    grade = item["Grade"]
+                    recycleur_name = item["Recycleur"]
 
+                    prix_value = item["Prix"]
+                    prix = float(prix_value.replace(' €', '')) if isinstance(prix_value, str) else float(prix_value)
+
+                    print(f"Processing: {nom_marque} {nom_modele} ({grade}) chez {recycleur_name} : {prix}")
+
+                    try:
                         modele_ecran = ScreenModel.objects.get(
                             screenbrand__screenbrand=nom_marque, screenmodel=nom_modele
                         )
-                        self.stdout.write(self.style.SUCCESS(f"Modèle {nom_marque} {nom_modele} trouvé."))
+                        print(f"Modèle {nom_marque} {nom_modele} trouvé.")
+                    except ScreenModel.DoesNotExist:
+                        print(f"Modèle {nom_marque} {nom_modele} non trouvé.")
+                        continue
+                    except ScreenModel.MultipleObjectsReturned:
+                        print(f"Plusieurs modèles trouvés pour {nom_marque} {nom_modele}. Veuillez ajuster les données.")
+                        continue
 
-                        # Récupérer le recycleur existant ou le créer s'il n'existe pas
-                        recycleur, created = Recycler.objects.get_or_create(company_name=recycleur_name)
+                    # Récupérer le recycleur existant ou le créer s'il n'existe pas
+                    recycleur, created = Recycler.objects.get_or_create(company_name=recycleur_name)
 
-                        # Mettre à jour ou créer le prix de recyclage
-                        prix_recycleur, created = RecyclerPricing.objects.update_or_create(
-                            recycler=recycleur,
-                            screenbrand=modele_ecran.screenbrand,
-                            screenmodel=modele_ecran,
-                            grade=grade,
-                            defaults={'price': prix}
-                        )
+                    # Mettre à jour ou créer le prix de recyclage
+                    prix_recycleur, created = RecyclerPricing.objects.update_or_create(
+                        recycler=recycleur,
+                        screenbrand=modele_ecran.screenbrand,
+                        screenmodel=modele_ecran,
+                        grade=grade,
+                        defaults={'price': prix}
+                    )
 
-                        if created:
-                            self.stdout.write(self.style.SUCCESS(
-                                f"Prix créé pour {nom_marque} {nom_modele} ({grade}) chez {recycleur_name} : {prix}"
-                            ))
-                        else:
-                            self.stdout.write(self.style.SUCCESS(
-                                f"Prix mis à jour pour {nom_marque} {nom_modele} ({grade}) chez {recycleur_name} : {prix}"
-                            ))
+                    if created:
+                        print(f"Prix créé pour {nom_marque} {nom_modele} ({grade}) chez {recycleur_name} : {prix}")
+                    else:
+                        print(f"Prix mis à jour pour {nom_marque} {nom_modele} ({grade}) chez {recycleur_name} : {prix}")
+
+            # ...
+
 
         except FileNotFoundError:
             self.stdout.write(self.style.ERROR("Le fichier JSON n'a pas été trouvé."))
