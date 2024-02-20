@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
     'listings',
 ]
 
@@ -170,4 +171,9 @@ LOGIN_REDIRECT_URL = 'dashboard'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
+]
+
+# Configurations pour CRONJOBS
+CRONJOBS = [
+    ('0 7 * * *', 'cd /Users/rachidnaji/PythonProject/projets/PhoneManager/ && /usr/bin/python3 manage.py runcrons'),
 ]

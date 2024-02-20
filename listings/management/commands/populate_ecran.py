@@ -24,8 +24,8 @@ class Command(BaseCommand):
 
                         for modele in modeles:
                             # Vérifier si le modèle existe déjà
-                            model_exists = ScreenModel.objects.filter(screenbrand=brand, screenmodel=modele).exists()
-                            if model_exists:
+                            existing_model = ScreenModel.objects.filter(screenbrand=brand, screenmodel=modele).first()
+                            if existing_model:
                                 self.stdout.write(self.style.SUCCESS(f"Le modèle {modele} existe déjà."))
                             else:
                                 # Créer le modèle avec is_oled=False
@@ -34,6 +34,7 @@ class Command(BaseCommand):
                                 )
                                 self.stdout.write(self.style.SUCCESS(f"Création du modèle {modele}"))
                             i += 1
+
 
         except FileNotFoundError:
             self.stdout.write(self.style.ERROR("Le fichier JSON n'a pas été trouvé."))

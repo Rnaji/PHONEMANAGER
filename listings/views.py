@@ -33,6 +33,8 @@ from .signals import create_new_unique_reference
 import json
 from django.contrib import messages
 from django.utils import timezone
+from decimal import Decimal
+
 
 ########################
 # Home and Legal Views #
@@ -503,25 +505,96 @@ def delete_diagnostic(request, ref_unique_list):
     # Rediriger vers la page de diagnostic pour commencer un nouveau diagnostic
     return redirect('diagnostic', ref_unique_list=broken_screen.uniquereference.value)
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 @login_required
 def quotation(request, ref_unique_list):
     broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=ref_unique_list)
 
     # Obtenez les prix des recycleurs liés au modèle et à la marque de l'écran cassé
+    # Obtenez les prix des recycleurs liés au modèle et à la marque de l'écran cassé
     recycler_prices = RecyclerPricing.objects.filter(
         screenbrand=broken_screen.screenbrand,
         screenmodel=broken_screen.screenmodel,
-        grade=broken_screen.grade
+        grade=broken_screen.grade,
+        price__gt=Decimal('0.00')  # Excluez les offres avec un prix de 0,00
     )
+
+    # Si "Votrerecycleur" existe, incluez également ses offres
+    votre_recycleur = Recycler.objects.filter(company_name="Votrerecycleur").first()
+    if votre_recycleur:
+        votre_recycleur_offers = RecyclerPricing.objects.filter(
+            recycler=votre_recycleur,
+            screenbrand=broken_screen.screenbrand,
+            screenmodel=broken_screen.screenmodel,
+            grade=broken_screen.grade
+        )
+        recycler_prices |= votre_recycleur_offers
+
+    logger.debug(f"Initial recycler_prices: {recycler_prices}")
+
+
+    # Vérifiez si screen_model est is_wanted=True et grade=A
+    screen_model = broken_screen.screenmodel
+    if screen_model.is_wanted and broken_screen.grade == 'A':
+        # Obtenez la meilleure offre parmi les recycler_prices
+        # Excluez l'offre du recycleur avec is_us=True de la recherche de la meilleure offre
+        best_offer = recycler_prices.exclude(recycler=Recycler.objects.get(is_us=True)).order_by('-price').first()
+
+        logger.debug(f"Meilleure offre : {best_offer}")
+
+        # Ajoutez une offre du recycleur avec is_us=True si elle est 10% supérieure à la meilleure offre
+
+        if best_offer:
+            us_offer_price = best_offer.price * Decimal('1.1')
+            existing_offer = RecyclerPricing.objects.filter(
+                recycler=Recycler.objects.get(is_us=True),
+                screenbrand=broken_screen.screenbrand,
+                screenmodel=broken_screen.screenmodel,
+                grade=broken_screen.grade
+            ).first()
+
+
+        if existing_offer:
+            # Si une offre existe déjà, mettez à jour son prix
+            existing_offer.price = us_offer_price
+            existing_offer.save()
+        else:
+            # Si aucune offre n'existe, créez une nouvelle offre
+            us_offer = RecyclerPricing(
+                recycler=Recycler.objects.get(is_us=True),
+                screenbrand=broken_screen.screenbrand,
+                screenmodel=broken_screen.screenmodel,
+                grade=broken_screen.grade,
+                price=us_offer_price,
+            )
+            us_offer.save()  # Enregistrez la nouvelle offre
+
+            logger.debug(f"us_offer: {us_offer}")
+
+            # Ajoutez l'offre is_us=True à la liste recycler_prices
+            recycler_prices = list(recycler_prices)  # Convertissez QuerySet en liste pour la manipulation
+            recycler_prices.append(us_offer)
 
     # Ajoutez les offres de rachat à la relation quotations de BrokenScreen
     broken_screen.quotations.add(*recycler_prices)
+
+    logger.debug(f"Final recycler_prices: {recycler_prices}")
 
     context = {
         'recycler_prices': recycler_prices,
         'broken_screen': broken_screen,
     }
     return render(request, 'quotation.html', context)
+
+
+
+
+
+
+
 
 def screen_offre(request, ref_unique_list, recycler_price_id):
     broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=ref_unique_list)
@@ -597,11 +670,15 @@ def stock_recycler(request, recycler_ref):
         is_packed=False
     ).order_by('screenmodel__screenmodel')
 
+    items_value = sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price)
+
     context = {
         'recycler': recycler,
         'broken_screens': broken_screens,
         'items_count': broken_screens.count(),
         'items_value': sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price),
+        'display_question_mark': items_value == 0,  # Ajoutez cette ligne
+
     }
 
     return render(request, 'stock.html', context)
