@@ -1,5 +1,3 @@
-<!-- Votre fichier screen_liste_offres.html -->
-
 {% extends "base_webapp.html" %}
 {% load static %}
 
@@ -15,7 +13,7 @@
             <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">
                 Votre écran est un GRADE {{ broken_screen.grade }} ! <br><br> Il existe {{ count_minus_one }} offres de rachat !
             </div>
-            <div class="col-12 fs-6 text-dark">{{ message|safe }}</div>
+            <div class="col-12 fs-6 text-dark">{{ message }}</div>
         </div>
 
         <div class="row">
@@ -24,13 +22,12 @@
                     {% for recycler_price in recycler_prices %}
                         <a href="{% url 'screen_offre' ref_unique_list=broken_screen.uniquereference.value recycler_price_id=recycler_price.id %}" class="list-group-item fs-6 font-monospace">
                             {{ recycler_price.recycler.company_name|title }}
-                            {% if recycler_price.recycler.company_name|title == "Votrerecycleur" %} 
-                                a peut-être une meilleure offre
-                                <span class="float-end text-danger">❓</span><br>
+                            {% if recycler_price.recycler.company_name|title == "Votrerecycleur" %} a peut-être une meilleur offre
+                                <span class="float-end text-danger">❓</span>
                             {% elif recycler_price.price == 0 %}
-                                <span class="float-end text-danger">❓</span><br>
+                                <span class="float-end text-danger">❓</span>
                             {% else %}
-                                <span class="float-end text-dark">{{ recycler_price.price }} €</span><br>
+                                <span class="float-end text-dark">{{ recycler_price.price }} €</span>
                             {% endif %}
                         </a>
                     {% endfor %}
