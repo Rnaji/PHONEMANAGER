@@ -142,9 +142,9 @@ LOGGING = {
         },
     },
     'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
-    },
+    'handlers': ['console'],
+    'level': 'DEBUG',  # Changez cela en 'INFO' si vous ne voulez voir que les messages INFO et supérieurs
+},
     'loggers': {
         'django': {
             'handlers': ['console'],

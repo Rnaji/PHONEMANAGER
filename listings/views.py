@@ -7,7 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.db import transaction
-from django.db.models import Count, Sum
+from django.db.models import Count, Sum, Q
 from django.http import HttpResponse, JsonResponse, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
@@ -114,12 +114,17 @@ def dashboard(request):
             total_value=Sum('price')
         )
 
+        poubelle_statistics = broken_screens.filter(Q(recycler__company_name='POUBELLE')).values('recycler__company_name').annotate(
+        items_count_poubelle=Count('recycler__company_name'),
+        total_value_poubelle=Sum('price')
+    )
+
         # Récupérer les statistiques par recycleur
-        recycler_statistics = broken_screens.values('recycler__company_name').annotate(
-            items_count_recycler=Count('recycler__company_name'),
-            items_count_brand=Count('screenmodel__screenbrand'),
-            total_value_recycler=Sum('price')
-        )
+        recycler_statistics = broken_screens.exclude(Q(recycler__company_name='POUBELLE')).values('recycler__company_name').annotate(
+        items_count_recycler=Count('recycler__company_name'),
+        items_count_brand=Count('screenmodel__screenbrand'),
+        total_value_recycler=Sum('price')
+    )
 
         # Calculer le nombre total d'articles et la valeur totale
         items_count = broken_screens.count()
@@ -165,6 +170,7 @@ def dashboard(request):
             'items_value': items_value,
             'recap_brand_table': brand_statistics,
             'recap_recycler_table': recycler_statistics,
+            'recap_poubelle_table': poubelle_statistics,  # Ajout de la statistique pour le "Stock Poubelle"
             'opportunities_count': opportunities_count,
             'opportunities_value': opportunities_value,
             'broken_screens': broken_screens,
@@ -514,12 +520,11 @@ def quotation(request, ref_unique_list):
     broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=ref_unique_list)
 
     # Obtenez les prix des recycleurs liés au modèle et à la marque de l'écran cassé
-    # Obtenez les prix des recycleurs liés au modèle et à la marque de l'écran cassé
     recycler_prices = RecyclerPricing.objects.filter(
         screenbrand=broken_screen.screenbrand,
         screenmodel=broken_screen.screenmodel,
         grade=broken_screen.grade,
-        price__gt=Decimal('0.00')  # Excluez les offres avec un prix de 0,00
+        price__gt=Decimal('0.00')
     )
 
     # Si "Votrerecycleur" existe, incluez également ses offres
@@ -533,7 +538,21 @@ def quotation(request, ref_unique_list):
         )
         recycler_prices |= votre_recycleur_offers
 
-    logger.debug(f"Initial recycler_prices: {recycler_prices}")
+    # Ajoutez le recycleur "POUBELLE" et incluez ses offres
+        poubelle_recycleur = Recycler.objects.filter(company_name="POUBELLE").first()
+        if poubelle_recycleur:
+            poubelle_recycleur_offers = RecyclerPricing.objects.filter(
+                recycler=poubelle_recycleur,
+                screenbrand=broken_screen.screenbrand,
+                screenmodel=broken_screen.screenmodel,
+                grade=broken_screen.grade
+            )
+
+            # Vérifiez si "Votrerecycleur" est le seul recycleur présent
+            if recycler_prices.count() == 1 and votre_recycleur:
+                recycler_prices |= poubelle_recycleur_offers
+
+        logger.debug(f"Initial recycler_prices: {recycler_prices}")
 
 
     # Vérifiez si screen_model est is_wanted=True et grade=A
@@ -541,53 +560,69 @@ def quotation(request, ref_unique_list):
     if screen_model.is_wanted and broken_screen.grade == 'A':
         # Obtenez la meilleure offre parmi les recycler_prices
         # Excluez l'offre du recycleur avec is_us=True de la recherche de la meilleure offre
-        best_offer = recycler_prices.exclude(recycler=Recycler.objects.get(is_us=True)).order_by('-price').first()
+        best_offer = recycler_prices.exclude(recycler__is_us=True).order_by('-price').first()
 
         logger.debug(f"Meilleure offre : {best_offer}")
 
-        # Ajoutez une offre du recycleur avec is_us=True si elle est 10% supérieure à la meilleure offre
-
+        # Ajoutez une offre du recycleur avec is_us=True 10% supérieure à la meilleure offre
         if best_offer:
             us_offer_price = best_offer.price * Decimal('1.1')
-            existing_offer = RecyclerPricing.objects.filter(
-                recycler=Recycler.objects.get(is_us=True),
-                screenbrand=broken_screen.screenbrand,
-                screenmodel=broken_screen.screenmodel,
-                grade=broken_screen.grade
-            ).first()
-
-
-        if existing_offer:
-            # Si une offre existe déjà, mettez à jour son prix
-            existing_offer.price = us_offer_price
-            existing_offer.save()
         else:
-            # Si aucune offre n'existe, créez une nouvelle offre
-            us_offer = RecyclerPricing(
-                recycler=Recycler.objects.get(is_us=True),
-                screenbrand=broken_screen.screenbrand,
-                screenmodel=broken_screen.screenmodel,
-                grade=broken_screen.grade,
-                price=us_offer_price,
-            )
-            us_offer.save()  # Enregistrez la nouvelle offre
+            us_offer_price = Decimal('0')
+    else:
+        us_offer_price = Decimal('0')
 
-            logger.debug(f"us_offer: {us_offer}")
+    existing_offer = RecyclerPricing.objects.filter(
+        recycler__is_us=True,
+        screenbrand=broken_screen.screenbrand,
+        screenmodel=broken_screen.screenmodel,
+        grade=broken_screen.grade
+    ).first()
 
-            # Ajoutez l'offre is_us=True à la liste recycler_prices
-            recycler_prices = list(recycler_prices)  # Convertissez QuerySet en liste pour la manipulation
-            recycler_prices.append(us_offer)
+    if existing_offer:
+        # Si une offre existe déjà, mettez à jour son prix
+        existing_offer.price = us_offer_price
+        existing_offer.save()
+    else:
+        # Si aucune offre n'existe, créez une nouvelle offre
+        us_offer = RecyclerPricing.objects.create(
+            recycler=Recycler.objects.get(is_us=True),
+            screenbrand=broken_screen.screenbrand,
+            screenmodel=broken_screen.screenmodel,
+            grade=broken_screen.grade,
+            price=us_offer_price,
+        )
+
+        logger.debug(f"us_offer: {us_offer}")
+
+        # Ajoutez l'offre is_us=True à la queryset recycler_prices
+        recycler_prices |= RecyclerPricing.objects.filter(pk=us_offer.pk)
+
+
+        # Obtenez le nombre d'offres de rachat
+    count_minus_one = recycler_prices.exclude(recycler__company_name__in=["Votrerecycleur", "POUBELLE"]).count()
 
     # Ajoutez les offres de rachat à la relation quotations de BrokenScreen
     broken_screen.quotations.add(*recycler_prices)
 
     logger.debug(f"Final recycler_prices: {recycler_prices}")
 
+    # Déterminez le message en fonction du nombre d'offres
+    if 'count_minus_one' in locals() and count_minus_one <= 0:
+        message = "Nous collaborons avec des usines qui récupèrent tous les déchets électroniques non valorisables par leur grade. \nLes tarifs de rachat sont établis au kilo. \nLorsque vous atteignez 100 écrans cassés non valorisables, vous avez la possibilité d'obtenir un prix de rachat. \nEn contribuant positivement à l'environnement, cette initiative pourrait également vous permettre de gagner quelques euros."
+    else:
+        message = "Veuillez faire votre choix. Vous pourrez le modifier ultérieurement si une meilleure opportunité se présente."
+
     context = {
         'recycler_prices': recycler_prices,
         'broken_screen': broken_screen,
+        'count_minus_one': count_minus_one,
+        'message': message,
     }
+
     return render(request, 'quotation.html', context)
+
+
 
 
 

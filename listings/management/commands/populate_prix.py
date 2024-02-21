@@ -36,6 +36,29 @@ class Command(BaseCommand):
                             f"Prix mis à jour pour {modele_ecran.screenbrand.screenbrand} {modele_ecran.screenmodel} ({grade}) chez {recycleur.company_name} : 0"
                         ))
 
+            # Créer ou mettre à jour les prix pour le recycleur "POUBELLE"
+            poubelle_recycler, created = Recycler.objects.get_or_create(company_name="POUBELLE")
+
+            with transaction.atomic():
+                for modele_ecran in ScreenModel.objects.all():
+                    for grade, _ in RecyclerPricing._meta.get_field('grade').choices:
+                        prix_poubelle, created = RecyclerPricing.objects.update_or_create(
+                            recycler=poubelle_recycler,
+                            screenbrand=modele_ecran.screenbrand,
+                            screenmodel=modele_ecran,
+                            grade=grade,
+                            defaults={'price': 0}
+                        )
+
+                        if created:
+                            self.stdout.write(self.style.SUCCESS(
+                                f"Prix créé pour {modele_ecran.screenbrand.screenbrand} {modele_ecran.screenmodel} ({grade}) chez {poubelle_recycler.company_name} : 0"
+                            ))
+                        else:
+                            self.stdout.write(self.style.SUCCESS(
+                                f"Prix mis à jour pour {modele_ecran.screenbrand.screenbrand} {modele_ecran.screenmodel} ({grade}) chez {poubelle_recycler.company_name} : 0"
+                            ))
+
             # Lire les données JSON
             with open(file_path, 'r') as fichier:
                 donnees_prix = json.load(fichier)

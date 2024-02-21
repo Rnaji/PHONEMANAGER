@@ -243,4 +243,38 @@
             </div>
         </div>
     {% endif %}
+
+    {% if recap_poubelle_table|length > 0 %}
+    <!-- Stock Poubelle -->
+    <div class="row mb-4">
+        <div class="mb-3 fs-5 text-blue">🗑️ Stock Poubelle</div>
+
+        {% for poubelle_info in recap_poubelle_table %}
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <ul class="list-group font-monospace shadow-sm">
+                    <li class="list-group-item logo-blue fs-5">
+                        <span class="me-2">🗑️</span>
+                        <span>{{ poubelle_info.recycler__company_name|title }}</span>
+                    </li>
+                    <li class="list-group-item fs-6">
+                        <span>Nombre d'écrans</span>
+                        <span class="float-end">{{ poubelle_info.items_count_poubelle }}</span>
+                    </li>
+                    <li class="list-group-item fs-6">
+                        <span>Valeur totale estimée</span>
+                        {% if poubelle_info.total_value_poubelle == 0 %}
+                            <span class="float-end">❓</span>
+                        {% else %}
+                            <span class="float-end">{{ poubelle_info.total_value_poubelle|default_if_none:'0'|floatformat:2 }} €</span>
+                        {% endif %}
+                    </li>
+                    <li class="list-group-item text-end">
+                        <a href="{% url 'stock_recycler' recycler_ref=poubelle_info.recycler__company_name %}" class="btn btn-sm btn-outline-blue">Voir en détail</a>
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
 {% endblock page_content %}
