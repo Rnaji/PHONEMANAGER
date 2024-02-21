@@ -718,6 +718,32 @@ def stock_recycler(request, recycler_ref):
 
     return render(request, 'stock.html', context)
 
+@login_required
+@require_GET
+def stock_unattributed(request):
+    # Filtrer les instances de BrokenScreen pour l'utilisateur connecté, qui n'ont pas de recycleur attribué
+    broken_screens = BrokenScreen.objects.filter(
+        repairstore=request.user.repairstore,
+        recycler__isnull=True,
+        is_packed=False
+    ).order_by('screenmodel__screenmodel')
+
+    items_value = sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price)
+
+    # Ajout des logs pour déboguer
+    logger.debug("Number of all BrokenScreens: %d", BrokenScreen.objects.all().count())
+    logger.debug("Number of BrokenScreens without recycler: %d", broken_screens.count())
+
+    context = {
+        'broken_screens': broken_screens,
+        'items_count': broken_screens.count(),
+        'items_value': sum(broken_screen.price for broken_screen in broken_screens if broken_screen.price),
+        'display_question_mark': items_value == 0,
+    }
+
+    return render(request, 'stock.html', context)
+
+
 #######################
 # Opportunities Views #
 #######################

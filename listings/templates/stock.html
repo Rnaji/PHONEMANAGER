@@ -16,7 +16,7 @@
 {% block page_content %}
     <!-- DEBUT Stock & Opportunités -->
     <div class="row mb-4">
-        <!-- DEBUT Stock -->
+        <!-- DEBUT  Stock -->
         <div class="col-12 col-md-6 col-lg-4 mb-4">
             <ul class="list-group font-monospace shadow-sm">
                 <li class="list-group-item logo-blue fs-5">📦 Stock {% if brand %}{{ brand.screenmodel|title }}{% elif recycler %}{{ recycler|title }}{% else %}total{% endif %}</li>
@@ -26,13 +26,7 @@
                 </li>
                 <li class="list-group-item fs-6">
                     <span>Valeur totale estimée</span>
-                    <span class="float-end">
-                        {% if items_value == 0 %}
-                            ?
-                        {% else %}
-                            {{ items_value }} €
-                        {% endif %}
-                    </span>
+                    <span class="float-end">{{ items_value }} €</span>
                 </li>
                 {% if request.resolver_match.url_name == 'dashboard' %}
                     <li class="list-group-item text-end">
@@ -42,7 +36,6 @@
             </ul>
         </div>
     </div>
-    
     <!-- Item table -->
     <div class="row mb-4 md-mb-5 mb-lg-5">
         <div class="mb-1 mb-md-3 fs-6 text-blue">Cliquez sur une référence pour voir le détail</div>

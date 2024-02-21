@@ -4,7 +4,7 @@ from .views import (
     landing, legal, user_registration, complete_store_configuration, inscription_newsletter, dashboard, 
     page_attente, CreateBrokenScreenView, htmx_get_modeles_from_brand, 
     get_unused_ref_unique_list_view, diagnostic, delete_diagnostic, 
-    quotation, screen_offre, stock_all, stock_brand, stock_recycler, 
+    quotation, screen_offre, stock_all, stock_brand, stock_recycler, stock_unattributed,
     opportunities, BrokenScreenDetail, DeleteBrokenScreen, 
     ExpedierMesEcransView, ExpedierMesEcransRecycler, settings_view, 
     settings_edit_view, logout_view, stickers, ValiderExpedition
@@ -50,6 +50,8 @@ urlpatterns = [
     path('stock/all/', stock_all, name='stock_all'),
     path('stock/brand/<brand_ref>/', stock_brand, name='stock_brand'),
     path('stock/recycler/<recycler_ref>/', stock_recycler, name='stock_recycler'),
+    path('stock/unattributed/', stock_unattributed, name='stock_unattributed'),
+
 
     # Opportunities URL
     path('opportunities/', opportunities, name='opportunities'),

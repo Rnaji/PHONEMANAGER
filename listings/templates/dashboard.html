@@ -209,11 +209,7 @@
                             {% endif %}
                         </li>
                         <li class="list-group-item text-end">
-                            {% if recycler_info.recycler__company_name %}
-                                <a href="{% url 'stock_recycler' recycler_ref=recycler_info.recycler__company_name %}" class="btn btn-sm btn-outline-blue">Voir en détail</a>
-                            {% else %}
-                                <span class="btn btn-sm btn-outline-blue disabled">Voir en détail</span>
-                            {% endif %}
+                            <a href="{% url 'stock_unattributed' %}" class="btn btn-sm btn-outline-blue{% if items_count == 0 %} disabled{% endif %}">Voir en détail</a>
                         </li>
                         
                     </ul>
