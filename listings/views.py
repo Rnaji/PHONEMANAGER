@@ -114,13 +114,13 @@ def dashboard(request):
             total_value=Sum('price')
         )
 
-        poubelle_statistics = broken_screens.filter(Q(recycler__company_name='POUBELLE')).values('recycler__company_name').annotate(
+        poubelle_statistics = broken_screens.filter(Q(recycler__company_name='ÉcoBin')).values('recycler__company_name').annotate(
         items_count_poubelle=Count('recycler__company_name'),
         total_value_poubelle=Sum('price')
     )
 
         # Récupérer les statistiques par recycleur
-        recycler_statistics = broken_screens.exclude(Q(recycler__company_name='POUBELLE')).values('recycler__company_name').annotate(
+        recycler_statistics = broken_screens.exclude(Q(recycler__company_name='ÉcoBin')).values('recycler__company_name').annotate(
         items_count_recycler=Count('recycler__company_name'),
         items_count_brand=Count('screenmodel__screenbrand'),
         total_value_recycler=Sum('price')
@@ -538,8 +538,8 @@ def quotation(request, ref_unique_list):
         )
         recycler_prices |= votre_recycleur_offers
 
-    # Ajoutez le recycleur "POUBELLE" et incluez ses offres
-        poubelle_recycleur = Recycler.objects.filter(company_name="POUBELLE").first()
+    # Ajoutez le recycleur "ÉcoBin" et incluez ses offres
+        poubelle_recycleur = Recycler.objects.filter(company_name="ÉcoBin").first()
         if poubelle_recycleur:
             poubelle_recycleur_offers = RecyclerPricing.objects.filter(
                 recycler=poubelle_recycleur,
@@ -600,7 +600,7 @@ def quotation(request, ref_unique_list):
 
 
         # Obtenez le nombre d'offres de rachat
-    count_minus_one = recycler_prices.exclude(recycler__company_name__in=["Votrerecycleur", "POUBELLE"]).count()
+    count_minus_one = recycler_prices.exclude(recycler__company_name__in=["Votrerecycleur", "ÉcoBin"]).count()
 
     # Ajoutez les offres de rachat à la relation quotations de BrokenScreen
     broken_screen.quotations.add(*recycler_prices)
@@ -609,7 +609,7 @@ def quotation(request, ref_unique_list):
 
     # Déterminez le message en fonction du nombre d'offres
     if 'count_minus_one' in locals() and count_minus_one <= 0:
-        message = "Nous collaborons avec des usines qui récupèrent tous les déchets électroniques non valorisables par leur grade. \nLes tarifs de rachat sont établis au kilo. \nLorsque vous atteignez 100 écrans cassés non valorisables, vous avez la possibilité d'obtenir un prix de rachat. \nEn contribuant positivement à l'environnement, cette initiative pourrait également vous permettre de gagner quelques euros."
+        message = "Grace à ÉcoBin valorisez votre poubelle 🌱🗑️. \nLorsque vous atteignez 100 écrans cassés non valorisables, vous recevez un prix de rachat💰. \nEn contribuant positivement à l'environnement ♻️, cette initiative vous permet de gagner quelques euros 💶."
     else:
         message = "Veuillez faire votre choix. Vous pourrez le modifier ultérieurement si une meilleure opportunité se présente."
 

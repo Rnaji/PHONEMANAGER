@@ -2,7 +2,7 @@
 
 from django.db.models.signals import post_delete, pre_save, post_save
 from django.dispatch import receiver
-from .models import UniqueReference, RepairStore, RecyclerPricing, BrokenScreen, ScreenModel
+from .models import UniqueReference, RepairStore, RecyclerPricing, BrokenScreen, ScreenModel, Recycler
 import logging
 
 logger = logging.getLogger(__name__)
@@ -71,11 +71,17 @@ def pre_save_screenmodel(sender, instance, **kwargs):
     if instance.pk:
         old_instance = ScreenModel.objects.get(pk=instance.pk)
         if old_instance.is_wanted and not instance.is_wanted:
-            # Obtenez tous les RecyclerPricing à supprimer
-            recycler_pricings_to_delete = RecyclerPricing.objects.filter(
-                screenmodel=instance,
-                recycler__is_us=True,
-                broken_screens__screenmodel=instance
-            )
-            # Supprimez-les
-            recycler_pricings_to_delete.delete()
+            # Obtenez tous les Recycler avec is_us=True
+            recyclers_with_us = Recycler.objects.filter(is_us=True)
+            
+            # Parcourez chaque Recycler avec is_us=True
+            for recycler_with_us in recyclers_with_us:
+                # Obtenez tous les BrokenScreen liés à cet ScreenModel et Recycler
+                broken_screens = BrokenScreen.objects.filter(
+                    screenmodel=instance,
+                    recycler=recycler_with_us
+                )
+                # Parcourez chaque BrokenScreen et supprimez le champ recycler
+                for broken_screen in broken_screens:
+                    broken_screen.recycler = None
+                    broken_screen.save()

@@ -22,7 +22,8 @@
                     {% for recycler_price in recycler_prices %}
                         <a href="{% url 'screen_offre' ref_unique_list=broken_screen.uniquereference.value recycler_price_id=recycler_price.id %}" class="list-group-item fs-6 font-monospace">
                             {{ recycler_price.recycler.company_name|title }}
-                            {% if recycler_price.recycler.company_name|title == "Votrerecycleur" %} a peut-être une meilleur offre
+                            {% if recycler_price.recycler.company_name|title == "Votrerecycleur" and recycler_price.price == 0 %}
+                                a peut-être une meilleure offre
                                 <span class="float-end text-danger">❓</span>
                             {% elif recycler_price.price == 0 %}
                                 <span class="float-end text-danger">❓</span>
