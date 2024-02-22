@@ -186,35 +186,39 @@
             <div class="mb-3 fs-5 text-blue">👨‍🔧 Stock par recycleur</div>
             
             {% for recycler_info in recap_recycler_table %}
-                <div class="col-12 col-md-6 col-lg-4 mb-4">
-                    <ul class="list-group font-monospace shadow-sm">
-                        <li class="list-group-item logo-blue fs-5">
-                            {% if recycler_info.recycler__company_name is None %}
-                                <span class="me-2">❓</span>
-                            {% else %}
-                            <img src="{% static 'img/recycler_logos/'|add:recycler_info.recycler__company_name|lower|add:'.png' %}" alt="Logo Recycleur" class="me-2" width="50" height="20">
-                            {% endif %}
-                            <span>{{ recycler_info.recycler__company_name|default_if_none:"Non attribué"|title }}</span>
-                        </li>
-                        <li class="list-group-item fs-6">
-                            <span>Nombre d'écrans</span>
-                            <span class="float-end">{{ recycler_info.items_count_brand }}</span>
-                        </li>
-                        <li class="list-group-item fs-6">
-                            <span>Valeur totale estimée</span>
-                            {% if recycler_info.total_value_recycler == 0 %}
-                                <span class="float-end">❓</span>
-                            {% else %}
-                                <span class="float-end">{{ recycler_info.total_value_recycler|default_if_none:'0'|floatformat:2 }} €</span>
-                            {% endif %}
-                        </li>
-                        <li class="list-group-item text-end">
-                            <a href="{% url 'stock_unattributed' %}" class="btn btn-sm btn-outline-blue{% if items_count == 0 %} disabled{% endif %}">Voir en détail</a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            {% endfor %}
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <ul class="list-group font-monospace shadow-sm">
+            <li class="list-group-item logo-blue fs-5">
+                {% if recycler_info.recycler__company_name is None %}
+                    <span class="me-2">❓</span>
+                {% else %}
+                    <img src="{% static 'img/recycler_logos/'|add:recycler_info.recycler__company_name|lower|add:'.png' %}" alt="Logo Recycleur" class="me-2" width="50" height="20">
+                {% endif %}
+                <span>{{ recycler_info.recycler__company_name|default_if_none:"Non attribué"|title }}</span>
+            </li>
+            <li class="list-group-item fs-6">
+                <span>Nombre d'écrans</span>
+                <span class="float-end">{{ recycler_info.items_count_brand }}</span>
+            </li>
+            <li class="list-group-item fs-6">
+                <span>Valeur totale estimée</span>
+                {% if recycler_info.total_value_recycler == 0 %}
+                    <span class="float-end">❓</span>
+                {% else %}
+                    <span class="float-end">{{ recycler_info.total_value_recycler|default_if_none:'0'|floatformat:2 }} €</span>
+                {% endif %}
+            </li>
+            <li class="list-group-item text-end">
+                {% if recycler_info.recycler__company_name is None %}
+                    <a href="{% url 'stock_unattributed' %}" class="btn btn-sm btn-outline-blue{% if items_count == 0 %} disabled{% endif %}">Voir en détail</a>
+                {% else %}
+                    <a href="{% url 'stock_recycler' recycler_ref=recycler_info.recycler__company_name %}" class="btn btn-sm btn-outline-blue{% if items_count == 0 %} disabled{% endif %}">Voir en détail</a>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+{% endfor %}
+
         </div>
     {% else %}
         <!-- Aucun écran en stock pour le moment, affichez un tableau avec des valeurs par défaut -->

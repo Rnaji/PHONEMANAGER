@@ -2,7 +2,7 @@
 
 from django.db.models.signals import post_delete, pre_save, post_save
 from django.dispatch import receiver
-from .models import UniqueReference, RepairStore, RecyclerPricing, BrokenScreen
+from .models import UniqueReference, RepairStore, RecyclerPricing, BrokenScreen, ScreenModel
 import logging
 
 logger = logging.getLogger(__name__)
@@ -64,3 +64,18 @@ def ensure_user_has_65_unique_references(sender, instance, created, **kwargs):
 def update_broken_screen_price(sender, instance, **kwargs):
     # Mettez à jour le prix pour tous les écrans cassés liés à cette offre et ce recycler
     BrokenScreen.objects.filter(quotations=instance, recycler=instance.recycler, is_packed=False).update(price=instance.price)
+
+@receiver(pre_save, sender=ScreenModel)
+def pre_save_screenmodel(sender, instance, **kwargs):
+    # Vérifiez si is_wanted est en train de passer de True à False
+    if instance.pk:
+        old_instance = ScreenModel.objects.get(pk=instance.pk)
+        if old_instance.is_wanted and not instance.is_wanted:
+            # Obtenez tous les RecyclerPricing à supprimer
+            recycler_pricings_to_delete = RecyclerPricing.objects.filter(
+                screenmodel=instance,
+                recycler__is_us=True,
+                broken_screens__screenmodel=instance
+            )
+            # Supprimez-les
+            recycler_pricings_to_delete.delete()
