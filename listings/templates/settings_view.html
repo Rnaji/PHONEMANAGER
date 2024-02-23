@@ -48,10 +48,10 @@
         {% if non_paid_packages|length > 0 %}
             <ul class="list-group shadow-sm">
                 {% for package in non_paid_packages %}
-                    <li class="list-group-item fs-6">
-                        <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseShipments{{ package.reference }}" role="button" aria-expanded="false" aria-controls="collapseShipments{{ package.reference }}">détails</span>
-                        📦 Colis - {{ package.reference }} - Valeur :{{ package.total_value }} €
-                    </li>
+                <li class="list-group-item fs-6">
+                    <span class="float-end font-monospace text-blue fs-6 dropdown-toggle" data-bs-toggle="collapse" href="#collapseShipments{{ package.reference }}" role="button" aria-expanded="false" aria-controls="collapseShipments{{ package.reference }}">détails</span>
+                    📦 Colis - {{ package.reference }} - Valeur :{{ package.total_value|default:"?" }} €
+                </li>
                     <div class="collapse" id="collapseShipments{{ package.reference }}">
                         <!-- Ajoutez ici les détails supplémentaires du package si nécessaire -->
                         <ul class="list-group shadow-sm">
@@ -72,7 +72,7 @@
                                             GRADE {{ brokenscreen_field.grade }}
                                         </div>
                                         <div class="col-md-2 text-start">
-                                            <span>{{ brokenscreen_field.price }} €</span>
+                                            <span>{{ brokenscreen_field.price|default:"?" }} €</span>
                                         </div>
                                         <div class="col-md-2 text-end">
                                             <!-- Ajoutez ici d'autres éléments si nécessaire -->
@@ -139,7 +139,7 @@
                             <li class="list-group-item fs-6">
                                 <a href="{% url 'package_detail' reference=package.reference %}" class="package-item" data-reference="{{ package.reference }}" data-value="{{ package.total_value }}">
                                     <!-- Contenu du package archivé -->
-                                    📦 Colis - {{ package.reference }} - Valeur : {{ package.total_value }} €
+                                    📦 Colis - {{ package.reference }} - Valeur :{{ package.total_value|default:"?" }} €
                                 </a>
                             </li>
                         {% endfor %}
@@ -202,7 +202,9 @@
 
 
 
-
+<div class="d-flex justify-content-left mt-4">
+    <a class="btn btn-sm btn-outline-blue me-auto" href="{% url 'dashboard' %}">Retour au tableau de bord</a>
+</div>
 
 
 

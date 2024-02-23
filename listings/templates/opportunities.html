@@ -11,7 +11,7 @@
         <ul class="list-group font-monospace shadow-sm">
             <li class="list-group-item logo-blue fs-5">🌟 Opportunités</li>
             <li class="list-group-item fs-6">
-                <span>Nombre d'opportunités</span>
+                <span>Nombre d'opportunité</span>
                 <span class="float-end">{{ opportunities_count }}</span>
             </li>
             <li class="list-group-item fs-6">
@@ -90,6 +90,10 @@
             </li>
         </ul>
         {% endfor %}
+
+        <div class="d-flex justify-content-left mt-4">
+            <a class="btn btn-sm btn-outline-blue float-end" href="{% url 'dashboard' %}">Retour au tableau de bord</a>
+        </div>
     </div>
 </div>
 {% endblock page_content %}

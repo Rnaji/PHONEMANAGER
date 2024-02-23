@@ -114,13 +114,13 @@ def dashboard(request):
             total_value=Sum('price')
         )
 
-        poubelle_statistics = broken_screens.filter(Q(recycler__company_name='ÉcoBin')).values('recycler__company_name').annotate(
+        poubelle_statistics = broken_screens.filter(Q(recycler__company_name='EcoBin')).values('recycler__company_name').annotate(
         items_count_poubelle=Count('recycler__company_name'),
         total_value_poubelle=Sum('price')
     )
 
         # Récupérer les statistiques par recycleur
-        recycler_statistics = broken_screens.exclude(Q(recycler__company_name='ÉcoBin')).values('recycler__company_name').annotate(
+        recycler_statistics = broken_screens.exclude(Q(recycler__company_name='EcoBin')).values('recycler__company_name').annotate(
         items_count_recycler=Count('recycler__company_name'),
         items_count_brand=Count('screenmodel__screenbrand'),
         total_value_recycler=Sum('price')
@@ -553,7 +553,7 @@ def get_recycler_prices(broken_screen):
         )
         recycler_prices |= votre_recycleur_offers
 
-        poubelle_recycleur = Recycler.objects.filter(company_name="ÉcoBin").first()
+        poubelle_recycleur = Recycler.objects.filter(company_name="EcoBin").first()
         if poubelle_recycleur:
             poubelle_recycleur_offers = RecyclerPricing.objects.filter(
                 recycler=poubelle_recycleur,
@@ -570,7 +570,7 @@ def get_recycler_prices(broken_screen):
     return recycler_prices
 
 def update_broken_screen_quotations(broken_screen, recycler_prices):
-    count_minus_one = recycler_prices.exclude(recycler__company_name__in=["Votrerecycleur", "ÉcoBin"]).count()
+    count_minus_one = recycler_prices.exclude(recycler__company_name__in=["Votrerecycleur", "EcoBin"]).count()
     broken_screen.quotations.add(*recycler_prices)
 
     logger.debug(f"Final recycler_prices: {recycler_prices}")
@@ -580,7 +580,7 @@ def update_broken_screen_quotations(broken_screen, recycler_prices):
 
 def determine_message(count_minus_one):
     if 'count_minus_one' in locals() and count_minus_one <= 0:
-        message = "Grace à ÉcoBin valorisez votre poubelle 🌱🗑️. \nLorsque vous atteignez 100 écrans cassés non valorisables, vous recevez un prix de rachat💰. \nEn contribuant positivement à l'environnement ♻️, cette initiative vous permet de gagner quelques euros 💶."
+        message = "Grace à EcoBin valorisez votre poubelle 🌱🗑️. \nLorsque vous atteignez 100 écrans cassés non valorisables, vous recevez un prix de rachat💰. \nEn contribuant positivement à l'environnement ♻️, cette initiative vous permet de gagner quelques euros 💶."
     else:
         message = "Veuillez faire votre choix. Vous pourrez le modifier ultérieurement si une meilleure opportunité se présente."
 

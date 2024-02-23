@@ -97,7 +97,7 @@
             <ul class="list-group font-monospace shadow-sm">
                 <li class="list-group-item logo-blue fs-5">💲 Stock {% if brand %}{{ brand.screenmodel|title }}{% elif recycler %}{{ recycler|title }}{% else %}total{% endif %}</li>
                 <li class="list-group-item fs-6">
-                    <span>Nombre d'écrans</span>
+                    <span>Nombre d'écran</span>
                     <span class="float-end">{{ items_count }}</span>
                 </li>
                 <li class="list-group-item fs-6">
@@ -116,7 +116,7 @@
             <ul class="list-group font-monospace shadow-sm">
                 <li class="list-group-item logo-blue fs-5">🌟 Opportunités</li>
                 <li class="list-group-item fs-6">
-                    <span>Nombre d'opportunités</span>
+                    <span>Nombre d'opportunité</span>
                     <span class="float-end">{{ opportunities_count }}</span>
                 </li>
                 <li class="list-group-item fs-6">
@@ -142,7 +142,7 @@
                             <img src="{% static 'img/brand_logos/' %}{{ brand_info.screenmodel__screenbrand }}.svg" class="me-2" width="20px" height="20px">{{ brand_info.screenmodel__screenbrand|title }}
                         </li>
                         <li class="list-group-item fs-6">
-                            <span>Nombre d'écrans</span>
+                            <span>Nombre d'écran</span>
                             <span class="float-end">{{ brand_info.items_count_brand }}</span>
                         </li>
                         <li class="list-group-item fs-6">
@@ -165,7 +165,7 @@
                         <span>Stock par Marque</span>
                     </li>
                     <li class="list-group-item fs-6">
-                        <span>Nombre d'écrans</span>
+                        <span>Nombre d'écran</span>
                         <span class="float-end">0</span>
                     </li>
                     <li class="list-group-item fs-6">
@@ -197,7 +197,7 @@
                 <span>{{ recycler_info.recycler__company_name|default_if_none:"Non attribué"|title }}</span>
             </li>
             <li class="list-group-item fs-6">
-                <span>Nombre d'écrans</span>
+                <span>Nombre d'écran</span>
                 <span class="float-end">{{ recycler_info.items_count_brand }}</span>
             </li>
             <li class="list-group-item fs-6">
@@ -229,7 +229,7 @@
                         <span>Stock par Recycleur</span>
                     </li>
                     <li class="list-group-item fs-6">
-                        <span>Nombre d'écrans</span>
+                        <span>Nombre d'écran</span>
                         <span class="float-end">0</span>
                     </li>
                     <li class="list-group-item fs-6">
@@ -247,7 +247,7 @@
     {% if recap_poubelle_table|length > 0 %}
     <!-- Stock Poubelle -->
     <div class="row mb-4">
-        <div class="mb-3 fs-5 text-blue">🌱🗑️ Stock ÉcoBin</div>
+        <div class="mb-3 fs-5 text-blue">🌱🗑️ Stock EcoBin</div>
 
         {% for poubelle_info in recap_poubelle_table %}
             <div class="col-12 col-md-6 col-lg-4 mb-4">
@@ -257,7 +257,7 @@
                         <span>{{ poubelle_info.recycler__company_name|title }}</span>
                     </li>
                     <li class="list-group-item fs-6">
-                        <span>Nombre d'écrans</span>
+                        <span>Nombre d'écran</span>
                         <span class="float-end">{{ poubelle_info.items_count_poubelle }}</span>
                     </li>
                     <li class="list-group-item fs-6">
