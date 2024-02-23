@@ -21,6 +21,7 @@ class ScreenModelAdmin(admin.ModelAdmin):
     list_display = ['screenbrand', 'screenmodel', 'is_oled', 'is_wanted', 'is_3dtouch']
     search_fields = ['screenbrand__screenbrand', 'screenmodel']
     list_editable = ['is_oled', 'is_wanted', 'is_3dtouch']
+    list_filter = ['screenbrand','is_wanted'] 
 
 @admin.register(Recycler)
 class RecyclerAdmin(admin.ModelAdmin):
@@ -39,9 +40,11 @@ class RecyclerPricingAdmin(admin.ModelAdmin):
 
 @admin.register(BrokenScreen)
 class BrokenScreenAdmin(admin.ModelAdmin):
-    list_display = ['repairstore', 'uniquereference', 'screenbrand', 'screenmodel', 'is_attributed', 'date_joined','is_packed']
+    list_display = ['repairstore', 'uniquereference', 'screenbrand', 'screenmodel','grade', 'is_attributed', 'date_joined','is_packed']
     search_fields = ['repairstore__company_name', 'screenbrand__screenbrand', 'screenmodel__screenmodel']
     list_editable = ['is_packed']
+    list_filter = ['repairstore','screenbrand','grade','screenmodel', 'is_attributed'] 
+
 
 @admin.register(Package)
 class PackageAdmin(admin.ModelAdmin):
