@@ -114,9 +114,9 @@ def dashboard(request):
             total_value=Sum('price')
         )
 
-        poubelle_statistics = broken_screens.filter(Q(recycler__company_name='EcoBin')).values('recycler__company_name').annotate(
-        items_count_poubelle=Count('recycler__company_name'),
-        total_value_poubelle=Sum('price')
+        ecobin = broken_screens.filter(Q(recycler__company_name='EcoBin')).values('recycler__company_name').annotate(
+        items_count_ecobin=Count('recycler__company_name'),
+        total_value_ecobin=Sum('price')
     )
 
         # Récupérer les statistiques par recycleur
@@ -170,7 +170,7 @@ def dashboard(request):
             'items_value': items_value,
             'recap_brand_table': brand_statistics,
             'recap_recycler_table': recycler_statistics,
-            'recap_poubelle_table': poubelle_statistics,  # Ajout de la statistique pour le "Stock Poubelle"
+            'recap_ecobin_table': ecobin,  # Ajout de la statistique pour le "Stock ecobin"
             'opportunities_count': opportunities_count,
             'opportunities_value': opportunities_value,
             'broken_screens': broken_screens,
@@ -553,17 +553,17 @@ def get_recycler_prices(broken_screen):
         )
         recycler_prices |= votre_recycleur_offers
 
-        poubelle_recycleur = Recycler.objects.filter(company_name="EcoBin").first()
-        if poubelle_recycleur:
-            poubelle_recycleur_offers = RecyclerPricing.objects.filter(
-                recycler=poubelle_recycleur,
+        ecobin_recycleur = Recycler.objects.filter(company_name="EcoBin").first()
+        if ecobin_recycleur:
+            ecobin_recycleur_offers = RecyclerPricing.objects.filter(
+                recycler=ecobin_recycleur,
                 screenbrand=broken_screen.screenbrand,
                 screenmodel=broken_screen.screenmodel,
                 grade=broken_screen.grade
             )
 
             if recycler_prices.count() == 1 and votre_recycleur:
-                recycler_prices |= poubelle_recycleur_offers
+                recycler_prices |= ecobin_recycleur_offers
 
         logger.debug(f"Initial recycler_prices: {recycler_prices}")
 
@@ -1125,6 +1125,10 @@ def faq(request):
 @require_GET
 def pricing(request):
     return render(request, 'pricing.html')
+
+@require_GET
+def ecobin(request):
+    return render(request, 'ecobin.html')
 
 #############
 # Wait Page #

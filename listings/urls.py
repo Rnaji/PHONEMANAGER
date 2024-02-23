@@ -8,7 +8,7 @@ from .views import (
     opportunities, BrokenScreenDetail, DeleteBrokenScreen, 
     ExpedierMesEcransView, ExpedierMesEcransRecycler, settings_view, 
     settings_edit_view, logout_view, stickers, ValiderExpedition
-    , mark_package_as_paid, update_package, package_detail, about, contact, faq, pricing
+    , mark_package_as_paid, update_package, package_detail, about, contact, faq, pricing, ecobin
 )
 from django.contrib.auth.views import LoginView
 
@@ -82,6 +82,8 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('faq/', faq, name='faq'),
     path('pricing/', pricing, name='pricing'),
+    path('ecobin/', ecobin, name='ecobin'),
+
 
     # Wait Page URL
     path('page_attente/', page_attente, name='page_attente'),
