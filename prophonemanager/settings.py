@@ -133,6 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # dans votre fichier settings.py
 
+# settings.py
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -142,22 +143,23 @@ LOGGING = {
         },
     },
     'root': {
-    'handlers': ['console'],
-    'level': 'DEBUG',  # Changez cela en 'INFO' si vous ne voulez voir que les messages INFO et supérieurs
-},
+        'handlers': ['console'],
+        'level': 'INFO',  # Changez cela en 'INFO'
+    },
     'loggers': {
         'django': {
             'handlers': ['console'],
             'level': 'INFO',
             'propagate': True,
         },
-        'your_app': {
+        'your_app_name': {  # Assurez-vous de mettre le bon nom de votre application
             'handlers': ['console'],
             'level': 'INFO',
             'propagate': True,
         },
     },
 }
+
 
 
 

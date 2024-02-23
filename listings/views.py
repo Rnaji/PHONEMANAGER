@@ -519,99 +519,15 @@ logger = logging.getLogger(__name__)
 def quotation(request, ref_unique_list):
     broken_screen = get_object_or_404(BrokenScreen, uniquereference__value=ref_unique_list)
 
-    # Obtenez les prix des recycleurs liés au modèle et à la marque de l'écran cassé
-    recycler_prices = RecyclerPricing.objects.filter(
-        screenbrand=broken_screen.screenbrand,
-        screenmodel=broken_screen.screenmodel,
-        grade=broken_screen.grade,
-        price__gt=Decimal('0.00')
-    )
+    recycler_prices = get_recycler_prices(broken_screen)
 
-    # Si "Votrerecycleur" existe, incluez également ses offres
-    votre_recycleur = Recycler.objects.filter(company_name="Votrerecycleur").first()
-    if votre_recycleur:
-        votre_recycleur_offers = RecyclerPricing.objects.filter(
-            recycler=votre_recycleur,
-            screenbrand=broken_screen.screenbrand,
-            screenmodel=broken_screen.screenmodel,
-            grade=broken_screen.grade
-        )
-        recycler_prices |= votre_recycleur_offers
+    us_offer_price = calculate_us_offer_price(recycler_prices, broken_screen)
 
-    # Ajoutez le recycleur "ÉcoBin" et incluez ses offres
-        poubelle_recycleur = Recycler.objects.filter(company_name="ÉcoBin").first()
-        if poubelle_recycleur:
-            poubelle_recycleur_offers = RecyclerPricing.objects.filter(
-                recycler=poubelle_recycleur,
-                screenbrand=broken_screen.screenbrand,
-                screenmodel=broken_screen.screenmodel,
-                grade=broken_screen.grade
-            )
+    update_existing_offer(us_offer_price, broken_screen)
 
-            # Vérifiez si "Votrerecycleur" est le seul recycleur présent
-            if recycler_prices.count() == 1 and votre_recycleur:
-                recycler_prices |= poubelle_recycleur_offers
+    count_minus_one = update_broken_screen_quotations(broken_screen, recycler_prices)
 
-        logger.debug(f"Initial recycler_prices: {recycler_prices}")
-
-
-    # Vérifiez si screen_model est is_wanted=True et grade=A
-    screen_model = broken_screen.screenmodel
-    if screen_model.is_wanted and broken_screen.grade == 'A':
-        # Obtenez la meilleure offre parmi les recycler_prices
-        # Excluez l'offre du recycleur avec is_us=True de la recherche de la meilleure offre
-        best_offer = recycler_prices.exclude(recycler__is_us=True).order_by('-price').first()
-
-        logger.debug(f"Meilleure offre : {best_offer}")
-
-        # Ajoutez une offre du recycleur avec is_us=True 10% supérieure à la meilleure offre
-        if best_offer:
-            us_offer_price = best_offer.price * Decimal('1.1')
-        else:
-            us_offer_price = Decimal('0')
-    else:
-        us_offer_price = Decimal('0')
-
-    existing_offer = RecyclerPricing.objects.filter(
-        recycler__is_us=True,
-        screenbrand=broken_screen.screenbrand,
-        screenmodel=broken_screen.screenmodel,
-        grade=broken_screen.grade
-    ).first()
-
-    if existing_offer:
-        # Si une offre existe déjà, mettez à jour son prix
-        existing_offer.price = us_offer_price
-        existing_offer.save()
-    else:
-        # Si aucune offre n'existe, créez une nouvelle offre
-        us_offer = RecyclerPricing.objects.create(
-            recycler=Recycler.objects.get(is_us=True),
-            screenbrand=broken_screen.screenbrand,
-            screenmodel=broken_screen.screenmodel,
-            grade=broken_screen.grade,
-            price=us_offer_price,
-        )
-
-        logger.debug(f"us_offer: {us_offer}")
-
-        # Ajoutez l'offre is_us=True à la queryset recycler_prices
-        recycler_prices |= RecyclerPricing.objects.filter(pk=us_offer.pk)
-
-
-        # Obtenez le nombre d'offres de rachat
-    count_minus_one = recycler_prices.exclude(recycler__company_name__in=["Votrerecycleur", "ÉcoBin"]).count()
-
-    # Ajoutez les offres de rachat à la relation quotations de BrokenScreen
-    broken_screen.quotations.add(*recycler_prices)
-
-    logger.debug(f"Final recycler_prices: {recycler_prices}")
-
-    # Déterminez le message en fonction du nombre d'offres
-    if 'count_minus_one' in locals() and count_minus_one <= 0:
-        message = "Grace à ÉcoBin valorisez votre poubelle 🌱🗑️. \nLorsque vous atteignez 100 écrans cassés non valorisables, vous recevez un prix de rachat💰. \nEn contribuant positivement à l'environnement ♻️, cette initiative vous permet de gagner quelques euros 💶."
-    else:
-        message = "Veuillez faire votre choix. Vous pourrez le modifier ultérieurement si une meilleure opportunité se présente."
+    message = determine_message(count_minus_one)
 
     context = {
         'recycler_prices': recycler_prices,
@@ -623,12 +539,97 @@ def quotation(request, ref_unique_list):
     return render(request, 'quotation.html', context)
 
 
+def get_recycler_prices(broken_screen):
+    recycler_prices = RecyclerPricing.objects.filter(
+        screenbrand=broken_screen.screenbrand,
+        screenmodel=broken_screen.screenmodel,
+        grade=broken_screen.grade,
+        price__gt=Decimal('0.00')
+    )
+
+    votre_recycleur = Recycler.objects.filter(company_name="Votrerecycleur").first()
+    if votre_recycleur:
+        votre_recycleur_offers = RecyclerPricing.objects.filter(
+            recycler=votre_recycleur,
+            screenbrand=broken_screen.screenbrand,
+            screenmodel=broken_screen.screenmodel,
+            grade=broken_screen.grade
+        )
+        recycler_prices |= votre_recycleur_offers
+
+        poubelle_recycleur = Recycler.objects.filter(company_name="ÉcoBin").first()
+        if poubelle_recycleur:
+            poubelle_recycleur_offers = RecyclerPricing.objects.filter(
+                recycler=poubelle_recycleur,
+                screenbrand=broken_screen.screenbrand,
+                screenmodel=broken_screen.screenmodel,
+                grade=broken_screen.grade
+            )
+
+            if recycler_prices.count() == 1 and votre_recycleur:
+                recycler_prices |= poubelle_recycleur_offers
+
+        logger.debug(f"Initial recycler_prices: {recycler_prices}")
+
+    return recycler_prices
 
 
+def calculate_us_offer_price(recycler_prices, broken_screen):
+    screen_model = broken_screen.screenmodel
+    if screen_model.is_wanted and broken_screen.grade == 'A':
+        best_offer = recycler_prices.exclude(recycler__is_us=True).order_by('-price').first()
+
+        logger.debug(f"Meilleure offre : {best_offer}")
+
+        if best_offer:
+            us_offer_price = best_offer.price * Decimal('1.1')
+        else:
+            us_offer_price = Decimal('0')
+    else:
+        us_offer_price = Decimal('0')
+
+    return us_offer_price
 
 
+def update_existing_offer(us_offer_price, broken_screen):
+    existing_offer = RecyclerPricing.objects.filter(
+        recycler__is_us=True,
+        screenbrand=broken_screen.screenbrand,
+        screenmodel=broken_screen.screenmodel,
+        grade=broken_screen.grade
+    ).first()
+
+    if existing_offer:
+        existing_offer.price = us_offer_price
+        existing_offer.save()
+    else:
+        us_offer = RecyclerPricing.objects.create(
+            recycler=Recycler.objects.get(is_us=True),
+            screenbrand=broken_screen.screenbrand,
+            screenmodel=broken_screen.screenmodel,
+            grade=broken_screen.grade,
+            price=us_offer_price,
+        )
+
+        logger.debug(f"us_offer: {us_offer}")
 
 
+def update_broken_screen_quotations(broken_screen, recycler_prices):
+    count_minus_one = recycler_prices.exclude(recycler__company_name__in=["Votrerecycleur", "ÉcoBin"]).count()
+    broken_screen.quotations.add(*recycler_prices)
+
+    logger.debug(f"Final recycler_prices: {recycler_prices}")
+
+    return count_minus_one
+
+
+def determine_message(count_minus_one):
+    if 'count_minus_one' in locals() and count_minus_one <= 0:
+        message = "Grace à ÉcoBin valorisez votre poubelle 🌱🗑️. \nLorsque vous atteignez 100 écrans cassés non valorisables, vous recevez un prix de rachat💰. \nEn contribuant positivement à l'environnement ♻️, cette initiative vous permet de gagner quelques euros 💶."
+    else:
+        message = "Veuillez faire votre choix. Vous pourrez le modifier ultérieurement si une meilleure opportunité se présente."
+
+    return message
 
 
 def screen_offre(request, ref_unique_list, recycler_price_id):
@@ -652,6 +653,8 @@ def screen_offre(request, ref_unique_list, recycler_price_id):
         broken_screen.save()
 
     return render(request, 'screen_offre.html', context)
+
+
 
 ###############
 # Stock Views #

@@ -85,3 +85,65 @@ def pre_save_screenmodel(sender, instance, **kwargs):
                 for broken_screen in broken_screens:
                     broken_screen.recycler = None
                     broken_screen.save()
+
+# signals.py
+import logging
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .models import ScreenModel, BrokenScreen
+
+logger = logging.getLogger(__name__)
+
+# signals.py
+import logging
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from .models import ScreenModel, BrokenScreen
+
+logger = logging.getLogger(__name__)
+
+
+# signals.py
+@receiver(post_save, sender=ScreenModel)
+def handle_screenmodel_change(sender, instance, **kwargs):
+    logger.info("Signal handle_screenmodel_change triggered!")
+
+    if 'update_fields' in kwargs and kwargs['update_fields'] is not None and 'is_wanted' in kwargs['update_fields']:
+        screenmodel = instance
+        logger.info(f"ScreenModel {screenmodel} is_wanted changed to {screenmodel.is_wanted}")
+
+        if screenmodel:
+            broken_screens = BrokenScreen.objects.filter(screenmodel=screenmodel, grade='A')
+            logger.info(f"Found {broken_screens.count()} BrokenScreens with ScreenModel {screenmodel} and grade 'A'")
+
+            for broken_screen in broken_screens:
+                logger.info(f"Processing BrokenScreen with ID {broken_screen.id}")
+
+                # Récupérez uniquereference pour le BrokenScreen actuel
+                uniquereference = broken_screen.uniquereference  # Assurez-vous que c'est la bonne relation
+
+                # Vérifiez que uniquereference n'est pas None avant de continuer
+                if uniquereference:
+                    logger.info(f"Processing UniqueReference with ID {uniquereference.id}")
+
+                    # Effectuez ici les actions nécessaires pour rafraîchir les données pour ces instances
+                    broken_screen.quotations.clear()
+                    # Effectuez ici les actions nécessaires pour mettre à jour les quotations selon vos besoins
+                    # Exemple: broken_screen.quotations.add(new_quotation_instance)
+
+                    broken_screen.save()
+
+                    # Rafraîchissez les quotations via l'URL
+                    # NOTE: Vous devrez adapter cette partie en fonction de votre logique d'URL et de vue
+                    quotation_url = f"quotation/{uniquereference.id}"  # Assurez-vous que c'est la bonne logique d'URL
+                    # Effectuez ici les actions nécessaires pour rafraîchir les quotations via l'URL
+                    # Exemple: requests.get(quotation_url)
+
+                    logger.info(f"Processed UniqueReference with ID {uniquereference.id}")
+
+                logger.info(f"Processed BrokenScreen with ID {broken_screen.id}")
+
+    logger.info("Signal handle_screenmodel_change complete!")
+
+
+
