@@ -29,8 +29,13 @@ class RecyclerAdmin(admin.ModelAdmin):
 
 @admin.register(RecyclerPricing)
 class RecyclerPricingAdmin(admin.ModelAdmin):
-    list_display = ['recycler', 'screenbrand', 'screenmodel', 'grade', 'price']
+    list_display = ['recycler_company_name', 'screenbrand', 'screenmodel', 'grade', 'price']
     search_fields = ['recycler__company_name', 'screenbrand__screenbrand', 'screenmodel__screenmodel']
+    list_filter = ['recycler__company_name']
+
+    def recycler_company_name(self, obj):
+        return obj.recycler.company_name
+    recycler_company_name.short_description = 'Recycler Company Name'
 
 @admin.register(BrokenScreen)
 class BrokenScreenAdmin(admin.ModelAdmin):

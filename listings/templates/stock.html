@@ -26,8 +26,12 @@
                 </li>
                 <li class="list-group-item fs-6">
                     <span>Valeur totale estimée</span>
-                    <span class="float-end">{{ items_value }} €</span>
-                </li>
+                    {% if items_value|default:"0" == "0" %}
+                        <span class="float-end">❓</span>
+                    {% else %}
+                        <span class="float-end">{{ items_value }} €</span>
+                    {% endif %}
+                </li>              
                 {% if request.resolver_match.url_name == 'dashboard' %}
                     <li class="list-group-item text-end">
                         <a href="{% url 'stock_all' %}" class="btn btn-sm btn-outline-blue{% if items_count == 0 %} disabled{% endif %}">Voir en détail</a>
@@ -90,18 +94,38 @@
                             <span>{{ broken_screen.screenmodel.screenbrand.screenbrand|title }} {{ broken_screen.screenmodel.screenmodel }}</span>
                         </div>
                         <div class="col-md-2 text-start">
-                            <span>{% if broken_screen.grade %}{{ broken_screen.grade }}{% else %}<span>🔎</span> ❓{% endif %}</span>	
+                            <span>
+                                {% if broken_screen.grade %}
+                                    {{ broken_screen.grade }}
+                                {% else %}
+                                    <span>🔎</span> ❓
+                                {% endif %}
+                            </span>	
                         </div>
                         <div class="col-md-3 text-start">
-                            <span>{% if broken_screen.recycler %}{{ broken_screen.recycler }}{% else %}👨‍🔧 ❓{% endif %}</span>
+                            <span>
+                                {% if broken_screen.recycler %}
+                                    {{ broken_screen.recycler }}
+                                {% else %}
+                                    👨‍🔧 ❓
+                                {% endif %}
+                            </span>
                         </div>
                         <div class="col-md-2 text-end">
-                            <span>{% if broken_screen.price %}{{ broken_screen.price}} € {% else %}<span>💰</span> ❓{% endif %}</span>	
+                            <span>
+                                {% if broken_screen.recycler and broken_screen.price %}
+                                    {{ broken_screen.price }} €
+                                {% else %}
+                                    <span>💰</span> ❓
+                                {% endif %}
+                            </span>	
                         </div>
                     </div>
                     <a href="{% url 'broken_screen_detail' uniquereference_value=broken_screen.uniquereference.value %}" class="stretched-link"></a>
                 </li>
             </ul>
+            
+            
             {% endfor %}
         </div>
     </div>

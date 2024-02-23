@@ -521,10 +521,6 @@ def quotation(request, ref_unique_list):
 
     recycler_prices = get_recycler_prices(broken_screen)
 
-    us_offer_price = calculate_us_offer_price(recycler_prices, broken_screen)
-
-    update_existing_offer(us_offer_price, broken_screen)
-
     count_minus_one = update_broken_screen_quotations(broken_screen, recycler_prices)
 
     message = determine_message(count_minus_one)
@@ -573,47 +569,6 @@ def get_recycler_prices(broken_screen):
 
     return recycler_prices
 
-
-def calculate_us_offer_price(recycler_prices, broken_screen):
-    screen_model = broken_screen.screenmodel
-    if screen_model.is_wanted and broken_screen.grade == 'A':
-        best_offer = recycler_prices.exclude(recycler__is_us=True).order_by('-price').first()
-
-        logger.debug(f"Meilleure offre : {best_offer}")
-
-        if best_offer:
-            us_offer_price = best_offer.price * Decimal('1.1')
-        else:
-            us_offer_price = Decimal('0')
-    else:
-        us_offer_price = Decimal('0')
-
-    return us_offer_price
-
-
-def update_existing_offer(us_offer_price, broken_screen):
-    existing_offer = RecyclerPricing.objects.filter(
-        recycler__is_us=True,
-        screenbrand=broken_screen.screenbrand,
-        screenmodel=broken_screen.screenmodel,
-        grade=broken_screen.grade
-    ).first()
-
-    if existing_offer:
-        existing_offer.price = us_offer_price
-        existing_offer.save()
-    else:
-        us_offer = RecyclerPricing.objects.create(
-            recycler=Recycler.objects.get(is_us=True),
-            screenbrand=broken_screen.screenbrand,
-            screenmodel=broken_screen.screenmodel,
-            grade=broken_screen.grade,
-            price=us_offer_price,
-        )
-
-        logger.debug(f"us_offer: {us_offer}")
-
-
 def update_broken_screen_quotations(broken_screen, recycler_prices):
     count_minus_one = recycler_prices.exclude(recycler__company_name__in=["Votrerecycleur", "ÉcoBin"]).count()
     broken_screen.quotations.add(*recycler_prices)
@@ -653,6 +608,9 @@ def screen_offre(request, ref_unique_list, recycler_price_id):
         broken_screen.save()
 
     return render(request, 'screen_offre.html', context)
+
+
+
 
 
 

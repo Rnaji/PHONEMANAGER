@@ -190,7 +190,7 @@
         <ul class="list-group font-monospace shadow-sm">
             <li class="list-group-item logo-blue fs-5">
                 {% if recycler_info.recycler__company_name is None %}
-                    <span class="me-2">❓</span>
+                    <span class="me-2">🤷‍♂️</span>
                 {% else %}
                     <img src="{% static 'img/recycler_logos/'|add:recycler_info.recycler__company_name|lower|add:'.png' %}" alt="Logo Recycleur" class="me-2" width="50" height="20">
                 {% endif %}
