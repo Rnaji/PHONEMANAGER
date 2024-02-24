@@ -306,46 +306,46 @@ def get_unused_ref_unique_list_view(request):
 
 questions_oled_apple= [
     (0, "xxx", "oui", "non"),
-    (1, "L’écran est-il original?", 2, 2),
-    (2, "L’écran présente des dommages fonctionnels", 3, 3),
+    (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original par les recycleurs</i>)", 2, 2),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "Le tactile est défectueux ou l’écran clignote lorsque vous secouez doucement la nappe", 4, 4),
-    (4, "L’écran a des points noirs", 5, 6),
-    (5, "Ces points noirs sont gros", 6, 6),
+    (4, "L’écran a un point noir visible <br> (⚠️ <i>inférieur à 5mm</i>)", 5, 6),
+    (5, "Ce points noir est gros<br> (⚠️ <i>supérieur à 2mm</i>)", 6, 6),
     (6, "L’écran a des ombres persistantes", 7, "fin du diag"),
-    (7, "Ces ombres sont presque invisibles", "fin du diag", 8),
-    (8, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
+    (7, "Ces ombres sont presque invisibles<br> (⚠️ <i>si les ombres sont moyennement visible répondre non</i>)", "fin du diag", 8),
+    (8, "Ces ombres sont très visibles<br> (⚠️ <i>si les ombres sont moyennement visible répondre non</i>)", "fin du diag", "fin du diag")
 ]
 
 questions_not_oled_apple = [
     (0, "xxx", "oui", "non"),
-    (1, "L’écran est-il original?", 2, 2),
-    (2, "L’écran présente des dommages fonctionnel", 3, 3),
+    (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
     (4, "L’écran est jaunâtre", 5, 5),
     (5, "Le tactile est défectueux", 6, 6),
     (6, "L’écran a des petits points lumineux ou de legères marques de couleurs", 7, 8),
     (7, "Ces marques de couleurs ou points lumineux sont importantes, ou au centre de l'écran ", 8, 8),
     (8, "L’écran a des pixels morts", 9,"fin du diag"),
-    (9, "L’écran a des Gros pixels morts", "fin du diag", "fin du diag")
+    (9, "L’écran a des gros pixels morts<br> (⚠️ <i>supérieur à 1mm</i>)", "fin du diag", "fin du diag")
 ]
 
 questions_oled_apple_3dt= [
     (0, "xxx", "oui", "non"),
-    (1, "L’écran est-il original?", 2, 2),
-    (2, "L’écran présente des dommages fonctionnels", 3, 3),
+    (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "Le tactile est défectueux ou l’écran clignote lorsque vous secouez doucement la nappe", 4, 4),
     (4, "Le 3D Touch est défectueux", 5, 5),
-    (5, "L’écran a des points noirs", 6, 7),
-    (6, "Ces points noirs sont gros", 7, 7),
+    (5, "L’écran a un point noir inférieur à 5mm", 6, 7),
+    (6, "Ce points noir est gros<br> (⚠️ <i>supérieur à 2mm</i>)", 7, 7),
     (7, "L’écran a des ombres persistantes", 8, "fin du diag"),
-    (8, "Ces ombres sont presque invisibles", "fin du diag", 9),
-    (9, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
+    (8, "Ces ombres sont presque invisibles<br> (⚠️ <i>si les ombres sont moyennement visible répondre non</i>)", "fin du diag", 9),
+    (9, "Ces ombres sont très visibles<br> (⚠️ <i>si les ombres sont moyennement visible répondre non</i>)", "fin du diag", "fin du diag")
 ]
 
 questions_not_oled_apple_3dt = [
     (0, "xxx", "oui", "non"),
-    (1, "L’écran est-il original?", 2, 2),
-    (2, "L’écran présente des dommages fonctionnel", 3, 3),
+    (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
     (4, "L’écran est jaunâtre", 5, 5),
     (5, "Le tactile est défectueux", 6, 6),
@@ -353,33 +353,33 @@ questions_not_oled_apple_3dt = [
     (7, "L’écran a des petits points lumineux ou de legères marques de couleurs", 8, 9),
     (8, "Ces marques de couleurs ou points lumineux sont importantes, ou au centre de l'écran ", 9, 9),
     (9, "L’écran a des pixels morts", 10,"fin du diag"),
-    (10, "L’écran a des Gros pixels morts", "fin du diag", "fin du diag")
+    (10, "L’écran a des gros pixels morts<br> (⚠️ <i>supérieur à 1mm</i>)", "fin du diag", "fin du diag")
 ]
 
 questions_general_oled= [
     (0, "xxx", "oui", "non"),
-    (1, "L’écran est-il original?", 2, 2),
-    (2, "L’écran présente des dommages fonctionnels", 3, 3),
+    (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "Le tactile est défectueux", 4, 4),
-    (4, "L’écran a un point noir", 5, 7),
-    (5, "Ce point noir est petit (1-2mm)", 7, 6),
-    (6, "Ce point noir est gros (3-4mm)", 7, 7),
+    (4, "L’écran a un point noir inférieur à 5mm", 5, 7),
+    (5, "Ce points noir est petit<br> (⚠️ <i>inférieur à 2mm</i>)", 7, 6),
+    (6, "Ce points noir est gros<br> (⚠️ <i>supérieur à 2mm</i>)", 7, 7),
     (7, "L’écran a des ombres persistantes", 8, "fin du diag"),
-    (8, "Ces ombres sont presque invisibles", "fin du diag", 9),
-    (9, "Ces ombres sont très visibles", "fin du diag", "fin du diag")
+    (8, "Ces ombres sont presque invisibles<br> (⚠️ <i>si les ombres sont moyennement visible répondre non</i>)", "fin du diag", 9),
+    (9, "Ces ombres sont très visibles<br> (⚠️ <i>si les ombres sont moyennement visible répondre non</i>)", "fin du diag", "fin du diag")
 ]
 
 questions_general_not_oled = [
     (0, "xxx", "oui", "non"),
-    (1, "L’écran est-il original?", 2, 2),
-    (2, "L’écran présente des dommages fonctionnel", 3, 3),
+    (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
     (4, "L’écran est jaunâtre", 5, 5),
     (5, "Le tactile est défectueux", 6, 6),
     (6, "L’écran a des petits points lumineux ou de legères marques de couleurs", 7, 8),
     (7, "Ces marques de couleurs ou points lumineux sont importantes, ou au centre de l'écran ", 8, 8),
     (8, "L’écran a des pixels morts", 9,"fin du diag"),
-    (9, "L’écran a des Gros pixels morts", "fin du diag", "fin du diag")
+    (9, "L’écran a des gros pixels morts<br> (⚠️ <i>supérieur à 1mm</i>)", "fin du diag", "fin du diag")
 ]
 
 
@@ -580,7 +580,7 @@ def update_broken_screen_quotations(broken_screen, recycler_prices):
 
 def determine_message(count_minus_one):
     if 'count_minus_one' in locals() and count_minus_one <= 0:
-        message = "Grace à EcoBin valorisez votre poubelle 🌱🗑️. \nLorsque vous atteignez 100 écrans cassés non valorisables, vous recevez un prix de rachat💰. \nEn contribuant positivement à l'environnement ♻️, cette initiative vous permet de gagner quelques euros 💶."
+        message = "Choisissez le programme EcoBin et valorisez votre poubelle 🌱🗑️"
     else:
         message = "Veuillez faire votre choix. Vous pourrez le modifier ultérieurement si une meilleure opportunité se présente."
 

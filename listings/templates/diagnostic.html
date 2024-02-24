@@ -3,15 +3,22 @@
 
 {% block title %}Diagnostic {{ broken_screen.ref_unique_list }}{% endblock title %}
 
-{% block page_title %}🩺 Diagnostic écran <span class="badge rounded-pill float-end font-monospace fs-6 text-bg-{% if not broken_screen.is_diag_done %}danger{% elif broken_screen.is_diag_done and not broken_screen.quotation %}warning{% elif broken_screen.is_diag_done and broken_screen.quotation %}success{% else %}danger{% endif %}">{{ broken_screen.ref_unique_list }}</span>
-{% endblock page_title %}
+{% block page_title %}🩺 Diagnostic de l'écran :
 
+
+
+
+<span class="badge rounded-pill float-end font-monospace fs-6 text-bg-{% if not broken_screen.is_diag_done %}danger{% elif broken_screen.is_diag_done and not broken_screen.quotation %}warning{% elif broken_screen.is_diag_done and broken_screen.quotation %}success{% else %}danger{% endif %}">{{ broken_screen.ref_unique_list }}</span>
+{% endblock page_title %}
 {% block page_content %}
+<br><br><br>
 <div class="row mb-4 md-mb-5 mb-lg-5">
     <div class="col-12 col-md-9 col-lg-10 mx-auto">
         <ul class="list-group shadow-sm">
-            <li class="list-group-broken_screen fs-5 fw-bold bg-blue py-3 text-center">{{ question|default:"L’écran est-il original ?"|safe }}</li>
-            <li class="list-group-broken_screen fs-5 fw-bold py-5 text-center">
+            <li class="list-group-item fs-5 fw-bold bg-blue py-3 text-center">
+                {{ question|default:"L’écran est-il original ?"|safe }}
+            </li>
+            <li class="list-group-item fs-5 fw-bold py-5 text-center">
                 <form id="responseForm" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="broken_screen" id="broken_screen" value="{{ broken_screen.ref_unique_list }}">
@@ -28,8 +35,13 @@
                 </form>
             </li>
         </ul>
+        <br><br><br><br><br><br>
+        <p class="fs-6 text-center mb-3">
+            "➕ Vos réponses sont Justes 😇 <br>➕ L'estimation du prix sera Précise 🎯"
+        </p>
     </div>
 </div>
+
 
 <script>
     document.querySelectorAll('input[name="la_reponse"]').forEach((input) => {

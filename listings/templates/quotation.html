@@ -13,14 +13,14 @@
             <div class="col-12 col-md-8 col-lg-7 mb-3 fs-5 text-blue">
                 Votre écran est un GRADE {{ broken_screen.grade }} ! <br><br> Il existe {{ count_minus_one }} offres de rachat !
             </div>
-            <div class="col-12 fs-6 text-dark">{{ message }}</div>
+            <div class="col-12 fs-5 text-blue">{{ message }}</div>
         </div>
 
         <div class="row">
             <div class="col-12">
                 <ul class="list-group shadow-sm">
-                    {% for recycler_price in recycler_prices %}
-                        <a href="{% url 'screen_offre' ref_unique_list=broken_screen.uniquereference.value recycler_price_id=recycler_price.id %}" class="list-group-item fs-6 font-monospace">
+                    {% for recycler_price in recycler_prices|dictsort:"recycler.company_name" %}
+                    <a href="{% url 'screen_offre' ref_unique_list=broken_screen.uniquereference.value recycler_price_id=recycler_price.id %}" class="list-group-item fs-6 font-monospace">
                             {{ recycler_price.recycler.company_name|title }}
                             {% if recycler_price.recycler.company_name|title == "Votrerecycleur" and recycler_price.price == 0 %}
                                 a peut-être une meilleure offre
