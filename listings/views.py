@@ -307,7 +307,7 @@ def get_unused_ref_unique_list_view(request):
 questions_oled_apple= [
     (0, "xxx", "oui", "non"),
     (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original par les recycleurs</i>)", 2, 2),
-    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm, multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "Le tactile est défectueux ou l’écran clignote lorsque vous secouez doucement la nappe", 4, 4),
     (4, "L’écran a un point noir visible <br> (⚠️ <i>inférieur à 5mm</i>)", 5, 6),
     (5, "Ce points noir est gros<br> (⚠️ <i>supérieur à 2mm</i>)", 6, 6),
@@ -319,7 +319,7 @@ questions_oled_apple= [
 questions_not_oled_apple = [
     (0, "xxx", "oui", "non"),
     (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
-    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm, multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
     (4, "L’écran est jaunâtre", 5, 5),
     (5, "Le tactile est défectueux", 6, 6),
@@ -332,7 +332,7 @@ questions_not_oled_apple = [
 questions_oled_apple_3dt= [
     (0, "xxx", "oui", "non"),
     (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
-    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm, multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "Le tactile est défectueux ou l’écran clignote lorsque vous secouez doucement la nappe", 4, 4),
     (4, "Le 3D Touch est défectueux", 5, 5),
     (5, "L’écran a un point noir inférieur à 5mm", 6, 7),
@@ -345,7 +345,7 @@ questions_oled_apple_3dt= [
 questions_not_oled_apple_3dt = [
     (0, "xxx", "oui", "non"),
     (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
-    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm, multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
     (4, "L’écran est jaunâtre", 5, 5),
     (5, "Le tactile est défectueux", 6, 6),
@@ -359,7 +359,7 @@ questions_not_oled_apple_3dt = [
 questions_general_oled= [
     (0, "xxx", "oui", "non"),
     (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
-    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm, multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "Le tactile est défectueux", 4, 4),
     (4, "L’écran a un point noir inférieur à 5mm", 5, 7),
     (5, "Ce points noir est petit<br> (⚠️ <i>inférieur à 2mm</i>)", 7, 6),
@@ -372,7 +372,7 @@ questions_general_oled= [
 questions_general_not_oled = [
     (0, "xxx", "oui", "non"),
     (1, "L’écran est-il original?<br> (⚠️ <i>si l'écran a déjà été reconditionné, il n'est plus considéré comme original</i>)", 2, 2),
-    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm/multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
+    (2, "L’écran présente des dommages fonctionnels <br> (⚠️ <i>points ou tâches noirs supérieurs à 5mm, multiples points/impacts noirs/traits horizontaux ou verticaux</i>)", 3, 3),
     (3, "L’écran a des problèmes de rétroéclairage", 4, 4),
     (4, "L’écran est jaunâtre", 5, 5),
     (5, "Le tactile est défectueux", 6, 6),
