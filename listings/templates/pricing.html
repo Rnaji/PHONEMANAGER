@@ -242,7 +242,7 @@
 
                     <div class="pricing-header pricing-amount">
                         <div class="monthly_price">
-                            <h2 class="price">€299.99 ht/1x</h2>
+                            <h2 class="price">€299.99 ht</h2>
                         </div>
                         <!-- /.monthly_price -->
 
@@ -324,7 +324,7 @@
                     <div class="pixsass-icon-box-content">
                         <h3 class="pixsass-icon-box-title">Gagnez de l'Argent.</h3>
                         <p>
-                            <strong> ProPhoneManager</strong> vous offre la possibilité d'obtenir en temps réel, les <strong>offres des différents recycleurs</strong>. <br>Si une meilleure offre que celle que vous avez choisie est disponible, <strong>vous êtes averti</strong>. <br>De plus avec le  <strong> <a href="{% url 'ecobin' %}">programme EcoBin</a> </strong>, valorisez les écrans cassés dont personne ne veut.<br><br>
+                            <strong> ProPhoneManager</strong> vous offre la possibilité d'obtenir en temps réel, les <strong>offres des différents recycleurs</strong>. <br>Si une meilleure offre que celle que vous avez choisie est disponible, <strong>vous êtes averti</strong>. <br>De plus avec le  <strong> <a href="{% url 'ecobin' %}">programme EcoBin</a> </strong>, valorisez vos écrans cassés dont personne ne veut.<br><br>
                             <details>
                                 <summary>Cliquez pour dérouler</summary> <br>Découvrez également de nouveaux partenaires vérifiés pour la revente, élargissant ainsi vos possibilités de revente. <br>Actuellement plus de 250 modèles sont pris en charge et de nouveaux modèles sont ajoutés chaque mois. <br>Certains de ces modèles n'étaient probablement pas acceptés par vos recycleurs précédents. <br>Dans tous les cas, vous gagnerez de l'argent.
                             </details>
@@ -375,9 +375,8 @@
                                 <h3 class="widget-title">À Propos</h3>
 
                                 <ul class="footer-menu">
-                                    <li><a href="{% url 'ecobin' %}">EcoBin</a></li>
+                                    <li><a href="{% url 'about' %}">About us</a></li>
                                     <li><a href="{% url 'faq' %}">FAQ's</a></li>
-                                    <li><a href="#" id="video-demo-link">Vidéo Démo</a></li>
                                     <li><a href="#newsletter">Newsletter</a></li>
                                 </ul>
                             </div>
@@ -390,9 +389,9 @@
                                 <h3 class="widget-title">Solutions</h3>
 
                                 <ul class="footer-menu">
-                                    <li><a href="{% url 'faq' %}">FAQ's</a></li>
+                                    <li><a href="{% url 'pricing' %}">Nos prix</a></li>
+                                    <li><a href="{% url 'ecobin' %}">EcoBin</a></li>
                                     <li><a href="#" id="video-demo-link">Vidéo Démo</a></li>
-                                    <li><a href="#newsletter">Newsletter</a></li>
                                 </ul>
                             </div>
                             <!-- /.widget footer-widget -->
@@ -404,9 +403,8 @@
                                 <h3 class="widget-title">Infos</h3>
 
                                 <ul class="footer-menu">
-                                    <li><a href="{% url 'pricing' %}">Nos prix</a></li>
-                                    <li><a href="{% url 'legal' %}">Mentions légales</a></li>
                                     <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'legal' %}">Mentions légales</a></li>
                                     <li><a href="{% url 'contact' %}">Support</a></li>
                                 </ul>
                             </div>
