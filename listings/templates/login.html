@@ -149,7 +149,7 @@
                         {% block card_form %}
     <form action="{% url 'login' %}" method="post" class="singn-form">
         {% csrf_token %}
-        <input type="text" name="username" placeholder="Email">
+        <input type="text" name="username" placeholder="Nom d'utilisateur">
         <input type="password" name="password" placeholder="Mot de passe">
 
         <div class="forget-link">
