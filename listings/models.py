@@ -849,7 +849,10 @@ class Package(models.Model):
         self.save()
 
 
-
+class PasswordReset(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    token = models.CharField(max_length=100)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
 class AbonneNewsletter(models.Model):
     email = models.EmailField(unique=True)

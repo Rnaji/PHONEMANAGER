@@ -22,7 +22,7 @@ from django.views.generic import ListView
 from .forms import UserRegistrationForm, RepairStoreForm, CreateBrokenScreenForm, NewsletterForm
 from .models import (
     ScreenBrand, UniqueReference, BrokenScreen, ScreenModel,
-    RecyclerPricing, Recycler, RepairStore, Package
+    RecyclerPricing, Recycler, RepairStore, Package, PasswordReset
 )
 from .signals import create_new_unique_reference
 
@@ -34,6 +34,9 @@ import json
 from django.contrib import messages
 from django.utils import timezone
 from decimal import Decimal
+
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
 
 
 ########################
@@ -1137,3 +1140,40 @@ def ecobin(request):
 @require_GET
 def page_attente(request):
     return render(request, 'page_attente.html')
+
+
+
+
+def forgot_password(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        user = User.objects.get(email=email)
+        token = default_token_generator.make_token(user)
+        PasswordReset.objects.create(user=user, token=token)
+
+        # Envoyer l'e-mail avec le lien de réinitialisation
+        reset_link = f'http://example.com/reset-password/{token}/'
+        send_mail('Réinitialisation du mot de passe', f'Cliquez sur le lien pour réinitialiser votre mot de passe : {reset_link}', 'from@example.com', [email])
+
+        return render(request, 'password_reset_sent.html')
+
+    return render(request, 'forgot_password.html')
+
+
+def reset_password(request, token):
+    password_reset = PasswordReset.objects.get(token=token)
+
+    # Vérifier si le lien a expiré (par exemple, valable pendant 1 heure)
+    if timezone.now() - password_reset.timestamp > timezone.timedelta(hours=1):
+        return render(request, 'password_reset_expired.html')
+
+    if request.method == 'POST':
+        new_password = request.POST['new_password']
+        repair_store = RepairStore.objects.get(user=password_reset.user)
+        repair_store.user.set_password(new_password)
+        repair_store.user.save()
+        password_reset.delete()
+
+        return render(request, 'password_reset_success.html')
+
+    return render(request, 'reset_password.html')

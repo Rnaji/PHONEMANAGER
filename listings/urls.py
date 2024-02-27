@@ -8,7 +8,7 @@ from .views import (
     opportunities, BrokenScreenDetail, DeleteBrokenScreen, 
     ExpedierMesEcransView, ExpedierMesEcransRecycler, settings_view, 
     settings_edit_view, logout_view, stickers, ValiderExpedition
-    , mark_package_as_paid, update_package, package_detail, about, contact, faq, pricing, ecobin
+    , mark_package_as_paid, update_package, package_detail, about, contact, faq, pricing, ecobin, forgot_password, reset_password
 )
 from django.contrib.auth.views import LoginView
 
@@ -87,5 +87,9 @@ urlpatterns = [
 
     # Wait Page URL
     path('page_attente/', page_attente, name='page_attente'),
+
+
+    path('forgot-password/', forgot_password, name='forgot_password'),
+    path('reset-password/<str:token>/', reset_password, name='reset_password'),
 ]
 
