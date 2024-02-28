@@ -179,3 +179,16 @@ AUTHENTICATION_BACKENDS = [
 CRONJOBS = [
     ('0 7 * * *', 'cd /Users/rachidnaji/PythonProject/projets/PhoneManager/ && /usr/bin/python3 manage.py runcrons'),
 ]
+
+
+
+#paramètres SMTP dans ma configuration Django
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail71.lwspanel.com'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'contact@prophonemanager.com'
+EMAIL_HOST_PASSWORD = '@Zerty08091980'
+EMAIL_SSL_CA_BUNDLE = '/Users/rachidnaji/PythonProject/projets/PhoneManager/env/lib/python3.11/site-packages/certifi/cacert.pem'

@@ -15,6 +15,7 @@ from django.views import View
 from django.views.decorators.http import require_http_methods, require_GET
 from django.views.generic import ListView
 
+
 ################################
 # Importations liées au projet #
 ################################
@@ -1152,8 +1153,8 @@ def forgot_password(request):
         PasswordReset.objects.create(user=user, token=token)
 
         # Envoyer l'e-mail avec le lien de réinitialisation
-        reset_link = f'http://example.com/reset-password/{token}/'
-        send_mail('Réinitialisation du mot de passe', f'Cliquez sur le lien pour réinitialiser votre mot de passe : {reset_link}', 'from@example.com', [email])
+        reset_link = f'http://127.0.0.1:8000/reset-password/{token}/'
+        send_mail('Réinitialisation du mot de passe', f'Cliquez sur le lien pour réinitialiser votre mot de passe : {reset_link}', 'contact@prophonemanager.com', [email])
 
         return render(request, 'password_reset_sent.html')
 
@@ -1161,7 +1162,8 @@ def forgot_password(request):
 
 
 def reset_password(request, token):
-    password_reset = PasswordReset.objects.get(token=token)
+    # Utilisez get_object_or_404 pour éviter une exception si l'objet n'est pas trouvé
+    password_reset = get_object_or_404(PasswordReset, token=token)
 
     # Vérifier si le lien a expiré (par exemple, valable pendant 1 heure)
     if timezone.now() - password_reset.timestamp > timezone.timedelta(hours=1):
@@ -1169,11 +1171,17 @@ def reset_password(request, token):
 
     if request.method == 'POST':
         new_password = request.POST['new_password']
-        repair_store = RepairStore.objects.get(user=password_reset.user)
+
+        # Assurez-vous que le champ 'user' pointe vers un utilisateur existant
+        repair_store = get_object_or_404(RepairStore, user=password_reset.user)
+
+        # Utilisez set_password pour mettre à jour le mot de passe de l'utilisateur
         repair_store.user.set_password(new_password)
         repair_store.user.save()
+
+        # Supprimez l'objet PasswordReset après avoir utilisé le jeton
         password_reset.delete()
 
         return render(request, 'password_reset_success.html')
 
-    return render(request, 'reset_password.html')
+    return render(request, 'reset_password.html', {'token': token})
