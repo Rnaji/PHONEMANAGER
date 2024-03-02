@@ -10,35 +10,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
     {% block head %}
-    <title>{% block title %}ProPhoneManager{% endblock title %}</title>
+        <title>{% block title %}ProPhoneManager{% endblock title %}</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'listings/saaspik/assets/img/fav/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'listings/saaspik/assets/img/minilogo.png' %}"">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'listings/saaspik/assets/img/minilogo.png' %}">
-    <link rel="mask-icon" href="{% static 'listings/saaspik/assets/img/fav/safari-pinned-tab.svg' %}" color="#fa7070">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'listings/saaspik/assets/img/fav/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'listings/saaspik/assets/img/minilogo.png' %}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'listings/saaspik/assets/img/minilogo.png' %}">
+        <link rel="mask-icon" href="{% static 'listings/saaspik/assets/img/fav/safari-pinned-tab.svg' %}" color="#fa7070">
 
-    <meta name="msapplication-TileColor" content="#fa7070">
-    <meta name="theme-color" content="#fa7070">
+        <meta name="msapplication-TileColor" content="#fa7070">
+        <meta name="theme-color" content="#fa7070">
 
-    <!-- Dependency Styles -->
-    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/bootstrap/css/bootstrap.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/fontawesome/css/all.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/swiper/css/swiper.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/wow/css/animate.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/magnific-popup/css/magnific-popup.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/components-elegant-icons/css/elegant-icons.min.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/simple-line-icons/css/simple-line-icons.css' %}" type="text/css">
+        <!-- Dependency Styles -->
+        <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/bootstrap/css/bootstrap.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/fontawesome/css/all.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/swiper/css/swiper.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/wow/css/animate.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/magnific-popup/css/magnific-popup.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/components-elegant-icons/css/elegant-icons.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'listings/saaspik/dependencies/simple-line-icons/css/simple-line-icons.css' %}" type="text/css">
 
-    <!-- Site Stylesheet -->
-    <link rel="stylesheet" href="{% static 'listings/saaspik/assets/css/app.css' %}" type="text/css">
+        <!-- Site Stylesheet -->
+        <link rel="stylesheet" href="{% static 'listings/saaspik/assets/css/app.css' %}" type="text/css">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Satisfy&display=swap" rel="stylesheet">
 
     {% endblock head %}
 </head>
-
 
 <body id="home-version-1" class="home-version-3" data-style="default">
 
@@ -67,7 +66,6 @@
                     </filter>
                 </defs>
             </svg>
-
         </div>
     </div><!-- /.page-loader -->
 
@@ -107,15 +105,10 @@
 
                         <div class="menu-wrapper" data-top="992">
                             <ul class="site-main-menu">
-
                                 <li><a href="{% url 'about' %}">À Propos</a></li>
-
                                 <li><a href="{% url 'contact' %}">Contact</a></li>
-
                                 <li><a href="{% url 'pricing' %}">Tarifs</a></li>
-
                                 <li><a href="{% url 'ecobin' %}">EcoBin</a></li>
-
                                 <li><a href="{% url 'faq' %}">Faq's</a></li>
                             </ul>
 
@@ -130,95 +123,88 @@
             </div><!-- /.container -->
         </header><!-- /.site-header -->
 
+        <!--==========================-->
+        <!--=         Sign In         =-->
+        <!--==========================-->
+        <section class="signin">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="signin-from-wrapper">
+                            <div class="signin-from-inner">
+                                <h2 class="title">Se connecter</h2>
 
-<!--==========================-->
-<!--=         Sign In         =-->
-<!--==========================-->
-<section class="signin">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="signin-from-wrapper">
-                    <div class="signin-from-inner">
-                        <h2 class="title">Se connecter</h2>
+                                <p>
+                                    Connectez-vous pour accéder à votre espace personnel.
+                                </p>
 
-                        <p>
-                            Connectez-vous pour accéder à votre espace personnel.
-                         </p>
+                                {% block card_form %}
+                                    <form action="{% url 'login' %}" method="post" class="singn-form">
+                                        {% csrf_token %}
+                                        <input type="text" name="username" placeholder="Nom d'utilisateur">
+                                        <input type="password" name="password" placeholder="Mot de passe">
 
-                        {% block card_form %}
-    <form action="{% url 'login' %}" method="post" class="singn-form">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Nom d'utilisateur">
-        <input type="password" name="password" placeholder="Mot de passe">
+                                        <div class="forget-link">
+                                            <div class="condition">
+                                                <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
+                                                <label for="styled-checkbox-1"></label>
+                                                <span>Se souvenir de moi</span>
+                                            </div>
 
-        <div class="forget-link">
-            <div class="condition">
-                <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
-                <label for="styled-checkbox-1"></label>
-                <span>Se souvenir de moi</span>
-            </div>
+                                            <a href="{% url 'forgot_password' %}" class="forget">Mot de passe oublié</a>
+                                        </div>
 
-            <a href="{% url 'forgot_password' %}" class="forget">Mot de passe oublié</a>
-        </div>
+                                        <button type="submit" class="pix-btn">Se connecter</button>
 
-        <button type="submit" class="pix-btn">Se connecter</button>
+                                        <p>Vous n'avez pas de compte ? <a href="{% url 'user_registration' %}">Inscrivez-vous</a> maintenant.</p>
+                                    </form>
+                                {% endblock card_form %}
 
-        <p>Vous n'avez pas de compte ? <a href="{% url 'user_registration' %}">Inscrivez-vous</a> maintenant.</p>
-    </form>
-{% endblock card_form %}
+                            </div>
+                            <!-- /.signin-from-inner -->
 
+                            <ul class="animate-ball">
+                                <li class="ball"></li>
+                                <li class="ball"></li>
+                                <li class="ball"></li>
+                                <li class="ball"></li>
+                                <li class="ball"></li>
+                            </ul>
+                        </div>
+                        <!-- /.signin-from-wrapper -->
                     </div>
-                    <!-- /.signin-from-inner -->
-
-                    <ul class="animate-ball">
-                        <li class="ball"></li>
-                        <li class="ball"></li>
-                        <li class="ball"></li>
-                        <li class="ball"></li>
-                        <li class="ball"></li>
-                    </ul>
+                    <!-- /.col-lg-7 -->
                 </div>
-                <!-- /.signin-from-wrapper -->
+                <!-- /.row -->
             </div>
-            <!-- /.col-lg-7 -->
-        </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container -->
+            <!-- /.container -->
 
-    <div class="signin-banner">
-        <img src="{% static 'listings/saaspik/assets/img/cadenas.png' %}" alt="" class="image-one wow pixFadeDown">
-        <img src="{% static 'listings/saaspik/assets/img/bouclier.png' %}" alt="" class="image-two wow pixFadeUp">
-    </div>
-    <!-- /.signin-banner -->
-</section>
-<!-- /.signin -->
-
-
-
-
-
-
+            <div class="signin-banner">
+                <img src="{% static 'listings/saaspik/assets/img/cadenas.png' %}" alt="" class="image-one wow pixFadeDown">
+                <img src="{% static 'listings/saaspik/assets/img/bouclier.png' %}" alt="" class="image-two wow pixFadeUp">
+            </div>
+            <!-- /.signin-banner -->
+        </section>
+        <!-- /.signin -->
     </div><!-- /#site -->
 
-<!-- Dependency Scripts -->
-<script src="{% static 'listings/saaspik/dependencies/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/bootstrap/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/swiper/js/swiper.min.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/jquery.appear/jquery.appear.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/wow/js/wow.min.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/countUp.js/countUp.min.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/isotope-layout/isotope.pkgd.min.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/jquery.parallax-scroll/js/jquery.parallax-scroll.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/magnific-popup/js/jquery.magnific-popup.min.js' %}"></script>
-<script src="{% static 'listings/saaspik/dependencies/gmap3/js/gmap3.min.js' %}"></script>
-<script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2HrmqE4sWSei0XdKGbOMOHN3Mm2Bf-M&#038;ver=2.1.6'></script>
+    <!-- Dependency Scripts -->
+    <script src="{% static 'listings/saaspik/dependencies/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/swiper/js/swiper.min.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/jquery.appear/jquery.appear.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/wow/js/wow.min.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/countUp.js/countUp.min.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/jquery.parallax-scroll/js/jquery.parallax-scroll.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/magnific-popup/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'listings/saaspik/dependencies/gmap3/js/gmap3.min.js' %}"></script>
+    <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDk2HrmqE4sWSei0XdKGbOMOHN3Mm2Bf-M&#038;ver=2.1.6'></script>
 
-<!-- Site Scripts -->
-<script src="{% static 'listings/saaspik/assets/js/header.js' %}"></script>
-<script src="{% static 'listings/saaspik/assets/js/app.js' %}"></script>
+    <!-- Site Scripts -->
+    <script src="{% static 'listings/saaspik/assets/js/header.js' %}"></script>
+    <script src="{% static 'listings/saaspik/assets/js/app.js' %}"></script>
 
 </body>
 

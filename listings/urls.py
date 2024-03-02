@@ -8,7 +8,7 @@ from .views import (
     opportunities, BrokenScreenDetail, DeleteBrokenScreen, 
     ExpedierMesEcransView, ExpedierMesEcransRecycler, settings_view, 
     settings_edit_view, logout_view, stickers, ValiderExpedition
-    , mark_package_as_paid, update_package, package_detail, about, contact, faq, pricing, ecobin, forgot_password, reset_password
+    , mark_package_as_paid, update_package, package_detail, about, contact, faq, pricing, ecobin, forgot_password, reset_password, contact_view, 
 )
 from django.contrib.auth.views import LoginView
 
@@ -80,6 +80,7 @@ urlpatterns = [
     # Static Content URLs
     path('about/', about, name='about'),
     path('contact/', contact, name='contact'),
+    path('contact-form/', contact_view, name='contact_view'),
     path('faq/', faq, name='faq'),
     path('pricing/', pricing, name='pricing'),
     path('ecobin/', ecobin, name='ecobin'),
@@ -91,5 +92,7 @@ urlpatterns = [
 
     path('forgot-password/', forgot_password, name='forgot_password'),
     path('reset-password/<str:token>/', reset_password, name='reset_password'),
+
+
 ]
 

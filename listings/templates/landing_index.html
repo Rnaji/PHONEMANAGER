@@ -172,16 +172,21 @@
                                 <img src="{% static 'listings/saaspik/assets/img/macbook2.png' %}" alt="mockup">
                             </div><!-- /.promo-mockup -->
                         </div><!-- /.col-lg-6 -->
+                        
                     </div><!-- /.row -->
+                    
                 </div><!-- /.banner-content-wrap -->
+            
+                
             </div><!-- /.container -->
-
+    
             <div class="bg-shape">
                 <img src="{% static 'listings/saaspik/media/banner/shape-bg.png' %}" alt="">
             </div>
+            
         </section><!-- /.banner banner-one -->
 
-
+        
 <!-- ========================== -->
 <!-- =         Feature        = -->
 <!-- ========================== -->
@@ -557,7 +562,6 @@
                     <!-- /.pricing-header -->
 
                     <ul class="price-feture">
-                        <li class="have">Single User</li>
                         <li class="have">Accès illimité</li>
                         <li class="have">Sans engagement</li>
                         <li class="have">Hotline Support 24/7</li>
@@ -590,7 +594,6 @@
                     <!-- /.pricing-header -->
 
                     <ul class="price-feture">
-                        <li class="have">Single User</li>
                         <li class="have">Accès illimité</li>
                         <li class="have">Sans engagement</li>
                         <li class="have">Hotline Support 24/7</li>
@@ -620,7 +623,6 @@
                     <!-- /.pricing-header -->
 
                     <ul class="price-feture">
-                        <li class="have">Single User</li>
                         <li class="have">Accès illimité</li>
                         <li class="have">Sans engagement</li>
                         <li class="have">Hotline Support 24/7</li>
@@ -866,17 +868,17 @@
                 <div class="content"></div>
             </div>
         </form>
-<div class="form-result alert alert-success">
-    <div class="content">
-        {% if messages %}
-            {% for message in messages %}
-                {% if message.tags == 'success' %}
-                    {{ message|safe }}
-                {% endif %}
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
+        <div class="form-result alert alert-success">
+        <div class="content">
+            {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                    {{ message|safe }}fg
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        </div>
         <div class="scroll-circle wow pixFadeUp">
             <img src="{% static 'listings/saaspik/media/background/circle12.png' %}" data-parallax='{"y" : -230}' alt="circle6">
         </div>

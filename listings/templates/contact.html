@@ -197,11 +197,11 @@
 
                                 <div class="info phone">
                                     <i class="ei ei-icon_phone"></i>
-                                    <span>+33 09 440 440 555</span>
+                                    <span>+33 0970 440 440</span>
                                 </div>
                                 <div class="info">
                                     <i class="ei ei-icon_mail_alt"></i>
-                                    <span>support@ppmanager.com</span>
+                                    <span>contact@prophonemanager.com</span>
                                 </div>
                             </div>
 
@@ -211,34 +211,36 @@
                     <!-- /.col-md-4 -->
                     <div class="col-md-8">
                         <div class="contact-froms">
-                            <form action="php/mailer.php" class="contact-form" data-pixsaas="contact-froms">
+                            <form action="{% url 'contact_view' %}" method="post" class="contact-form" data-pixsaas="contact-froms">
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-md-6">
                                         <input type="text" name="name" placeholder="Nom" required>
                                     </div>
-
+                    
                                     <div class="col-md-6">
                                         <input type="email" name="email" placeholder="Email" required>
                                     </div>
                                 </div>
-
+                    
                                 <input type="text" name="subject" placeholder="Objet">
-
+                    
                                 <textarea name="content" placeholder="Votre message" required></textarea>
-
-                                <button type="submit" class="pix-btn btn-outline submit-btn">
+                    
+                                <button type="submit" class="pix-btn btn-outline submit-btn" onclick="this.disabled=true; this.form.submit();">
                                     <span class="btn-text">Envoyer Votre Message</span>
                                     <i class="fas fa-spinner fa-spin"></i>
                                 </button>
-
-
-
+                    
                                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
-
-
+                    
                                 <div class="row">
                                     <div class="form-result alert">
-                                        <div class="content"></div>
+                                        {% if messages %}
+                                            {% for message in messages %}
+                                                <div class="content">{{ message }}</div>
+                                            {% endfor %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </form>
@@ -246,6 +248,9 @@
                         </div>
                         <!-- /.faq-froms -->
                     </div>
+                    
+                    
+                    
                     <!-- /.col-md-8 -->
                 </div>
                 <!-- /.row -->

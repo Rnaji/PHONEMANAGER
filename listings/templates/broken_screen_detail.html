@@ -161,11 +161,15 @@
     <div class="col-12 col-md-8 col-lg-7 mx-auto">
         <ul class="list-group">
             <li class="list-group-item fs-6">
-                <a class="btn btn-sm btn-danger" id="delete-tab" data-bs-toggle="modal" data-bs-target="#deleteModal" style="cursor:pointer;">Supprimer l'écran</a>
+                <a class="btn btn-sm btn-danger" id="delete-tab" data-bs-toggle="modal" data-bs-target="#deleteModal">Supprimer l'écran</a>
             </li>
         </ul>
     </div>
+    <div class="col-12 col-md-8 col-lg-7 mx-auto mt-4">
+        <a class="btn btn-sm btn-outline-blue" href="{% url 'dashboard' %}">Retour au tableau de bord</a>
+    </div>
 </div>
+
 
 {% endblock page_content %}
 

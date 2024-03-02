@@ -140,7 +140,15 @@
             <div class="container">
                 <div class="page-title-wrapper">
                     <h1 class="page-title">Questions & Réponses️</h1>
-
+                    <div class="row">
+                        <div class="form-result alert">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="content">{{ message }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
                     <ul class="bradcurmed">
                         <li><a href="#" rel="noopener noreferrer">Home</a></li>
                         <li>Faq's</li>
@@ -264,7 +272,7 @@
                                     </div>
                                     <div id="collapse05" class="collapse" aria-labelledby="heading43" data-parent="#accordionsing">
                                         <div class="card-body">
-                                            <p>Pour toute question ou problème, veuillez nous contacter à l'adresse [adresse e-mail] ou via le formulaire de contact sur notre site web.</p>
+                                            <p>Pour toute question ou problème, veuillez nous contacter à l'adresse contact@prophonemanager.com ou via le formulaire de contact sur notre site web.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -298,37 +306,42 @@
 
                 <div class="faq-forms">
                     <div class="section-title text-center">
-                        <h2 class="title">Avez vous d'autres Questions?🙋</h2>
-                        <h2 class="title">Nous sommes là pour vous Aider 🫡</h2>
+                        <h2 class="title">Avez-vous d'autres questions?🙋</h2>
+                        <h2 class="title">Nous sommes là pour vous aider 🫡</h2>
                     </div>
                     <!-- /.section-title -->
-                    <form action="#" class="faq-form">
+                    <form action="{% url 'contact_view' %}" method="post" class="faq-form" data-pixsaas="contact-froms">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="text" placeholder="Nom">
+                                <input type="text" name="name" placeholder="Nom" required>
                             </div>
-
+                
                             <div class="col-md-6">
-                                <input type="text" placeholder="Email">
+                                <input type="email" name="email" placeholder="Email" required>
                             </div>
                         </div>
-
-                        <input type="text" placeholder="Objet">
-
-                        <textarea name="question" cols="30" rows="10" placeholder="Votre Message"></textarea>
-
-                        <button type="submit" class="pix-btn btn-outline submit-btn">
-                                    <span class="btn-text">Envoyer Votre Message</span>
-                                    <i class="fas fa-spinner fa-spin"></i>
+                
+                        <input type="text" name="subject" placeholder="Objet">
+                
+                        <textarea name="content" cols="30" rows="10" placeholder="Votre message"></textarea>
+                
+                        <button type="submit" class="pix-btn btn-outline submit-btn" onclick="this.disabled=true; this.form.submit();">
+                            <span class="btn-text">Envoyer votre message</span>
+                            <i class="fas fa-spinner fa-spin"></i>
                         </button>
+                
+                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+                
                     </form>
                     <!-- /.faq-form -->
                 </div>
                 <!-- /.faq-forms -->
-            </div>
-            <!-- /.container -->
-        </section>
-        <!-- /.faq-section -->
+                </div>
+                <!-- /.container -->
+                </section>
+                <!-- /.faq-section -->
+                
 
 
 

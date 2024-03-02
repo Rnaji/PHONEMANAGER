@@ -1119,10 +1119,6 @@ def about(request):
     return render(request, 'about.html')
 
 @require_GET
-def contact(request):
-    return render(request, 'contact.html')
-
-@require_GET
 def faq(request):
     return render(request, 'faq.html')
 
@@ -1146,19 +1142,28 @@ def page_attente(request):
 
 
 def forgot_password(request):
+    message = None
+
     if request.method == 'POST':
         email = request.POST['email']
-        user = User.objects.get(email=email)
-        token = default_token_generator.make_token(user)
-        PasswordReset.objects.create(user=user, token=token)
+        
+        try:
+            user = User.objects.get(email=email)
+            token = default_token_generator.make_token(user)
+            PasswordReset.objects.create(user=user, token=token)
 
-        # Envoyer l'e-mail avec le lien de réinitialisation
-        reset_link = f'http://127.0.0.1:8000/reset-password/{token}/'
-        send_mail('Réinitialisation du mot de passe', f'Cliquez sur le lien pour réinitialiser votre mot de passe : {reset_link}', 'contact@prophonemanager.com', [email])
+            # Envoyer l'e-mail avec le lien de réinitialisation
+            reset_link = f'http://127.0.0.1:8000/reset-password/{token}/'
+            email_subject = 'Réinitialisation du mot de passe'
+            email_body = f'Bonjour {user.username},\n\nVous avez demandé la réinitialisation de votre mot de passe pour votre compte sur ProPhoneManager.\n\nCliquez sur le lien ci-dessous pour réinitialiser votre mot de passe :\n{reset_link}\n\nSi vous n\'avez pas demandé cette réinitialisation, veuillez ignorer cet e-mail.\n\nCordialement,\nProPhoneManager'
 
-        return render(request, 'password_reset_sent.html')
+            send_mail(email_subject, email_body, 'contact@prophonemanager.com', [email])
 
-    return render(request, 'forgot_password.html')
+            message = "Un message avec les instructions pour réinitialiser votre mot de passe a été envoyé sur votre adresse e-mail."
+        except User.DoesNotExist:
+            message = "Aucun utilisateur n'est associé à cette adresse e-mail."
+
+    return render(request, 'forgot_password.html', {'message': message})
 
 
 def reset_password(request, token):
@@ -1167,7 +1172,8 @@ def reset_password(request, token):
 
     # Vérifier si le lien a expiré (par exemple, valable pendant 1 heure)
     if timezone.now() - password_reset.timestamp > timezone.timedelta(hours=1):
-        return render(request, 'password_reset_expired.html')
+        message = {"title": "Password Reset Link Expired", "content": "The password reset link has expired. Please initiate the password reset process again."}
+        return render(request, 'reset_password.html', {'message': message})
 
     if request.method == 'POST':
         new_password = request.POST['new_password']
@@ -1182,6 +1188,52 @@ def reset_password(request, token):
         # Supprimez l'objet PasswordReset après avoir utilisé le jeton
         password_reset.delete()
 
-        return render(request, 'password_reset_success.html')
+        # Afficher un message sur la page
+        message = {"title": "Réinitialisation du mot de passe réussie", "content": "Votre mot de passe a été réinitialisé avec succès. Vous pouvez maintenant vous connecter avec votre nouveau mot de passe."}
+        return render(request, 'reset_password.html', {'message': message})
 
     return render(request, 'reset_password.html', {'token': token})
+
+
+
+
+
+@require_GET
+def contact(request):
+    return render(request, 'contact.html')
+
+
+from django.contrib import messages
+
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        subject = request.POST.get('subject', '')
+        message = request.POST.get('content', '')
+
+        # Création du corps du courriel avec l'adresse du visiteur
+        email_body = f"Nom: {name}\nEmail: {email}\n\n{message}"
+
+        # Utilisation de la fonction send_mail pour envoyer l'e-mail
+        try:
+            send_mail(
+                subject,
+                email_body,
+                'contact@prophonemanager.com',  # Adresse e-mail de l'expéditeur
+                ['contact@prophonemanager.com'],
+                fail_silently=False,
+            )
+            messages.success(request, 'Message envoyé avec succès!')
+        except Exception as e:
+            messages.error(request, f'Erreur lors de l\'envoi du message. Veuillez réessayer plus tard. Erreur: {e}')
+
+        # Redirect to the appropriate template based on the origin of the form
+        referer = request.META.get('HTTP_REFERER', '')
+        if 'faq' in referer:
+            return render(request, 'faq.html')
+        elif 'contact' in referer:
+            return render(request, 'contact.html')
+
+    # Default rendering for GET requests
+    return redirect('landing_index')
